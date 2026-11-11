@@ -1,4 +1,4 @@
-const CACHE='plannote-shell-v100rc23';
+const CACHE='plannote-shell-v100rc24';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 const SHELL=new Set(['/', '/index.html', '/manifest.webmanifest', '/icon-192.png', '/icon-512.png']);
 self.addEventListener('install',event=>{
