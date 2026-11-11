@@ -1,0 +1,2 @@
+# plannote
+Personal schedule planner
