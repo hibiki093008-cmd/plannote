@@ -1,4 +1,4 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12bfc4"><title>PlanNote v1.0.0 RC43 | 予定管理</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12bfc4"><title>PlanNote v1.0.0 RC55 | 予定管理</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><style>
 :root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#213c2c;background:#f5faf6}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}header{background:white;border-bottom:1px solid #d9e9dd;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:5}h1{font-size:22px;margin:0}h2{font-size:18px;margin:0 0 14px}.muted{color:#58705f;font-size:13px}.shell{max-width:1250px;margin:auto;padding:18px}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.nav button{border:0;border-radius:12px;padding:11px 15px;background:#e4f1e8;color:#284c38;white-space:nowrap}.nav button.active,.primary{background:#21865a!important;color:white!important}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.panel{background:white;border:1px solid #dbece0;border-radius:18px;padding:18px;box-shadow:0 3px 16px #26335b08;margin-bottom:16px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar button,.btn{border:1px solid #cfe4d6;border-radius:10px;background:white;padding:8px 12px}.primary{border:0;border-radius:10px;padding:10px 14px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.dow{text-align:center;font-size:12px;color:#6b7890;padding:8px 0}.day{border:1px solid #e7eaf2;border-radius:10px;min-height:100px;padding:7px;text-align:left;background:white;overflow:hidden}.day.dim{opacity:.35}.day.today{border:2px solid #21865a}.day.selected{background:#edf8f0}.date{font-weight:650;font-size:13px}.chip{display:block;margin-top:4px;border-radius:5px;padding:3px 5px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#edf8f0;border-left:3px solid var(--c,#21865a)}.agenda-item,.task-item{border-bottom:1px solid #eef1f7;padding:10px 0;display:flex;justify-content:space-between;gap:8px;align-items:center}.agenda-item:last-child,.task-item:last-child{border-bottom:0}.tag{display:inline-block;font-size:11px;border-radius:20px;padding:3px 7px;background:#edf8f0;color:#334}.view{display:none}.view.active{display:block}.field{display:grid;gap:5px;margin-bottom:12px}.field label{font-size:13px;font-weight:600}input,select,textarea{width:100%;border:1px solid #c7ddcf;border-radius:10px;padding:10px;background:white;color:#213c2c}textarea{min-height:80px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.danger{color:#c53030}.timeline{height:900px;overflow:auto;border:1px solid #e0ece4;border-radius:12px}.slot{display:grid;grid-template-columns:70px 1fr;min-height:46px;border-bottom:1px solid #e1ede5}.slot:nth-child(2n){background:#f8fcf9}.slot-time{padding:8px;color:#58705f;font-size:12px;border-right:1px solid #e1ede5}.slot-events{padding:3px 8px}.slot-event{background:#edf8f0;border-left:4px solid var(--c,#21865a);border-radius:5px;padding:5px;margin-bottom:3px;font-size:12px;cursor:pointer}.progress{height:9px;background:#e0ece4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#21865a}.habit{padding:12px;border:1px solid #e4e9f3;border-radius:12px;margin:8px 0;display:flex;align-items:center;gap:12px}.habit input,.task-item input{width:auto;accent-color:#21865a}.empty{padding:24px;text-align:center;color:#58705f}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:20}dialog{border:0;border-radius:18px;padding:22px;width:min(95vw,550px);box-shadow:0 25px 80px #0b193650}dialog::backdrop{background:#18243b77}.hint{font-size:12px;color:#58705f;line-height:1.6} @media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:10px}.panel{padding:12px}.day{min-height:78px;padding:4px}.chip{font-size:9px;padding:2px}.date{font-size:11px}.formgrid{grid-template-columns:1fr}header{padding:12px}h1{font-size:19px}}
 .vertical-all-day{border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:12px 0;background:#f8fafc}.vertical-all-day-title{font-weight:700;margin-bottom:8px}.vertical-all-day-event{border-left:5px solid var(--c);background:white;border-radius:6px;padding:8px 10px;margin:5px 0;cursor:pointer;overflow-wrap:anywhere}
 
@@ -170,7 +170,7 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .vertical-card,.week-event{touch-action:pan-x pan-y!important}
 .vertical-move,.vertical-resize{touch-action:pan-x pan-y!important}
 @media(min-width:850px){main{max-width:960px!important;margin:auto!important}#nav{left:50%;right:auto;transform:translateX(-50%);max-width:600px;border-radius:16px 16px 0 0}}
-</style></head><body><header><div><h1><span class="pn-logo-mark" aria-hidden="true">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC43</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input style="max-width:180px" type="date" id="verticalDate" onchange="renderVertical()"></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button type="button" class="btn" id="schoolEdit" onclick="editSchoolDay()">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。予定名の部分をドラッグすると移動、下端の「↕ 終了時刻」をドラッグすると長さを変更できます。タップだけでは変更しません。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div id="weekTimeline" class="week-scroll"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input type="month" id="financeMonth" style="max-width:190px" onchange="renderFinance()"></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p class="muted" id="financeActualStatus" aria-live="polite"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input type="date" id="financeDate" required></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input type="number" id="financeAmount" min="1" max="999999999" step="1" required></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input type="number" id="financeBudget" min="0" step="1" placeholder="未設定"></div><div class="field" style="justify-content:end"><button class="btn" type="button" onclick="saveFinanceBudget()">予算を保存</button></div></div><div id="financeBudgetStatus" class="muted"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required></div><div class="field"><label for="fixedAmount">月額（円）</label><input type="number" id="fixedAmount" min="1" step="1" required></div><div class="field"><label for="fixedDay">毎月の日付</label><input type="number" id="fixedDay" min="1" max="31" value="1" required></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div id="financeChart" class="finance-chart" role="img" aria-label="直近6か月の収入と支出の棒グラフ"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" type="number" step="1" value="0"></div></div><button class="btn" type="button" onclick="addAccount()">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" type="date" required></div><div class="field"><label>金額（円）</label><input id="transferAmount" type="number" min="1" step="1" required></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" type="number" min="0" step="1"></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input type="date" id="studyDate" required></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" type="number" min="1" max="1440" required></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required></div><div class="field"><label>期限</label><input id="goalDate" type="date"></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" type="number" min="0" max="100" value="0" required></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><p id="googleStatus" class="hint" aria-live="polite">未接続</p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
+</style></head><body><header><div><h1><span class="pn-logo-mark" aria-hidden="true">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC55</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input style="max-width:180px" type="date" id="verticalDate" onchange="renderVertical()"></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button type="button" class="btn" id="schoolEdit" onclick="editSchoolDay()">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div id="weekTimeline" class="week-scroll"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input type="month" id="financeMonth" style="max-width:190px" onchange="renderFinance()"></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p class="muted" id="financeActualStatus" aria-live="polite"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input type="date" id="financeDate" required></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input type="number" id="financeAmount" min="1" max="999999999" step="1" required></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input type="number" id="financeBudget" min="0" step="1" placeholder="未設定"></div><div class="field" style="justify-content:end"><button class="btn" type="button" onclick="saveFinanceBudget()">予算を保存</button></div></div><div id="financeBudgetStatus" class="muted"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required></div><div class="field"><label for="fixedAmount">月額（円）</label><input type="number" id="fixedAmount" min="1" step="1" required></div><div class="field"><label for="fixedDay">毎月の日付</label><input type="number" id="fixedDay" min="1" max="31" value="1" required></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div id="financeChart" class="finance-chart" role="img" aria-label="直近6か月の収入と支出の棒グラフ"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" type="number" step="1" value="0"></div></div><button class="btn" type="button" onclick="addAccount()">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" type="date" required></div><div class="field"><label>金額（円）</label><input id="transferAmount" type="number" min="1" step="1" required></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" type="number" min="0" step="1"></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input type="date" id="studyDate" required></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" type="number" min="1" max="1440" required></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required></div><div class="field"><label>期限</label><input id="goalDate" type="date"></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" type="number" min="0" max="100" value="0" required></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><p id="googleStatus" class="hint" aria-live="polite">未接続</p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
 <label><input type="checkbox" id="autoPullToggle" onchange="setAutoPull(this.checked)"> 自動取得を有効にする</label>
 <p id="autoPullStatus" class="hint" aria-live="polite">自動取得は停止中</p>
@@ -514,9 +514,9 @@ function renderVertical(){
   const height=bottom-top;
   const label=e.allDay?'終日':`${pad(e.instanceStart.getHours())}:${pad(e.instanceStart.getMinutes())}〜${pad(e.instanceEnd.getHours())}:${pad(e.instanceEnd.getMinutes())}`;
   const isEditable=!e.allDay&&!e.conflictCopy&&e.repeat==='none';
-  html+=`<div class="vertical-card ${e.allDay?'all-day':''}" style="--c:${color};top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${width}% - 4px)" title="${esc(e.name)} ${label}" onclick="verticalCardTap(event,'${e.id}')">${isEditable?`<button class="vertical-move" aria-label="${esc(e.name)}の開始時刻を移動" onpointerdown="beginVerticalMove(event,'${e.id}')"><span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span> ↕</button>`:`<span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span>`}`;
+  html+=`<div class="vertical-card ${e.allDay?'all-day':''}" style="--c:${color};top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${width}% - 4px)" title="${esc(e.name)} ${label}" onclick="verticalCardTap(event,'${e.id}')">${isEditable?`<button class="vertical-move" aria-label="${esc(e.name)}の開始時刻を移動" onpointerdown="beginVerticalMove(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')"><span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span> ↕</button>`:`<span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span>`}`;
   if(e.allDay){html+=height>=85?`<span class="vertical-all-day-action" style="pointer-events:none">終日予定 · タップで操作</span>`:''}
-  else if(isEditable&&height>=32){html+=`<button class="vertical-resize" aria-label="${esc(e.name)}の終了時刻を変更" onpointerdown="beginVerticalResize(event,'${e.id}')">↕ 終了時刻</button>`}
+  else if(isEditable&&height>=32){html+=`<button class="vertical-resize" aria-label="${esc(e.name)}の終了時刻を変更" onpointerdown="beginVerticalResize(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')">↕ 終了時刻</button>`}
   html+=`</div>`;
  }
  html+='</div></div>';
@@ -1249,6 +1249,317 @@ const oldRender=window.renderTasks;if(typeof oldRender==='function')window.rende
 switcher.addEventListener('click',e=>{const tab=e.target.closest('[data-todo]');if(tab)section.hidden=tab.dataset.todo==='study'});
 const nav=document.getElementById('nav');nav?.addEventListener('click',e=>{if(e.target.closest('[data-view="tasks"]'))setTimeout(refresh45,0)});
 window.addEventListener('focus',refresh45);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh45()});setInterval(refresh45,60000);refresh45();
+})();
+</script>
+
+<style id="pn-rc47-css">
+#pn47-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:12px 0;padding:10px;background:#132329;border:1px solid #36535c;border-radius:12px}
+#pn47-tools button{min-height:44px;border:1px solid #54838a;border-radius:10px;background:#173b41;color:#eaf8f8;padding:8px 12px;font-weight:650}
+#pn47-tools button[aria-pressed="true"]{background:#117f80;color:white;border-color:#19b9b8}
+#pn47-tools .pn47-label{width:100%;font-size:13px;color:#c7dcdf;font-weight:700}
+#pn48-build{font-size:12px;color:#a7c5c9;padding:5px 0}
+</style>
+<script id="pn-rc47-js">
+(()=>{'use strict';
+ const list=document.getElementById('taskList');if(!list)return;
+ const bar=document.createElement('div');bar.id='pn47-tools';bar.setAttribute('aria-label','タスクの絞り込み');
+ bar.innerHTML='<div class="pn47-label">タスクを絞り込む</div><button type="button" data-filter="open" aria-pressed="true">未完了</button><button type="button" data-filter="today" aria-pressed="false">今日まで</button><button type="button" data-filter="overdue" aria-pressed="false">期限超過</button><button type="button" data-filter="all" aria-pressed="false">すべて</button>';
+ list.before(bar);let active='open';
+ function apply(){const now=new Date();const localDate=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0')+'-'+String(now.getDate()).padStart(2,'0');
+ const rows=[...list.querySelectorAll('.pn-task-row')];
+ rows.forEach((row,i)=>{const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=data.tasks.find(x=>String(x.id)===id);if(!t)return;const overdue=!!t.due&&!t.done&&(t.due<localDate||(t.due===localDate&&t.dueTime&&new Date(t.due+'T'+t.dueTime)<now));const visible=active==='all'||(active==='open'&&!t.done)||(active==='today'&&!t.done&&!!t.due&&t.due<=localDate)||(active==='overdue'&&overdue);row.hidden=!visible;row.style.display=visible?'':'none';});
+ }
+ bar.addEventListener('click',e=>{const b=e.target.closest('button[data-filter]');if(!b)return;active=b.dataset.filter;bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));apply();});
+ const old=window.renderTasks;if(typeof old==='function')window.renderTasks=function(...args){const result=old.apply(this,args);apply();return result;};apply();
+ const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const stamp=document.createElement('p');stamp.id='pn48-build';stamp.textContent='アプリ版: RC53（2026-11-12）';panel.append(stamp);}
+})();
+</script>
+<style id="pn-rc48-style">
+/* Keep the scroll surface responsive and visually consistent with dark mode. */
+#timeline,.vertical-canvas,.vertical-track{touch-action:pan-x pan-y}
+.vertical-card{background:#18343b!important;color:#effafa!important;border-radius:10px!important;box-shadow:0 2px 8px #0003}
+.vertical-card.all-day{background:#194448!important}
+.vertical-move{color:#f1ffff!important;min-height:28px;touch-action:pan-x pan-y!important}
+.vertical-resize{color:#eaffff!important;background:linear-gradient(transparent,#116c75)!important;touch-action:pan-x pan-y!important}
+.vertical-hour{color:#c2d7d8!important;border-color:#36545a!important}
+.vertical-canvas{background:repeating-linear-gradient(to bottom,#102329 0,#102329 45px,#294149 45px,#294149 46px)!important}
+.vertical-track{color:#e8f7f7}
+</style>
+<script id="pn-rc48-script">
+function verticalHandleTap(ev,id){
+  if(ev.detail===0)return; // keyboard actions handled by native focus/activation
+  if(ev.pointerType==='mouse')return;
+  if(Date.now()<verticalSuppressTapUntil)return;
+  ev.preventDefault();ev.stopPropagation();openEventActions(id);
+}
+// PointerType is not consistently present on click events. Mark touch-originated clicks.
+document.addEventListener('pointerdown',function(ev){
+  const handle=ev.target.closest?.('.vertical-move,.vertical-resize');
+  if(handle&&ev.pointerType==='touch')handle.dataset.pnTouch='1';
+},true);
+const pn48OldHandleTap=verticalHandleTap;
+verticalHandleTap=function(ev,id){
+  const h=ev.currentTarget;
+  if(h?.dataset.pnTouch==='1'){
+    delete h.dataset.pnTouch;
+    ev.preventDefault();ev.stopPropagation();openEventActions(id);
+  }
+};
+</script>
+
+<style id="pn-rc49-style">
+/* Stronger contrast and touch targets for the daily-use controls. */
+#nav button,#pn-cal-switch button,#pn-more-panel button,#pn-fab-menu button{min-height:48px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #55e5e3!important;outline-offset:3px}
+#pn-fab{right:max(16px,env(safe-area-inset-right))!important}
+#pn-fab-menu button{font-size:15px;line-height:1.5}
+.vertical-card,.vertical-move,.vertical-resize{touch-action:pan-x pan-y!important}
+.vertical-card-title{line-height:1.4}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<script id="pn-rc49-script">
+(function(){
+  // On touch screens, touching an event must never initiate pointer-capture dragging.
+  // Capture phase runs before inline onpointerdown handlers in the existing calendar.
+  document.addEventListener('pointerdown',function(e){
+    if(e.pointerType!=='touch'&&e.pointerType!=='pen')return;
+    if(!e.target.closest?.('.vertical-move,.vertical-resize'))return;
+    e.stopImmediatePropagation();
+  },true);
+  // Close overlays without forcing a page navigation.
+  document.addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    const menu=document.getElementById('pn-fab-menu');
+    const more=document.getElementById('pn-more-panel');
+    if(menu?.classList.contains('open')){
+      menu.classList.remove('open');document.getElementById('pn-fab')?.setAttribute('aria-expanded','false');e.preventDefault();
+    }
+    if(more&&getComputedStyle(more).display!=='none'){
+      more.style.display='none';e.preventDefault();
+    }
+  });
+  const version=document.getElementById('pn48-build');
+  if(version){version.id='pn49-build';version.textContent='アプリ版: RC53（2026-11-12）';}
+  const fab=document.getElementById('pn-fab');
+  if(fab){fab.setAttribute('aria-haspopup','true');fab.setAttribute('title','予定・タスクを追加');}
+})();
+</script>
+
+<style id="pn-rc50-style">
+#pn50-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:12px 0;padding:12px;background:#132329;border:1px solid #36535c;border-radius:12px}
+#pn50-actions label{color:#d8eded;font-weight:700;font-size:14px}
+#pn50-sort{min-height:44px;min-width:155px;background:#19383e;color:#f1fbfb;border:1px solid #57818a;border-radius:10px;padding:8px}
+#pn50-complete{min-height:44px;background:#146c70;color:white;border:1px solid #23a4a7;border-radius:10px;padding:8px 12px;font-weight:700}
+</style>
+<script id="pn-rc50-script">
+(()=>{'use strict';
+const list=document.getElementById('taskList');if(!list||!window.renderTasks)return;
+const controls=document.createElement('div');controls.id='pn50-actions';controls.innerHTML='<label for="pn50-sort">並び順</label><select id="pn50-sort"><option value="due">期限が近い順</option><option value="priority">優先度順</option><option value="name">名前順</option><option value="newest">新しい順</option></select><button id="pn50-complete" type="button">表示中を一括完了</button>';
+const filter=document.getElementById('pn47-tools');(filter||list).before(controls);
+const select=controls.querySelector('select');
+function order(){const rows=[...list.querySelectorAll('.pn-task-row')];const lookup=new Map((data.tasks||[]).map((t,i)=>[String(t.id),{...t,_i:i}]));const get=row=>{const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];return lookup.get(id)||{}};
+const priorities={'高':0,'最優先':0,'通常':1,'中':1,'低':2};
+rows.sort((ra,rb)=>{const a=get(ra),b=get(rb);let n=0;if(select.value==='priority')n=(priorities[a.priority]??1)-(priorities[b.priority]??1);else if(select.value==='name')n=String(a.name||'').localeCompare(String(b.name||''),'ja');else if(select.value==='newest')n=(b._i??0)-(a._i??0);else n=String(a.due||'9999').localeCompare(String(b.due||'9999'));return n||Number(!!a.done)-Number(!!b.done)||(a._i??0)-(b._i??0)}).forEach(r=>list.appendChild(r));}
+const previous=window.renderTasks;window.renderTasks=function(...args){const result=previous.apply(this,args);order();return result};select.addEventListener('change',order);order();
+controls.querySelector('button').addEventListener('click',()=>{const ids=[...list.querySelectorAll('.pn-task-row')].filter(r=>r.style.display!=='none'&&!r.hidden).map(r=>r.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1]).filter(Boolean);const targets=data.tasks.filter(t=>ids.includes(String(t.id))&&!t.done);if(!targets.length){toast('完了するタスクはありません');return}if(!confirm(`表示中の未完了タスク ${targets.length}件を完了にしますか？`))return;targets.forEach(t=>t.done=true);save();toast(`${targets.length}件を完了しました`)});
+})();
+</script>
+
+<style id="pn-rc51-css">
+#pn51-overview{border:1px solid #35545b;border-radius:16px;padding:14px;background:#122329;color:#f1faf9;margin:12px 0 16px}
+#pn51-overview h3{margin:0 0 12px;font-size:17px;color:#f1faf9}
+#pn51-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pn51-metric{padding:12px 7px;background:#1c343b;border-radius:12px;text-align:center;min-width:0}
+.pn51-metric strong{display:block;font-size:23px;line-height:1.2;color:#fff;font-variant-numeric:tabular-nums}
+.pn51-metric span{display:block;font-size:12px;color:#bcd8db;margin-top:5px}
+#pn51-actions{display:flex;gap:8px;margin-top:12px}
+#pn51-actions button{flex:1;min-height:48px;border-radius:11px;font-weight:700;border:1px solid #43858a;background:#173b41;color:#f2ffff;padding:8px}
+#pn51-actions button:first-child{background:#0e8588;border-color:#0e8588}
+#pn51-overview .pn51-note{font-size:12px;color:#b9d1d5;margin:10px 0 0;line-height:1.5}
+@media(max-width:360px){#pn51-metrics{gap:5px}.pn51-metric{padding:10px 3px}.pn51-metric strong{font-size:20px}}
+</style>
+<script id="pn-rc51-js">
+(()=>{'use strict';
+const switcher=document.getElementById('pn-todo-switch');
+if(!switcher||typeof data==='undefined')return;
+const summary=document.createElement('section');summary.id='pn51-overview';summary.setAttribute('aria-label','To Doの概要');
+summary.innerHTML='<h3>今日のTo Do</h3><div id="pn51-metrics"><div class="pn51-metric"><strong id="pn51-open">—</strong><span>未完了</span></div><div class="pn51-metric"><strong id="pn51-today">—</strong><span>今日まで</span></div><div class="pn51-metric"><strong id="pn51-study">—</strong><span>勉強の予定</span></div></div><div id="pn51-actions"><button type="button" id="pn51-new-task">＋ タスク</button><button type="button" id="pn51-new-study">＋ 勉強</button></div><p class="pn51-note">タスクと勉強を同じ画面で管理できます。下の切替で詳細を表示します。</p>';
+switcher.before(summary);
+const dateLocal=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
+function refresh(){const tasks=Array.isArray(data.tasks)?data.tasks:[];const pending=tasks.filter(t=>!t.done);const today=dateLocal();
+summary.querySelector('#pn51-open').textContent=String(pending.length);
+summary.querySelector('#pn51-today').textContent=String(pending.filter(t=>t.due&&t.due<=today).length);
+summary.querySelector('#pn51-study').textContent=String(pending.filter(t=>t.kind==='study').length);
+}
+summary.querySelector('#pn51-new-task').addEventListener('click',()=>{if(typeof window.addTask==='function')window.addTask()});
+summary.querySelector('#pn51-new-study').addEventListener('click',()=>{const btn=document.getElementById('pn-new-study-plan');if(btn){btn.click();return;}if(typeof window.addTask==='function'){window.addTask();const kind=document.getElementById('pn-task-kind');if(kind){kind.value='study';kind.dispatchEvent(new Event('change'))}}});
+const old=window.renderTasks;if(typeof old==='function')window.renderTasks=function(...args){const result=old.apply(this,args);refresh();return result};
+document.getElementById('nav')?.addEventListener('click',e=>{if(e.target.closest('[data-view="tasks"]'))setTimeout(refresh,0)});
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+refresh();
+})();
+</script>
+<style id="pn-rc52-style">
+:root{color-scheme:dark;--pn52-bg:#0b151a;--pn52-panel:#14252c;--pn52-line:#35525a;--pn52-ink:#f3fbfc;--pn52-sub:#c0d5db;--pn52-accent:#20c4c3}
+html,body{background:var(--pn52-bg)!important;color:var(--pn52-ink)!important}
+.panel,#pn-more-panel,dialog{background:var(--pn52-panel)!important;color:var(--pn52-ink)!important;border-color:var(--pn52-line)!important}
+.panel h2,.panel h3,dialog h2{color:var(--pn52-ink)!important}
+.muted,.hint{color:var(--pn52-sub)!important}
+button,input,select,textarea{font:inherit}button{cursor:pointer}button,select,input[type="date"],input[type="time"]{min-height:44px}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--pn52-accent)!important;outline-offset:2px}
+#pn-more-panel{position:fixed!important;z-index:1200!important;left:12px!important;right:12px!important;bottom:calc(78px + env(safe-area-inset-bottom))!important;top:auto!important;max-height:65dvh;overflow:auto;border:1px solid var(--pn52-line)!important;border-radius:18px!important;padding:18px!important;box-shadow:0 18px 55px #0009!important}
+#pn-more-panel button{background:#203b43!important;color:#f3fbfc!important;border:1px solid #426b73!important;border-radius:12px!important;min-height:48px}
+#pn-fab{bottom:calc(88px + env(safe-area-inset-bottom))!important;background:#20c4c3!important;color:#061719!important;box-shadow:0 6px 24px #0009!important}
+#pn-fab-menu{bottom:calc(155px + env(safe-area-inset-bottom))!important;background:#14272e!important;border:1px solid #3a656b!important;border-radius:16px!important;box-shadow:0 10px 40px #0009!important}
+#pn-fab-menu button{color:#f2fbfb!important;background:#203b43!important;border:1px solid #456c72!important}
+#pn-cal-switch button[aria-pressed="true"],#pn-todo-switch button[aria-selected="true"]{background:#168b8d!important;color:#fff!important}
+#pn52-shortcuts{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}#pn52-shortcuts button{flex:1;min-width:110px;background:#1c3c43;color:#eaffff;border:1px solid #46787e;border-radius:12px;font-weight:700;padding:9px}
+.pn52-fold{margin:12px 0;border:1px solid #35545b;border-radius:14px;overflow:hidden;background:#13262d}
+.pn52-fold>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;list-style:none;padding:15px;color:#f2fafb;font-weight:700;cursor:pointer;min-height:48px}
+.pn52-fold>summary::-webkit-details-marker{display:none}.pn52-fold>summary::after{content:'⌄';font-size:20px;color:#a9e5e4}.pn52-fold[open]>summary::after{content:'⌃'}
+.pn52-fold>.pn52-fold-body{padding:0 12px 12px}.pn52-fold .pn52-fold-body>*:first-child{margin-top:4px}
+#pn52-build-note{font-size:12px;color:#b8d8da;margin:12px 0}
+@media(max-width:650px){header>button.primary{display:none!important}#nav{padding-bottom:env(safe-area-inset-bottom)}.layout{padding-bottom:95px!important}#pn51-overview{padding:12px!important}#pn51-overview h3{font-size:16px!important}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+<script id="pn-rc52-script">
+(()=>{'use strict';
+// RC53 is a progressive enhancement: never modify existing saved user data.
+const $=id=>document.getElementById(id);
+const nav=$('nav'),more=$('pn-more-panel');
+if(more){more.setAttribute('role','region');more.setAttribute('aria-label','その他の機能');}
+// Keep hidden legacy AI and dashboard screens out of the primary navigation.
+nav?.querySelectorAll('[data-view="ai"],[data-view="dashboard"]').forEach(b=>b.style.display='none');
+// Make the original add action reachable from the floating menu without a duplicate header CTA.
+const fabMenu=$('pn-fab-menu');if(fabMenu&&!fabMenu.querySelector('[data-action="study"]')){
+ const b=document.createElement('button');b.type='button';b.dataset.action='study';b.textContent='勉強タスクを追加';fabMenu.append(b);
+ b.addEventListener('click',e=>{e.stopPropagation();fabMenu.classList.remove('open');$('pn-fab')?.setAttribute('aria-expanded','false');$('pn51-new-study')?.click()});
+}
+// Collapse secondary To Do summaries to reduce scrolling; preserve existing handlers by moving nodes.
+const taskView=$('tasks');
+function fold(id,title,open=false){const el=$(id);if(!el||el.closest('.pn52-fold'))return;const d=document.createElement('details');d.className='pn52-fold';d.open=open;const s=document.createElement('summary');s.textContent=title;const body=document.createElement('div');body.className='pn52-fold-body';el.before(d);d.append(s,body);body.append(el);}
+fold('pn-rc44-next','近日中の締切',true);
+fold('pn-reminder-list','リマインダー');
+fold('pn-rc44-goals','資格目標ごとの進捗');
+fold('pn-goal-linked-summary','目標との関連');
+// Quick actions are scoped to To Do, avoiding more bottom navigation tabs.
+if(taskView&&!$('pn52-shortcuts')){const bar=document.createElement('div');bar.id='pn52-shortcuts';bar.innerHTML='<button type="button" data-pn52="task">＋ タスク</button><button type="button" data-pn52="study">＋ 勉強</button>';const overview=$('pn51-overview');(overview||taskView.querySelector('.panel'))?.after(bar);bar.addEventListener('click',e=>{const action=e.target.closest('button')?.dataset.pn52;if(action==='task')window.addTask?.();if(action==='study')$('pn51-new-study')?.click()});}
+// Dismiss popovers on Escape or when switching main navigation.
+nav?.addEventListener('click',e=>{if(e.target.closest('[data-view="more"]'))return;if(more){more.style.display='none';nav.querySelector('[data-view="more"]')?.setAttribute('aria-expanded','false')}});
+// Release number entry keyboard when tapping outside input fields on Android.
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&more){more.style.display='none';nav?.querySelector('[data-view="more"]')?.setAttribute('aria-expanded','false')}});
+const settings=$('settings');const p=settings?.querySelector('.panel');if(p){const note=document.createElement('p');note.id='pn52-build-note';note.textContent='PlanNote RC54 · 操作改善版 · 通知はアプリ起動中のみ対応';p.append(note)}
+})();
+</script>
+<style id="pn-rc53-style">
+#pn53-tools{display:flex;gap:8px;align-items:center;margin:12px 0;flex-wrap:wrap}
+#pn53-search{width:100%;min-height:48px;background:#172d34;color:#f4fbfc;border:1px solid #51727b;border-radius:12px;padding:10px 14px;box-sizing:border-box;font-size:16px}
+#pn53-search::placeholder{color:#bed2d7;opacity:1}
+#pn53-search-count{font-size:12px;color:#c4dce0;margin:0 0 8px}
+#pn53-search-empty{background:#172d34;border:1px dashed #4d7179;padding:18px;border-radius:12px;text-align:center;color:#d8e9ec}
+#pn51-actions{display:none!important}#pn52-shortcuts{margin:10px 0 16px!important}
+#pn52-shortcuts button{min-height:48px}
+#pn53-version{font-size:12px;color:#c3dce0;margin:8px 0 0}
+#taskList .task-item[hidden]{display:none!important}
+</style>
+<script id="pn-rc53-script">
+(()=>{'use strict';
+const list=document.getElementById('taskList');if(!list)return;
+const tools=document.createElement('div');tools.id='pn53-tools';
+const input=document.createElement('input');input.id='pn53-search';input.type='search';input.placeholder='タスク名・科目で検索';input.setAttribute('aria-label','タスクを検索');input.autocomplete='off';
+const count=document.createElement('p');count.id='pn53-search-count';count.setAttribute('aria-live','polite');
+const empty=document.createElement('p');empty.id='pn53-search-empty';empty.hidden=true;empty.textContent='一致するタスクがありません';
+tools.append(input);list.before(tools,count);list.after(empty);
+function apply(){const query=input.value.trim().toLocaleLowerCase('ja-JP');const items=Array.from(list.querySelectorAll('.task-item'));
+let visible=0;for(const item of items){const match=!query||item.textContent.toLocaleLowerCase('ja-JP').includes(query);item.hidden=!match;if(match)visible++}
+count.textContent=query?`検索結果：${visible}件`:'タスクを検索できます';empty.hidden=!query||visible>0||items.length===0;
+}
+input.addEventListener('input',apply);
+// Task list is rebuilt by existing handlers; reapply the current search after rendering.
+const observer=new MutationObserver(apply);observer.observe(list,{childList:true,subtree:false});apply();
+// Group the actual reminder section, not a non-existent inner placeholder.
+const reminders=document.getElementById('pn45-reminders');if(reminders&&!reminders.closest('details')){
+ const d=document.createElement('details');d.className='pn52-fold';const s=document.createElement('summary');s.textContent='リマインダー';const body=document.createElement('div');body.className='pn52-fold-body';reminders.before(d);d.append(s,body);body.append(reminders);
+}
+const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const v=document.createElement('p');v.id='pn53-version';v.textContent='PlanNote RC53 · To Do検索・表示整理';panel.append(v)}
+})();
+</script>
+
+<style id="pn-rc54-style">
+/* RC54: accessible controls and consistent calendar switcher */
+#pn-cal-switch{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:5px;border-radius:14px;background:#10242a;border:1px solid #42616a;margin:0 0 14px}
+#pn-cal-switch button{min-width:0!important;min-height:48px!important;padding:8px 3px!important;border-radius:10px!important;font-size:14px!important;font-weight:700!important;color:#d5e9ec!important}
+#pn-cal-switch button[aria-pressed="true"]{background:#168b8d!important;color:white!important}
+#pn54-current{display:flex;align-items:center;gap:8px;justify-content:space-between;margin:0 0 12px;flex-wrap:wrap}
+#pn54-current button{background:#1b3d45;color:#ecfbfc;border:1px solid #527982;border-radius:10px;padding:9px 12px;min-height:44px}
+#pn54-current small{color:#c5e1e5}
+#calendarGrid .day{touch-action:pan-y;min-height:74px}
+#pn-task-dialog label,#pn-task-dialog label span{color:#edfafa!important}
+#pn53-search:focus{border-color:#31d2d1!important;box-shadow:0 0 0 2px #31d2d155}
+@media(max-width:420px){#pn-cal-switch button{font-size:13px!important}#pn54-current small{font-size:11px}}
+</style>
+<script id="pn-rc54-script">
+(()=>{'use strict';
+const switcher=document.getElementById('pn-cal-switch');
+const nav=document.getElementById('nav');
+if(!switcher||!nav)return;
+const valid=new Set(['calendar','week','vertical']);
+const key='plannote:calendar-view';
+const active=()=>document.querySelector('section.view.active')?.id;
+function sync(){const mode=active();if(!valid.has(mode))return;
+ switcher.querySelectorAll('button[data-mode]').forEach(b=>{const selected=b.dataset.mode===mode;b.setAttribute('aria-pressed',String(selected));b.setAttribute('aria-current',selected?'true':'false')});
+ try{sessionStorage.setItem(key,mode)}catch(e){}
+ const label=document.getElementById('pn54-view-label');if(label)label.textContent=({calendar:'月間',week:'週間',vertical:'バーチカル'})[mode];
+}
+const bar=document.createElement('div');bar.id='pn54-current';
+bar.innerHTML='<small>表示：<strong id="pn54-view-label">月間</strong></small><button type="button" id="pn54-today">今日に戻る</button>';
+switcher.after(bar);
+document.getElementById('pn54-today').addEventListener('click',()=>{
+ const mode=active();if(mode==='calendar'&&typeof window.goToday==='function')window.goToday();
+ else if(mode==='week'&&typeof window.changeWeek==='function')window.changeWeek(0);
+ else if(mode==='vertical'){
+  const d=new Date();const day=[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+  const input=document.getElementById('verticalDate');if(input){input.value=day;window.renderVertical?.()}
+ }
+});
+switcher.addEventListener('click',()=>setTimeout(sync,0));
+nav.addEventListener('click',()=>setTimeout(sync,0));
+try{const saved=sessionStorage.getItem(key);if(valid.has(saved)&&saved!=='calendar'){
+ const button=switcher.querySelector('button[data-mode="'+saved+'"]');button?.click();
+}}catch(e){}
+sync();
+})();
+</script>
+
+<style id="pn-rc55-style">
+#pn55-deadlines{background:#12262d;border:1px solid #3c636b;border-radius:15px;padding:14px;margin:12px 0 16px;color:#eef9fa}
+#pn55-deadlines h3{font-size:16px;margin:0 0 10px;color:#f4ffff}
+#pn55-deadlines .pn55-stats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+#pn55-deadlines .pn55-stat{background:#1e3941;border-radius:9px;padding:8px 10px;color:#d7f0f0;font-size:13px}
+#pn55-deadlines .pn55-entry{display:flex;align-items:center;gap:8px;padding:10px 0;border-top:1px solid #31515a}
+#pn55-deadlines .pn55-name{flex:1;min-width:0;overflow-wrap:anywhere}
+#pn55-deadlines .pn55-due{font-size:12px;color:#b7d3d7}
+#pn55-deadlines button{min-height:44px;border-radius:10px;border:1px solid #477c82;background:#20525a;color:#f4ffff;padding:8px 12px}
+#pn55-deadlines button:focus-visible{outline:3px solid #3ee2e0;outline-offset:2px}
+</style>
+<script id="pn-rc55-script">
+(()=>{'use strict';
+ const taskList=document.getElementById('taskList');if(!taskList||typeof data==='undefined')return;
+ const panel=document.createElement('section');panel.id='pn55-deadlines';panel.setAttribute('aria-label','締切が近いタスク');taskList.before(panel);
+ const escText=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const localDay=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+ function update(){
+  const all=Array.isArray(data.tasks)?data.tasks:[];const now=localDay();
+  const pending=all.filter(t=>!t.done);const late=pending.filter(t=>typeof t.due==='string'&&t.due.slice(0,10)<now&&t.due);
+  const dueToday=pending.filter(t=>typeof t.due==='string'&&t.due.slice(0,10)===now);
+  const upcoming=pending.filter(t=>/^\d{4}-\d{2}-\d{2}/.test(t.due||'')).sort((a,b)=>a.due.localeCompare(b.due)).slice(0,5);
+  panel.innerHTML='<h3>締切の確認</h3><div class="pn55-stats"><span class="pn55-stat">未完了 '+pending.length+'件</span><span class="pn55-stat">今日 '+dueToday.length+'件</span><span class="pn55-stat">期限超過 '+late.length+'件</span></div>'+(upcoming.length?upcoming.map(t=>'<div class="pn55-entry"><div class="pn55-name"><strong>'+escText(t.name)+'</strong><div class="pn55-due">期限 '+escText(t.due)+'</div></div><button type="button" data-pn55-day="'+escText(t.due.slice(0,10))+'">日付を見る</button></div>').join(''):'<p class="muted">期限のある未完了タスクはありません。</p>');
+ }
+ panel.addEventListener('click',e=>{const b=e.target.closest('button[data-pn55-day]');if(!b)return;const day=b.dataset.pn55Day;if(!/^\d{4}-\d{2}-\d{2}$/.test(day))return;
+  const cal=document.querySelector('#nav button[data-view="calendar"]');cal?.click();
+  try{selectedDate=day;const d=new Date(day+'T12:00:00');year=d.getFullYear();month=d.getMonth();renderCalendar();document.getElementById('calendar')?.scrollIntoView({behavior:'smooth',block:'start'});}catch(err){console.warn('Calendar navigation unavailable',err)}
+ });
+ const observer=new MutationObserver(()=>update());observer.observe(taskList,{childList:true,subtree:true});update();
 })();
 </script>
 </body></html>
