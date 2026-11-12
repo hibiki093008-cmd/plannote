@@ -1,10 +1,8 @@
-<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12bfc4"><title>PlanNote v1.0.0 RC55 | 予定管理</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><style>
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#12bfc4"><title>PlanNote v1.0.0 RC88 | 予定管理</title><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><style>
 :root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#213c2c;background:#f5faf6}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}header{background:white;border-bottom:1px solid #d9e9dd;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:5}h1{font-size:22px;margin:0}h2{font-size:18px;margin:0 0 14px}.muted{color:#58705f;font-size:13px}.shell{max-width:1250px;margin:auto;padding:18px}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.nav button{border:0;border-radius:12px;padding:11px 15px;background:#e4f1e8;color:#284c38;white-space:nowrap}.nav button.active,.primary{background:#21865a!important;color:white!important}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.panel{background:white;border:1px solid #dbece0;border-radius:18px;padding:18px;box-shadow:0 3px 16px #26335b08;margin-bottom:16px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar button,.btn{border:1px solid #cfe4d6;border-radius:10px;background:white;padding:8px 12px}.primary{border:0;border-radius:10px;padding:10px 14px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.dow{text-align:center;font-size:12px;color:#6b7890;padding:8px 0}.day{border:1px solid #e7eaf2;border-radius:10px;min-height:100px;padding:7px;text-align:left;background:white;overflow:hidden}.day.dim{opacity:.35}.day.today{border:2px solid #21865a}.day.selected{background:#edf8f0}.date{font-weight:650;font-size:13px}.chip{display:block;margin-top:4px;border-radius:5px;padding:3px 5px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#edf8f0;border-left:3px solid var(--c,#21865a)}.agenda-item,.task-item{border-bottom:1px solid #eef1f7;padding:10px 0;display:flex;justify-content:space-between;gap:8px;align-items:center}.agenda-item:last-child,.task-item:last-child{border-bottom:0}.tag{display:inline-block;font-size:11px;border-radius:20px;padding:3px 7px;background:#edf8f0;color:#334}.view{display:none}.view.active{display:block}.field{display:grid;gap:5px;margin-bottom:12px}.field label{font-size:13px;font-weight:600}input,select,textarea{width:100%;border:1px solid #c7ddcf;border-radius:10px;padding:10px;background:white;color:#213c2c}textarea{min-height:80px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.danger{color:#c53030}.timeline{height:900px;overflow:auto;border:1px solid #e0ece4;border-radius:12px}.slot{display:grid;grid-template-columns:70px 1fr;min-height:46px;border-bottom:1px solid #e1ede5}.slot:nth-child(2n){background:#f8fcf9}.slot-time{padding:8px;color:#58705f;font-size:12px;border-right:1px solid #e1ede5}.slot-events{padding:3px 8px}.slot-event{background:#edf8f0;border-left:4px solid var(--c,#21865a);border-radius:5px;padding:5px;margin-bottom:3px;font-size:12px;cursor:pointer}.progress{height:9px;background:#e0ece4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#21865a}.habit{padding:12px;border:1px solid #e4e9f3;border-radius:12px;margin:8px 0;display:flex;align-items:center;gap:12px}.habit input,.task-item input{width:auto;accent-color:#21865a}.empty{padding:24px;text-align:center;color:#58705f}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:20}dialog{border:0;border-radius:18px;padding:22px;width:min(95vw,550px);box-shadow:0 25px 80px #0b193650}dialog::backdrop{background:#18243b77}.hint{font-size:12px;color:#58705f;line-height:1.6} @media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:10px}.panel{padding:12px}.day{min-height:78px;padding:4px}.chip{font-size:9px;padding:2px}.date{font-size:11px}.formgrid{grid-template-columns:1fr}header{padding:12px}h1{font-size:19px}}
 .vertical-all-day{border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:12px 0;background:#f8fafc}.vertical-all-day-title{font-weight:700;margin-bottom:8px}.vertical-all-day-event{border-left:5px solid var(--c);background:white;border-radius:6px;padding:8px 10px;margin:5px 0;cursor:pointer;overflow-wrap:anywhere}
-
 .timeline{height:900px;overflow:auto;position:relative}.vertical-canvas{position:relative;height:920px;min-width:0;background:repeating-linear-gradient(to bottom,#fff 0,#fff 45px,#e1ede5 45px,#e1ede5 46px)}.vertical-hour{position:absolute;left:0;width:64px;padding:5px 3px;color:#58705f;font-size:11px;border-right:1px solid #e1ede5;height:46px}.vertical-track{position:absolute;left:64px;right:0;top:0;height:920px}.vertical-card{position:absolute;box-sizing:border-box;border:1px solid var(--c);border-left:5px solid var(--c);background:#edf8f0;border-radius:7px;padding:5px 6px;overflow:hidden;font-size:12px;min-width:0;z-index:1;overflow-wrap:anywhere}.vertical-card.all-day{background:#e1f4e7}.vertical-card-title{font-weight:700;display:block;word-break:break-word}.vertical-card-time{font-size:11px;opacity:.85}.vertical-resize{position:absolute;bottom:0;left:0;right:0;height:25px;background:linear-gradient(transparent,#b7e4c6);border:0;width:100%;text-align:center;cursor:ns-resize;touch-action:none;color:#176341;font-weight:700}.vertical-all-day-action{position:absolute;top:30px;left:5px;right:5px;width:calc(100% - 10px);padding:5px;font-size:11px;background:#fff;border:1px solid #79b796;border-radius:5px;cursor:pointer}.vertical-drag-tip{font-size:11px;color:#58705f;margin:6px 0}
 .vertical-move{display:block;width:100%;border:0;background:transparent;text-align:left;padding:0 0 4px;cursor:grab;touch-action:none;color:inherit}.vertical-move:active{cursor:grabbing}.vertical-convert{position:absolute;right:4px;bottom:27px;font-size:10px;border:1px solid #86b89c;border-radius:5px;background:white;padding:2px 4px;cursor:pointer}.vertical-card{touch-action:pan-y}
-
 .vertical-card{cursor:pointer;background:#eaf7ee}
 .vertical-action-menu{position:absolute;z-index:8;top:3px;left:3px;right:3px;display:flex;gap:3px;background:#fff;border:1px solid #9ac9aa;border-radius:6px;padding:3px;box-shadow:0 2px 7px #0002}
 .vertical-action-menu button{flex:1;min-width:0;font-size:11px;padding:5px 2px;background:#e5f5e9;border:1px solid #a9d5b8;border-radius:5px}
@@ -13,8 +11,6 @@
 .vertical-resize{height:30px;background:linear-gradient(transparent,#a8dfb9);color:#165c38;font-size:11px;z-index:4;touch-action:none;user-select:none}
 .vertical-all-day-action{background:#f4fbf6;border-color:#8bc5a0}
 input[type=checkbox]{accent-color:#21865a}
-
-/* v1.0.0 RC35: turquoise + black theme */
 :root{color-scheme:dark;color:#e9f9f8!important;background:#080d10!important}
 body{background:#080d10!important;color:#e9f9f8!important}
 header,.panel,dialog{background:#111b20!important;color:#e9f9f8!important;border-color:#244149!important}
@@ -52,7 +48,6 @@ dialog{width:min(94vw,540px);max-height:85dvh;overflow:auto;border-radius:14px}
 .vertical-card{overflow:hidden}
 .vertical-card .vertical-card-title{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vertical-card .vertical-card-time{display:block;font-size:10px}
-
 .school-controls{background:#101e23;border:1px solid #28545a;border-radius:12px;padding:12px;margin:10px 0}
 .school-controls-row{display:flex;gap:8px;align-items:end;flex-wrap:wrap;margin-top:10px}
 .school-controls-row label{font-size:12px;display:flex;flex-direction:column;gap:5px;flex:1 1 110px}
@@ -63,7 +58,6 @@ dialog{width:min(94vw,540px);max-height:85dvh;overflow:auto;border-radius:14px}
 .school-slot.break{background:rgba(128,150,160,.08);border-left-color:#687b80;color:#9aafb1}
 .school-slot.other{background:rgba(18,191,196,.055);border-left-color:#477c83;color:#9aafb1}
 .school-slot small{font-size:9px;opacity:.9;white-space:nowrap}
-/* School and personal events occupy independent columns, never cover each other. */
 .vertical-track.has-school .school-slot{right:auto;width:43%;padding:3px 4px;display:block}
 .vertical-track.has-school .school-slot span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .vertical-track.has-school .school-slot small{display:block;font-size:9px;overflow:hidden;text-overflow:ellipsis}
@@ -76,7 +70,6 @@ dialog{width:min(94vw,540px);max-height:85dvh;overflow:auto;border-radius:14px}
 .school-subject-grid input{width:100%}
 .finance-summary{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:14px 0 20px}.finance-summary>div{border:1px solid #2b5558;border-radius:12px;padding:12px;min-width:0}.finance-summary small{display:block;color:#9dbfc1}.finance-summary strong{display:block;font-size:clamp(14px,3.5vw,21px);overflow-wrap:anywhere;margin-top:6px}.finance-entry{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 0;border-bottom:1px solid #355052}.finance-entry>div:first-child{min-width:0;overflow-wrap:anywhere}.finance-entry .btn{flex-shrink:0}.finance-category-row{display:flex;justify-content:space-between;gap:8px;padding:6px 0}.finance-positive{color:#63d8b1}.finance-negative{color:#ff9b9b}@media(max-width:420px){.finance-summary>div{padding:7px}}
 .finance-meter{height:12px;background:#23383b;border-radius:10px;overflow:hidden;margin:10px 0 16px}.finance-meter>div{height:100%;width:0;transition:width .2s}.finance-chart{display:flex;gap:8px;align-items:end;min-height:150px;padding:14px 4px;border-bottom:1px solid #375154}.finance-chart-month{flex:1;min-width:0;text-align:center;display:flex;flex-direction:column;gap:5px}.finance-chart-bars{height:110px;display:flex;align-items:end;justify-content:center;gap:3px}.finance-chart-bar{width:38%;min-height:0;border-radius:4px 4px 0 0}.finance-chart-bar.income{background:#16c7c7}.finance-chart-bar.expense{background:#f59e0b}.finance-chart-month small{font-size:10px;white-space:nowrap}</style><style>
-/* RC26: full-width compact week, vertical touch scrolling even on events */
 .week-scroll{width:100%;max-width:100%;overflow-x:hidden;overflow-y:auto;max-height:min(75vh,780px);touch-action:pan-y;overscroll-behavior-y:contain;border:1px solid #375154;border-radius:10px}
 .week-grid{display:grid;grid-template-columns:32px repeat(7,minmax(0,1fr));width:100%;min-width:0}
 .week-head{position:sticky;top:0;z-index:6;background:#14272c;color:#e9f9f8;text-align:center;padding:5px 0;border-bottom:1px solid #375154;border-right:1px solid #375154;font-size:clamp(8px,2.2vw,11px);min-width:0}
@@ -103,8 +96,6 @@ dialog{width:min(94vw,540px);max-height:85dvh;overflow:auto;border-radius:14px}
 .pn-task-row{display:flex;gap:9px;align-items:center;padding:12px 8px;border-bottom:1px solid #e2eeea}.pn-task-main{flex:1;min-width:0}.pn-task-meta{font-size:12px;color:#627b75}.pn-task-row button{padding:6px 9px}.pn-overdue{color:#a83535;font-weight:700}
 #pn-remind-status{font-size:12px;color:#607872;margin:8px 0}.vertical-move{touch-action:pan-y!important;cursor:pointer!important}.vertical-resize{touch-action:pan-y!important}
 @media(max-width:700px){#nav{position:sticky;top:0;z-index:40;background:#f7fcfa}#pn-fab{bottom:76px}}
-
-/* RC37: consistent high-contrast charcoal/turquoise design */
 :root{--pn-accent:#16c4c6;--pn-bg:#080d10;--pn-panel:#111b20;--pn-raised:#192a30;--pn-line:#36565d;--pn-text:#f1faf9;--pn-muted:#aec4c7;color-scheme:dark}
 html,body{background:var(--pn-bg)!important;color:var(--pn-text)!important}
 #nav{display:flex;gap:7px;padding:8px 12px!important;background:#0d171b!important;border-bottom:1px solid var(--pn-line);overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:40}
@@ -131,8 +122,6 @@ html,body{background:var(--pn-bg)!important;color:var(--pn-text)!important}
 #calendar .toolbar strong{color:#f1faf9!important}
 #dashboard,#ai{display:none!important}
 @media(max-width:700px){#pn-more-panel{top:105px}#nav{top:0}#pn-fab{bottom:76px}}
-
-/* RC38 mobile-first layout, Material navigation pattern */
 :root{--pn-bg:#090f13;--pn-panel:#142127;--pn-raised:#1b3037;--pn-line:#35545c;--pn-accent:#25c6c5;--pn-text:#f3faf9;--pn-muted:#bbd0d1}
 html,body{max-width:100%;overflow-x:hidden;background:var(--pn-bg)!important}
 body{padding-bottom:calc(82px + env(safe-area-inset-bottom))!important;font-size:15px}
@@ -170,13 +159,13 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .vertical-card,.week-event{touch-action:pan-x pan-y!important}
 .vertical-move,.vertical-resize{touch-action:pan-x pan-y!important}
 @media(min-width:850px){main{max-width:960px!important;margin:auto!important}#nav{left:50%;right:auto;transform:translateX(-50%);max-width:600px;border-radius:16px 16px 0 0}}
-</style></head><body><header><div><h1><span class="pn-logo-mark" aria-hidden="true">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC55</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input style="max-width:180px" type="date" id="verticalDate" onchange="renderVertical()"></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button type="button" class="btn" id="schoolEdit" onclick="editSchoolDay()">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div id="weekTimeline" class="week-scroll"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input type="month" id="financeMonth" style="max-width:190px" onchange="renderFinance()"></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p class="muted" id="financeActualStatus" aria-live="polite"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input type="date" id="financeDate" required></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input type="number" id="financeAmount" min="1" max="999999999" step="1" required></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input type="number" id="financeBudget" min="0" step="1" placeholder="未設定"></div><div class="field" style="justify-content:end"><button class="btn" type="button" onclick="saveFinanceBudget()">予算を保存</button></div></div><div id="financeBudgetStatus" class="muted"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required></div><div class="field"><label for="fixedAmount">月額（円）</label><input type="number" id="fixedAmount" min="1" step="1" required></div><div class="field"><label for="fixedDay">毎月の日付</label><input type="number" id="fixedDay" min="1" max="31" value="1" required></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div id="financeChart" class="finance-chart" role="img" aria-label="直近6か月の収入と支出の棒グラフ"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" type="number" step="1" value="0"></div></div><button class="btn" type="button" onclick="addAccount()">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" type="date" required></div><div class="field"><label>金額（円）</label><input id="transferAmount" type="number" min="1" step="1" required></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" type="number" min="0" step="1"></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input type="date" id="studyDate" required></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" type="number" min="1" max="1440" required></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required></div><div class="field"><label>期限</label><input id="goalDate" type="date"></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" type="number" min="0" max="100" value="0" required></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><p id="googleStatus" class="hint" aria-live="polite">未接続</p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
+</style></head><body><header><div><h1><span class="pn-logo-mark" aria-hidden="true">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC88</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input style="max-width:180px" type="date" id="verticalDate" onchange="renderVertical()"></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button type="button" class="btn" id="schoolEdit" onclick="editSchoolDay()">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div id="weekTimeline" class="week-scroll"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input type="month" id="financeMonth" style="max-width:190px" onchange="renderFinance()"></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p class="muted" id="financeActualStatus" aria-live="polite"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input type="date" id="financeDate" required></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input type="number" id="financeAmount" min="1" max="999999999" step="1" required></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input type="number" id="financeBudget" min="0" step="1" placeholder="未設定"></div><div class="field" style="justify-content:end"><button class="btn" type="button" onclick="saveFinanceBudget()">予算を保存</button></div></div><div id="financeBudgetStatus" class="muted"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required></div><div class="field"><label for="fixedAmount">月額（円）</label><input type="number" id="fixedAmount" min="1" step="1" required></div><div class="field"><label for="fixedDay">毎月の日付</label><input type="number" id="fixedDay" min="1" max="31" value="1" required></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div id="financeChart" class="finance-chart" role="img" aria-label="直近6か月の収入と支出の棒グラフ"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" type="number" step="1" value="0"></div></div><button class="btn" type="button" onclick="addAccount()">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" type="date" required></div><div class="field"><label>金額（円）</label><input id="transferAmount" type="number" min="1" step="1" required></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" type="number" min="0" step="1"></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input type="date" id="studyDate" required></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" type="number" min="1" max="1440" required></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required></div><div class="field"><label>期限</label><input id="goalDate" type="date"></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" type="number" min="0" max="100" value="0" required></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><p id="googleStatus" class="hint" aria-live="polite">未接続</p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
 <label><input type="checkbox" id="autoPullToggle" onchange="setAutoPull(this.checked)"> 自動取得を有効にする</label>
 <p id="autoPullStatus" class="hint" aria-live="polite">自動取得は停止中</p>
 <button class="btn" onclick="autoPullGoogle(true)">今すぐ読み取り専用で取得</button></div><div class="panel" style="margin-top:14px"><h2>🛡 削除候補（確認のみ）</h2><p class="hint">Google側で見つからない連携済み予定を表示します。削除は一切実行しません。Googleカレンダーの表示対象やアカウントも確認してください。</p><div id="deletionPreview" class="muted">同期を実行すると確認結果が表示されます。</div></div><div class="panel" style="margin-top:14px"><h2>📋 同期履歴（この端末）</h2><div id="syncHistory" class="muted">履歴はありません。</div><button class="btn" onclick="exportSyncHistory()">同期履歴をJSON保存</button></div><p class="hint">必要な設定：Google Cloud ConsoleでCalendar APIを有効化し、OAuth同意画面を設定して、ウェブアプリの「承認済みJavaScript生成元」に公開先のHTTPS URL（または開発用localhost）を登録してください。HTMLをfile://で開いた場合はGoogle認証できません。公開前にOAuthテストユーザーも設定してください。</p></div><div class="panel"><h2>アプリのインストール</h2><p class="hint">HTTPSで公開した後、Android Chromeのメニューから「ホーム画面に追加」または「アプリをインストール」を選択してください。PCのChromeやEdgeでもアドレスバーのインストール操作から追加できます。</p><button class="btn" id="installBtn" style="display:none" onclick="installPlanNote()">アプリをインストール</button></div><div class="panel"><h2>データ管理</h2><p class="muted">この端末のブラウザーに保存されています。バックアップをおすすめします。</p><button class="btn" onclick="exportData()">JSONバックアップを書き出す</button> <label class="btn" style="display:inline-block">JSONを読み込む<input type="file" accept="application/json" hidden onchange="importData(event)"></label></div><div class="panel"><h2>通知について</h2><p class="hint">この画面を開いている間は、通知許可済みの場合に予定前のブラウザー通知を試みます。アプリを閉じた状態での確実な通知には、後のバージョンでPush通知とサーバー側の仕組みが必要です。</p><button class="btn" onclick="requestNotify()">通知を許可する</button></div></section></main><aside><div class="panel"><h2>今日の予定</h2><div id="todayAgenda"></div></div><div class="panel"><h2>今日の進捗</h2><p class="muted" id="progressLabel"></p><div class="progress"><div id="progressBar"></div></div></div><div class="panel"><h2>分類カラー</h2><button type="button" class="btn" onclick="reclassifyGoogleEvents()" style="margin-bottom:10px">全予定を自動分類（再判定）</button><p class="muted">端末内で予定名・説明を判定。PlanNoteで作った予定も対象です。手動変更は保持し、Google側の色は変更しません。</p><div id="legend"></div></div></aside></div></div><dialog id="eventDialog"><h2 id="dialogTitle">予定を追加</h2><form id="eventForm"><input type="hidden" id="eventId"><div class="field"><label>予定名</label><input id="eventName" required maxlength="120"></div><div class="formgrid"><div class="field"><label>開始</label><input id="eventStart" type="datetime-local" required></div><div class="field"><label>終了</label><input id="eventEnd" type="datetime-local" required></div></div><p class="hint">分類・色は予定名から自動判定します。保存後、バーチカル画面の予定をタップして「分類変更」から手動調整できます。</p><div class="formgrid"><div class="field"><label>繰り返し</label><select id="eventRepeat"><option value="none">なし</option><option value="daily">毎日</option><option value="weekly">毎週</option><option value="monthly">毎月</option></select></div></div><div class="field"><label>通知</label><select id="eventReminder"><option value="0">なし</option><option value="5">5分前</option><option value="10">10分前</option><option value="30">30分前</option><option value="60">1時間前</option></select></div><div class="actions"><button type="button" class="btn danger" id="deleteEvent" onclick="deleteCurrent()">削除</button><button type="button" class="btn" onclick="eventDialog.close()">キャンセル</button><button class="primary" type="submit">保存</button></div></form></dialog><div class="toast" id="toast"></div><script>
 const KEY='plannote-v01',COLORS={'学校':'#36b58d','勉強':'#548ef2','私生活':'#ed8ab8','仕事':'#f1a54a','健康':'#aa89ee','その他':'#879ba3'};
-/* Local classification v1.0.0 RC35: weighted context rules + on-device correction memory.
+/* Local classification v1.0.0 RC88: weighted context rules + on-device correction memory.
    No network, external AI, API key or third-party data transfer. */
 const CATEGORY_RULES=[
  ['健康',[
@@ -338,7 +327,8 @@ function eventActionConvert(){
 }
 function reclassifyGoogleEvents(){
  let changed=0,locked=0;
- for(const k of ['financeAccounts','financeTransfers','studySessions','studyGoals'])if(!Array.isArray(data[k]))data[k]=[];if(!data.financeCategoryBudgets||typeof data.financeCategoryBudgets!=='object')data.financeCategoryBudgets={};for(const e of data.events){
+ for(const k of ['financeAccounts','financeTransfers','studySessions','studyGoals'])if(!Array.isArray(data[k]))data[k]=[];if(!data.financeCategoryBudgets||typeof data.financeCategoryBudgets!=='object')data.financeCategoryBudgets={};for(const k of ['events','tasks','habits'])if(!Array.isArray(data[k]))data[k]=[];
+for(const e of data.events){
   if(e.categoryManual){locked++;continue}
   const pseudo={summary:e.name,description:e.googleDescription||''};
   if(applyGoogleCategory(e,pseudo))changed++;
@@ -346,7 +336,20 @@ function reclassifyGoogleEvents(){
  if(changed)save();
  toast('自動分類：'+changed+'件更新／手動固定：'+locked+'件を保持');
 }
-const pad=n=>String(n).padStart(2,'0');const localDate=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;const localTime=d=>`${localDate(d)}T${pad(d.getHours())}:${pad(d.getMinutes())}`;const today=()=>localDate(new Date());const initial={events:[],tasks:[],habits:[],checks:{},googleClient:'',finance:[],financeBudgets:{},financeFixed:[],financeAccounts:[],financeTransfers:[],financeCategoryBudgets:{},studySessions:[],studyGoals:[]};let data;try{data={...initial,...JSON.parse(localStorage.getItem(KEY)||'{}')}}catch{data=structuredClone(initial)}for(const e of data.events){
+const pad=n=>String(n).padStart(2,'0');const localDate=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;const localTime=d=>`${localDate(d)}T${pad(d.getHours())}:${pad(d.getMinutes())}`;const today=()=>localDate(new Date());const initial={events:[],tasks:[],habits:[],checks:{},googleClient:'',finance:[],financeBudgets:{},financeFixed:[],financeAccounts:[],financeTransfers:[],financeCategoryBudgets:{},studySessions:[],studyGoals:[]};let data;let pn74DamagedRaw=null,pn74DamagedReason='';
+try{
+ const raw=localStorage.getItem(KEY);
+ const parsed=raw===null?{}:JSON.parse(raw);
+ if(!parsed||typeof parsed!=='object'||Array.isArray(parsed))throw Error('保存データのルート形式が不正');
+ for(const k of ['events','tasks','habits','finance','financeFixed','financeAccounts','financeTransfers','studySessions','studyGoals'])if(k in parsed&&!Array.isArray(parsed[k]))throw Error(k+' の形式が不正');
+ for(const k of ['checks','financeBudgets','financeCategoryBudgets'])if(k in parsed&&(!parsed[k]||typeof parsed[k]!=='object'||Array.isArray(parsed[k])))throw Error(k+' の形式が不正');
+ data={...initial,...parsed};
+}catch(error){
+ try{pn74DamagedRaw=localStorage.getItem(KEY)}catch{}
+ pn74DamagedReason=String(error?.message||error);
+ data=structuredClone(initial);
+}
+for(const e of data.events){
  if(!e.googleId&&!e.categorySource){e.categoryManual=true;e.categorySource='manual'}
  if(e.googleId&&!e.categoryManual){
   // Existing imported events may already have a user-selected category in older versions.
@@ -355,8 +358,10 @@ const pad=n=>String(n).padStart(2,'0');const localDate=d=>`${d.getFullYear()}-${
   else {e.categoryManual=true;e.categorySource='manual'}
  }
 }
-localStorage.setItem(KEY,JSON.stringify(data));
-let selectedDate=today(),month=new Date().getMonth(),year=new Date().getFullYear();const save=()=>{localStorage.setItem(KEY,JSON.stringify(data));render()};const $=id=>document.getElementById(id);const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const toast=s=>{const el=$('toast');el.textContent=s;el.style.display='block';setTimeout(()=>el.style.display='none',2600)};function occurrences(day){const target=new Date(day+'T00:00:00');return data.events.flatMap(e=>{const s=new Date(e.start),end=new Date(e.end);if(!Number.isFinite(+s)||!Number.isFinite(+end))return[];let n=0;if(e.repeat==='none'){if(e.allDay){if(day<e.start.slice(0,10)||day>=e.end.slice(0,10))return[];}else if(localDate(s)!==day)return[];}else if(e.repeat==='daily'){n=Math.round((target-new Date(localDate(s)+'T00:00:00'))/86400000)}else if(e.repeat==='weekly'){const days=Math.round((target-new Date(localDate(s)+'T00:00:00'))/86400000);if(days%7)return[];n=days/7}else if(e.repeat==='monthly'){n=(target.getFullYear()-s.getFullYear())*12+target.getMonth()-s.getMonth();if(target.getDate()!==s.getDate())return[]}if(n<0)return[];const start=new Date(target);start.setHours(s.getHours(),s.getMinutes());return [{...e,instanceStart:start,instanceEnd:new Date(+start+(end-s))}]}).sort((a,b)=>a.instanceStart-b.instanceStart)}function renderCalendar(){const grid=$('calendarGrid');grid.innerHTML='';$('monthTitle').textContent=`${year}年 ${month+1}月`;['日','月','火','水','木','金','土'].forEach(w=>grid.insertAdjacentHTML('beforeend',`<div class="dow">${w}</div>`));const first=new Date(year,month,1),offset=first.getDay(),count=new Date(year,month+1,0).getDate();for(let i=0;i<Math.ceil((offset+count)/7)*7;i++){const d=new Date(year,month,i-offset+1),day=localDate(d),events=occurrences(day),el=document.createElement('button');el.className='day'+(d.getMonth()!==month?' dim':'')+(day===today()?' today':'')+(day===selectedDate?' selected':'');el.innerHTML=`<span class="date">${d.getDate()}</span>`+events.slice(0,3).map(e=>`<span class="chip" style="--c:${COLORS[e.category]||COLORS['その他']}">${esc(e.name)}</span>`).join('')+(events.length>3?`<span class="muted">+${events.length-3}</span>`:'');el.onclick=()=>openDayAgenda(day);grid.append(el)}$('selectedTitle').textContent=`${selectedDate} の予定`;$('selectedAgenda').innerHTML=agenda(selectedDate)}function agenda(day,dayDialog=false){const a=occurrences(day);return a.length?a.map(e=>`<div class="agenda-item"><div><span class="tag" style="border-left:4px solid ${COLORS[e.category]||COLORS['その他']}">${esc(e.category)}</span> <b>${esc(e.name)}</b><div class="muted">${e.allDay?'終日':pad(e.instanceStart.getHours())+':'+pad(e.instanceStart.getMinutes())+'〜'+pad(e.instanceEnd.getHours())+':'+pad(e.instanceEnd.getMinutes())}${e.repeat!=='none'?' · 🔁':''}</div></div><button class="btn" onclick="${dayDialog?'dayAgendaAction':'openEventActions'}('${e.id}')">操作</button></div>`).join(''):'<div class="empty">予定はありません</div>'}function changeMonth(n){const d=new Date(year,month+n,1);year=d.getFullYear();month=d.getMonth();renderCalendar()}function goToday(){selectedDate=today();const d=new Date();month=d.getMonth();year=d.getFullYear();render()}function openEvent(id=null,day=selectedDate){const e=data.events.find(x=>x.id===id);if(e?.allDay){toast('終日予定はGoogle側で編集してください（読み取り専用）');return;}$('dialogTitle').textContent=e?'予定を編集':'予定を追加';$('eventId').value=e?.id||'';$('eventName').value=e?.name||'';$('eventRepeat').value=e?.repeat||'none';$('eventReminder').value=e?.reminder||'0';$('eventStart').value=e?.start||day+'T09:00';$('eventEnd').value=e?.end||day+'T10:00';$('deleteEvent').hidden=!e;$('eventDialog').showModal()}$('eventForm').onsubmit=e=>{e.preventDefault();const start=$('eventStart').value,end=$('eventEnd').value;if(new Date(end)<=new Date(start)){toast('終了は開始より後にしてください');return}const id=$('eventId').value||crypto.randomUUID(),name=$('eventName').value.trim();if(!name)return;
+// RC73: storage failures must not prevent the app from opening.
+let pnStorageError='';
+if(pn74DamagedReason){pnStorageError='保存データに異常があります。元データを保護しています。復旧操作を選んでください。'}else try{localStorage.setItem(KEY,JSON.stringify(data))}catch(error){pnStorageError='初期保存に失敗しました: '+String(error?.message||error)}
+let selectedDate=today(),month=new Date().getMonth(),year=new Date().getFullYear();const save=()=>{if(pn74DamagedReason){pnStorageError='破損データを保護中です。元データをダウンロードしてから復旧してください。';window.dispatchEvent(new Event('pn-storage-status'));render();return false}try{const payload=JSON.stringify(data);localStorage.setItem(KEY,payload);if(localStorage.getItem(KEY)!==payload)throw new Error('保存内容の照合に失敗');pnStorageError='';window.dispatchEvent(new Event('pn-storage-status'));render();return true}catch(error){pnStorageError='保存に失敗しました。空き容量やブラウザの保存設定を確認し、JSONバックアップを保存してください。';window.dispatchEvent(new Event('pn-storage-status'));console.error('PlanNote save failed',error);render();return false}};const $=id=>document.getElementById(id);const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const toast=s=>{const el=$('toast');el.textContent=s;el.style.display='block';setTimeout(()=>el.style.display='none',2600)};function occurrences(day){const target=new Date(day+'T00:00:00');return data.events.flatMap(e=>{const s=new Date(e.start),end=new Date(e.end);if(!Number.isFinite(+s)||!Number.isFinite(+end))return[];let n=0;if(e.repeat==='none'){if(e.allDay){if(day<e.start.slice(0,10)||day>=e.end.slice(0,10))return[];}else if(localDate(s)!==day)return[];}else if(e.repeat==='daily'){n=Math.round((target-new Date(localDate(s)+'T00:00:00'))/86400000)}else if(e.repeat==='weekly'){const days=Math.round((target-new Date(localDate(s)+'T00:00:00'))/86400000);if(days%7)return[];n=days/7}else if(e.repeat==='monthly'){n=(target.getFullYear()-s.getFullYear())*12+target.getMonth()-s.getMonth();if(target.getDate()!==s.getDate())return[]}if(n<0)return[];const start=new Date(target);start.setHours(s.getHours(),s.getMinutes());return [{...e,instanceStart:start,instanceEnd:new Date(+start+(end-s))}]}).sort((a,b)=>a.instanceStart-b.instanceStart)}function renderCalendar(){const grid=$('calendarGrid');grid.innerHTML='';$('monthTitle').textContent=`${year}年 ${month+1}月`;['日','月','火','水','木','金','土'].forEach(w=>grid.insertAdjacentHTML('beforeend',`<div class="dow">${w}</div>`));const first=new Date(year,month,1),offset=first.getDay(),count=new Date(year,month+1,0).getDate();for(let i=0;i<Math.ceil((offset+count)/7)*7;i++){const d=new Date(year,month,i-offset+1),day=localDate(d),events=occurrences(day),el=document.createElement('button');el.className='day'+(d.getMonth()!==month?' dim':'')+(day===today()?' today':'')+(day===selectedDate?' selected':'');el.innerHTML=`<span class="date">${d.getDate()}</span>`+events.slice(0,3).map(e=>`<span class="chip" style="--c:${COLORS[e.category]||COLORS['その他']}">${esc(e.name)}</span>`).join('')+(events.length>3?`<span class="muted">+${events.length-3}</span>`:'');el.onclick=()=>openDayAgenda(day);grid.append(el)}$('selectedTitle').textContent=`${selectedDate} の予定`;$('selectedAgenda').innerHTML=agenda(selectedDate)}function agenda(day,dayDialog=false){const a=occurrences(day);return a.length?a.map(e=>`<div class="agenda-item"><div><span class="tag" style="border-left:4px solid ${COLORS[e.category]||COLORS['その他']}">${esc(e.category)}</span> <b>${esc(e.name)}</b><div class="muted">${e.allDay?'終日':pad(e.instanceStart.getHours())+':'+pad(e.instanceStart.getMinutes())+'〜'+pad(e.instanceEnd.getHours())+':'+pad(e.instanceEnd.getMinutes())}${e.repeat!=='none'?' · 🔁':''}</div></div><button class="btn" onclick="${dayDialog?'dayAgendaAction':'openEventActions'}('${e.id}')">操作</button></div>`).join(''):'<div class="empty">予定はありません</div>'}function changeMonth(n){const d=new Date(year,month+n,1);year=d.getFullYear();month=d.getMonth();renderCalendar()}function goToday(){selectedDate=today();const d=new Date();month=d.getMonth();year=d.getFullYear();render()}function openEvent(id=null,day=selectedDate){const e=data.events.find(x=>x.id===id);if(e?.allDay){toast('終日予定はGoogle側で編集してください（読み取り専用）');return;}$('dialogTitle').textContent=e?'予定を編集':'予定を追加';$('eventId').value=e?.id||'';$('eventName').value=e?.name||'';$('eventRepeat').value=e?.repeat||'none';$('eventReminder').value=e?.reminder||'0';$('eventStart').value=e?.start||day+'T09:00';$('eventEnd').value=e?.end||day+'T10:00';$('deleteEvent').hidden=!e;$('eventDialog').showModal()}$('eventForm').onsubmit=e=>{e.preventDefault();const start=$('eventStart').value,end=$('eventEnd').value;if(new Date(end)<=new Date(start)){toast('終了は開始より後にしてください');return}const id=$('eventId').value||crypto.randomUUID(),name=$('eventName').value.trim();if(!name)return;
 const old=data.events.find(x=>x.id===id);
 const manual=!!old?.categoryManual;
 const item={id,name,start,end,category:manual?old.category:classifyGoogleEvent({summary:name}),categoryManual:manual,categorySource:manual?'manual':'auto',repeat:$('eventRepeat').value,reminder:$('eventReminder').value};
@@ -606,6 +611,19 @@ function cleanupVerticalResize(){if(!verticalResize)return;const h=verticalResiz
 function addTask(){const name=prompt('タスク名を入力してください');if(!name?.trim())return;const due=prompt('期限（YYYY-MM-DD、空欄可）','')||'';if(due&&!/^\d{4}-\d{2}-\d{2}$/.test(due)){toast('期限の形式が正しくありません');return}data.tasks.push({id:crypto.randomUUID(),name:name.trim(),due,done:false,priority:'通常'});save()}function renderTasks(){$('taskList').innerHTML=data.tasks.length?data.tasks.map(t=>`<div class="task-item"><label><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"> <span style="${t.done?'text-decoration:line-through;color:#94a3b8':''}">${esc(t.name)}</span><span class="muted"> ${esc(t.due)}</span></label><button class="btn danger" onclick="removeTask('${t.id}')">削除</button></div>`).join(''):'<div class="empty">タスクを追加しましょう</div>'}function toggleTask(id){const t=data.tasks.find(x=>x.id===id);if(t)t.done=!t.done;save()}function removeTask(id){data.tasks=data.tasks.filter(x=>x.id!==id);save()}function addHabit(){const name=prompt('毎日続けたい習慣は？');if(name?.trim()){data.habits.push({id:crypto.randomUUID(),name:name.trim()});save()}}function renderHabits(){$('habitDay').textContent=`${today()} の達成状況`;$('habitList').innerHTML=data.habits.length?data.habits.map(h=>`<label class="habit"><input type="checkbox" ${data.checks[today()+'_'+h.id]?'checked':''} onchange="toggleHabit('${h.id}',this.checked)"><span>${esc(h.name)}</span><button class="btn danger" style="margin-left:auto" onclick="event.preventDefault();removeHabit('${h.id}')">削除</button></label>`).join(''):'<div class="empty">習慣を追加しましょう</div>'}function toggleHabit(id,checked){data.checks[today()+'_'+id]=checked;save()}function removeHabit(id){data.habits=data.habits.filter(h=>h.id!==id);save()}function parseAI(){let s=$('aiText').value.trim();if(!s)return toast('予定を入力してください');let d=new Date(),date=today();if(/明日/.test(s)){d.setDate(d.getDate()+1);date=localDate(d)}else if(/明後日/.test(s)){d.setDate(d.getDate()+2);date=localDate(d)}else{const m=s.match(/(20\d\d)[\/-](\d{1,2})[\/-](\d{1,2})/);if(m)date=`${m[1]}-${pad(+m[2])}-${pad(+m[3])}`}const t=s.match(/(\d{1,2})[:：時](\d{1,2})?/),duration=s.match(/(\d+)\s*分/),hours=s.match(/(\d+(?:\.\d+)?)\s*時間/);let h=t?+t[1]:9,min=t?+(t[2]||0):0;if(h>23||min>59)return toast('時刻を確認してください');const start=new Date(`${date}T${pad(h)}:${pad(min)}`);const end=new Date(+start+(duration?+duration[1]:hours?+hours[1]*60:60)*60000);let name=s.replace(/明後日|明日|今日/g,'').replace(/20\d\d[\/-]\d{1,2}[\/-]\d{1,2}/g,'').replace(/\d{1,2}[:：時]\d{0,2}/g,'').replace(/\d+(?:\.\d+)?\s*(分|時間)/g,'').trim()||'新しい予定';openEvent(null,date);$('eventName').value=name;$('eventStart').value=localTime(start);$('eventEnd').value=localTime(end);toast('内容を確認して保存してください')}function saveClient(){data.googleClient=$('googleClient').value.trim();save();toast('クライアントIDを保存しました')}function requestNotify(){if(!('Notification'in window))return toast('この環境では通知非対応です');Notification.requestPermission().then(x=>toast('通知設定: '+x))}const notified=new Set();setInterval(()=>{if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date();for(const day of [today(),localDate(new Date(+now+86400000))])for(const e of occurrences(day)){const mins=+e.reminder;if(!mins)continue;const when=+e.instanceStart-mins*60000;const key=e.id+'_'+when;if(when<=+now&&+now-when<60000&&!notified.has(key)){notified.add(key);new Notification('予定のお知らせ',{body:e.name+'（'+mins+'分前）'})}}},30000);function exportData(){const blob=new Blob([JSON.stringify({...data,categoryLearning,schoolSettings,googleSyncMeta:syncMeta},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='plannote-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}function validateBackup(obj){
  if(!obj||typeof obj!== 'object'||Array.isArray(obj))throw Error('バックアップの形式が不正です');
  for(const k of ['events','tasks','habits'])if(!Array.isArray(obj[k]))throw Error(k+' が不正です');
+ // Guard against oversized, malformed, or ambiguous core records before replacing storage.
+ for(const [key,limit] of [['events',20000],['tasks',20000],['habits',5000]]){
+  const items=obj[key];
+  if(items.length>limit)throw Error(key+' の件数が上限を超えています');
+  const ids=new Set();
+  for(const item of items){
+   if(!item||typeof item!=='object'||Array.isArray(item)||typeof item.id!=='string'||!item.id||item.id.length>200||ids.has(item.id))throw Error(key+' に不正または重複したIDがあります');
+   ids.add(item.id);
+   if(key==='tasks'&&(typeof item.name!=='string'||item.name.length>500||('done' in item&&typeof item.done!=='boolean')))throw Error('タスクの内容が不正です');
+   if(key==='habits'&&(typeof item.name!=='string'||item.name.length>500))throw Error('習慣の内容が不正です');
+  }
+ }
+
  for(const k of ['finance','financeFixed','financeAccounts','financeTransfers','studySessions','studyGoals'])if(k in obj&&!Array.isArray(obj[k]))throw Error(k+' が不正です');
  for(const k of ['financeBudgets','financeCategoryBudgets','checks'])if(k in obj&&(!obj[k]||typeof obj[k]!=='object'||Array.isArray(obj[k])))throw Error(k+' が不正です');
  for(const k of ['categoryLearning','schoolSettings'])if(k in obj&&(!obj[k]||typeof obj[k]!=='object'||Array.isArray(obj[k])))throw Error(k+' が不正です');
@@ -675,9 +693,31 @@ function addTask(){const name=prompt('タスク名を入力してください');
 
  return true;
 }
+// RC75: verify every restored key before updating in-memory state.
+function pn75AtomicRestore(updates,store=localStorage){
+ const previous=updates.map(([key])=>[key,store.getItem(key)]);
+ try{
+  for(const [key,value] of updates){
+   store.setItem(key,value);
+   if(store.getItem(key)!==value)throw Error('復元データの保存確認に失敗: '+key);
+  }
+  return true;
+ }catch(error){
+  let rollbackFailed=false;
+  for(const [key,value] of previous){
+   try{
+    if(value===null)store.removeItem(key);else store.setItem(key,value);
+    if(store.getItem(key)!==value)rollbackFailed=true;
+   }catch{rollbackFailed=true}
+  }
+  if(rollbackFailed)throw Error('復元に失敗し、元データの復旧も確認できません。ページを閉じずJSONバックアップを保存してください。原因: '+String(error.message||error));
+  throw error;
+ }
+}
 async function importData(ev){
  const f=ev.target.files[0];if(!f)return;
  try{
+  if(f.size>10*1024*1024)throw Error('バックアップは10MB以下にしてください');
   const obj=JSON.parse(await f.text());validateBackup(obj);
   // Synchronization metadata lives in its own storage key, not in the main app data.
   // Legacy backups without metadata must not inherit an unrelated device's sync baseline.
@@ -685,7 +725,8 @@ async function importData(ev){
   const next={...initial,...appBackup};
   for(const k of ['finance','financeFixed','financeAccounts','financeTransfers','studySessions','studyGoals'])if(!Array.isArray(next[k]))next[k]=[];
   for(const k of ['financeCategoryBudgets','financeBudgets'])if(!next[k]||typeof next[k]!=='object'||Array.isArray(next[k]))next[k]={};
-  if(!confirm('現在のデータをバックアップ内容で置き換えますか？\n現在のデータは先にJSONで保存してください。'))return;
+  const counts=`予定 ${obj.events.length}件 / タスク ${obj.tasks.length}件 / 習慣 ${obj.habits.length}件 / 家計簿 ${(obj.finance||[]).length}件 / 学習 ${(obj.studySessions||[]).length}件`;
+  if(!confirm('復元するバックアップの内容：\n'+counts+'\n\n現在の端末データを置き換えます。先に現在のJSONバックアップを保存しましたか？'))return;
   // Stage all writes first; restore prior storage if a write fails.
   const updates=[[KEY,JSON.stringify(next)]];
   // Old backups omit these optional settings. Reset them rather than mixing in settings from another dataset.
@@ -694,15 +735,19 @@ async function importData(ev){
   updates.push([CATEGORY_LEARNING_KEY,JSON.stringify(restoredLearning)]);
   updates.push([SCHOOL_KEY,JSON.stringify(restoredSchool)]);
   updates.push([syncMetaKey,JSON.stringify(importedSyncMeta??{})]);
-  const previous=updates.map(([key])=>[key,localStorage.getItem(key)]);
-  try{for(const [key,value] of updates)localStorage.setItem(key,value)}
-  catch(error){for(const [key,value] of previous){try{if(value===null)localStorage.removeItem(key);else localStorage.setItem(key,value)}catch{}}throw error}
+  pn75AtomicRestore(updates);
+  // A validated backup can recover from a corrupt startup payload.
+  if(pn74DamagedReason){
+   pn74DamagedReason='';pn74DamagedRaw=null;pnStorageError='';
+   document.getElementById('pn74-recovery')?.remove();
+   window.dispatchEvent(new Event('pn-storage-status'));
+  }
   data=next;
   categoryLearning=restoredLearning;
   schoolSettings={dates:{},times45:null,...restoredSchool,dates:restoredSchool.dates??{}};
   syncMeta=importedSyncMeta??{};
   render();toast('バックアップを復元しました');
- }catch(error){console.error('Backup import failed:',error);toast('読み込みに失敗しました。データ形式を確認してください')}
+ }catch(error){console.error('Backup import failed:',error);toast('復元できません: '+String(error?.message||'ファイルを確認してください').slice(0,100))}
  finally{ev.target.value=''}
 }
 const FINANCE_CATEGORIES={expense:['食費','日用品','交通費','住居費','水道・光熱費','通信費','学習費','娯楽費','医療費','その他'],income:['アルバイト','お小遣い','給与','臨時収入','その他']};
@@ -1041,12 +1086,24 @@ more.onclick=(e)=>{e.stopPropagation();const show=morePanel.style.display==='non
 nav.addEventListener('click',e=>{if(!e.target.closest('[data-view="more"]')){morePanel.style.display='none';more.setAttribute('aria-expanded','false')}});
 function chooseCalendar(mode){const orig=nav.querySelector('[data-view="'+mode+'"]');orig?.click();document.querySelectorAll('#pn-cal-switch button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));const view=$pn(mode);if(mode!=='calendar'&&view){view.querySelector('.panel')?.prepend($pn('pn-cal-switch'));}else cal.querySelector('.panel')?.prepend($pn('pn-cal-switch'));morePanel.style.display='none';}
 document.addEventListener('click',e=>{const b=e.target.closest('#pn-cal-switch button');if(b)chooseCalendar(b.dataset.mode)});
-const dialog=document.createElement('dialog');dialog.id='pn-task-dialog';dialog.innerHTML=`<form id="pn-task-form"><h2 id="pn-task-heading">タスクを追加</h2><label>タスク名<input id="pn-task-name" maxlength="160" required></label><label>締切日<input id="pn-task-due" type="date"></label><label>締切時刻（任意）<input id="pn-task-time" type="time"></label><label>分類<select id="pn-task-kind"><option value="general">一般</option><option value="study">勉強</option></select></label><label id="pn-task-study-fields">科目<input id="pn-task-subject" maxlength="60" placeholder="数学・英語・簿記など">予定学習時間（分）<input id="pn-task-planned" type="number" min="1" max="1440" placeholder="例：60"><span>関連する資格・試験目標</span><select id="pn-task-goal"><option value="">関連付けなし</option></select></label><label>優先度<select id="pn-task-priority"><option>通常</option><option>高</option><option>低</option></select></label><label>リマインド<select id="pn-task-remind"><option value="none">なし</option><option value="at">締切時刻</option><option value="five">5分前</option><option value="ten">10分前</option><option value="thirty">30分前</option><option value="hour">1時間前</option><option value="day">1日前</option></select></label><div class="pn-actions"><button type="button" id="pn-task-cancel">キャンセル</button><button class="primary" type="submit">保存</button></div></form>`;document.body.append(dialog);
+const dialog=document.createElement('dialog');dialog.id='pn-task-dialog';dialog.innerHTML=`<form id="pn-task-form"><h2 id="pn-task-heading">タスクを追加</h2><label>タスク名<input id="pn-task-name" maxlength="160" required></label><label>締切日<input id="pn-task-due" type="date"></label><label>締切時刻（任意）<input id="pn-task-time" type="time"></label><label>分類<select id="pn-task-kind"><option value="general">一般</option><option value="study">勉強</option></select></label><label id="pn-task-study-fields">科目<input id="pn-task-subject" maxlength="60" placeholder="数学・英語・簿記など">予定学習時間（分）<input id="pn-task-planned" type="number" min="1" max="1440" placeholder="例：60"><span>関連する資格・試験目標</span><select id="pn-task-goal"><option value="">関連付けなし</option></select></label><label>優先度<select id="pn-task-priority"><option>通常</option><option>高</option><option>低</option></select></label><label>リマインド<select id="pn-task-remind"><option value="none">なし</option><option value="at">締切時刻</option><option value="five">5分前</option><option value="ten">10分前</option><option value="thirty">30分前</option><option value="hour">1時間前</option><option value="day">1日前</option></select></label><label>繰り返し<select id="pn-task-repeat"><option value="none">なし</option><option value="daily">毎日</option><option value="weekly">毎週</option><option value="monthly">毎月</option></select></label><label>サブタスク（1行に1つ、最大30件）<textarea id="pn-task-subtasks" rows="3" placeholder="例：問題集を解く&#10;答え合わせ"></textarea></label><div class="pn-actions"><button type="button" id="pn-task-cancel">キャンセル</button><button class="primary" type="submit">保存</button></div></form>`;document.body.append(dialog);
 let editing=null;
-function openTask(id){editing=id||null;const t=id?data.tasks.find(x=>x.id===id):null;$pn('pn-task-heading').textContent=t?'タスクを編集':'タスクを追加';$pn('pn-task-name').value=t?.name||'';$pn('pn-task-due').value=t?.due||'';$pn('pn-task-time').value=t?.dueTime||'';$pn('pn-task-priority').value=t?.priority||'通常';$pn('pn-task-kind').value=t?.kind||'general';$pn('pn-task-subject').value=t?.studySubject||'';$pn('pn-task-planned').value=t?.plannedMinutes||'';const goalSelect=$pn('pn-task-goal');goalSelect.innerHTML='<option value="">関連付けなし</option>';(data.studyGoals||[]).forEach(g=>{const o=document.createElement('option');o.value=g.id;o.textContent=g.name;goalSelect.append(o)});goalSelect.value=t?.goalId||'';$pn('pn-task-study-fields').hidden=$pn('pn-task-kind').value!=='study';$pn('pn-task-remind').value=t?.remind||'none';dialog.showModal();}
+function openTask(id){editing=id||null;const t=id?data.tasks.find(x=>x.id===id):null;$pn('pn-task-heading').textContent=t?'タスクを編集':'タスクを追加';$pn('pn-task-name').value=t?.name||'';$pn('pn-task-due').value=t?.due||'';$pn('pn-task-time').value=t?.dueTime||'';$pn('pn-task-priority').value=t?.priority||'通常';$pn('pn-task-kind').value=t?.kind||'general';$pn('pn-task-subject').value=t?.studySubject||'';$pn('pn-task-planned').value=t?.plannedMinutes||'';const goalSelect=$pn('pn-task-goal');goalSelect.innerHTML='<option value="">関連付けなし</option>';(data.studyGoals||[]).forEach(g=>{const o=document.createElement('option');o.value=g.id;o.textContent=g.name;goalSelect.append(o)});goalSelect.value=t?.goalId||'';$pn('pn-task-study-fields').hidden=$pn('pn-task-kind').value!=='study';$pn('pn-task-remind').value=t?.remind||'none';$pn('pn-task-repeat').value=t?.taskRepeat||'none';$pn('pn-task-subtasks').value=(t?.subtasks||[]).map(x=>x.name).join('\n');dialog.showModal();}
 window.addTask=()=>openTask(null);window.pnEditTask=openTask;
 $pn('pn-task-cancel').onclick=()=>dialog.close();
-$pn('pn-task-form').onsubmit=e=>{e.preventDefault();const name=$pn('pn-task-name').value.trim(),due=$pn('pn-task-due').value,dueTime=$pn('pn-task-time').value,remind=$pn('pn-task-remind').value;if(!name)return;if(remind!=='none'&&(!due||!dueTime)){alert('リマインドには締切日と締切時刻が必要です');return;}const item=editing?data.tasks.find(x=>x.id===editing):null;const kind=$pn('pn-task-kind').value;const studySubject=$pn('pn-task-subject').value.trim();const plannedMinutes=$pn('pn-task-planned').value?Number($pn('pn-task-planned').value):null;if(kind==='study'&&(!studySubject||(plannedMinutes!==null&&(!Number.isSafeInteger(plannedMinutes)||plannedMinutes<1||plannedMinutes>1440)))){alert('勉強タスクの科目と予定時間を確認してください');return;}const payload={name,due,dueTime,kind,studySubject:kind==='study'?studySubject:'',plannedMinutes:kind==='study'?plannedMinutes:null,goalId:kind==='study'?$pn('pn-task-goal').value:'',priority:$pn('pn-task-priority').value,remind,remindedAt:item&&item.due===due&&item.dueTime===dueTime&&item.remind===remind?item.remindedAt||null:null};if(item)Object.assign(item,payload);else data.tasks.push({id:crypto.randomUUID(),done:false,...payload});save();dialog.close();};
+$pn('pn-task-form').onsubmit=e=>{e.preventDefault();const name=$pn('pn-task-name').value.trim(),due=$pn('pn-task-due').value,dueTime=$pn('pn-task-time').value,remind=$pn('pn-task-remind').value;if(!name)return;if(remind!=='none'&&(!due||!dueTime)){alert('リマインドには締切日と締切時刻が必要です');return;}const item=editing?data.tasks.find(x=>x.id===editing):null;const kind=$pn('pn-task-kind').value;const studySubject=$pn('pn-task-subject').value.trim();const plannedMinutes=$pn('pn-task-planned').value?Number($pn('pn-task-planned').value):null;if(kind==='study'&&(!studySubject||(plannedMinutes!==null&&(!Number.isSafeInteger(plannedMinutes)||plannedMinutes<1||plannedMinutes>1440)))){alert('勉強タスクの科目と予定時間を確認してください');return;}const priorSubtasks=Array.isArray(item?.subtasks)?item.subtasks:[];const subtaskNames=$pn('pn-task-subtasks').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,30);const subtasks=subtaskNames.map((n,i)=>{const old=priorSubtasks[i];return {id:old?.name===n?old.id:crypto.randomUUID(),name:n,done:old?.name===n?!!old.done:false}});const taskRepeat=$pn('pn-task-repeat').value;const payload={taskRepeat,subtasks,name,due,dueTime,kind,studySubject:kind==='study'?studySubject:'',plannedMinutes:kind==='study'?plannedMinutes:null,goalId:kind==='study'?$pn('pn-task-goal').value:'',priority:$pn('pn-task-priority').value,remind,remindedAt:item&&item.due===due&&item.dueTime===dueTime&&item.remind===remind?item.remindedAt||null:null};const previous=item?JSON.parse(JSON.stringify(item)):null;
+const previousEditing=editing;
+let createdId=null;
+if(item)Object.assign(item,payload);
+else {createdId=crypto.randomUUID();data.tasks.push({id:createdId,done:false,...payload});editing=createdId}
+if(save()!==false){dialog.close()}
+else{
+ if(createdId){const at=data.tasks.findIndex(t=>String(t.id)===String(createdId));if(at>=0)data.tasks.splice(at,1)}
+ if(item&&previous){for(const key of Object.keys(item))delete item[key];Object.assign(item,previous)}
+ editing=previousEditing;
+ render();
+ alert('保存できませんでした。変更内容は保存されていません。入力欄は保持しています。保存容量を確認し、必要に応じてJSONバックアップを保存してください。');
+}};
 window.renderTasks=function(){const box=$pn('taskList');if(!box)return;const sorted=[...data.tasks].sort((a,b)=>Number(a.done)-Number(b.done)||(a.due||'9999').localeCompare(b.due||'9999'));box.innerHTML=sorted.length?sorted.map(t=>{const overdue=!t.done&&t.due&&((t.due+'T'+(t.dueTime||'23:59'))<new Date().toLocaleString('sv-SE').replace(' ','T').slice(0,16));return `<div class="pn-task-row"><input aria-label="完了" type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"><div class="pn-task-main"><div style="${t.done?'text-decoration:line-through;opacity:.6':''}">${esc(t.name)}${t.kind==='study'?' <span class="pn-study-tag">勉強</span>':''}</div><div class="pn-task-meta ${overdue?'pn-overdue':''}">${esc(t.due||'期限なし')} ${esc(t.dueTime||'')} · ${esc(t.priority||'通常')}${t.remind&&t.remind!=='none'?' · 通知設定あり':''}</div></div><button class="btn" onclick="pnEditTask('${t.id}')">編集</button><button class="btn danger" onclick="removeTask('${t.id}')">削除</button></div>`}).join(''):'<div class="empty">タスクを追加しましょう</div>'};
 const kindSelect=$pn('pn-task-kind');kindSelect.addEventListener('change',()=>{$pn('pn-task-study-fields').hidden=kindSelect.value!=='study'});const status=document.createElement('p');status.id='pn-remind-status';status.textContent='通知はアプリを開いている間のみ確認します。アプリを閉じた状態では通知できません。';$pn('taskList').before(status);
 function pnReminderOffset(kind){return ({five:300000,ten:600000,thirty:1800000,hour:3600000,day:86400000})[kind]||0}
@@ -1271,11 +1328,10 @@ window.addEventListener('focus',refresh45);document.addEventListener('visibility
  }
  bar.addEventListener('click',e=>{const b=e.target.closest('button[data-filter]');if(!b)return;active=b.dataset.filter;bar.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));apply();});
  const old=window.renderTasks;if(typeof old==='function')window.renderTasks=function(...args){const result=old.apply(this,args);apply();return result;};apply();
- const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const stamp=document.createElement('p');stamp.id='pn48-build';stamp.textContent='アプリ版: RC53（2026-11-12）';panel.append(stamp);}
+ const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const stamp=document.createElement('p');stamp.id='pn48-build';stamp.textContent='アプリ版: RC86';panel.append(stamp);}
 })();
 </script>
 <style id="pn-rc48-style">
-/* Keep the scroll surface responsive and visually consistent with dark mode. */
 #timeline,.vertical-canvas,.vertical-track{touch-action:pan-x pan-y}
 .vertical-card{background:#18343b!important;color:#effafa!important;border-radius:10px!important;box-shadow:0 2px 8px #0003}
 .vertical-card.all-day{background:#194448!important}
@@ -1308,7 +1364,6 @@ verticalHandleTap=function(ev,id){
 </script>
 
 <style id="pn-rc49-style">
-/* Stronger contrast and touch targets for the daily-use controls. */
 #nav button,#pn-cal-switch button,#pn-more-panel button,#pn-fab-menu button{min-height:48px}
 button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #55e5e3!important;outline-offset:3px}
 #pn-fab{right:max(16px,env(safe-area-inset-right))!important}
@@ -1471,22 +1526,28 @@ const count=document.createElement('p');count.id='pn53-search-count';count.setAt
 const empty=document.createElement('p');empty.id='pn53-search-empty';empty.hidden=true;empty.textContent='一致するタスクがありません';
 tools.append(input);list.before(tools,count);list.after(empty);
 function apply(){const query=input.value.trim().toLocaleLowerCase('ja-JP');const items=Array.from(list.querySelectorAll('.task-item'));
-let visible=0;for(const item of items){const match=!query||item.textContent.toLocaleLowerCase('ja-JP').includes(query);item.hidden=!match;if(match)visible++}
+let visible=0;for(const item of items){const match=!query||item.textContent.toLocaleLowerCase('ja-JP').includes(query);if(item.hidden===match)item.hidden=!match;if(match)visible++}
 count.textContent=query?`検索結果：${visible}件`:'タスクを検索できます';empty.hidden=!query||visible>0||items.length===0;
 }
 input.addEventListener('input',apply);
 // Task list is rebuilt by existing handlers; reapply the current search after rendering.
-const observer=new MutationObserver(apply);observer.observe(list,{childList:true,subtree:false});apply();
+let searchQueued=false;
+function scheduleSearch(){
+ if(searchQueued)return;
+ searchQueued=true;
+ queueMicrotask(()=>{searchQueued=false;apply()});
+}
+const observer=new MutationObserver(scheduleSearch);
+observer.observe(list,{childList:true,subtree:false});apply();
 // Group the actual reminder section, not a non-existent inner placeholder.
 const reminders=document.getElementById('pn45-reminders');if(reminders&&!reminders.closest('details')){
  const d=document.createElement('details');d.className='pn52-fold';const s=document.createElement('summary');s.textContent='リマインダー';const body=document.createElement('div');body.className='pn52-fold-body';reminders.before(d);d.append(s,body);body.append(reminders);
 }
-const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const v=document.createElement('p');v.id='pn53-version';v.textContent='PlanNote RC53 · To Do検索・表示整理';panel.append(v)}
+const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const v=document.createElement('p');v.id='pn53-version';v.textContent='PlanNote RC59 · 操作・表示整理';panel.append(v)}
 })();
 </script>
 
 <style id="pn-rc54-style">
-/* RC54: accessible controls and consistent calendar switcher */
 #pn-cal-switch{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;padding:5px;border-radius:14px;background:#10242a;border:1px solid #42616a;margin:0 0 14px}
 #pn-cal-switch button{min-width:0!important;min-height:48px!important;padding:8px 3px!important;border-radius:10px!important;font-size:14px!important;font-weight:700!important;color:#d5e9ec!important}
 #pn-cal-switch button[aria-pressed="true"]{background:#168b8d!important;color:white!important}
@@ -1559,7 +1620,790 @@ sync();
   const cal=document.querySelector('#nav button[data-view="calendar"]');cal?.click();
   try{selectedDate=day;const d=new Date(day+'T12:00:00');year=d.getFullYear();month=d.getMonth();renderCalendar();document.getElementById('calendar')?.scrollIntoView({behavior:'smooth',block:'start'});}catch(err){console.warn('Calendar navigation unavailable',err)}
  });
- const observer=new MutationObserver(()=>update());observer.observe(taskList,{childList:true,subtree:true});update();
+ let pendingRefresh=false;
+ const observer=new MutationObserver(()=>{
+  if(pendingRefresh)return;
+  pendingRefresh=true;
+  requestAnimationFrame(()=>{pendingRefresh=false;update()});
+ });
+ observer.observe(taskList,{childList:true,subtree:true});update();
 })();
 </script>
+
+<style id="pn-rc56-style">
+#pn-todo-overview{display:none!important}
+#pn55-deadlines{display:none!important}
+#pn56-deadline-fold{margin:12px 0 16px;background:#14272e;border:1px solid #36565e;border-radius:14px;overflow:hidden}
+#pn56-deadline-fold>summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;font-size:15px;font-weight:700;color:#f3fbfc}
+#pn56-deadline-fold>summary::-webkit-details-marker{display:none}
+#pn56-deadline-fold>summary::after{content:'⌄';font-size:22px;color:#8be4e3}
+#pn56-deadline-fold[open]>summary::after{content:'⌃'}
+#pn56-deadline-fold .pn56-deadline-content{padding:0 12px 12px}
+#pn56-deadline-fold[open] #pn55-deadlines{display:block!important;margin:0}
+#pn56-deadline-fold #pn55-deadlines>.pn55-stats{display:none}
+#pn56-deadline-fold #pn55-deadlines>h3{display:none}
+#pn51-overview{margin-bottom:12px}
+#pn51-overview .pn51-note{display:none}
+#pn51-overview #pn51-actions button{min-height:48px}
+#pn56-deadline-fold:focus-within{border-color:#26c5c5}
+@media(max-width:390px){#pn55-deadlines .pn55-entry{flex-wrap:wrap}#pn55-deadlines .pn55-entry button{margin-left:auto}}
+</style>
+<script id="pn-rc56-script">
+(()=>{'use strict';
+ const deadlines=document.getElementById('pn55-deadlines');
+ const overview=document.getElementById('pn51-overview');
+ if(!deadlines||!overview)return;
+ const fold=document.createElement('details');fold.id='pn56-deadline-fold';
+ const summary=document.createElement('summary');summary.textContent='直近の締切を確認';
+ const content=document.createElement('div');content.className='pn56-deadline-content';
+ deadlines.before(fold);fold.append(summary,content);content.append(deadlines);
+ // Existing RC55 observer keeps the deadline entries current. Do not duplicate it.
+ const switcher=document.getElementById('pn-todo-switch');
+ const syncVisibility=()=>{
+   const study=switcher?.querySelector('[data-todo="study"]')?.getAttribute('aria-selected')==='true';
+   fold.hidden=!!study;
+ };
+ switcher?.addEventListener('click',()=>queueMicrotask(syncVisibility));
+ document.getElementById('nav')?.addEventListener('click',e=>{if(e.target.closest('[data-view="tasks"]'))queueMicrotask(syncVisibility)});
+ syncVisibility();
+})();
+</script>
+
+<style id="pn-rc57-style">
+:root{color-scheme:dark}
+#tasks :is(button,input,select,summary):focus-visible,#calendar :is(button,input,select):focus-visible{outline:3px solid #49d8dc;outline-offset:3px}
+#tasks .pn52-fold>summary,#pn56-deadline-fold>summary{touch-action:manipulation}
+#tasks #pn51-overview h3{margin-top:0}
+#tasks #pn51-overview{padding:14px;border:1px solid #35565f;border-radius:16px;background:#13252b}
+#tasks #pn51-metrics{gap:8px}
+#tasks #pn51-actions{gap:8px}
+#tasks #pn51-actions button{min-height:48px}
+@media(max-width:380px){#tasks #pn51-overview{padding:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}</style>
+<script id="pn-rc57-script">
+(()=>{'use strict';
+ const todo=document.getElementById('tasks');
+ const switcher=document.getElementById('pn-todo-switch');
+ if(!todo||!switcher)return;
+ // Allow a quick jump between task entry and study entry without duplicating forms.
+ const actions=document.createElement('div');actions.id='pn57-shortcuts';actions.setAttribute('aria-label','To Doの表示');
+ actions.innerHTML='<button type="button" data-pn57="tasks" aria-pressed="true">タスクを見る</button><button type="button" data-pn57="study" aria-pressed="false">勉強を見る</button>';
+ const overview=document.getElementById('pn51-overview');
+ if(overview)overview.before(actions);else switcher.after(actions);
+ function update(){
+   const isStudy=switcher.querySelector('[data-todo="study"]')?.getAttribute('aria-selected')==='true';
+   actions.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.pn57===(isStudy?'study':'tasks'))));
+   const deadline=document.getElementById('pn56-deadline-fold');if(deadline)deadline.hidden=isStudy;
+ }
+ actions.addEventListener('click',e=>{
+   const b=e.target.closest('button[data-pn57]');if(!b)return;
+   switcher.querySelector('[data-todo="'+b.dataset.pn57+'"]')?.click();update();
+ });
+ switcher.addEventListener('click',()=>queueMicrotask(update));
+ document.getElementById('nav')?.addEventListener('click',()=>queueMicrotask(update));
+ update();
+ // Set accessible labels on icon-only controls; avoid changing their existing handlers.
+ document.querySelectorAll('button').forEach(b=>{
+   if(b.getAttribute('aria-label'))return;
+   const t=(b.textContent||'').trim();
+   if(t==='＋'||t==='+')b.setAttribute('aria-label','追加する');
+ });
+})();
+</script>
+
+<style id="pn-rc58-style">
+#tasks #pn-todo-switch{position:sticky;top:0;z-index:12;background:#13262d;border:1px solid #42646b;box-shadow:0 5px 14px #0008;margin-bottom:14px}
+#tasks #pn-todo-switch button{min-height:52px;font-size:16px;touch-action:manipulation}
+#tasks #pn-todo-switch button[aria-selected="true"]{background:#147f83!important;color:#fff!important;box-shadow:inset 0 0 0 1px #6ae0de}
+#tasks .panel{scroll-margin-top:65px}
+#tasks .pn52-fold>summary,#tasks #pn56-deadline-fold>summary{font-size:15px;line-height:1.5}
+#tasks :is(input,select,textarea){font-size:16px}
+#tasks button{touch-action:manipulation}
+#pn58-status{font-size:12px;color:#a8d6d9;margin:4px 0 10px;line-height:1.5}
+@media(max-width:380px){#tasks #pn-todo-switch{gap:5px;padding:4px}#tasks #pn-todo-switch button{min-height:48px}}
+</style>
+<script id="pn-rc58-script">
+(()=>{'use strict';
+ const switcher=document.getElementById('pn-todo-switch');
+ const tasks=document.getElementById('tasks');
+ if(!switcher||!tasks)return;
+ // RC57 introduced a second set of navigation buttons. Keep only the original switch.
+ const duplicate=document.getElementById('pn57-shortcuts');if(duplicate)duplicate.remove();
+ const status=document.createElement('p');status.id='pn58-status';status.setAttribute('aria-live','polite');
+ switcher.after(status);
+ const buttons=[...switcher.querySelectorAll('button[data-todo]')];
+ function refresh(){
+   const selected=buttons.find(b=>b.getAttribute('aria-selected')==='true');
+   const mode=selected?.dataset.todo||'tasks';
+   buttons.forEach(b=>{b.setAttribute('tabindex',b===selected?'0':'-1');b.setAttribute('aria-controls',b.dataset.todo==='study'?'study':'taskList')});
+   status.textContent=mode==='study'?'学習記録・資格目標を表示中':'タスク一覧・締切管理を表示中';
+ }
+ switcher.addEventListener('click',()=>queueMicrotask(refresh));
+ switcher.addEventListener('keydown',e=>{
+   if(!['ArrowLeft','ArrowRight'].includes(e.key))return;
+   e.preventDefault();const i=buttons.findIndex(b=>b.getAttribute('aria-selected')==='true');
+   const next=buttons[(i+(e.key==='ArrowRight'?1:buttons.length-1))%buttons.length];next?.click();next?.focus();
+ });
+ refresh();
+
+})();
+</script>
+
+<style id="pn-rc59-style">
+#pn-task-dialog{box-sizing:border-box;width:min(480px,calc(100vw - 20px));max-height:min(88dvh,850px);padding:0!important;overflow:auto;overscroll-behavior:contain;background:#111b20!important;color:#f1faf9!important;border:1px solid #3d626b!important;border-radius:20px!important}
+#pn-task-dialog #pn-task-form{padding:18px 18px 20px}
+#pn-task-dialog #pn-task-heading{font-size:21px;line-height:1.35;margin:0 0 12px;color:#f3ffff}
+#pn-task-dialog label{font-size:14px;font-weight:650;line-height:1.5;margin:12px 0;color:#e7f6f7}
+#pn-task-dialog input,#pn-task-dialog select{box-sizing:border-box;min-height:48px;font-size:16px!important;border-radius:11px!important;background:#0b171d!important;color:#f5ffff!important;border:1px solid #53737c!important;color-scheme:dark}
+#pn-task-dialog input:focus-visible,#pn-task-dialog select:focus-visible{outline:2px solid #55d9d4;outline-offset:2px}
+#pn-task-dialog #pn-task-study-fields[hidden]{display:none!important}
+#pn59-quick-dates{display:flex;gap:7px;flex-wrap:wrap;margin:5px 0 10px}
+#pn59-quick-dates button{flex:1 1 auto;min-height:40px;padding:8px 12px;font-size:13px;font-weight:700;border-radius:10px;background:#1b343b;color:#e7ffff;border:1px solid #477078}
+#pn59-note{margin:6px 0 12px;color:#b6d4d8;font-size:12px;line-height:1.5}
+#pn-task-dialog .pn-actions{position:sticky;bottom:-20px;margin:16px -18px -20px;padding:12px 18px max(12px,env(safe-area-inset-bottom));background:#14242b;border-top:1px solid #3d626b;display:grid;grid-template-columns:1fr 1fr;gap:10px;z-index:2}
+#pn-task-dialog .pn-actions button{min-height:48px;font-size:15px;font-weight:750}
+#pn-task-dialog .pn-actions button.primary{background:#168d8e;color:#fff}
+@media(max-width:420px){#pn-task-dialog #pn-task-form{padding:16px 14px 18px}#pn-task-dialog .pn-actions{margin-left:-14px;margin-right:-14px}}
+</style>
+<script id="pn-rc59-script">
+(function(){'use strict';
+const dlg=document.getElementById('pn-task-dialog');
+const due=document.getElementById('pn-task-due');
+const time=document.getElementById('pn-task-time');
+const remind=document.getElementById('pn-task-remind');
+const name=document.getElementById('pn-task-name');
+if(!dlg||!due||!time||!remind||!name)return;
+const quick=document.createElement('div');quick.id='pn59-quick-dates';quick.setAttribute('role','group');quick.setAttribute('aria-label','締切日をすばやく設定');
+for(const [label,days] of [['今日',0],['明日',1],['1週間後',7],['期限なし',null]]){
+ const btn=document.createElement('button');btn.type='button';btn.textContent=label;
+ btn.addEventListener('click',()=>{
+  if(days===null){due.value='';time.value='';remind.value='none'}
+  else{const d=new Date();d.setHours(12,0,0,0);d.setDate(d.getDate()+days);const p=n=>String(n).padStart(2,'0');due.value=d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())}
+  due.dispatchEvent(new Event('change',{bubbles:true}));
+ });quick.append(btn);
+}
+due.closest('label')?.after(quick);
+const note=document.createElement('p');note.id='pn59-note';note.textContent='通知を設定する場合は、締切日と時刻の両方が必要です。通知はPlanNoteを開いている間に確認されます。';
+remind.closest('label')?.after(note);
+function refresh(){const required=remind.value!=='none';due.setAttribute('aria-required',String(required));time.setAttribute('aria-required',String(required));note.textContent=required?'通知を使うには締切日と時刻を設定してください。アプリ終了中の通知は未対応です。':'リマインダーは任意です。アプリ終了中の通知は未対応です。'}
+remind.addEventListener('change',refresh);dlg.addEventListener('close',()=>{document.activeElement?.blur?.()});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+const obs=new MutationObserver(()=>{if(dlg.open){refresh();requestAnimationFrame(()=>name.focus({preventScroll:true}))}});
+obs.observe(dlg,{attributes:true,attributeFilter:['open']});
+refresh();
+
+
+
+})();
+</script>
+<style>
+.pn60-subtasks{padding:8px 4px 8px 28px;display:grid;gap:7px;color:#d3e8e7}.pn60-subtasks label{display:flex;align-items:center;gap:9px;font-size:13px}.pn60-subtasks input{width:18px;height:18px;flex-shrink:0;accent-color:#18b8ba}.pn60-repeat{font-size:11px;color:#75d7d2;margin-left:6px}#pn-task-subtasks{min-height:84px}
+</style>
+<script id="pn-rc67-recurrence-core">
+/* Pure date and duplicate guards; shared by completion and preview. */
+window.pn67Recurrence=Object.freeze({
+ nextDate(date,rule,anchorDay){
+  if(typeof date!=='string'||!/^(\d{4})-(\d{2})-(\d{2})$/.test(date))return '';
+  const [y,m,day]=date.split('-').map(Number);
+  if(y<100||m<1||m>12||day<1||day>31)return '';
+  const d=new Date(y,m-1,day,12);
+  if(d.getFullYear()!==y||d.getMonth()!==m-1||d.getDate()!==day)return '';
+  if(rule==='daily')d.setDate(d.getDate()+1);
+  else if(rule==='weekly')d.setDate(d.getDate()+7);
+  else if(rule==='monthly'){
+   const anchor=anchorDay==null||anchorDay===''?day:Number(anchorDay);
+   if(!Number.isInteger(anchor)||anchor<1||anchor>31)return '';
+   d.setDate(1);d.setMonth(d.getMonth()+1);
+   d.setDate(Math.min(anchor,new Date(d.getFullYear(),d.getMonth()+1,0).getDate()));
+  }else return '';
+  return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+ },
+ hasSuccessor(tasks,id,due){return Array.isArray(tasks)&&tasks.some(t=>String(t.repeatSource)===String(id)&&t.due===due)}
+});
+</script>
+<script>
+(()=>{
+'use strict';
+const labels={daily:'毎日',weekly:'毎週',monthly:'毎月'};
+const nextDate=(date,rule,anchorDay)=>window.pn67Recurrence.nextDate(date,rule,anchorDay);
+const originalToggle=window.toggleTask;
+if(typeof originalToggle==='function')window.toggleTask=function(id){const t=data.tasks.find(x=>x.id===id);const eligible=t&&!t.done&&t.due&&labels[t.taskRepeat];const rule=eligible?t.taskRepeat:null;const anchor=eligible?(Number(t.repeatAnchorDay)||Number(t.due.slice(8,10))):null;const next=eligible?nextDate(t.due,rule,anchor):'';
+// Complete the original task first; only then create the successor.
+const result=originalToggle.apply(this,arguments);
+if(next&&t.done&&!window.pn67Recurrence.hasSuccessor(data.tasks,t.id,next)){
+ const child={...t,id:crypto.randomUUID(),due:next,done:false,remindedAt:null,repeatSource:t.id,repeatAnchorDay:anchor,subtasks:(Array.isArray(t.subtasks)?t.subtasks:[]).map(x=>({...x,id:crypto.randomUUID(),done:false}))};
+ data.tasks.push(child);save();
+}
+return result};
+window.pn60ToggleSubtask=(taskId,subId,checked)=>{const t=data.tasks.find(x=>x.id===taskId);const sub=t?.subtasks?.find(x=>x.id===subId);if(!sub)return;sub.done=checked;save()};
+const originalRender=window.renderTasks;
+if(typeof originalRender==='function')window.renderTasks=function(...args){const result=originalRender.apply(this,args);const box=document.getElementById('taskList');if(!box)return result;const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));for(const row of box.querySelectorAll('.pn-task-row')){const edit=row.querySelector('button[onclick^="pnEditTask"]');const id=edit?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);if(!t)continue;const main=row.querySelector('.pn-task-main');if(!main)continue;if(labels[t.taskRepeat]){const span=document.createElement('span');span.className='pn60-repeat';span.textContent='↻ '+labels[t.taskRepeat];main.append(span)}if(Array.isArray(t.subtasks)&&t.subtasks.length){const wrap=document.createElement('div');wrap.className='pn60-subtasks';for(const sub of t.subtasks){const label=document.createElement('label'),input=document.createElement('input'),text=document.createElement('span');input.type='checkbox';input.checked=!!sub.done;input.disabled=!!t.done;input.addEventListener('change',()=>window.pn60ToggleSubtask(t.id,sub.id,input.checked));text.textContent=sub.name;if(sub.done)text.style.textDecoration='line-through';label.append(input,text);wrap.append(label)}main.append(wrap)}}return result};
+window.renderTasks();
+
+})();
+</script>
+<style id="pn-rc61-style">
+#pn61-tags-field{display:grid;gap:7px;margin:12px 0;color:#e7f6f7;font-size:14px;font-weight:650}
+#pn61-tags{min-height:48px;width:100%;font-size:16px;box-sizing:border-box;background:#0b171d;color:#f5ffff;border:1px solid #53737c;border-radius:11px;padding:10px}
+#pn61-tag-filter{min-height:44px;background:#172d34;color:#f5ffff;border:1px solid #51727b;border-radius:10px;padding:8px 12px;max-width:100%;font-size:14px}
+#pn61-tag-tools{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:4px 0 12px}
+#pn61-tag-tools label{font-size:13px;color:#d4e9ed}
+.pn61-tag{display:inline-block;margin:4px 4px 0 0;padding:2px 8px;border:1px solid #48767a;background:#1c3c43;color:#c6f3ef;border-radius:999px;font-size:11px;white-space:nowrap}
+#pn61-tags-help{font-size:12px;color:#c3d8dc;font-weight:400}
+</style>
+<script id="pn-rc61-script">
+(()=>{'use strict';
+const dialog=document.getElementById('pn-task-dialog'),form=document.getElementById('pn-task-form'),list=document.getElementById('taskList');
+if(!dialog||!form||!list||typeof data==='undefined')return;
+const field=document.createElement('label');field.id='pn61-tags-field';field.textContent='タグ（カンマ区切り・最大5個）';
+const input=document.createElement('input');input.id='pn61-tags';input.maxLength=150;input.placeholder='例：重要, 学校, 資格';
+const help=document.createElement('small');help.id='pn61-tags-help';help.textContent='タグでTo Doを絞り込めます。';field.append(input,help);
+const priority=document.getElementById('pn-task-priority');priority?.closest('label')?.after(field);
+const tools=document.createElement('div');tools.id='pn61-tag-tools';
+const label=document.createElement('label');label.htmlFor='pn61-tag-filter';label.textContent='タグで絞り込む';
+const select=document.createElement('select');select.id='pn61-tag-filter';tools.append(label,select);
+const filters=document.getElementById('pn-task-filters');if(filters)filters.after(tools);else list.before(tools);
+const normalize=s=>String(s||'').split(/[,、\n]/).map(x=>x.trim().slice(0,24)).filter(Boolean).filter((x,i,a)=>a.indexOf(x)===i).slice(0,5);
+let editingId=null;
+// Capture the task selected before the existing edit dialog opens.
+document.addEventListener('click',e=>{const edit=e.target.closest('button[onclick^="pnEditTask"]');if(edit){const m=edit.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/);editingId=m?.[1]||null;setTimeout(()=>{const task=data.tasks.find(t=>String(t.id)===editingId);input.value=Array.isArray(task?.tags)?task.tags.join(', '):''},0)}},true);
+const originalAdd=window.addTask;
+if(typeof originalAdd==='function')window.addTask=function(...args){editingId=null;input.value='';return originalAdd.apply(this,args)};
+const originalEdit=window.pnEditTask;
+if(typeof originalEdit==='function')window.pnEditTask=function(id){editingId=id;const result=originalEdit(id);const t=data.tasks.find(x=>x.id===id);input.value=Array.isArray(t?.tags)?t.tags.join(', '):'';return result};
+// Existing onsubmit saves the task first; then attach the tags to the saved record.
+form.addEventListener('submit',()=>{const tags=normalize(input.value),id=editingId,known=new Set(data.tasks.map(t=>t.id));setTimeout(()=>{const t=id?data.tasks.find(x=>x.id===id):data.tasks.find(x=>!known.has(x.id));if(!t)return;t.tags=tags;save();editingId=null},0)});
+function updateOptions(){const old=select.value;const values=[...new Set(data.tasks.flatMap(t=>Array.isArray(t.tags)?t.tags:[]))].sort((a,b)=>a.localeCompare(b,'ja'));select.replaceChildren();const all=new Option('すべてのタグ','');select.add(all);for(const tag of values)select.add(new Option(tag,tag));select.value=values.includes(old)?old:''}
+function apply(){const chosen=select.value,query=(document.getElementById('pn53-search')?.value||'').trim().toLocaleLowerCase('ja-JP');const active=document.querySelector('#pn-task-filters [aria-pressed="true"]')?.dataset.filter||'all';const today=new Date().toLocaleDateString('sv-SE');let count=0;const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));
+for(const row of list.querySelectorAll('.pn-task-row')){const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);if(!t)continue;const status=active==='all'||active==='open'&&!t.done||active==='today'&&!t.done&&t.due===today||active==='overdue'&&!t.done&&t.due&&t.due<today;const text=[t.name,t.studySubject,...(t.tags||[])].join(' ').toLocaleLowerCase('ja-JP');const visible=!!status&&(!chosen||(t.tags||[]).includes(chosen))&&(!query||text.includes(query));if(row.hidden===visible)row.hidden=!visible;const display=visible?'':'none';if(row.style.display!==display)row.style.display=display;if(visible)count++}
+const countNode=document.getElementById('pn53-search-count');if(countNode)countNode.textContent=chosen||query?`検索・タグの結果：${count}件`:'タスクを検索できます';
+const empty=document.getElementById('pn-filter-empty');if(empty)empty.textContent=data.tasks.length&&!count?'この条件に該当するタスクはありません。':'';
+const searchEmpty=document.getElementById('pn53-search-empty');if(searchEmpty)searchEmpty.hidden=true;
+}
+const previousRender=window.renderTasks;
+if(typeof previousRender==='function')window.renderTasks=function(...args){const result=previousRender.apply(this,args);const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));for(const row of list.querySelectorAll('.pn-task-row')){const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);const main=row.querySelector('.pn-task-main');if(!t||!main)continue;for(const tag of Array.isArray(t.tags)?t.tags:[]){const badge=document.createElement('span');badge.className='pn61-tag';badge.textContent='#'+tag;main.append(badge)}}updateOptions();apply();return result};
+select.addEventListener('change',apply);
+// Batch consecutive search/filter events into a single post-event update.
+let filterQueued=false;
+function scheduleFilter(){
+ if(filterQueued)return;
+ filterQueued=true;
+ requestAnimationFrame(()=>{filterQueued=false;apply()});
+}
+document.getElementById('pn53-search')?.addEventListener('input',scheduleFilter);
+filters?.addEventListener('click',scheduleFilter);
+
+
+
+window.renderTasks();
+})();
+</script>
+
+<style id="pn-rc62-style">
+.pn62-priority{display:inline-flex;align-items:center;border-radius:7px;padding:2px 7px;font-size:11px;font-weight:750;margin-left:7px;vertical-align:middle}
+.pn62-priority-high{background:#61332c;color:#ffdbca;border:1px solid #a86655}
+.pn62-priority-low{background:#243e48;color:#bbd7e2;border:1px solid #466a77}
+.pn62-next{display:block;color:#a8e7df;font-size:12px;margin-top:5px}
+#pn62-repeat-preview{display:block;color:#b8dadb;font-size:12px;line-height:1.5;margin-top:5px;font-weight:400}
+#pn62-repeat-warning{color:#e6c998}
+.pn-task-row:has(.pn62-priority-high){border-left:3px solid #df9277}
+</style>
+<script id="pn-rc62-script">
+(()=>{'use strict';
+const list=document.getElementById('taskList'),repeat=document.getElementById('pn-task-repeat'),due=document.getElementById('pn-task-due'),form=document.getElementById('pn-task-form');
+if(!list||!repeat||!due||!form||typeof data==='undefined')return;
+const preview=document.createElement('small');preview.id='pn62-repeat-preview';repeat.after(preview);
+function nextDate(date,rule){if(!/^\d{4}-\d{2}-\d{2}$/.test(date))return '';const [y,m,d]=date.split('-').map(Number);const dt=new Date(y,m-1,d,12);if(dt.getFullYear()!==y||dt.getMonth()!==m-1||dt.getDate()!==d)return '';if(rule==='daily')dt.setDate(dt.getDate()+1);else if(rule==='weekly')dt.setDate(dt.getDate()+7);else if(rule==='monthly'){dt.setDate(1);dt.setMonth(dt.getMonth()+1);dt.setDate(Math.min(d,new Date(dt.getFullYear(),dt.getMonth()+1,0).getDate()))}else return '';return [dt.getFullYear(),String(dt.getMonth()+1).padStart(2,'0'),String(dt.getDate()).padStart(2,'0')].join('-')}
+function updatePreview(){const rule=repeat.value,date=due.value;if(rule==='none'){preview.textContent='繰り返しなし';return}if(!date){preview.textContent='繰り返すには締切日を設定してください。';return}const next=nextDate(date,rule);preview.textContent=next?'完了すると次回分（'+next+'）を自動作成します。':'締切日を確認してください。'}
+repeat.addEventListener('change',updatePreview);due.addEventListener('change',updatePreview);
+// Prevent silent creation of a repeating task without a due date.
+form.addEventListener('submit',e=>{if(repeat.value!=='none'&&!due.value){e.preventDefault();e.stopImmediatePropagation();alert('繰り返しタスクには締切日が必要です。');due.focus()}},true);
+const originalEdit=window.pnEditTask;if(typeof originalEdit==='function')window.pnEditTask=function(...args){const r=originalEdit.apply(this,args);updatePreview();return r};
+const originalAdd=window.addTask;if(typeof originalAdd==='function')window.addTask=function(...args){const r=originalAdd.apply(this,args);updatePreview();return r};
+const originalRender=window.renderTasks;
+if(typeof originalRender==='function')window.renderTasks=function(...args){const result=originalRender.apply(this,args);const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));for(const row of list.querySelectorAll('.pn-task-row')){const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);const main=row.querySelector('.pn-task-main');if(!t||!main)continue;const heading=main.firstElementChild;if(heading&&(t.priority==='高'||t.priority==='最優先'||t.priority==='低')){const b=document.createElement('span');b.className='pn62-priority '+(t.priority==='低'?'pn62-priority-low':'pn62-priority-high');b.textContent=t.priority;heading.append(b)}if(t.taskRepeat&&t.taskRepeat!=='none'&&t.due&&!t.done){const next=nextDate(t.due,t.taskRepeat);if(next){const span=document.createElement('span');span.className='pn62-next';span.textContent='次回予定：'+next+'（完了後に生成）';main.append(span)}}}return result};
+// The older sort put completed high-priority tasks above incomplete ones. Keep open tasks first.
+const sort=document.getElementById('pn50-sort');if(sort){const reorder=()=>{const rows=[...list.querySelectorAll('.pn-task-row')];const index=new Map(data.tasks.map((t,i)=>[String(t.id),{...t,index:i}]));const lookup=r=>{const id=r.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];return index.get(id)||{}};const rank={'最優先':0,'高':0,'通常':1,'中':1,'低':2};rows.sort((a,b)=>{const x=lookup(a),y=lookup(b);let v=Number(!!x.done)-Number(!!y.done);if(v)return v;if(sort.value==='priority')v=(rank[x.priority]??1)-(rank[y.priority]??1);else if(sort.value==='name')v=String(x.name||'').localeCompare(String(y.name||''),'ja');else if(sort.value==='newest')v=(y.index??0)-(x.index??0);else v=String(x.due||'9999').localeCompare(String(y.due||'9999'));return v||(x.index??0)-(y.index??0)}).forEach(r=>list.append(r))};sort.addEventListener('change',()=>queueMicrotask(reorder));const current=window.renderTasks;window.renderTasks=function(...args){const result=current.apply(this,args);reorder();return result};reorder()}
+
+
+
+
+updatePreview();window.renderTasks();
+})();
+</script>
+
+<script id="pn-rc63-script">
+(()=>{'use strict';
+const form=document.getElementById('pn-task-form'),due=document.getElementById('pn-task-due'),repeat=document.getElementById('pn-task-repeat');
+if(!form||!due||!repeat||typeof data==='undefined')return;
+// Capture the edited task before its save handler runs.
+form.addEventListener('submit',()=>{const id=document.getElementById('pn-task-dialog')?.dataset?.pn63EditingId||'';const prior=data.tasks.find(t=>String(t.id)===id);const originalDue=prior?.due||'';const anchor=prior&&originalDue===due.value&&prior.taskRepeat===repeat.value?(Number(prior.repeatAnchorDay)||Number(originalDue.slice(8,10))):Number(due.value.slice(8,10));
+ queueMicrotask(()=>{const updated=prior||data.tasks[data.tasks.length-1];if(updated&&updated.due===due.value&&updated.taskRepeat==='monthly'&&anchor>=1&&anchor<=31&&updated.repeatAnchorDay!==anchor){updated.repeatAnchorDay=anchor;save()}});
+},false);
+const dlg=document.getElementById('pn-task-dialog');const edit=window.pnEditTask;if(typeof edit==='function')window.pnEditTask=function(id){if(dlg)dlg.dataset.pn63EditingId=String(id||'');return edit.apply(this,arguments)};
+const add=window.addTask;if(typeof add==='function')window.addTask=function(){if(dlg)dlg.dataset.pn63EditingId='';return add.apply(this,arguments)};
+// Update the next-date preview and row label to reflect the fixed original day.
+// Next-occurrence row labels are handled by the later RC64 renderer.
+
+
+
+
+
+
+})();
+</script>
+
+<style id="pn-rc64-style">
+#pn64-repeat-info{display:block;margin:6px 0 2px;color:#b8dadd;font-size:12px;line-height:1.5}
+#pn64-repeat-info[hidden]{display:none}
+</style>
+<script id="pn-rc64-script">
+(()=>{'use strict';
+const due=document.getElementById('pn-task-due'),repeat=document.getElementById('pn-task-repeat'),form=document.getElementById('pn-task-form');
+if(!due||!repeat||!form||typeof data==='undefined')return;
+// Use local calendar arithmetic at noon to avoid timezone and daylight-saving date shifts.
+function nextDate(date,rule,anchor){return window.pn67Recurrence.nextDate(date,rule,anchor)}
+// The RC63 preview calculated a date within the current month, not the following month.
+const info=document.createElement('small');info.id='pn64-repeat-info';info.setAttribute('aria-live','polite');repeat.insertAdjacentElement('afterend',info);
+function updatePreview(){const rule=repeat.value;const date=due.value;info.hidden=rule==='none';if(info.hidden)return;
+ const editedId=document.getElementById('pn-task-dialog')?.dataset?.pn63EditingId;
+ const old=data.tasks.find(t=>String(t.id)===String(editedId));
+ const anchor=old&&old.due===date&&old.taskRepeat===rule?(Number(old.repeatAnchorDay)||Number(date.slice(8,10))):Number(date.slice(8,10));
+ const next=nextDate(date,rule,anchor);
+ info.textContent=!date?'繰り返しには締切日を設定してください':next?'完了すると次回 '+next+' のタスクを作成します':'日付を確認してください';}
+ due.addEventListener('change',updatePreview);due.addEventListener('input',updatePreview);repeat.addEventListener('change',updatePreview);
+ document.getElementById('pn-task-dialog')?.addEventListener('close',()=>{info.textContent='';});
+ const openEdit=window.pnEditTask;if(typeof openEdit==='function')window.pnEditTask=function(...args){const result=openEdit.apply(this,args);updatePreview();return result};
+ const openAdd=window.addTask;if(typeof openAdd==='function')window.addTask=function(...args){const result=openAdd.apply(this,args);updatePreview();return result};
+ const originalRender=window.renderTasks;
+ if(typeof originalRender==='function')window.renderTasks=function(...args){const result=originalRender.apply(this,args);
+  document.querySelectorAll('#taskList .pn-task-row').forEach(row=>{
+   const match=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/);
+   const task=match&&data.tasks.find(t=>String(t.id)===match[1]);const label=row.querySelector('.pn62-next');
+   if(!task||!label)return;
+   const next=nextDate(task.due,task.taskRepeat,task.repeatAnchorDay);
+   if(next)label.textContent='次回予定：'+next+'（完了後に生成）';
+  });return result};
+ 
+ 
+ 
+ 
+ 
+ updatePreview();window.renderTasks();
+})();
+</script>
+
+<style id="pn-rc65-style">
+.pn65-repeat-actions{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:7px 0 3px}
+.pn65-stop{border:1px solid #4c7980!important;background:#19363d!important;color:#d8f8f7!important;border-radius:9px!important;padding:6px 10px!important;min-height:34px;font-size:12px;font-weight:650}
+.pn65-overdue{display:inline-block;border:1px solid #b27658;background:#39271f;color:#ffcfac;padding:2px 7px;border-radius:7px;font-size:11px;font-weight:700}
+.pn65-stop:focus-visible{outline:2px solid #60dfd8;outline-offset:2px}
+</style>
+<script id="pn-rc65-script">
+(()=>{'use strict';
+if(typeof data==='undefined'||!Array.isArray(data.tasks))return;
+const list=document.getElementById('taskList');if(!list)return;
+const dateToday=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+// Allow an individual repeating task to be stopped without deleting its history.
+function decorate(){
+ const now=dateToday();
+ const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));
+ for(const row of list.querySelectorAll('.pn-task-row')){
+  const edit=row.querySelector('button[onclick^="pnEditTask"]');
+  const id=edit?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];
+  const t=taskById.get(id);if(!t)continue;
+  const main=row.querySelector('.pn-task-main');if(!main)continue;
+  if(!t.done&&/^\d{4}-\d{2}-\d{2}$/.test(t.due||'')&&t.due<now&&!main.querySelector('.pn65-overdue')){
+   const tag=document.createElement('span');tag.className='pn65-overdue';tag.textContent='期限超過';main.append(tag);
+  }
+  if(!t.done&&['daily','weekly','monthly'].includes(t.taskRepeat)&&!main.querySelector('.pn65-stop')){
+   const actions=document.createElement('div');actions.className='pn65-repeat-actions';
+   const btn=document.createElement('button');btn.type='button';btn.className='pn65-stop';btn.textContent='繰り返しを停止';
+   btn.setAttribute('aria-label',t.name+' の繰り返しを停止');
+   btn.addEventListener('click',()=>{
+    if(!confirm('「'+t.name+'」の繰り返しを停止しますか？\nこのタスクと過去の履歴は残ります。'))return;
+    const current=data.tasks.find(x=>x.id===t.id);
+    if(!current||current.done)return;
+    current.taskRepeat='none';save();
+    if(typeof toast==='function')toast('繰り返しを停止しました');
+   });actions.append(btn);main.append(actions);
+  }
+ }
+}
+const oldRender=window.renderTasks;
+if(typeof oldRender==='function')window.renderTasks=function(...args){const out=oldRender.apply(this,args);decorate();return out};
+// Mark an explicit repeat source for a newly created task and guard against
+// repeated user actions while the existing completion handler is running.
+const oldToggle=window.toggleTask;const busy=new Set();
+if(typeof oldToggle==='function')window.toggleTask=function(id){
+ if(busy.has(id))return;
+ busy.add(id);
+ try{return oldToggle.apply(this,arguments)}finally{busy.delete(id)}
+};
+
+
+
+
+
+window.renderTasks();
+})();
+</script>
+
+<style id="pn-rc66-style">
+.pn66-repeat-link{display:block;margin-top:6px;color:#b5e6e2;font-size:12px;line-height:1.5}
+.pn66-repeat-link strong{color:#f0faf9}
+</style>
+<script id="pn-rc66-script">
+(()=>{'use strict';
+ if(typeof data==='undefined'||!Array.isArray(data.tasks))return;
+ const oldToggle=window.toggleTask;
+ if(typeof oldToggle==='function')window.toggleTask=function(id){
+   const task=data.tasks.find(t=>t.id===id);
+   const undo=!!task?.done;
+   const successors=undo?data.tasks.filter(t=>t.repeatSource===id):[];
+   const result=oldToggle.apply(this,arguments);
+   // Never delete an already generated successor when completion is undone:
+   // it may have been edited or completed independently. Existing duplicate
+   // checks prevent the same occurrence being generated twice on re-completion.
+   if(undo&&successors.length&&task&&!task.done){
+     if(typeof toast==='function')toast('完了を取り消しました。作成済みの次回タスクは保持しています。');
+   }
+   return result;
+ };
+ const oldRender=window.renderTasks;
+ if(typeof oldRender==='function')window.renderTasks=function(...args){
+   const result=oldRender.apply(this,args);
+   const list=document.getElementById('taskList');if(!list)return result;
+   const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));
+   for(const row of list.querySelectorAll('.pn-task-row')){
+     const edit=row.querySelector('button[onclick^="pnEditTask"]');
+     const id=edit?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];
+     const task=taskById.get(id);
+     if(!task||!task.repeatSource)continue;
+     const source=taskById.get(String(task.repeatSource));
+     const main=row.querySelector('.pn-task-main');if(!main||main.querySelector('.pn66-repeat-link'))continue;
+     const note=document.createElement('small');note.className='pn66-repeat-link';
+     note.textContent=source?'繰り返しで生成 · 前回：'+(source.due||'期限なし'):'繰り返しで生成';
+     main.append(note);
+   }
+   return result;
+ };
+ 
+ 
+ 
+ 
+ 
+ window.renderTasks();
+})();
+</script>
+
+<script id="pn-rc68-lifecycle">
+(()=>{'use strict';
+// Preserve repeat history on undo. Keep the existing successor on re-completion.
+// Normalize repeatSource to a string when comparing legacy/imported IDs.
+const oldHas=window.pn67Recurrence?.hasSuccessor;
+if(typeof oldHas==='function'){
+ const core=window.pn67Recurrence;
+ window.pn68Lifecycle=Object.freeze({
+  successorCount(tasks,id,due){return Array.isArray(tasks)?tasks.filter(t=>String(t.repeatSource)===String(id)&&t.due===due).length:0},
+  hasSuccessor(tasks,id,due){return core.hasSuccessor(tasks,id,due)}
+ });
+}
+
+
+
+
+
+})();
+</script>
+
+<style id="pn-rc69-style">
+#pn69-diagnostics{margin:18px 0;padding:15px;border:1px solid #37616b;border-radius:13px;background:#132c34;color:#e0f2f1}
+#pn69-diagnostics h3{margin:0 0 7px;font-size:16px}#pn69-diagnostics p{font-size:13px;line-height:1.6;color:#b7d8d9}
+#pn69-diagnostics button{min-height:42px;border-radius:10px;padding:8px 14px;border:1px solid #63cfc8;background:#164b50;color:#f1ffff;font-weight:700}
+#pn69-result{white-space:pre-wrap;overflow-wrap:anywhere;margin-top:10px;font-size:12px;line-height:1.7}
+</style>
+<script id="pn-rc69-diagnostics">
+(()=>{'use strict';
+const settings=document.getElementById('settings');
+if(settings){const panel=document.createElement('section');panel.id='pn69-diagnostics';panel.innerHTML='<h3>データの動作診断</h3><p>実際のタスクを変更せず、登録・編集・削除・保存形式・繰り返しの処理をテストします。診断用の一時データのみ使用します。</p><button type="button" id="pn69-run">診断を実行</button><div id="pn69-result" role="status" aria-live="polite"></div>';settings.append(panel);
+ panel.querySelector('#pn69-run').addEventListener('click',()=>{const checks=[];const test=(name,fn)=>{try{if(!fn())throw Error('結果が一致しません');checks.push({name,ok:true})}catch(e){checks.push({name,ok:false,error:String(e.message||e)})}};
+ const core=window.pn67Recurrence;
+ const sample=[];
+ test('タスクの登録',()=>{sample.push({id:'test-1',name:'試験',due:'2026-11-30',done:false,taskRepeat:'none'});return sample.length===1&&sample[0].name==='試験'});
+ test('タスクの編集',()=>{const t=sample.find(x=>x.id==='test-1');t.name='試験（変更）';t.due='2026-12-01';return t.name==='試験（変更）'&&t.due==='2026-12-01'});
+ test('完了・取り消し',()=>{sample[0].done=true;const a=sample[0].done;sample[0].done=false;return a&&!sample[0].done});
+ test('JSON保存・復元',()=>{const restored=JSON.parse(JSON.stringify({tasks:sample}));return restored.tasks[0].name===sample[0].name&&restored.tasks[0].done===false});
+ test('タスクの削除',()=>{const n=sample.length;sample.splice(sample.findIndex(x=>x.id==='test-1'),1);return n===1&&sample.length===0});
+ test('毎月31日の月末処理',()=>core?.nextDate('2027-01-31','monthly',31)==='2027-02-28');
+ test('月末から31日に復帰',()=>core?.nextDate('2027-02-28','monthly',31)==='2027-03-31');
+ test('うるう年の2月29日',()=>core?.nextDate('2024-01-31','monthly',31)==='2024-02-29');
+ test('毎週の年越し',()=>core?.nextDate('2026-12-28','weekly')==='2027-01-04');
+ test('不正日付の拒否',()=>core?.nextDate('2027-02-30','daily')==='');
+ test('次回タスクの重複防止',()=>core?.hasSuccessor([{id:'next',repeatSource:'old',due:'2027-02-28'}],'old','2027-02-28')===true);
+ test('別期限は重複扱いしない',()=>core?.hasSuccessor([{repeatSource:'old',due:'2027-02-28'}],'old','2027-03-31')===false);
+ const passed=checks.filter(x=>x.ok).length;panel.querySelector('#pn69-result').textContent=passed+'/'+checks.length+' 件合格\n'+checks.map(x=>(x.ok?'✓ ':'✕ ')+x.name+(x.error?'：'+x.error:'')).join('\n')+'\n※これは端末内の模擬データによる診断です。実際の画面操作やGoogle同期は検証しません。';
+ });}
+ 
+ 
+ 
+ 
+ 
+})();
+</script>
+<script id="pn-rc70-backup-note">
+(()=>{function setup(){const input=document.querySelector('input[type="file"][onchange*="importData"]');if(!input||document.getElementById('pn70-backup-note'))return;const note=document.createElement('p');note.id='pn70-backup-note';note.className='hint';note.textContent='RC73: 復元前に件数を表示し、重複ID・不正な項目・10MB超のファイルを検査します。復元前に現在のデータをJSONで保存してください。';input.insertAdjacentElement('afterend',note)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup()})();
+</script>
+<style id="pn71-style">#pn71-storage{position:sticky;top:0;z-index:1000;background:#49252a;color:#fff;border-bottom:2px solid #ff9999;padding:10px 14px;font-size:13px;line-height:1.5;display:none;gap:9px;align-items:center;flex-wrap:wrap}#pn71-storage button{background:#ffe5e5;color:#441d21;border:0;border-radius:8px;padding:7px 11px;font-weight:700}#pn71-storage[aria-hidden="false"]{display:flex}</style>
+<script id="pn71-script">(()=>{
+function setup(){if(document.getElementById('pn71-storage'))return;
+ const banner=document.createElement('div');banner.id='pn71-storage';banner.setAttribute('role','alert');banner.setAttribute('aria-hidden','true');
+ const msg=document.createElement('span');msg.id='pn71-message';banner.append(msg);
+ const retry=document.createElement('button');retry.type='button';retry.textContent='保存を再試行';retry.onclick=()=>{try{const payload=JSON.stringify(data);localStorage.setItem(KEY,payload);if(localStorage.getItem(KEY)!==payload)throw new Error('保存内容の照合に失敗');pnStorageError='';window.dispatchEvent(new Event('pn-storage-status'));update();toast('保存しました')}catch(e){pnStorageError='保存に失敗しました。空き容量・ブラウザ設定を確認してください。';update()}};banner.append(retry);
+ const backup=document.createElement('button');backup.type='button';backup.textContent='JSONバックアップ';backup.onclick=()=>exportData();banner.append(backup);
+ document.body.prepend(banner);
+ function update(){const error=typeof pnStorageError==='string'?pnStorageError:'';msg.textContent=error;banner.setAttribute('aria-hidden',error?'false':'true')}
+ window.addEventListener('pn-storage-status',update);update();
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();</script>
+
+<style id="pn72-style">#pn72-diagnostics{margin-top:14px;padding:14px;border:1px solid #435267;border-radius:12px;background:#172332;color:#e8eff9}#pn72-diagnostics button{padding:10px 14px;border-radius:9px;background:#365f87;color:white;border:0;font-weight:700}#pn72-report{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7;margin-top:10px;color:#dce8f7}</style>
+<script id="pn72-script">(()=>{
+function checkBackupRoundTrip(){
+ const sample={events:[{id:'event-1',name:'予定',start:'2026-11-13T10:00',end:'2026-11-13T11:00'}],tasks:[{id:'task-1',name:'勉強',done:false,due:'2026-11-30',tags:['資格'],subtasks:[{name:'復習',done:false}]}],habits:[],checks:{},finance:[],studySessions:[]};
+ const copy=JSON.parse(JSON.stringify(sample));
+ if(JSON.stringify(copy)!==JSON.stringify(sample))throw Error('JSON往復で内容が変化');
+ if(typeof validateBackup==='function')validateBackup(copy);
+ return true;
+}
+function storageProbe(){
+ const key='plannote-rc72-probe-'+crypto.randomUUID();
+ try{localStorage.setItem(key,'ok');if(localStorage.getItem(key)!=='ok')throw Error('書込内容の読取不一致');return true}
+ finally{try{localStorage.removeItem(key)}catch{}}
+}
+function simulateStorageFailure(){
+ const fake={setItem(){throw new DOMException('Quota exceeded','QuotaExceededError')}};
+ let caught=false;
+ try{fake.setItem('test','value')}catch(error){caught=error.name==='QuotaExceededError'}
+ if(!caught)throw Error('容量不足例外を検知できない');
+ return true;
+}
+function ensure(){const settings=document.getElementById('settings');if(!settings||document.getElementById('pn72-diagnostics'))return;
+ const panel=document.createElement('section');panel.id='pn72-diagnostics';panel.innerHTML='<h3>保存・復元の安全診断</h3><p>模擬データのJSON往復、容量不足エラー検知、端末ストレージへの一時書き込みを検証します。登録済みの予定・タスクは変更しません。</p><button type="button" id="pn72-run">保存・復元診断を実行</button><div id="pn72-report" role="status" aria-live="polite"></div>';
+ settings.append(panel);
+ panel.querySelector('#pn72-run').addEventListener('click',()=>{
+ const cases=[['JSONバックアップの往復',checkBackupRoundTrip],['容量不足エラーの模擬検知',simulateStorageFailure],['端末ストレージの一時保存・読取・削除',storageProbe]];
+ const results=cases.map(([name,fn])=>{try{fn();return {name,ok:true}}catch(e){return {name,ok:false,reason:String(e.message||e)}}});
+ const pass=results.filter(r=>r.ok).length;
+ panel.querySelector('#pn72-report').textContent=`${pass}/${results.length} 件合格\n`+results.map(r=>(r.ok?'✓ ':'✕ ')+r.name+(r.reason?'：'+r.reason:'')).join('\n')+'\n※本番データの復元・置換や容量不足の実発生は試しません。';
+ });
+ 
+ 
+ 
+ 
+ 
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',ensure);else ensure();
+})();</script>
+
+<style id="pn73-style">#pn73-check{margin-top:12px;border:1px solid #405269;background:#182536;border-radius:12px;padding:13px;color:#e8f0fa}#pn73-check button{background:#365f87;color:white;border:0;border-radius:9px;padding:10px 12px;font-weight:700}#pn73-result{white-space:pre-wrap;line-height:1.7;font-size:13px;margin-top:9px}</style>
+<script id="pn73-script">(()=>{
+ function setup(){const settings=document.getElementById('settings');if(!settings||document.getElementById('pn73-check'))return;
+ const box=document.createElement('section');box.id='pn73-check';const h=document.createElement('h3');h.textContent='保存の整合性チェック';const p=document.createElement('p');p.textContent='本番データを変更せず、一時領域への保存・読み戻しと破損JSONの検出を確認します。';const b=document.createElement('button');b.type='button';b.textContent='保存チェックを実行';const out=document.createElement('div');out.id='pn73-result';out.setAttribute('role','status');box.append(h,p,b,out);settings.append(box);
+ b.onclick=()=>{const cases=[];const test=(name,fn)=>{try{fn();cases.push('✓ '+name)}catch(e){cases.push('✕ '+name+'：'+String(e.message||e))}};
+ test('JSONの保存・読み戻し',()=>{const key='plannote-rc73-'+crypto.randomUUID();const sample={tasks:[{id:'sample',name:'確認',done:false}],finance:[]};const payload=JSON.stringify(sample);try{localStorage.setItem(key,payload);if(localStorage.getItem(key)!==payload)throw Error('保存内容が一致しません');if(JSON.stringify(JSON.parse(localStorage.getItem(key)))!==payload)throw Error('復元内容が一致しません')}finally{localStorage.removeItem(key)}});
+ test('破損JSONを拒否',()=>{let rejected=false;try{JSON.parse('{broken json')}catch{rejected=true}if(!rejected)throw Error('破損を検出できません')});
+ test('バックアップの形式検証',()=>{if(typeof validateBackup!=='function')throw Error('検証関数がありません');let rejected=false;try{validateBackup({tasks:'broken',events:[],habits:[]})}catch{rejected=true}if(!rejected)throw Error('不正な配列を拒否できません')});
+ out.textContent=cases.join('\n')+'\n※本番データへの書き込みや実際の復元操作は行いません。';};
+ 
+ 
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();</script>
+<style id="pn74-style">#pn74-recovery{position:fixed;z-index:99999;left:10px;right:10px;top:10px;max-width:650px;margin:auto;padding:16px;background:#34251e;border:2px solid #f6b65f;border-radius:14px;color:#fff;box-shadow:0 8px 28px #0009;font-size:14px;line-height:1.6}#pn74-recovery button{padding:11px 13px;border:1px solid #d6a66b;border-radius:9px;background:#273e50;color:#fff;font-weight:700;margin:4px}#pn74-recovery strong{display:block;font-size:17px}</style>
+<script id="pn74-script">(()=>{
+ function init(){
+  
+  for(const id of ['pn53-version','pn52-build-note','pn49-build']){const el=document.getElementById(id);if(el)el.textContent=id==='pn49-build'?'アプリ版: RC75':'PlanNote RC75 · 復元検証';}
+  
+  if(!pn74DamagedReason)return;
+  const panel=document.createElement('section');panel.id='pn74-recovery';panel.setAttribute('role','alertdialog');panel.setAttribute('aria-label','保存データの復旧');
+  const title=document.createElement('strong');title.textContent='保存データの異常を検出しました';
+  const p=document.createElement('p');p.textContent='原因: '+pn74DamagedReason+'。元データを上書きせず保護しています。まず元データを保存してください。';
+  const download=document.createElement('button');download.type='button';download.textContent='元データをダウンロード';download.onclick=()=>{
+   if(pn74DamagedRaw===null){alert('元データを読み取れませんでした');return}
+   const blob=new Blob([pn74DamagedRaw],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='plannote-damaged-original-rc75.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),10000);
+  };
+  const reset=document.createElement('button');reset.type='button';reset.textContent='空のデータで初期化';reset.onclick=()=>{
+   if(!confirm('元データのダウンロードは完了しましたか？\n初期化すると、この端末に保存された異常データが置き換わります。'))return;
+   if(!confirm('最終確認：現在の保存データを空のデータで上書きします。続けますか？'))return;
+   try{const payload=JSON.stringify(data);localStorage.setItem(KEY,payload);if(localStorage.getItem(KEY)!==payload)throw Error('保存確認に失敗');pn74DamagedReason='';pn74DamagedRaw=null;pnStorageError='';panel.remove();window.dispatchEvent(new Event('pn-storage-status'));render();alert('初期化しました。必要に応じてバックアップを復元してください。')}catch(e){alert('初期化に失敗しました: '+String(e.message||e))}
+  };
+  const help=document.createElement('p');help.textContent='正常なバックアップがある場合は、元データをダウンロードしてから、設定のバックアップ復元機能を利用してください。';
+  const restore=document.createElement('button');restore.type='button';restore.textContent='JSONバックアップから復元';restore.onclick=()=>{
+   const picker=document.getElementById('importFile');
+   if(picker&&picker.type==='file'){picker.click();return}
+   const input=document.createElement('input');input.type='file';input.accept='.json,application/json';input.style.display='none';input.onchange=async e=>{await importData(e);input.remove()};document.body.append(input);input.click();
+  };
+  panel.append(title,p,download,restore,reset,help);document.body.append(panel);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();</script>
+
+<style id="pn76-style">
+#pn76-diagnostic{margin-top:16px;padding:14px;border:1px solid #45606a;border-radius:12px;background:#172832;color:#eaf3f5}
+#pn76-diagnostic h3{margin:0 0 8px;font-size:16px}#pn76-diagnostic p{line-height:1.6;color:#c2d4d9}
+#pn76-diagnostic button{min-height:44px;padding:10px 15px;border-radius:9px;background:#23656a;color:white;border:1px solid #58a5a8;font-weight:700}
+#pn76-result{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.8;font-size:13px;margin-top:10px}
+</style>
+<script id="pn76-script">(()=>{
+ function setup(){
+  
+  for(const id of ['pn53-version','pn52-build-note','pn49-build']){const el=document.getElementById(id);if(el)el.textContent=id==='pn49-build'?'アプリ版: RC76':'PlanNote RC76 · 操作診断';}
+  
+  const settings=document.querySelector('#settings .panel');if(!settings||document.getElementById('pn76-diagnostic'))return;
+  const panel=document.createElement('section');panel.id='pn76-diagnostic';
+  const title=document.createElement('h3');title.textContent='アプリ基本動作チェック（RC76）';
+  const desc=document.createElement('p');desc.textContent='画面切替・データ形式・一時保存・復元ロジックを検査します。登録済みデータには変更を加えません。';
+  const button=document.createElement('button');button.type='button';button.textContent='基本動作チェックを実行';
+  const output=document.createElement('div');output.id='pn76-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');
+  button.addEventListener('click',()=>{
+   const results=[];const test=(name,fn)=>{try{fn();results.push('✓ '+name)}catch(e){results.push('✗ '+name+'：'+String(e.message||e))}};
+   test('主要画面の存在',()=>{for(const id of ['calendar','tasks','study','finance','settings'])if(!document.getElementById(id))throw Error(id+' がありません')});
+   test('画面切替ボタン',()=>{for(const id of ['calendar','tasks','finance'])if(!document.querySelector('#nav button[data-view="'+id+'"]'))throw Error(id+' のボタンがありません')});
+   test('タスク表示領域',()=>{if(!document.getElementById('taskList'))throw Error('タスク一覧がありません')});
+   test('予定表示領域',()=>{if(!document.getElementById('calendarGrid'))throw Error('カレンダーがありません')});
+   test('バックアップJSONの往復変換',()=>{const sample={events:[{id:'test',name:'予定'}],tasks:[{id:'task',done:false}],habits:[]};if(JSON.stringify(JSON.parse(JSON.stringify(sample)))!==JSON.stringify(sample))throw Error('内容不一致')});
+   test('実データのJSON変換',()=>{if(typeof data==='undefined'||!Array.isArray(data.tasks))throw Error('タスクデータが不正');const copy=JSON.parse(JSON.stringify(data));if(copy.tasks.length!==data.tasks.length)throw Error('件数不一致')});
+   test('一時領域への保存と読み戻し',()=>{const k='pn76-diagnostic-temp';const old=localStorage.getItem(k),value=JSON.stringify({nonce:'pn76',check:true});try{localStorage.setItem(k,value);if(localStorage.getItem(k)!==value)throw Error('保存内容不一致')}finally{if(old===null)localStorage.removeItem(k);else localStorage.setItem(k,old)}});
+   test('復元のロールバック',()=>{if(typeof pn75AtomicRestore!=='function')throw Error('復元処理がありません');const m=new Map([['a','old']]);let count=0;const store={getItem:k=>m.has(k)?m.get(k):null,setItem:(k,v)=>{if(k==='b'&&++count===1)throw Error('模擬失敗');m.set(k,v)},removeItem:k=>m.delete(k)};let rejected=false;try{pn75AtomicRestore([['a','new'],['b','next']],store)}catch{rejected=true}if(!rejected||m.get('a')!=='old'||m.has('b'))throw Error('元データを復元できません')});
+   const passed=results.filter(s=>s.startsWith('✓')).length;output.textContent=passed+'/'+results.length+'項目合格\n'+results.join('\n')+'\n※画面の実タップ操作やAndroid端末の動作を保証するものではありません。';
+  });
+  panel.append(title,desc,button,output);settings.append(panel);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();</script>
+
+<style id="pn77-style">#pn77-save-hint{font-size:12px;line-height:1.55;color:#a9c2ca;margin:4px 0 10px}#pn-task-dialog:open{max-height:92dvh;overflow:auto}</style>
+<script id="pn77-script">(()=>{function init(){const form=document.getElementById('pn-task-form');if(form&&!document.getElementById('pn77-save-hint')){const hint=document.createElement('p');hint.id='pn77-save-hint';hint.textContent='保存できなかった場合は入力内容を保持します。画面を閉じる前に保存エラーをご確認ください。';form.querySelector('.pn-actions')?.before(hint)}const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC91';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC77':'PlanNote RC77 · 保存失敗時の入力保護'}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
+
+<style id="pn78-style">
+#pn78-undo{position:fixed;left:12px;right:12px;bottom:88px;z-index:9998;max-width:560px;margin:auto;padding:12px 14px;background:#203943;color:#f1f8fa;border:1px solid #5a9ba3;border-radius:12px;box-shadow:0 8px 24px #0008;display:flex;align-items:center;justify-content:space-between;gap:12px}
+#pn78-undo[hidden]{display:none!important}#pn78-undo button{min-height:42px;padding:8px 14px;border-radius:9px;background:#24777e;border:1px solid #72b5b8;color:white;font-weight:700}
+</style>
+<script id="pn78-script">(()=>{
+ function setup(){
+  // Version labels are updated centrally by pn84-script.
+  if(typeof data==='undefined'||typeof window.removeTask!=='function'||typeof save!=='function')return;
+  let deleted=null;
+  const bar=document.createElement('div');bar.id='pn78-undo';bar.hidden=true;bar.setAttribute('role','status');bar.setAttribute('aria-live','polite');
+  const message=document.createElement('span'),undo=document.createElement('button');undo.type='button';undo.textContent='元に戻す';bar.append(message,undo);document.body.append(bar);
+  const clear=()=>{deleted=null;bar.hidden=true};
+  undo.addEventListener('click',()=>{
+   if(!deleted)return;
+   const {task,index}=deleted;
+   if(data.tasks.some(t=>String(t.id)===String(task.id))){clear();return;}
+   const position=Math.min(index,data.tasks.length);data.tasks.splice(position,0,task);
+   if(save()===false){data.tasks.splice(data.tasks.findIndex(t=>String(t.id)===String(task.id)),1);alert('復元内容を保存できませんでした。保存容量を確認してください。');return;}
+   clear();if(typeof toast==='function')toast('タスクを元に戻しました');
+  });
+  window.removeTask=function(id){
+   const index=data.tasks.findIndex(t=>String(t.id)===String(id));if(index<0)return;
+   const task=data.tasks[index];
+   if(!confirm('「'+String(task.name||'タスク')+'」を削除しますか？'))return;
+   const previous=deleted;
+   data.tasks.splice(index,1);
+   if(save()===false){data.tasks.splice(index,0,task);deleted=previous;alert('タスクを削除できませんでした。保存容量を確認してください。');return;}
+   deleted={task:JSON.parse(JSON.stringify(task)),index};message.textContent='「'+String(task.name||'タスク')+'」を削除しました。';bar.hidden=false;
+  };
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
+})();</script>
+
+<style id="pn79-style">
+#pn79-check{margin:14px 0;padding:13px;border:1px solid #456974;border-radius:12px;background:#182d35;color:#e5f2f3}
+#pn79-check button{min-height:42px;margin-top:8px}#pn79-results{white-space:pre-wrap;font-size:13px;line-height:1.65;margin-top:10px}
+</style>
+<script id="pn79-script">(()=>{
+function init(){
+ const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC91';
+ 
+ for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC79':'PlanNote RC79 · タスク操作診断';}
+ const settings=document.querySelector('#settings .panel');if(!settings||document.getElementById('pn79-check'))return;
+ const box=document.createElement('section');box.id='pn79-check';
+ const h=document.createElement('h3');h.textContent='タスク操作の安全診断（RC79）';
+ const p=document.createElement('p');p.textContent='実際の登録データは変更せず、タスクの追加・編集・削除・復元を模擬データで検証します。';
+ const btn=document.createElement('button');btn.type='button';btn.className='btn';btn.textContent='タスク操作を診断';
+ const out=document.createElement('div');out.id='pn79-results';out.setAttribute('role','status');out.setAttribute('aria-live','polite');
+ box.append(h,p,btn,out);settings.append(box);
+ btn.addEventListener('click',()=>{
+  const results=[];const check=(label,fn)=>{try{if(!fn())throw Error('結果が一致しません');results.push('✓ '+label)}catch(e){results.push('✗ '+label+'：'+e.message)}};
+  const original=[{id:'a',name:'最初のタスク',done:false,subtasks:[{id:'s',name:'準備',done:true}]}];
+  let tasks=JSON.parse(JSON.stringify(original));
+  check('追加',()=>{tasks.push({id:'b',name:'追加',done:false});return tasks.length===2});
+  check('編集',()=>{tasks[1].name='編集後';return tasks[1].name==='編集後'});
+  check('完了と取り消し',()=>{tasks[1].done=true;tasks[1].done=false;return !tasks[1].done});
+  let removed=null;
+  check('削除',()=>{const index=tasks.findIndex(t=>t.id==='a');removed={task:JSON.parse(JSON.stringify(tasks[index])),index};tasks.splice(index,1);return tasks.length===1});
+  check('元に戻す（サブタスク含む）',()=>{tasks.splice(removed.index,0,removed.task);return tasks[0].subtasks[0].done===true&&tasks.length===2});
+  check('JSON保存・読み戻し',()=>JSON.parse(JSON.stringify(tasks))[1].name==='編集後');
+  check('登録済みデータの不変性',()=>original.length===1&&original[0].name==='最初のタスク');
+  out.textContent=results.join('\n')+'\n'+results.filter(x=>x.startsWith('✓')).length+'/'+results.length+'項目合格';
+ });
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();</script>
+
+<style id="pn80-style">
+#pn80-note{margin:12px 0;padding:12px 14px;border-radius:10px;background:#19333b;border:1px solid #4a7b83;color:#e2f5f5;font-size:13px;line-height:1.65}
+#pn80-note strong{display:block;margin-bottom:4px}
+</style>
+<script id="pn80-script">(()=>{
+ function init(){
+  const form=document.getElementById('pn-task-form');
+  if(form&&!document.getElementById('pn80-note')){
+   const note=document.createElement('p');note.id='pn80-note';note.textContent='保存に失敗した場合は、追加・編集内容を一時的な一覧データから取り消し、入力欄は保持します。再保存する前にストレージの状態を確認してください。';
+   const old=document.getElementById('pn77-save-hint');if(old)old.replaceWith(note);else form.querySelector('.pn-actions')?.before(note);
+  }
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();</script>
+
+<style id="pn81-style">
+#pn81-diagnostics{margin:16px 0;border:1px solid #36565e;border-radius:14px;background:#14272e;overflow:hidden;color:#e5f5f6}
+#pn81-diagnostics>summary{padding:14px 16px;cursor:pointer;min-height:48px;font-weight:700;list-style:none;display:flex;align-items:center;justify-content:space-between}
+#pn81-diagnostics>summary::-webkit-details-marker{display:none}
+#pn81-diagnostics>summary::after{content:'⌄';font-size:20px;color:#8be4e3}
+#pn81-diagnostics[open]>summary::after{content:'⌃'}
+#pn81-diagnostics>.pn81-body{padding:0 12px 14px;display:grid;gap:12px}
+#pn81-diagnostics>.pn81-body>*{margin:0;max-width:100%}
+#pn81-diagnostics button{min-height:42px}
+</style>
+<script id="pn81-script">(()=>{'use strict';
+ function init(){
+  const settings=document.getElementById('settings');if(!settings||document.getElementById('pn81-diagnostics'))return;
+  const targets=['pn69-diagnostics','pn72-diagnostics','pn73-check','pn76-diagnostic','pn79-check'].map(id=>document.getElementById(id)).filter(el=>el&&settings.contains(el));
+  if(!targets.length)return;
+  const fold=document.createElement('details');fold.id='pn81-diagnostics';
+  const summary=document.createElement('summary');summary.textContent='詳細診断・動作チェック（'+targets.length+'種類）';
+  const body=document.createElement('div');body.className='pn81-body';
+  fold.append(summary,body);
+  targets[0].before(fold);
+  for(const target of targets)body.append(target);
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();</script>
+
+<script id="pn85-script">(()=>{'use strict';
+ const update=()=>{
+  const title=document.querySelector('header h1 small');if(title)title.textContent='v1.0.0 RC91';
+  document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC91'):document.title+' · RC91';
+  const labels={'pn53-version':'PlanNote RC91 · 検索と絞り込みの更新を集約','pn52-build-note':'PlanNote RC91 · 連続したフィルター更新を抑制','pn49-build':'アプリ版: RC91'};
+  for(const [id,value] of Object.entries(labels)){const el=document.getElementById(id);if(el)el.textContent=value}
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});else update();
+})();</script>
+
+
 </body></html>
