@@ -1091,7 +1091,7 @@ let editing=null;
 function openTask(id){editing=id||null;const t=id?data.tasks.find(x=>x.id===id):null;$pn('pn-task-heading').textContent=t?'タスクを編集':'タスクを追加';$pn('pn-task-name').value=t?.name||'';$pn('pn-task-due').value=t?.due||'';$pn('pn-task-time').value=t?.dueTime||'';$pn('pn-task-priority').value=t?.priority||'通常';$pn('pn-task-kind').value=t?.kind||'general';$pn('pn-task-subject').value=t?.studySubject||'';$pn('pn-task-planned').value=t?.plannedMinutes||'';const goalSelect=$pn('pn-task-goal');goalSelect.innerHTML='<option value="">関連付けなし</option>';(data.studyGoals||[]).forEach(g=>{const o=document.createElement('option');o.value=g.id;o.textContent=g.name;goalSelect.append(o)});goalSelect.value=t?.goalId||'';$pn('pn-task-study-fields').hidden=$pn('pn-task-kind').value!=='study';$pn('pn-task-remind').value=t?.remind||'none';$pn('pn-task-repeat').value=t?.taskRepeat||'none';$pn('pn-task-subtasks').value=(t?.subtasks||[]).map(x=>x.name).join('\n');dialog.showModal();}
 window.addTask=()=>openTask(null);window.pnEditTask=openTask;
 $pn('pn-task-cancel').onclick=()=>dialog.close();
-$pn('pn-task-form').onsubmit=e=>{e.preventDefault();const name=$pn('pn-task-name').value.trim(),due=$pn('pn-task-due').value,dueTime=$pn('pn-task-time').value,remind=$pn('pn-task-remind').value;if(!name)return;if(remind!=='none'&&(!due||!dueTime)){alert('リマインドには締切日と締切時刻が必要です');return;}const item=editing?data.tasks.find(x=>x.id===editing):null;const kind=$pn('pn-task-kind').value;const studySubject=$pn('pn-task-subject').value.trim();const plannedMinutes=$pn('pn-task-planned').value?Number($pn('pn-task-planned').value):null;if(kind==='study'&&(!studySubject||(plannedMinutes!==null&&(!Number.isSafeInteger(plannedMinutes)||plannedMinutes<1||plannedMinutes>1440)))){alert('勉強タスクの科目と予定時間を確認してください');return;}const priorSubtasks=Array.isArray(item?.subtasks)?item.subtasks:[];const subtaskNames=$pn('pn-task-subtasks').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,30);const subtasks=subtaskNames.map((n,i)=>{const old=priorSubtasks[i];return {id:old?.name===n?old.id:crypto.randomUUID(),name:n,done:old?.name===n?!!old.done:false}});const taskRepeat=$pn('pn-task-repeat').value;const payload={taskRepeat,subtasks,name,due,dueTime,kind,studySubject:kind==='study'?studySubject:'',plannedMinutes:kind==='study'?plannedMinutes:null,goalId:kind==='study'?$pn('pn-task-goal').value:'',priority:$pn('pn-task-priority').value,remind,remindedAt:item&&item.due===due&&item.dueTime===dueTime&&item.remind===remind?item.remindedAt||null:null};const previous=item?JSON.parse(JSON.stringify(item)):null;
+$pn('pn-task-form').onsubmit=e=>{e.preventDefault();const name=$pn('pn-task-name').value.trim(),due=$pn('pn-task-due').value,dueTime=$pn('pn-task-time').value,remind=$pn('pn-task-remind').value;if(!name)return;if(remind!=='none'&&(!due||!dueTime)){alert('リマインドには締切日と締切時刻が必要です');return;}const item=editing?data.tasks.find(x=>x.id===editing):null;if(editing&&!item){alert('編集中のタスクが見つかりません。一覧を更新してから再度編集してください。');if(typeof render==='function')render();return;}const kind=$pn('pn-task-kind').value;const studySubject=$pn('pn-task-subject').value.trim();const plannedMinutes=$pn('pn-task-planned').value?Number($pn('pn-task-planned').value):null;if(kind==='study'&&(!studySubject||(plannedMinutes!==null&&(!Number.isSafeInteger(plannedMinutes)||plannedMinutes<1||plannedMinutes>1440)))){alert('勉強タスクの科目と予定時間を確認してください');return;}const priorSubtasks=Array.isArray(item?.subtasks)?item.subtasks:[];const subtaskNames=$pn('pn-task-subtasks').value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).slice(0,30);const subtasks=subtaskNames.map((n,i)=>{const old=priorSubtasks[i];return {id:old?.name===n?old.id:crypto.randomUUID(),name:n,done:old?.name===n?!!old.done:false}});const taskRepeat=$pn('pn-task-repeat').value;const payload={taskRepeat,subtasks,name,due,dueTime,kind,studySubject:kind==='study'?studySubject:'',plannedMinutes:kind==='study'?plannedMinutes:null,goalId:kind==='study'?$pn('pn-task-goal').value:'',priority:$pn('pn-task-priority').value,remind,remindedAt:item&&item.due===due&&item.dueTime===dueTime&&item.remind===remind?item.remindedAt||null:null};const previous=item?JSON.parse(JSON.stringify(item)):null;
 const previousEditing=editing;
 let createdId=null;
 if(item)Object.assign(item,payload);
@@ -1412,11 +1412,11 @@ const list=document.getElementById('taskList');if(!list||!window.renderTasks)ret
 const controls=document.createElement('div');controls.id='pn50-actions';controls.innerHTML='<label for="pn50-sort">並び順</label><select id="pn50-sort"><option value="due">期限が近い順</option><option value="priority">優先度順</option><option value="name">名前順</option><option value="newest">新しい順</option></select><button id="pn50-complete" type="button">表示中を一括完了</button>';
 const filter=document.getElementById('pn47-tools');(filter||list).before(controls);
 const select=controls.querySelector('select');
-function order(){const rows=[...list.querySelectorAll('.pn-task-row')];const lookup=new Map((data.tasks||[]).map((t,i)=>[String(t.id),{...t,_i:i}]));const get=row=>{const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];return lookup.get(id)||{}};
-const priorities={'高':0,'最優先':0,'通常':1,'中':1,'低':2};
-rows.sort((ra,rb)=>{const a=get(ra),b=get(rb);let n=0;if(select.value==='priority')n=(priorities[a.priority]??1)-(priorities[b.priority]??1);else if(select.value==='name')n=String(a.name||'').localeCompare(String(b.name||''),'ja');else if(select.value==='newest')n=(b._i??0)-(a._i??0);else n=String(a.due||'9999').localeCompare(String(b.due||'9999'));return n||Number(!!a.done)-Number(!!b.done)||(a._i??0)-(b._i??0)}).forEach(r=>list.appendChild(r));}
-const previous=window.renderTasks;window.renderTasks=function(...args){const result=previous.apply(this,args);order();return result};select.addEventListener('change',order);order();
-controls.querySelector('button').addEventListener('click',()=>{const ids=[...list.querySelectorAll('.pn-task-row')].filter(r=>r.style.display!=='none'&&!r.hidden).map(r=>r.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1]).filter(Boolean);const targets=data.tasks.filter(t=>ids.includes(String(t.id))&&!t.done);if(!targets.length){toast('完了するタスクはありません');return}if(!confirm(`表示中の未完了タスク ${targets.length}件を完了にしますか？`))return;targets.forEach(t=>t.done=true);save();toast(`${targets.length}件を完了しました`)});
+// Sorting is owned by the RC62 renderer; RC50 retains only bulk completion.
+controls.querySelector('button').addEventListener('click',()=>{const ids=[...list.querySelectorAll('.pn-task-row')].filter(r=>r.style.display!=='none'&&!r.hidden).map(r=>r.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1]).filter(Boolean);const visibleIds=new Set(ids);const targets=data.tasks.filter(t=>visibleIds.has(String(t.id))&&!t.done);if(!targets.length){toast('完了するタスクはありません');return}if(!confirm(`表示中の未完了タスク ${targets.length}件を完了にしますか？`))return;targets.forEach(t=>t.done=true);let saved=false;try{saved=save()!==false}catch(e){console.error('一括完了の保存に失敗しました',e)}if(!saved){targets.forEach(t=>t.done=false);alert('保存できなかったため、一括完了を取り消しました。ストレージの空き容量を確認してください。');if(typeof renderTasks==='function')renderTasks();return}// Refresh the list after successful persistence so search, filters and sorting
+// all operate on the new completion state, not stale task-row markup.
+if(typeof window.renderTasks==='function')window.renderTasks();
+toast(`${targets.length}件を完了しました`)});
 })();
 </script>
 
@@ -1525,20 +1525,8 @@ const input=document.createElement('input');input.id='pn53-search';input.type='s
 const count=document.createElement('p');count.id='pn53-search-count';count.setAttribute('aria-live','polite');
 const empty=document.createElement('p');empty.id='pn53-search-empty';empty.hidden=true;empty.textContent='一致するタスクがありません';
 tools.append(input);list.before(tools,count);list.after(empty);
-function apply(){const query=input.value.trim().toLocaleLowerCase('ja-JP');const items=Array.from(list.querySelectorAll('.task-item'));
-let visible=0;for(const item of items){const match=!query||item.textContent.toLocaleLowerCase('ja-JP').includes(query);if(item.hidden===match)item.hidden=!match;if(match)visible++}
-count.textContent=query?`検索結果：${visible}件`:'タスクを検索できます';empty.hidden=!query||visible>0||items.length===0;
-}
-input.addEventListener('input',apply);
-// Task list is rebuilt by existing handlers; reapply the current search after rendering.
-let searchQueued=false;
-function scheduleSearch(){
- if(searchQueued)return;
- searchQueued=true;
- queueMicrotask(()=>{searchQueued=false;apply()});
-}
-const observer=new MutationObserver(scheduleSearch);
-observer.observe(list,{childList:true,subtree:false});apply();
+// Search input and results are handled by the unified RC61 search/tag filter.
+// Do not attach a second MutationObserver or hide rows independently.
 // Group the actual reminder section, not a non-existent inner placeholder.
 const reminders=document.getElementById('pn45-reminders');if(reminders&&!reminders.closest('details')){
  const d=document.createElement('details');d.className='pn52-fold';const s=document.createElement('summary');s.textContent='リマインダー';const body=document.createElement('div');body.className='pn52-fold-body';reminders.before(d);d.append(s,body);body.append(reminders);
@@ -1872,7 +1860,14 @@ if(typeof originalAdd==='function')window.addTask=function(...args){editingId=nu
 const originalEdit=window.pnEditTask;
 if(typeof originalEdit==='function')window.pnEditTask=function(id){editingId=id;const result=originalEdit(id);const t=data.tasks.find(x=>x.id===id);input.value=Array.isArray(t?.tags)?t.tags.join(', '):'';return result};
 // Existing onsubmit saves the task first; then attach the tags to the saved record.
-form.addEventListener('submit',()=>{const tags=normalize(input.value),id=editingId,known=new Set(data.tasks.map(t=>t.id));setTimeout(()=>{const t=id?data.tasks.find(x=>x.id===id):data.tasks.find(x=>!known.has(x.id));if(!t)return;t.tags=tags;save();editingId=null},0)});
+form.addEventListener('submit',()=>{const tags=normalize(input.value),id=editingId,known=new Set(data.tasks.map(t=>t.id));setTimeout(()=>{const t=id?data.tasks.find(x=>x.id===id):data.tasks.find(x=>!known.has(x.id));if(!t)return;
+const previousTags=Array.isArray(t.tags)?[...t.tags]:[];
+t.tags=tags;
+let saved=false;
+try{saved=save()!==false}catch(error){console.error('タグの保存に失敗しました',error)}
+if(!saved){t.tags=previousTags;alert('タグを保存できませんでした。ストレージの空き容量を確認してください。')}
+editingId=null;
+if(typeof window.renderTasks==='function')window.renderTasks()},0)});
 function updateOptions(){const old=select.value;const values=[...new Set(data.tasks.flatMap(t=>Array.isArray(t.tags)?t.tags:[]))].sort((a,b)=>a.localeCompare(b,'ja'));select.replaceChildren();const all=new Option('すべてのタグ','');select.add(all);for(const tag of values)select.add(new Option(tag,tag));select.value=values.includes(old)?old:''}
 function apply(){const chosen=select.value,query=(document.getElementById('pn53-search')?.value||'').trim().toLocaleLowerCase('ja-JP');const active=document.querySelector('#pn-task-filters [aria-pressed="true"]')?.dataset.filter||'all';const today=new Date().toLocaleDateString('sv-SE');let count=0;const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));
 for(const row of list.querySelectorAll('.pn-task-row')){const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);if(!t)continue;const status=active==='all'||active==='open'&&!t.done||active==='today'&&!t.done&&t.due===today||active==='overdue'&&!t.done&&t.due&&t.due<today;const text=[t.name,t.studySubject,...(t.tags||[])].join(' ').toLocaleLowerCase('ja-JP');const visible=!!status&&(!chosen||(t.tags||[]).includes(chosen))&&(!query||text.includes(query));if(row.hidden===visible)row.hidden=!visible;const display=visible?'':'none';if(row.style.display!==display)row.style.display=display;if(visible)count++}
@@ -1923,8 +1918,40 @@ const originalAdd=window.addTask;if(typeof originalAdd==='function')window.addTa
 const originalRender=window.renderTasks;
 if(typeof originalRender==='function')window.renderTasks=function(...args){const result=originalRender.apply(this,args);const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));for(const row of list.querySelectorAll('.pn-task-row')){const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);const main=row.querySelector('.pn-task-main');if(!t||!main)continue;const heading=main.firstElementChild;if(heading&&(t.priority==='高'||t.priority==='最優先'||t.priority==='低')){const b=document.createElement('span');b.className='pn62-priority '+(t.priority==='低'?'pn62-priority-low':'pn62-priority-high');b.textContent=t.priority;heading.append(b)}if(t.taskRepeat&&t.taskRepeat!=='none'&&t.due&&!t.done){const next=nextDate(t.due,t.taskRepeat);if(next){const span=document.createElement('span');span.className='pn62-next';span.textContent='次回予定：'+next+'（完了後に生成）';main.append(span)}}}return result};
 // The older sort put completed high-priority tasks above incomplete ones. Keep open tasks first.
-const sort=document.getElementById('pn50-sort');if(sort){const reorder=()=>{const rows=[...list.querySelectorAll('.pn-task-row')];const index=new Map(data.tasks.map((t,i)=>[String(t.id),{...t,index:i}]));const lookup=r=>{const id=r.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];return index.get(id)||{}};const rank={'最優先':0,'高':0,'通常':1,'中':1,'低':2};rows.sort((a,b)=>{const x=lookup(a),y=lookup(b);let v=Number(!!x.done)-Number(!!y.done);if(v)return v;if(sort.value==='priority')v=(rank[x.priority]??1)-(rank[y.priority]??1);else if(sort.value==='name')v=String(x.name||'').localeCompare(String(y.name||''),'ja');else if(sort.value==='newest')v=(y.index??0)-(x.index??0);else v=String(x.due||'9999').localeCompare(String(y.due||'9999'));return v||(x.index??0)-(y.index??0)}).forEach(r=>list.append(r))};sort.addEventListener('change',()=>queueMicrotask(reorder));const current=window.renderTasks;window.renderTasks=function(...args){const result=current.apply(this,args);reorder();return result};reorder()}
-
+const sort=document.getElementById('pn50-sort');
+if(sort){
+ const reorder=()=>{
+  const rows=[...list.querySelectorAll('.pn-task-row')];
+  if(rows.length<2)return;
+  const tasks=new Map(data.tasks.map((t,i)=>[String(t.id),{task:t,index:i}]));
+  const rank={'最優先':0,'高':0,'通常':1,'中':1,'低':2};
+  const entries=rows.map(row=>{
+   const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];
+   const item=tasks.get(id);
+   return {row,task:item?.task||{},index:item?.index??0};
+  });
+  entries.sort((a,b)=>{
+   const x=a.task,y=b.task;
+   let v=Number(!!x.done)-Number(!!y.done);
+   if(v)return v;
+   if(sort.value==='priority')v=(rank[x.priority]??1)-(rank[y.priority]??1);
+   else if(sort.value==='name')v=String(x.name||'').localeCompare(String(y.name||''),'ja');
+   else if(sort.value==='newest')v=b.index-a.index;
+   else v=String(x.due||'9999').localeCompare(String(y.due||'9999'));
+   return v||a.index-b.index;
+  });
+  if(entries.every((entry,i)=>entry.row===rows[i]))return;
+  for(let i=entries.length-1;i>=0;i--){
+   const node=entries[i].row;
+   const next=i+1<entries.length?entries[i+1].row:null;
+   if(node.nextElementSibling!==next)list.insertBefore(node,next);
+  }
+ };
+ sort.addEventListener('change',reorder);
+ const current=window.renderTasks;
+ window.renderTasks=function(...args){const result=current.apply(this,args);reorder();return result};
+ reorder();
+}
 
 
 
@@ -2286,7 +2313,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();</script>
 
 <style id="pn77-style">#pn77-save-hint{font-size:12px;line-height:1.55;color:#a9c2ca;margin:4px 0 10px}#pn-task-dialog:open{max-height:92dvh;overflow:auto}</style>
-<script id="pn77-script">(()=>{function init(){const form=document.getElementById('pn-task-form');if(form&&!document.getElementById('pn77-save-hint')){const hint=document.createElement('p');hint.id='pn77-save-hint';hint.textContent='保存できなかった場合は入力内容を保持します。画面を閉じる前に保存エラーをご確認ください。';form.querySelector('.pn-actions')?.before(hint)}const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC91';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC77':'PlanNote RC77 · 保存失敗時の入力保護'}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
+<script id="pn77-script">(()=>{function init(){const form=document.getElementById('pn-task-form');if(form&&!document.getElementById('pn77-save-hint')){const hint=document.createElement('p');hint.id='pn77-save-hint';hint.textContent='保存できなかった場合は入力内容を保持します。画面を閉じる前に保存エラーをご確認ください。';form.querySelector('.pn-actions')?.before(hint)}const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC99';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC77':'PlanNote RC77 · 保存失敗時の入力保護'}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
 
 <style id="pn78-style">
 #pn78-undo{position:fixed;left:12px;right:12px;bottom:88px;z-index:9998;max-width:560px;margin:auto;padding:12px 14px;background:#203943;color:#f1f8fa;border:1px solid #5a9ba3;border-radius:12px;box-shadow:0 8px 24px #0008;display:flex;align-items:center;justify-content:space-between;gap:12px}
@@ -2305,7 +2332,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
    const {task,index}=deleted;
    if(data.tasks.some(t=>String(t.id)===String(task.id))){clear();return;}
    const position=Math.min(index,data.tasks.length);data.tasks.splice(position,0,task);
-   if(save()===false){data.tasks.splice(data.tasks.findIndex(t=>String(t.id)===String(task.id)),1);alert('復元内容を保存できませんでした。保存容量を確認してください。');return;}
+   if(save()===false){const rollbackIndex=data.tasks.findIndex(t=>String(t.id)===String(task.id));if(rollbackIndex>=0)data.tasks.splice(rollbackIndex,1);if(typeof render==='function')render();alert('復元内容を保存できませんでした。保存容量を確認してください。');return;}
    clear();if(typeof toast==='function')toast('タスクを元に戻しました');
   });
   window.removeTask=function(id){
@@ -2314,7 +2341,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
    if(!confirm('「'+String(task.name||'タスク')+'」を削除しますか？'))return;
    const previous=deleted;
    data.tasks.splice(index,1);
-   if(save()===false){data.tasks.splice(index,0,task);deleted=previous;alert('タスクを削除できませんでした。保存容量を確認してください。');return;}
+   if(save()===false){data.tasks.splice(index,0,task);deleted=previous;if(typeof render==='function')render();alert('タスクを削除できませんでした。保存容量を確認してください。');return;}
    deleted={task:JSON.parse(JSON.stringify(task)),index};message.textContent='「'+String(task.name||'タスク')+'」を削除しました。';bar.hidden=false;
   };
  }
@@ -2327,7 +2354,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 </style>
 <script id="pn79-script">(()=>{
 function init(){
- const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC91';
+ const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC99';
  
  for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC79':'PlanNote RC79 · タスク操作診断';}
  const settings=document.querySelector('#settings .panel');if(!settings||document.getElementById('pn79-check'))return;
@@ -2397,13 +2424,50 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <script id="pn85-script">(()=>{'use strict';
  const update=()=>{
-  const title=document.querySelector('header h1 small');if(title)title.textContent='v1.0.0 RC91';
-  document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC91'):document.title+' · RC91';
-  const labels={'pn53-version':'PlanNote RC91 · 検索と絞り込みの更新を集約','pn52-build-note':'PlanNote RC91 · 連続したフィルター更新を抑制','pn49-build':'アプリ版: RC91'};
+  const title=document.querySelector('header h1 small');if(title)title.textContent='v1.0.0 RC100';
+  document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC100'):document.title+' · RC100';
+  const labels={'pn53-version':'PlanNote RC100 · タスク整合性診断','pn52-build-note':'PlanNote RC100 · 読み取り専用の整合性診断を追加','pn49-build':'アプリ版: RC100'};
   for(const [id,value] of Object.entries(labels)){const el=document.getElementById(id);if(el)el.textContent=value}
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});else update();
 })();</script>
 
+
+
+<style id="pn100-style">
+#pn100-check{border:1px solid #3a6470;border-radius:12px;padding:13px;background:#172c34;color:#e6f4f5}
+#pn100-check button{min-height:44px;margin:9px 0}
+#pn100-result{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}
+</style>
+<script id="pn100-script">(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn100-check'))return;
+  const section=document.createElement('section');section.id='pn100-check';
+  const title=document.createElement('h3');title.textContent='RC100 タスク整合性診断';
+  const desc=document.createElement('p');desc.textContent='登録データを変更せず、タスクの重複ID・保存可能性・一覧との対応を確認します。検索・並べ替えの実操作テストではありません。';
+  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='読み取り専用で診断';
+  const output=document.createElement('div');output.id='pn100-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');
+  section.append(title,desc,button,output);target.append(section);
+  const check=(rows,label,fn)=>{try{const result=fn();rows.push((result?'✓ ':'✗ ')+label);return result}catch(err){rows.push('✗ '+label+'：'+String(err&&err.message||err));return false}};
+  button.addEventListener('click',()=>{
+   const rows=[];
+   const tasks=typeof data!=='undefined'&&Array.isArray(data.tasks)?data.tasks:null;
+   if(!tasks){output.textContent='タスクデータを取得できません。';return}
+   const snapshot=JSON.stringify(tasks);
+   check(rows,'タスク配列が利用可能（'+tasks.length+'件）',()=>Array.isArray(tasks));
+   check(rows,'全タスクにIDがある',()=>tasks.every(t=>t&&t.id!==undefined&&t.id!==null&&String(t.id).length>0));
+   check(rows,'タスクIDが重複していない',()=>new Set(tasks.map(t=>String(t.id))).size===tasks.length);
+   check(rows,'JSON形式に変換できる',()=>JSON.parse(snapshot).length===tasks.length);
+   check(rows,'サブタスクの形式が正しい',()=>tasks.every(t=>!t.subtasks||Array.isArray(t.subtasks)));
+   check(rows,'一覧の表示領域が存在する',()=>!!document.getElementById('taskList'));
+   check(rows,'検索・並べ替えUIが存在する',()=>!!document.getElementById('pn50-sort')&&!!document.getElementById('taskList'));
+   check(rows,'診断前後のタスクデータが同じ',()=>JSON.stringify(tasks)===snapshot);
+   const passed=rows.filter(x=>x.startsWith('✓')).length;
+   output.textContent=rows.join('\n')+'\n'+passed+'/'+rows.length+'項目合格。診断は保存・削除・完了操作を行いません。';
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
 
 </body></html>
