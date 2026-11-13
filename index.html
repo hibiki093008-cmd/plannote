@@ -159,7 +159,76 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 .vertical-card,.week-event{touch-action:pan-x pan-y!important}
 .vertical-move,.vertical-resize{touch-action:pan-x pan-y!important}
 @media(min-width:850px){main{max-width:960px!important;margin:auto!important}#nav{left:50%;right:auto;transform:translateX(-50%);max-width:600px;border-radius:16px 16px 0 0}}
-</style></head><body><header><div><h1><span class="pn-logo-mark" aria-hidden="true">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC88</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input style="max-width:180px" type="date" id="verticalDate" onchange="renderVertical()"></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button type="button" class="btn" id="schoolEdit" onclick="editSchoolDay()">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div id="weekTimeline" class="week-scroll"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input type="month" id="financeMonth" style="max-width:190px" onchange="renderFinance()"></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p class="muted" id="financeActualStatus" aria-live="polite"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input type="date" id="financeDate" required></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input type="number" id="financeAmount" min="1" max="999999999" step="1" required></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input type="number" id="financeBudget" min="0" step="1" placeholder="未設定"></div><div class="field" style="justify-content:end"><button class="btn" type="button" onclick="saveFinanceBudget()">予算を保存</button></div></div><div id="financeBudgetStatus" class="muted"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required></div><div class="field"><label for="fixedAmount">月額（円）</label><input type="number" id="fixedAmount" min="1" step="1" required></div><div class="field"><label for="fixedDay">毎月の日付</label><input type="number" id="fixedDay" min="1" max="31" value="1" required></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div id="financeChart" class="finance-chart" role="img" aria-label="直近6か月の収入と支出の棒グラフ"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" type="number" step="1" value="0"></div></div><button class="btn" type="button" onclick="addAccount()">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" type="date" required></div><div class="field"><label>金額（円）</label><input id="transferAmount" type="number" min="1" step="1" required></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" type="number" min="0" step="1"></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input type="date" id="studyDate" required></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" type="number" min="1" max="1440" required></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required></div><div class="field"><label>期限</label><input id="goalDate" type="date"></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" type="number" min="0" max="100" value="0" required></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><p id="googleStatus" class="hint" aria-live="polite">未接続</p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
+</style><style id="pn116-mobile-style">
+/* RC116: consolidated mobile layout rules from RC113–RC115, preserving cascade order. */
+:root{--pn113-focus:#79e5e2;--pn113-border:#36545d}
+#calendar,#vertical,#week,#tasks,#finance,#settings{min-width:0}
+#calendar .panel,#vertical .panel,#week .panel,#tasks .panel,#finance .panel,#settings .panel{min-width:0;overflow-wrap:anywhere}
+#calendar :is(button,select,input),#vertical :is(button,select,input),#week :is(button,select,input),#tasks :is(button,select,input),#finance :is(button,select,input),#settings :is(button,select,input){max-width:100%}
+#calendar :is(button,input,select,textarea):focus-visible,#vertical :is(button,input,select,textarea):focus-visible,#week :is(button,input,select,textarea):focus-visible,#tasks :is(button,input,select,textarea):focus-visible,#finance :is(button,input,select,textarea):focus-visible,#settings :is(button,input,select,textarea):focus-visible{outline:2px solid var(--pn113-focus);outline-offset:2px}
+#tasks :is(.task-item,.agenda-item),#finance :is(.task-item,.agenda-item){min-width:0;overflow-wrap:anywhere}
+#settings :is(details,section,.panel){scroll-margin-top:76px}
+@media(max-width:600px){
+ #calendar .toolbar,#vertical .toolbar,#week .toolbar,#tasks .toolbar,#finance .toolbar{gap:10px}
+ #calendar .panel,#vertical .panel,#week .panel,#tasks .panel,#finance .panel,#settings .panel{border-radius:14px}
+ #tasks :is(button,.btn),#finance :is(button,.btn),#settings :is(button,.btn){min-height:40px}
+ #tasks :is(input,select,textarea),#finance :is(input,select,textarea),#settings :is(input,select,textarea){font-size:16px}
+ #settings #pn109-settings-nav{padding:12px}
+ #settings #pn109-settings-nav .pn109-links{gap:8px}
+}
+@media(prefers-reduced-motion:reduce){#calendar *,#tasks *,#finance *,#settings *{scroll-behavior:auto!important}}
+@media(max-width:600px){
+ #tasks .pn-task-row{min-width:0;max-width:100%;overflow-wrap:anywhere}
+ #tasks .pn-task-main{min-width:0;flex:1 1 auto;overflow-wrap:anywhere}
+ #tasks .pn60-subtasks{padding-left:12px;max-width:100%;box-sizing:border-box}
+ #tasks .pn60-subtasks label{min-width:0;overflow-wrap:anywhere;align-items:flex-start}
+ #tasks .pn60-subtasks label span{min-width:0}
+ #pn61-tag-tools{align-items:stretch}
+ #pn61-tag-filter{width:100%;min-width:0}
+ #finance .finance-summary{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #finance .finance-summary>div{padding:10px;min-width:0}
+ #finance .finance-summary strong{font-size:clamp(15px,4vw,20px);overflow-wrap:anywhere}
+ #finance .finance-entry{align-items:flex-start;flex-wrap:wrap;gap:8px 12px}
+ #finance .finance-entry>div{min-width:0;max-width:100%}
+ #finance .finance-entry>div:last-child{margin-left:auto}
+ #finance .finance-entry :is(button,select){max-width:100%}
+ #finance .finance-category-row{min-width:0;overflow-wrap:anywhere}
+ #calendar .calendar{gap:3px!important}
+ #calendar .day{padding:5px 2px!important;min-height:64px!important;overflow:hidden}
+ #calendar .chip{display:block;min-width:0;max-width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+ #calendar .toolbar{flex-wrap:wrap;row-gap:8px}
+ #selectedAgenda{min-width:0;overflow-wrap:anywhere}
+}
+@media(max-width:370px){
+ #finance .finance-summary{gap:6px}
+ #finance .finance-summary>div{padding:8px}
+ #calendar .day{min-height:57px!important;font-size:12px!important}
+ #calendar .chip{font-size:9px!important}
+}
+@media(max-width:600px){
+ .shell,.layout,main,.view,.view>.panel{min-width:0;max-width:100%;box-sizing:border-box}
+ .view .toolbar{min-width:0;max-width:100%}
+ .view .toolbar>div{min-width:0;max-width:100%}
+ .view .toolbar h2,.view .toolbar strong{overflow-wrap:anywhere}
+ #tasks #taskList,#tasks #pn51-overview,#tasks #pn55-deadlines,#finance #financeRecords,#finance #financeFixedList{min-width:0;max-width:100%;overflow-wrap:anywhere}
+ #finance .formgrid,#finance .field,#finance form,#finance .finance-summary{min-width:0;max-width:100%}
+ #finance .formgrid>*{min-width:0}
+ #finance input,#finance select,#finance textarea{min-width:0;width:100%;box-sizing:border-box}
+ #finance .finance-chart{max-width:100%;overflow-x:auto;overscroll-behavior-x:contain}
+ #calendar #calendarGrid{min-width:0;width:100%;grid-template-columns:repeat(7,minmax(0,1fr))}
+ #calendar #calendarGrid>*{min-width:0}
+ #calendar #selectedAgenda{min-width:0}
+ #settings .panel,#settings details{max-width:100%;min-width:0}
+ #settings input,#settings textarea,#settings select{max-width:100%;box-sizing:border-box}
+}
+@media(max-width:370px){
+ #finance .finance-summary strong{font-size:14px}
+ #calendar #calendarGrid{gap:2px!important}
+ #calendar .day{padding-inline:1px!important}
+}
+</style><style id="pn120-style">
+#pn120-import{margin:18px 0;padding:16px;border:1px solid #315d61;border-radius:14px;background:#14272a}#pn120-import h3{margin:0 0 9px}#pn120-import .pn120-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}#pn120-import label{display:block;font-size:13px;margin:8px 0 4px}#pn120-import input,#pn120-import textarea,#pn120-import select{width:100%;max-width:100%;box-sizing:border-box}#pn120-import textarea{min-height:100px}#pn120-preview{max-height:190px;max-width:100%;object-fit:contain;display:none;margin:10px 0;border-radius:8px}#pn120-status{font-size:13px;color:#b4d4d4;margin:8px 0}#pn120-import .pn120-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}#pn120-import .pn120-actions button{min-height:44px}#pn120-import .pn120-hint{font-size:12px;color:#b4d4d4}@media(max-width:420px){#pn120-import{padding:12px}#pn120-import .pn120-grid{grid-template-columns:1fr}}
+</style></head><body><header><div><h1><span class="pn-logo-mark" aria-hidden="true">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC88</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input style="max-width:180px" type="date" id="verticalDate" onchange="renderVertical()"></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button type="button" class="btn" id="schoolEdit" onclick="editSchoolDay()">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div id="weekTimeline" class="week-scroll"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input type="month" id="financeMonth" style="max-width:190px" onchange="renderFinance()"></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p class="muted" id="financeActualStatus" aria-live="polite"></p><section id="pn120-import" aria-labelledby="pn120-title"><h3 id="pn120-title">📷 レシート・PayPay画像から入力（試験版）</h3><p class="pn120-hint">撮影または画像を選択してください。まず端末の文字認識を試し、非対応の場合は日本語OCRを利用できます。日本語OCRの初回利用時はインターネット経由でプログラム・言語データを取得します。画像の認識処理は端末内で行い、画像自体はOCRサービスへ送信しません。</p><div class="pn120-grid"><div><label for="pn120-image">レシート・支払い画面</label><input id="pn120-image" type="file" accept="image/*" capture="environment"><img id="pn120-preview" alt="選択した画像のプレビュー"></div><div><label for="pn120-text">読み取った文字（編集可）</label><textarea id="pn120-text" placeholder="例：2026/11/13　コンビニ　合計 ¥580"></textarea></div></div><div class="pn120-actions"><button type="button" class="btn" id="pn120-ocr">画像から文字を読み取る</button><button type="button" class="btn" id="pn121-ocr">日本語OCRで読み取る（初回通信あり）</button><button type="button" class="btn" id="pn120-parse">文字から項目を抽出</button></div><p id="pn120-status" role="status" aria-live="polite">画像を選ぶとここに状態を表示します。</p><div class="pn120-grid"><div><label for="pn120-date">日付</label><input type="date" id="pn120-date"></div><div><label for="pn120-amount">支払額（円）</label><input type="number" min="1" max="999999999" id="pn120-amount"></div><div><label for="pn120-shop">店舗・支払先</label><input id="pn120-shop" maxlength="100"></div><div><label for="pn120-category">カテゴリ</label><select id="pn120-category"></select></div></div><div class="pn120-actions"><button type="button" class="primary" id="pn120-apply">確認して家計簿入力欄へ反映</button><button type="button" class="btn" id="pn120-clear">画像を破棄</button></div><p class="pn120-hint">日本語OCRは初回の言語データ取得に時間がかかります。通信ができない場合は手入力してください。誤認識を防ぐため自動保存はしません。内容を確認してから家計簿の「記録する」を押してください。同日・同額・同じ店舗の記録がある場合は警告します。</p></section><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input type="date" id="financeDate" required></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input type="number" id="financeAmount" min="1" max="999999999" step="1" required></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input type="number" id="financeBudget" min="0" step="1" placeholder="未設定"></div><div class="field" style="justify-content:end"><button class="btn" type="button" onclick="saveFinanceBudget()">予算を保存</button></div></div><div id="financeBudgetStatus" class="muted"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required></div><div class="field"><label for="fixedAmount">月額（円）</label><input type="number" id="fixedAmount" min="1" step="1" required></div><div class="field"><label for="fixedDay">毎月の日付</label><input type="number" id="fixedDay" min="1" max="31" value="1" required></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div id="financeChart" class="finance-chart" role="img" aria-label="直近6か月の収入と支出の棒グラフ"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" type="number" step="1" value="0"></div></div><button class="btn" type="button" onclick="addAccount()">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" type="date" required></div><div class="field"><label>金額（円）</label><input id="transferAmount" type="number" min="1" step="1" required></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" type="number" min="0" step="1"></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input type="date" id="studyDate" required></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" type="number" min="1" max="1440" required></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required></div><div class="field"><label>期限</label><input id="goalDate" type="date"></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" type="number" min="0" max="100" value="0" required></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><p id="googleStatus" class="hint" aria-live="polite">未接続</p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
 <label><input type="checkbox" id="autoPullToggle" onchange="setAutoPull(this.checked)"> 自動取得を有効にする</label>
 <p id="autoPullStatus" class="hint" aria-live="polite">自動取得は停止中</p>
@@ -608,7 +677,7 @@ function finishVerticalResize(){
 }
 function cancelVerticalResize(){cleanupVerticalResize();renderVertical()}
 function cleanupVerticalResize(){if(!verticalResize)return;const h=verticalResize.handle;h.onpointermove=h.onpointerup=h.onpointercancel=null;verticalResize=null}
-function addTask(){const name=prompt('タスク名を入力してください');if(!name?.trim())return;const due=prompt('期限（YYYY-MM-DD、空欄可）','')||'';if(due&&!/^\d{4}-\d{2}-\d{2}$/.test(due)){toast('期限の形式が正しくありません');return}data.tasks.push({id:crypto.randomUUID(),name:name.trim(),due,done:false,priority:'通常'});save()}function renderTasks(){$('taskList').innerHTML=data.tasks.length?data.tasks.map(t=>`<div class="task-item"><label><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"> <span style="${t.done?'text-decoration:line-through;color:#94a3b8':''}">${esc(t.name)}</span><span class="muted"> ${esc(t.due)}</span></label><button class="btn danger" onclick="removeTask('${t.id}')">削除</button></div>`).join(''):'<div class="empty">タスクを追加しましょう</div>'}function toggleTask(id){const t=data.tasks.find(x=>x.id===id);if(t)t.done=!t.done;save()}function removeTask(id){data.tasks=data.tasks.filter(x=>x.id!==id);save()}function addHabit(){const name=prompt('毎日続けたい習慣は？');if(name?.trim()){data.habits.push({id:crypto.randomUUID(),name:name.trim()});save()}}function renderHabits(){$('habitDay').textContent=`${today()} の達成状況`;$('habitList').innerHTML=data.habits.length?data.habits.map(h=>`<label class="habit"><input type="checkbox" ${data.checks[today()+'_'+h.id]?'checked':''} onchange="toggleHabit('${h.id}',this.checked)"><span>${esc(h.name)}</span><button class="btn danger" style="margin-left:auto" onclick="event.preventDefault();removeHabit('${h.id}')">削除</button></label>`).join(''):'<div class="empty">習慣を追加しましょう</div>'}function toggleHabit(id,checked){data.checks[today()+'_'+id]=checked;save()}function removeHabit(id){data.habits=data.habits.filter(h=>h.id!==id);save()}function parseAI(){let s=$('aiText').value.trim();if(!s)return toast('予定を入力してください');let d=new Date(),date=today();if(/明日/.test(s)){d.setDate(d.getDate()+1);date=localDate(d)}else if(/明後日/.test(s)){d.setDate(d.getDate()+2);date=localDate(d)}else{const m=s.match(/(20\d\d)[\/-](\d{1,2})[\/-](\d{1,2})/);if(m)date=`${m[1]}-${pad(+m[2])}-${pad(+m[3])}`}const t=s.match(/(\d{1,2})[:：時](\d{1,2})?/),duration=s.match(/(\d+)\s*分/),hours=s.match(/(\d+(?:\.\d+)?)\s*時間/);let h=t?+t[1]:9,min=t?+(t[2]||0):0;if(h>23||min>59)return toast('時刻を確認してください');const start=new Date(`${date}T${pad(h)}:${pad(min)}`);const end=new Date(+start+(duration?+duration[1]:hours?+hours[1]*60:60)*60000);let name=s.replace(/明後日|明日|今日/g,'').replace(/20\d\d[\/-]\d{1,2}[\/-]\d{1,2}/g,'').replace(/\d{1,2}[:：時]\d{0,2}/g,'').replace(/\d+(?:\.\d+)?\s*(分|時間)/g,'').trim()||'新しい予定';openEvent(null,date);$('eventName').value=name;$('eventStart').value=localTime(start);$('eventEnd').value=localTime(end);toast('内容を確認して保存してください')}function saveClient(){data.googleClient=$('googleClient').value.trim();save();toast('クライアントIDを保存しました')}function requestNotify(){if(!('Notification'in window))return toast('この環境では通知非対応です');Notification.requestPermission().then(x=>toast('通知設定: '+x))}const notified=new Set();setInterval(()=>{if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date();for(const day of [today(),localDate(new Date(+now+86400000))])for(const e of occurrences(day)){const mins=+e.reminder;if(!mins)continue;const when=+e.instanceStart-mins*60000;const key=e.id+'_'+when;if(when<=+now&&+now-when<60000&&!notified.has(key)){notified.add(key);new Notification('予定のお知らせ',{body:e.name+'（'+mins+'分前）'})}}},30000);function exportData(){const blob=new Blob([JSON.stringify({...data,categoryLearning,schoolSettings,googleSyncMeta:syncMeta},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='plannote-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}function validateBackup(obj){
+function addTask(){const name=prompt('タスク名を入力してください');if(!name?.trim())return;const due=prompt('期限（YYYY-MM-DD、空欄可）','')||'';if(due&&!/^\d{4}-\d{2}-\d{2}$/.test(due)){toast('期限の形式が正しくありません');return}data.tasks.push({id:crypto.randomUUID(),name:name.trim(),due,done:false,priority:'通常'});save()}function renderTasks(){$('taskList').innerHTML=data.tasks.length?data.tasks.map(t=>`<div class="task-item"><label><input type="checkbox" ${t.done?'checked':''} onchange="toggleTask('${t.id}')"> <span style="${t.done?'text-decoration:line-through;color:#94a3b8':''}">${esc(t.name)}</span><span class="muted"> ${esc(t.due)}</span></label><button class="btn danger" onclick="removeTask('${t.id}')">削除</button></div>`).join(''):'<div class="empty">タスクを追加しましょう</div>'}function toggleTask(id){const t=data.tasks.find(x=>x.id===id);if(t)t.done=!t.done;save()}function removeTask(id){data.tasks=data.tasks.filter(x=>x.id!==id);save()}function addHabit(){const name=prompt('毎日続けたい習慣は？');if(name?.trim()){data.habits.push({id:crypto.randomUUID(),name:name.trim()});save()}}function renderHabits(){$('habitDay').textContent=`${today()} の達成状況`;$('habitList').innerHTML=data.habits.length?data.habits.map(h=>`<label class="habit"><input type="checkbox" ${data.checks[today()+'_'+h.id]?'checked':''} onchange="toggleHabit('${h.id}',this.checked)"><span>${esc(h.name)}</span><button class="btn danger" style="margin-left:auto" onclick="event.preventDefault();removeHabit('${h.id}')">削除</button></label>`).join(''):'<div class="empty">習慣を追加しましょう</div>'}function toggleHabit(id,checked){data.checks[today()+'_'+id]=checked;save()}function removeHabit(id){data.habits=data.habits.filter(h=>h.id!==id);save()}function parseAI(){let s=$('aiText').value.trim();if(!s)return toast('予定を入力してください');let d=new Date(),date=today();if(/明日/.test(s)){d.setDate(d.getDate()+1);date=localDate(d)}else if(/明後日/.test(s)){d.setDate(d.getDate()+2);date=localDate(d)}else{const m=s.match(/(20\d\d)[\/-](\d{1,2})[\/-](\d{1,2})/);if(m)date=`${m[1]}-${pad(+m[2])}-${pad(+m[3])}`}const t=s.match(/(\d{1,2})[:：時](\d{1,2})?/),duration=s.match(/(\d+)\s*分/),hours=s.match(/(\d+(?:\.\d+)?)\s*時間/);let h=t?+t[1]:9,min=t?+(t[2]||0):0;if(h>23||min>59)return toast('時刻を確認してください');const start=new Date(`${date}T${pad(h)}:${pad(min)}`);const end=new Date(+start+(duration?+duration[1]:hours?+hours[1]*60:60)*60000);let name=s.replace(/明後日|明日|今日/g,'').replace(/20\d\d[\/-]\d{1,2}[\/-]\d{1,2}/g,'').replace(/\d{1,2}[:：時]\d{0,2}/g,'').replace(/\d+(?:\.\d+)?\s*(分|時間)/g,'').trim()||'新しい予定';openEvent(null,date);$('eventName').value=name;$('eventStart').value=localTime(start);$('eventEnd').value=localTime(end);toast('内容を確認して保存してください')}function saveClient(){data.googleClient=$('googleClient').value.trim();save();toast('クライアントIDを保存しました')}function requestNotify(){if(!('Notification'in window))return toast('この環境では通知非対応です');Notification.requestPermission().then(x=>toast('通知設定: '+x))}const notified=new Set();setInterval(()=>{if(!('Notification'in window)||Notification.permission!=='granted')return;const now=new Date();for(const day of [today(),localDate(new Date(+now+86400000))])for(const e of occurrences(day)){const mins=+e.reminder;if(!mins)continue;const when=+e.instanceStart-mins*60000;const key=e.id+'_'+when;if(when<=+now&&+now-when<60000&&!notified.has(key)){notified.add(key);new Notification('予定のお知らせ',{body:e.name+'（'+mins+'分前）'})}}},30000);function exportData(){const blob=new Blob([JSON.stringify({...data,categoryLearning,schoolSettings,googleSyncMeta:syncMeta,receiptImageFingerprints:JSON.parse(localStorage.getItem('plannote_receipt_image_fingerprints_v1')||'{}')},null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='plannote-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}function validateBackup(obj){
  if(!obj||typeof obj!== 'object'||Array.isArray(obj))throw Error('バックアップの形式が不正です');
  for(const k of ['events','tasks','habits'])if(!Array.isArray(obj[k]))throw Error(k+' が不正です');
  // Guard against oversized, malformed, or ambiguous core records before replacing storage.
@@ -636,6 +705,13 @@ function addTask(){const name=prompt('タスク名を入力してください');
   if(!obj.googleSyncMeta||typeof obj.googleSyncMeta!=='object'||Array.isArray(obj.googleSyncMeta))throw Error('Google同期管理情報が不正です');
   for(const [id,meta] of Object.entries(obj.googleSyncMeta)){
    if(!id||!meta||typeof meta!=='object'||Array.isArray(meta)||typeof meta.updated!=='string'||typeof meta.local!=='string')throw Error('Google同期管理情報の項目が不正です');
+  }
+ }
+ if('receiptImageFingerprints' in obj){
+  const entries=obj.receiptImageFingerprints;
+  if(!entries||typeof entries!=='object'||Array.isArray(entries)||Object.keys(entries).length>5000)throw Error('画像登録履歴の形式・件数が不正です');
+  for(const [hash,entry] of Object.entries(entries)){
+   if(!/^[0-9a-f]{64}$/.test(hash)||!entry||typeof entry!=='object'||Array.isArray(entry)||typeof entry.date!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(entry.date)||!Number.isSafeInteger(Number(entry.amount))||Number(entry.amount)<1||Number(entry.amount)>999999999||typeof entry.memo!=='string'||entry.memo.length>120)throw Error('画像登録履歴に不正な項目があります');
   }
  }
  const validMoney=x=>Number.isSafeInteger(x)&&x>=0&&x<=999999999;
@@ -721,7 +797,7 @@ async function importData(ev){
   const obj=JSON.parse(await f.text());validateBackup(obj);
   // Synchronization metadata lives in its own storage key, not in the main app data.
   // Legacy backups without metadata must not inherit an unrelated device's sync baseline.
-  const {googleSyncMeta:importedSyncMeta,...appBackup}=obj;
+  const {googleSyncMeta:importedSyncMeta,receiptImageFingerprints:importedImageHashes,...appBackup}=obj;
   const next={...initial,...appBackup};
   for(const k of ['finance','financeFixed','financeAccounts','financeTransfers','studySessions','studyGoals'])if(!Array.isArray(next[k]))next[k]=[];
   for(const k of ['financeCategoryBudgets','financeBudgets'])if(!next[k]||typeof next[k]!=='object'||Array.isArray(next[k]))next[k]={};
@@ -735,6 +811,7 @@ async function importData(ev){
   updates.push([CATEGORY_LEARNING_KEY,JSON.stringify(restoredLearning)]);
   updates.push([SCHOOL_KEY,JSON.stringify(restoredSchool)]);
   updates.push([syncMetaKey,JSON.stringify(importedSyncMeta??{})]);
+  updates.push(['plannote_receipt_image_fingerprints_v1',JSON.stringify(importedImageHashes??{})]);
   pn75AtomicRestore(updates);
   // A validated backup can recover from a corrupt startup payload.
   if(pn74DamagedReason){
@@ -746,7 +823,7 @@ async function importData(ev){
   categoryLearning=restoredLearning;
   schoolSettings={dates:{},times45:null,...restoredSchool,dates:restoredSchool.dates??{}};
   syncMeta=importedSyncMeta??{};
-  render();toast('バックアップを復元しました');
+  render();window.dispatchEvent(new Event('pn125-history-updated'));toast('バックアップを復元しました');
  }catch(error){console.error('Backup import failed:',error);toast('復元できません: '+String(error?.message||'ファイルを確認してください').slice(0,100))}
  finally{ev.target.value=''}
 }
@@ -1614,7 +1691,18 @@ sync();
   pendingRefresh=true;
   requestAnimationFrame(()=>{pendingRefresh=false;update()});
  });
- observer.observe(taskList,{childList:true,subtree:true});update();
+ // renderTasks() replaces the direct children of #taskList. Avoid observing every descendant.
+ observer.observe(taskList,{childList:true});
+ // Refresh date-sensitive counts when returning to the app after a day change.
+ let lastDay=localDay();
+ document.addEventListener('visibilitychange',()=>{
+  if(document.visibilityState!=='visible')return;
+  const day=localDay();if(day!==lastDay){lastDay=day;update()}
+ });
+ window.addEventListener('pageshow',()=>{
+  const day=localDay();if(day!==lastDay){lastDay=day;update()}
+ });
+ update();
 })();
 </script>
 
@@ -1776,7 +1864,7 @@ remind.closest('label')?.after(note);
 function refresh(){const required=remind.value!=='none';due.setAttribute('aria-required',String(required));time.setAttribute('aria-required',String(required));note.textContent=required?'通知を使うには締切日と時刻を設定してください。アプリ終了中の通知は未対応です。':'リマインダーは任意です。アプリ終了中の通知は未対応です。'}
 remind.addEventListener('change',refresh);dlg.addEventListener('close',()=>{document.activeElement?.blur?.()});
 dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
-const obs=new MutationObserver(()=>{if(dlg.open){refresh();requestAnimationFrame(()=>name.focus({preventScroll:true}))}});
+const obs=new MutationObserver(()=>{if(dlg.open){refresh();requestAnimationFrame(()=>{if(dlg.open)name.focus({preventScroll:true})})}});
 obs.observe(dlg,{attributes:true,attributeFilter:['open']});
 refresh();
 
@@ -2424,9 +2512,9 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 <script id="pn85-script">(()=>{'use strict';
  const update=()=>{
-  const title=document.querySelector('header h1 small');if(title)title.textContent='v1.0.0 RC100';
-  document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC100'):document.title+' · RC100';
-  const labels={'pn53-version':'PlanNote RC100 · タスク整合性診断','pn52-build-note':'PlanNote RC100 · 読み取り専用の整合性診断を追加','pn49-build':'アプリ版: RC100'};
+  const title=document.querySelector('header h1 small');if(title)title.textContent='v1.0.0 RC103';
+  document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC103'):document.title+' · RC103';
+  const labels={'pn53-version':'PlanNote RC103 · 表示整合性診断','pn52-build-note':'PlanNote RC103 · 実UI検索診断を追加','pn49-build':'アプリ版: RC103'};
   for(const [id,value] of Object.entries(labels)){const el=document.getElementById(id);if(el)el.textContent=value}
  };
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});else update();
@@ -2434,11 +2522,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 
 
 
-<style id="pn100-style">
-#pn100-check{border:1px solid #3a6470;border-radius:12px;padding:13px;background:#172c34;color:#e6f4f5}
-#pn100-check button{min-height:44px;margin:9px 0}
-#pn100-result{white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}
-</style>
+
 <script id="pn100-script">(()=>{'use strict';
  function init(){
   const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
@@ -2470,4 +2554,776 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();</script>
 
+
+
+<script id="pn101-script">(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn101-check'))return;
+  const section=document.createElement('section');section.id='pn101-check';
+  const title=document.createElement('h3');title.textContent='タスク表示・操作UI診断';
+  const desc=document.createElement('p');desc.textContent='実データを書き換えず、タスク一覧・検索・タグ・並べ替えの構成を確認します。操作の自動実行はしません。';
+  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='表示・操作UIを診断';
+  const output=document.createElement('div');output.id='pn101-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');
+  section.append(title,desc,button,output);target.append(section);
+  button.addEventListener('click',()=>{
+   const rows=[];const check=(label,fn)=>{try{const value=!!fn();rows.push((value?'✓ ':'✗ ')+label)}catch(err){rows.push('✗ '+label+'：'+String(err&&err.message||err))}};
+   const tasks=typeof data!=='undefined'&&Array.isArray(data.tasks)?data.tasks:null;
+   if(!tasks){output.textContent='タスクデータを取得できません。';return}
+   const before=JSON.stringify(tasks);
+   const list=document.getElementById('taskList');
+   const rendered=list?Array.from(list.querySelectorAll('.pn-task-row')):[];
+   const ids=new Set(tasks.map(t=>String(t.id)));
+   const rowIds=rendered.map(row=>row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1]).filter(Boolean);
+   check('タスク一覧の表示領域がある',()=>!!list);
+   check('タスク検索欄がある',()=>!!document.getElementById('pn53-search'));
+   check('タグ絞り込み欄がある',()=>!!document.getElementById('pn61-tag-filter'));
+   check('並べ替え欄がある',()=>!!document.getElementById('pn50-sort'));
+   check('並べ替えに複数の選択肢がある',()=>document.querySelectorAll('#pn50-sort option').length>=2);
+   check('タスク入力フォームがある',()=>!!document.getElementById('pn-task-form'));
+   check('一覧内の編集ボタンが実データに対応',()=>rowIds.every(id=>ids.has(id)));
+   check('一覧内の編集対象IDが重複していない',()=>new Set(rowIds).size===rowIds.length);
+   check('診断中にタスクデータを変更していない',()=>JSON.stringify(tasks)===before);
+   const passed=rows.filter(x=>x.startsWith('✓')).length;
+   output.textContent=rows.join('\n')+'\n'+passed+'/'+rows.length+'項目合格。表示中のタスク行：'+rendered.length+'件。診断は追加・編集・削除・保存を実行しません。';
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
+
+
+<script id="pn102-script">(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn102-check'))return;
+  const section=document.createElement('section');section.id='pn102-check';
+  const title=document.createElement('h3');title.textContent='RC102 テストデータ操作診断';
+  const desc=document.createElement('p');desc.textContent='架空のタスクをメモリ内だけで追加・編集・完了・検索・並べ替え・削除し、結果を確認します。実際のタスクや保存領域には触れません。';
+  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='テストデータで診断';
+  const output=document.createElement('div');output.id='pn102-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');
+  section.append(title,desc,button,output);target.append(section);
+  button.addEventListener('click',()=>{
+   const rows=[];const check=(label,fn)=>{try{const ok=!!fn();rows.push((ok?'✓ ':'✗ ')+label)}catch(err){rows.push('✗ '+label+'：'+String(err&&err.message||err))}};
+   const real=typeof data!=='undefined'&&Array.isArray(data.tasks)?data.tasks:null;
+   const snapshot=real?JSON.stringify(real):null;
+   const items=[{id:'test-a',title:'数学',done:false,priority:2,tags:['勉強']},{id:'test-b',title:'買い物',done:false,priority:1,tags:['生活']}];
+   check('初期データ2件',()=>items.length===2);
+   items.push({id:'test-c',title:'英語',done:false,priority:3,tags:['勉強']});
+   check('タスク追加',()=>items.length===3&&items.some(x=>x.id==='test-c'));
+   const edited=items.find(x=>x.id==='test-c');if(edited)edited.title='英語復習';
+   check('タスク編集',()=>items.find(x=>x.id==='test-c')?.title==='英語復習');
+   if(edited)edited.done=true;
+   check('完了状態の更新',()=>items.find(x=>x.id==='test-c')?.done===true);
+   check('キーワード検索',()=>items.filter(x=>x.title.includes('英語')).map(x=>x.id).join(',')==='test-c');
+   check('タグ絞り込み',()=>items.filter(x=>x.tags.includes('勉強')).length===2);
+   check('優先度順',()=>items.slice().sort((a,b)=>b.priority-a.priority).map(x=>x.id).join(',')==='test-c,test-a,test-b');
+   const index=items.findIndex(x=>x.id==='test-b');if(index!==-1)items.splice(index,1);
+   check('タスク削除',()=>items.length===2&&!items.some(x=>x.id==='test-b'));
+   check('テスト用IDが実データに混入していない',()=>!real||!real.some(x=>['test-a','test-b','test-c'].includes(String(x.id))));
+   check('実データが診断前後で一致',()=>!real||JSON.stringify(real)===snapshot);
+   const passed=rows.filter(x=>x.startsWith('✓')).length;
+   output.textContent=rows.join('\n')+'\n'+passed+'/'+rows.length+'項目合格。これは独立したテストデータの操作確認で、アプリ本体の操作経路のテストではありません。';
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
+<script id="pn103-script">
+(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn103-check'))return;
+  const section=document.createElement('section');section.id='pn103-check';
+  const title=document.createElement('h3');title.textContent='RC103 実UI検索診断';
+  const desc=document.createElement('p');desc.textContent='検索欄に一時的な検査文字列を入力し、実際の一覧が絞り込まれるかを確認します。終了後は検索条件を戻します。タスクデータは変更しません。';
+  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='実UIの検索動作を診断';
+  const output=document.createElement('div');output.id='pn103-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');
+  section.append(title,desc,button,output);target.append(section);
+  const settle=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  button.addEventListener('click',async()=>{
+   if(button.disabled)return;
+   const input=document.getElementById('pn53-search'),list=document.getElementById('taskList');
+   if(!input||!list){output.textContent='診断不可：検索欄または一覧が見つかりません。';return}
+   const rows=Array.from(list.querySelectorAll('.pn-task-row'));
+   if(!rows.length){output.textContent='診断保留：表示中のタスクがありません。タスクを表示してから再実行してください。';return}
+   const before=typeof data!=='undefined'&&Array.isArray(data.tasks)?JSON.stringify(data.tasks):null;
+   const old=input.value,focus=document.activeElement===input;
+   button.disabled=true;output.textContent='検索結果を検証しています…';
+   try{
+    input.value='__plannote_rc103_nonmatching_7f4e2c__';
+    input.dispatchEvent(new Event('input',{bubbles:true}));
+    await settle();await settle();
+    const visible=Array.from(list.querySelectorAll('.pn-task-row')).filter(row=>row.getClientRects().length>0&&getComputedStyle(row).display!=='none');
+    const hidden=visible.length===0;
+    output.textContent=(hidden?'✓':'✗')+' 存在しないキーワードで表示行が0件になる：'+visible.length+'件\n';
+   }catch(error){output.textContent='診断エラー：'+String(error&&error.message||error)+'\n'}
+   finally{
+    input.value=old;input.dispatchEvent(new Event('input',{bubbles:true}));
+    await settle();await settle();
+    const unchanged=before===null||(typeof data!=='undefined'&&JSON.stringify(data.tasks)===before);
+    output.textContent+='\n'+(unchanged?'✓':'✗')+' タスクデータが変更されていない';
+    output.textContent+='\n検索文字列を元に戻しました。表示結果が戻らない場合はTo Doタブを開き直してください。';
+    if(focus)input.focus();button.disabled=false;
+   }
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<script id="pn104-script">
+(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn104-check'))return;
+  const section=document.createElement('section');section.id='pn104-check';
+  const title=document.createElement('h3');title.textContent='RC104 実UI並べ替え・復元診断';
+  const desc=document.createElement('p');desc.textContent='実際の並べ替え欄で名前順・優先度順を検査し、元の並び順設定へ復元します。タスクデータは変更しません。';
+  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='並べ替えと復元を診断';
+  const output=document.createElement('div');output.id='pn104-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');output.style.whiteSpace='pre-wrap';
+  section.append(title,desc,button,output);target.append(section);
+  const settle=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  button.addEventListener('click',async()=>{
+   if(button.disabled)return;
+   const sort=document.getElementById('pn50-sort'),list=document.getElementById('taskList');
+   if(!sort||!list||typeof data==='undefined'||!Array.isArray(data.tasks)){output.textContent='診断不可：並べ替え欄・タスク一覧・データが見つかりません。';return}
+   const getIds=()=>[...list.querySelectorAll('.pn-task-row')].map(row=>row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1]).filter(Boolean);
+   const beforeIds=getIds(),beforeData=JSON.stringify(data.tasks),old=sort.value;
+   if(beforeIds.length<2){output.textContent='診断保留：2件以上のタスクを登録してから実行してください。';return}
+   const byId=new Map(data.tasks.map((t,i)=>[String(t.id),{task:t,index:i}]));
+   const rank={'最優先':0,'高':0,'通常':1,'中':1,'低':2};
+   const expected=mode=>beforeIds.slice().sort((a,b)=>{
+    const x=byId.get(a),y=byId.get(b);if(!x||!y)return 0;
+    let v=Number(!!x.task.done)-Number(!!y.task.done);
+    if(v)return v;
+    if(mode==='priority')v=(rank[x.task.priority]??1)-(rank[y.task.priority]??1);
+    else if(mode==='name')v=String(x.task.name||'').localeCompare(String(y.task.name||''),'ja');
+    return v||x.index-y.index;
+   });
+   const results=[];button.disabled=true;output.textContent='診断中…';
+   try{
+    for(const mode of ['name','priority']){
+     sort.value=mode;sort.dispatchEvent(new Event('change',{bubbles:true}));await settle();
+     const actual=getIds(),want=expected(mode);
+     results.push((actual.join('\u0000')===want.join('\u0000')?'✓':'✗')+' '+(mode==='name'?'名前順':'優先度順')+'の表示順');
+    }
+   }catch(error){results.push('✗ 診断エラー：'+String(error&&error.message||error))}
+   finally{
+    sort.value=old;sort.dispatchEvent(new Event('change',{bubbles:true}));await settle();
+    const restored=getIds(),unchanged=JSON.stringify(data.tasks)===beforeData;
+    results.push((restored.join('\u0000')===beforeIds.join('\u0000')?'✓':'✗')+' 元の表示順に復元');
+    results.push((sort.value===old?'✓':'✗')+' 並べ替え設定を復元');
+    results.push((unchanged?'✓':'✗')+' タスクデータに変更なし');
+    results.push('※同順位タスクは元データの登録順で判定します。');
+    output.textContent=results.join('\n');button.disabled=false;
+   }
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+
+<script id="pn105-script">
+(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn105-check'))return;
+  const section=document.createElement('section');section.id='pn105-check';
+  const heading=document.createElement('h3');heading.textContent='RC105 検索・タグ・並べ替えの組み合わせ診断';
+  const desc=document.createElement('p');desc.textContent='実際のTo Do一覧で検索・タグ絞り込み・並べ替えを組み合わせて確認します。診断終了時に設定を戻し、タスクは保存・変更しません。';
+  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='組み合わせを診断';
+  const output=document.createElement('div');output.id='pn105-result';output.setAttribute('role','status');output.setAttribute('aria-live','polite');output.style.whiteSpace='pre-wrap';
+  section.append(heading,desc,button,output);target.append(section);
+  const settle=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  const update=(el,type)=>el.dispatchEvent(new Event(type,{bubbles:true}));
+  button.addEventListener('click',async()=>{
+   if(button.disabled)return;
+   const search=document.getElementById('pn53-search'),tag=document.getElementById('pn61-tag-filter'),sort=document.getElementById('pn50-sort'),list=document.getElementById('taskList');
+   if(!search||!tag||!sort||!list||typeof data==='undefined'||!Array.isArray(data.tasks)){output.textContent='診断不可：必要なUIまたはタスクデータがありません。';return}
+   const snapshot=JSON.stringify(data.tasks),oldSearch=search.value,oldTag=tag.value,oldSort=sort.value;
+   const filterButtons=[...document.querySelectorAll('#pn47-tools button[data-filter]')];
+   const active=filterButtons.find(x=>x.getAttribute('aria-pressed')==='true');
+   const all=filterButtons.find(x=>x.dataset.filter==='all');
+   const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));
+   const rows=()=>[...list.querySelectorAll('.pn-task-row')];
+   const idOf=row=>row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];
+   const visible=()=>rows().filter(row=>!row.hidden&&row.style.display!=='none');
+   const report=[];
+   button.disabled=true;output.textContent='組み合わせ診断中…';
+   try{
+    if(all)all.click();
+    search.value='';update(search,'input');tag.value='';update(tag,'change');await settle();await settle();
+    const tagged=data.tasks.find(t=>Array.isArray(t.tags)&&t.tags.length&&[...tag.options].some(o=>o.value===t.tags[0]));
+    if(!tagged){report.push('－ タグ付きタスクがないためタグ併用テストは保留');}
+    else{
+     const chosen=tagged.tags[0];tag.value=chosen;update(tag,'change');await settle();await settle();
+     const tagRows=visible();
+     const tagOK=tagRows.length>0&&tagRows.every(row=>taskById.get(String(idOf(row)))?.tags?.includes(chosen));
+     report.push((tagOK?'✓':'✗')+' タグ絞り込みの結果');
+     search.value=String(tagged.name||'');update(search,'input');await settle();await settle();
+     const combined=visible();const query=search.value.toLocaleLowerCase('ja-JP');
+     const combinedOK=combined.length>0&&combined.every(row=>{const t=taskById.get(String(idOf(row)));return !!t&&t.tags?.includes(chosen)&&[t.name,t.studySubject,...(t.tags||[])].join(' ').toLocaleLowerCase('ja-JP').includes(query)});
+     report.push((combinedOK?'✓':'✗')+' 検索とタグの同時適用');
+     const ids=combined.map(idOf).filter(Boolean).sort();
+     for(const mode of ['name','priority']){
+      if(![...sort.options].some(o=>o.value===mode)){report.push('－ '+mode+' の並べ替え選択肢なし');continue}
+      sort.value=mode;update(sort,'change');await settle();await settle();
+      const after=visible().map(idOf).filter(Boolean).sort();
+      report.push((after.join('\u0000')===ids.join('\u0000')?'✓':'✗')+' '+(mode==='name'?'名前順':'優先度順')+'への切替後も対象タスクを維持');
+     }
+    }
+   }catch(error){report.push('✗ 診断中のエラー：'+String(error?.message||error))}
+   finally{
+    try{
+     search.value=oldSearch;update(search,'input');tag.value=oldTag;update(tag,'change');sort.value=oldSort;update(sort,'change');
+     if(active)active.click();await settle();await settle();
+     report.push((search.value===oldSearch&&tag.value===oldTag&&sort.value===oldSort?'✓':'✗')+' 検索・タグ・並べ替え設定を復元');
+     report.push((JSON.stringify(data.tasks)===snapshot?'✓':'✗')+' 登録済みタスクデータに変更なし');
+    }catch(error){report.push('✗ 設定の復元に失敗：'+String(error?.message||error))}
+    output.textContent=report.join('\n');button.disabled=false;
+   }
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+
+<script id="pn106-script">
+(()=>{'use strict';
+ function init(){
+  const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
+  if(!target||document.getElementById('pn106-check'))return;
+  const section=document.createElement('section');section.id='pn106-check';
+  const heading=document.createElement('h3');heading.textContent='RC106 診断結果のまとめ';
+  const desc=document.createElement('p');desc.textContent='RC100〜RC105の診断結果をまとめて表示・コピーできます。診断の再実行やデータ変更は行いません。';
+  const run=document.createElement('button');run.type='button';run.className='btn';run.textContent='診断結果を集計';
+  const copy=document.createElement('button');copy.type='button';copy.className='btn';copy.textContent='結果をコピー';copy.disabled=true;
+  const out=document.createElement('pre');out.id='pn106-result';out.setAttribute('role','status');out.setAttribute('aria-live','polite');out.style.cssText='white-space:pre-wrap;overflow-wrap:anywhere;font:inherit;';
+  section.append(heading,desc,run,copy,out);target.append(section);
+  let report='';
+  run.addEventListener('click',()=>{
+   const items=[['RC100 タスク整合性','pn100-result'],['RC101 表示・操作UI','pn101-result'],['RC102 テストデータ操作','pn102-result'],['RC103 実UI検索','pn103-result'],['RC104 並べ替え・復元','pn104-result'],['RC105 組み合わせ','pn105-result']];
+   const lines=['PlanNote RC106 診断結果まとめ',new Date().toLocaleString('ja-JP'),''];
+   let passed=0,failed=0,pending=0,available=0;
+   for(const [label,id] of items){
+    const el=document.getElementById(id);const content=(el?.textContent||'').trim();
+    if(!content){pending++;lines.push('【'+label+'】未実行／結果なし');continue}
+    available++;const ok=(content.match(/✓/g)||[]).length,ng=(content.match(/✗/g)||[]).length;
+    passed+=ok;failed+=ng;
+    lines.push('【'+label+'】 '+(ng?'要確認':ok?'確認結果あり':'判定なし')+' (✓'+ok+' / ✗'+ng+')',content,'');
+   }
+   lines.splice(2,0,'結果あり '+available+'/'+items.length+'件 / ✓ '+passed+' / ✗ '+failed+' / 未実行 '+pending+'件','※ ✓/✗ は診断出力の記号数です。未実行は合格扱いしません。','');
+   report=lines.join('\n');out.textContent=report;copy.disabled=false;
+  });
+  copy.addEventListener('click',async()=>{
+   if(!report)return;
+   try{await navigator.clipboard.writeText(report);copy.textContent='コピーしました';}
+   catch(error){const ta=document.createElement('textarea');ta.value=report;ta.style.cssText='position:fixed;left:-9999px';document.body.append(ta);ta.select();let ok=false;try{ok=document.execCommand('copy')}catch(e){}ta.remove();copy.textContent=ok?'コピーしました':'コピーできませんでした';}
+  });
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+
+<style id="pn107-style">
+#pn107-panel{margin-top:14px;padding:14px;border:1px solid var(--border,#4b5563);border-radius:12px}
+#pn107-panel h3{margin:0 0 8px;font-size:1rem}
+#pn107-panel .pn107-actions{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+#pn107-panel .pn107-item{padding:9px 0;border-top:1px solid rgba(128,128,128,.25)}
+#pn107-panel .pn107-item button{margin-top:5px;max-width:100%;white-space:normal;text-align:left}
+#pn107-panel .pn107-error{color:#fca5a5}
+#pn107-panel .pn107-pending{color:var(--muted,#a1a1aa)}
+#pn107-panel .pn107-ok{color:#86efac}
+</style>
+<script id="pn107-script">
+(()=>{'use strict';
+ function init(){
+  const parent=document.getElementById('pn106-check');
+  if(!parent||document.getElementById('pn107-panel'))return;
+  const panel=document.createElement('section');panel.id='pn107-panel';
+  const heading=document.createElement('h3');heading.textContent='RC107 失敗項目の確認';
+  const intro=document.createElement('p');intro.textContent='RC100〜RC105の結果から失敗・未実行を抽出します。診断の再実行やタスクの変更は行いません。';
+  const actions=document.createElement('div');actions.className='pn107-actions';
+  const refresh=document.createElement('button');refresh.type='button';refresh.className='btn';refresh.textContent='失敗項目を確認';
+  const result=document.createElement('div');result.id='pn107-result';result.setAttribute('role','status');result.setAttribute('aria-live','polite');
+  actions.append(refresh);panel.append(heading,intro,actions,result);parent.append(panel);
+  const diagnostics=[
+   ['RC100 タスク整合性','pn100-result','pn100-check'],
+   ['RC101 表示・操作UI','pn101-result','pn101-check'],
+   ['RC102 テストデータ操作','pn102-result','pn102-check'],
+   ['RC103 実UI検索','pn103-result','pn103-check'],
+   ['RC104 並べ替え・復元','pn104-result','pn104-check'],
+   ['RC105 組み合わせ','pn105-result','pn105-check']
+  ];
+  function render(){
+   result.replaceChildren();let failed=0,pending=0;
+   const summary=document.createElement('p');result.append(summary);
+   for(const [name,id,sectionId] of diagnostics){
+    const output=document.getElementById(id),raw=(output?.textContent||'').trim();
+    const lines=raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+    const errors=lines.filter(x=>x.startsWith('✗'));
+    const waiting=!raw||lines.some(x=>/^(－|-)\s|診断保留|診断不可|未実行/.test(x));
+    if(!errors.length&&!waiting)continue;
+    failed+=errors.length;if(waiting)pending++;
+    const item=document.createElement('div');item.className='pn107-item';
+    const label=document.createElement('strong');label.textContent=name;item.append(label);
+    if(errors.length){for(const line of errors){const p=document.createElement('div');p.className='pn107-error';p.textContent=line;item.append(p)}}
+    if(waiting){const p=document.createElement('div');p.className='pn107-pending';p.textContent=raw?'保留・未判定の項目があります':'未実行';item.append(p)}
+    const section=document.getElementById(sectionId);
+    if(section){const go=document.createElement('button');go.type='button';go.className='btn';go.textContent='この診断を確認';go.addEventListener('click',()=>{
+     const details=section.closest('details');if(details)details.open=true;
+     const fold=document.getElementById('pn81-diagnostics');if(fold){if(fold.tagName==='DETAILS')fold.open=true;const body=fold.querySelector('.pn81-body');if(body)body.hidden=false}
+     section.scrollIntoView({behavior:'smooth',block:'center'});
+    });item.append(go)}
+    result.append(item);
+   }
+   summary.textContent='失敗 '+failed+'項目 / 保留・未実行 '+pending+'診断';
+   if(!failed&&!pending){const p=document.createElement('p');p.className='pn107-ok';p.textContent='記録された診断結果に失敗・保留はありません。これはアプリ全機能の動作保証ではありません。';result.append(p)}
+  }
+  refresh.addEventListener('click',render);
+  const aggregate=parent.querySelector('button');
+  if(aggregate)aggregate.addEventListener('click',()=>queueMicrotask(render));
+  render();
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+
+
+<style id="pn108-style">
+#pn108-devtools{border:1px solid #3b5964;border-radius:12px;background:#10252c;overflow:hidden}
+#pn108-devtools>summary{padding:14px;cursor:pointer;font-weight:700;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+#pn108-devtools>summary::after{content:'⌄';color:#8be4e3;font-size:19px}
+#pn108-devtools[open]>summary::after{content:'⌃'}
+#pn108-devtools>.pn108-content{padding:0 10px 12px;display:grid;gap:12px}
+#pn108-devtools>.pn108-content>*{margin:0;min-width:0;max-width:100%}
+#pn108-devtools .pn108-explain{font-size:13px;color:#a6c6cc;line-height:1.5}
+#pn108-devtools button{min-height:44px}
+</style>
+<script id="pn108-script">(()=>{'use strict';
+ function init(){
+  const fold=document.getElementById('pn81-diagnostics');
+  const body=fold?.querySelector('.pn81-body');
+  if(!body||document.getElementById('pn108-devtools'))return;
+  const ids=['pn100-check','pn101-check','pn102-check','pn103-check','pn104-check','pn105-check','pn106-check'];
+  const targets=ids.map(id=>document.getElementById(id)).filter(el=>el&&body.contains(el));
+  if(!targets.length)return;
+  const group=document.createElement('details');group.id='pn108-devtools';
+  const summary=document.createElement('summary');summary.textContent='開発者向け診断（RC100〜RC107）';
+  const content=document.createElement('div');content.className='pn108-content';
+  const explain=document.createElement('p');explain.className='pn108-explain';
+  explain.textContent='通常の設定には不要な診断です。必要なときだけ開いて実行してください。診断によって検索・並べ替え表示が一時的に変わる場合があります。';
+  content.append(explain);group.append(summary,content);targets[0].before(group);
+  for(const el of targets)content.append(el);
+  const parentSummary=fold.querySelector(':scope > summary');
+  if(parentSummary)parentSummary.textContent='詳細診断・動作チェック';
+  // RC107の「この診断を確認」ボタンは、移動先が内側の折りたたみにある場合も開く。
+  const failures=document.getElementById('pn107-panel');
+  if(failures){failures.addEventListener('click',event=>{
+    if(!(event.target instanceof Element)||!event.target.closest('button'))return;
+    const btn=event.target.closest('button');
+    if(btn.textContent?.trim()!=='この診断を確認')return;
+    group.open=true;fold.open=true;
+  },true)}
+ }
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
+
+
+<style id="pn109-style">
+#pn109-settings-nav{margin:0 0 14px;padding:14px;border:1px solid #36565e;border-radius:14px;background:#112830}
+#pn109-settings-nav h2{font-size:16px;margin:0 0 5px}
+#pn109-settings-nav p{font-size:12px;color:#a8c5cb;margin:0 0 12px;line-height:1.5}
+#pn109-settings-nav .pn109-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+#pn109-settings-nav button{min-height:48px;min-width:0;border:1px solid #42616a;border-radius:10px;background:#1b3942;color:#e7f7f7;font-size:13px;font-weight:650;line-height:1.4;padding:10px 7px;cursor:pointer;touch-action:manipulation}
+#pn109-settings-nav button:focus-visible{outline:3px solid #80dfd6;outline-offset:2px}
+#settings .pn109-target{scroll-margin-top:76px}
+@media(min-width:680px){#pn109-settings-nav .pn109-links{grid-template-columns:repeat(5,minmax(0,1fr))}}
+@media(max-width:380px){#pn109-settings-nav button{font-size:12px;padding:9px 5px}}
+</style>
+<script id="pn109-script">(()=>{'use strict';
+function init(){
+ const settings=document.getElementById('settings');
+ if(!settings||document.getElementById('pn109-settings-nav'))return;
+ const nav=document.createElement('nav');nav.id='pn109-settings-nav';nav.setAttribute('aria-label','設定の項目へ移動');
+ const heading=document.createElement('h2');heading.textContent='設定メニュー';
+ const help=document.createElement('p');help.textContent='目的の項目へすばやく移動できます。設定内容や保存データは変更しません。';
+ const links=document.createElement('div');links.className='pn109-links';
+ const items=[
+  ['Google連携',()=>Array.from(settings.querySelectorAll('h2')).find(e=>e.textContent.includes('Googleカレンダー同期'))?.closest('.panel')],
+  ['アプリの導入',()=>Array.from(settings.querySelectorAll('h2')).find(e=>e.textContent.includes('アプリのインストール'))?.closest('.panel')],
+  ['データ管理',()=>Array.from(settings.querySelectorAll('h2')).find(e=>e.textContent.trim()==='データ管理')?.closest('.panel')],
+  ['通知',()=>Array.from(settings.querySelectorAll('h2')).find(e=>e.textContent.includes('通知について'))?.closest('.panel')],
+  ['詳細診断',()=>document.getElementById('pn81-diagnostics')||document.getElementById('pn108-devtools')]
+ ];
+ for(const [label,locate] of items){
+  const button=document.createElement('button');button.type='button';button.textContent=label;
+  button.addEventListener('click',()=>{
+   const target=locate();if(!target)return;
+   // Open the outer diagnostic container only when explicitly navigating to diagnostics.
+   if(label==='詳細診断'){if(target.tagName==='DETAILS')target.open=true;const inner=document.getElementById('pn108-devtools');if(inner&&target.contains(inner))inner.open=true;}
+   target.classList.add('pn109-target');target.scrollIntoView({behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
+  });links.append(button);
+ }
+ nav.append(heading,help,links);settings.prepend(nav);
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
+
+
+<style id="pn110-style">
+/* Shared settings disclosure styling for Google, install and notification help. */
+#settings :is(.pn110-help,.pn111-info){margin:12px 0 4px;border:1px solid #36545d;border-radius:12px;background:#122c34;overflow:hidden}
+#settings :is(.pn110-help,.pn111-info)>summary{min-height:48px;padding:12px 14px;cursor:pointer;line-height:1.6;color:#d9f5f2;font-size:13px;font-weight:650;touch-action:manipulation}
+#settings :is(.pn110-help,.pn111-info)>summary:focus-visible{outline:3px solid #80dfd6;outline-offset:-3px}
+#settings :is(.pn110-help,.pn111-info)[open]>summary{border-bottom:1px solid #36545d}
+#settings :is(.pn110-help .pn110-help-body,.pn111-info .pn111-info-content){padding:2px 14px 12px}
+#settings :is(.pn110-help .pn110-help-body,.pn111-info .pn111-info-content) p{margin:10px 0;line-height:1.75;overflow-wrap:anywhere}
+#settings :is(.pn110-help .pn110-help-body,.pn111-info .pn111-info-content) p:last-child{margin-bottom:0}
+#settings .pn111-settings-note{font-size:12px;line-height:1.65;color:#b6d3d3;margin:10px 0}
+@media(prefers-reduced-motion:reduce){#settings .pn109-target{scroll-behavior:auto}}
+</style>
+<script id="pn110-script">(()=>{'use strict';
+function init(){
+ const settings=document.getElementById('settings');if(!settings||document.getElementById('pn110-google-help'))return;
+ const panel=Array.from(settings.querySelectorAll(':scope > .panel')).find(p=>p.querySelector('h2')?.textContent.includes('Googleカレンダー同期'));
+ if(!panel)return;
+ const paragraphs=Array.from(panel.children).filter(el=>el.matches('p.hint')&&(
+   el.textContent.includes('Googleへの書き込みは手動承認制')||el.textContent.includes('必要な設定：Google Cloud Console')));
+ if(!paragraphs.length)return;
+ const details=document.createElement('details');details.id='pn110-google-help';details.className='pn110-help';
+ const summary=document.createElement('summary');summary.textContent='Google連携の詳しい説明・初期設定を表示';
+ const body=document.createElement('div');body.className='pn110-help-body';
+ for(const p of paragraphs)body.append(p);
+ details.append(summary,body);panel.append(details);
+ // Keep the original text in the DOM and accessible without changing sync behavior.
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
+
+
+
+<script id="pn111-script">(()=>{'use strict';
+function init(){
+ const root=document.getElementById('settings');if(!root||document.getElementById('pn111-install-help'))return;
+ const panels=Array.from(root.querySelectorAll(':scope > .panel'));
+ function fold(panelTitle,id,summaryText){
+  const panel=panels.find(p=>p.querySelector(':scope > h2')?.textContent.includes(panelTitle));
+  if(!panel)return;
+  const hints=Array.from(panel.children).filter(el=>el.matches('p.hint'));
+  if(!hints.length)return;
+  const details=document.createElement('details');details.className='pn111-info';details.id=id;
+  const summary=document.createElement('summary');summary.textContent=summaryText;
+  const body=document.createElement('div');body.className='pn111-info-content';
+  hints.forEach(el=>body.append(el));details.append(summary,body);
+  const heading=panel.querySelector(':scope > h2');heading.after(details);
+ }
+ fold('アプリのインストール','pn111-install-help','インストール方法を確認');
+ fold('通知について','pn111-notify-help','通知の仕組み・制限を確認');
+ const dataPanel=panels.find(p=>p.querySelector(':scope > h2')?.textContent.trim()==='データ管理');
+ if(dataPanel&&!document.getElementById('pn111-backup-note')){
+  const note=document.createElement('p');note.id='pn111-backup-note';note.className='pn111-settings-note';
+  note.textContent='機種変更・ブラウザーのデータ削除に備え、定期的にJSONバックアップを保存してください。';
+  dataPanel.append(note);
+ }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script>
+
+
+<style id="pn117-diagnostics-style">
+:is(#pn100-check,#pn101-check,#pn102-check){border:1px solid #3a6470;border-radius:12px;padding:13px;background:#172c34;color:#e6f4f5}
+:is(#pn100-check,#pn101-check,#pn102-check) button{min-height:44px;margin:9px 0}
+:is(#pn100-result,#pn101-result,#pn102-result){white-space:pre-wrap;overflow-wrap:anywhere;font-size:13px;line-height:1.7}
+</style>
+<style id="pn119-style">
+#pn56-deadline-fold>summary .pn119-count{margin-left:auto;white-space:nowrap;font-size:12px;font-weight:650;padding:4px 9px;border:1px solid #436c72;border-radius:999px;color:#c5eded;background:#1b3b43}
+#pn56-deadline-fold>summary .pn119-count[data-overdue="true"]{border-color:#ae7d54;color:#ffe3c3}
+@media(max-width:370px){#pn56-deadline-fold>summary{gap:6px;font-size:13px}#pn56-deadline-fold>summary .pn119-count{font-size:11px;padding:3px 6px}}
+</style>
+<script id="pn119-script">(()=>{'use strict';
+ const fold=document.getElementById('pn56-deadline-fold');
+ const panel=document.getElementById('pn55-deadlines');
+ const list=document.getElementById('taskList');
+ if(!fold||!panel||!list)return;
+ const summary=fold.querySelector(':scope > summary');if(!summary)return;
+ const count=document.createElement('span');count.className='pn119-count';summary.append(count);
+ const localDay=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+ function refresh(){
+  if(typeof data==='undefined'||!Array.isArray(data.tasks))return;
+  const day=localDay(),pending=data.tasks.filter(t=>t&&!t.done);
+  const valid=t=>typeof t.due==='string'&&/^\d{4}-\d{2}-\d{2}(?:$|T|\s)/.test(t.due);
+  const overdue=pending.filter(t=>valid(t)&&t.due.slice(0,10)<day).length;
+  const today=pending.filter(t=>valid(t)&&t.due.slice(0,10)===day).length;
+  count.textContent=overdue?`今日 ${today}件・超過 ${overdue}件`:`今日 ${today}件`;
+  count.dataset.overdue=String(overdue>0);
+  count.setAttribute('aria-label',`今日が期限のタスク${today}件、期限超過${overdue}件`);
+ }
+ // Task changes redraw the list; the existing RC55 observer refreshes the detailed entries.
+ // This separate observer updates only the compact summary, without modifying task data.
+ let queued=false;
+ const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refresh()})};
+ new MutationObserver(schedule).observe(list,{childList:true});
+ document.addEventListener('visibilitychange',()=>{if(!document.hidden)schedule()});
+ window.addEventListener('focus',schedule);
+ window.addEventListener('pageshow',schedule);
+ window.addEventListener('storage',e=>{if(e.key!==null)schedule()});
+ refresh();
+})();</script>
+<script id="pn119-version">(()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC119';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC119'):document.title+' · RC119';for(const [id,value] of Object.entries({'pn53-version':'PlanNote RC119 · 締切件数の表示改善','pn52-build-note':'PlanNote RC119 · To Doの締切表示を改善','pn49-build':'アプリ版: RC119'})){const el=document.getElementById(id);if(el)el.textContent=value}})();</script>
+<script id="pn120-script">(()=>{
+const $120=id=>document.getElementById(id);
+const status=s=>{$120('pn120-status').textContent=s};
+let imageUrl=null;
+const dateToday=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
+$120('pn120-date').value=dateToday();
+$120('pn120-category').innerHTML=FINANCE_CATEGORIES.expense.map(c=>`<option value="${c}">${c}</option>`).join('');
+$120('pn120-image').addEventListener('change',()=>{
+ if(imageUrl)URL.revokeObjectURL(imageUrl);imageUrl=null;
+ const file=$120('pn120-image').files?.[0];const img=$120('pn120-preview');
+ if(!file){img.removeAttribute('src');img.style.display='none';status('画像が選択されていません');return}
+ if(!file.type.startsWith('image/')){status('画像ファイルを選んでください');$120('pn120-image').value='';return}
+ if(file.size>12*1024*1024){status('画像は12MB以下にしてください');$120('pn120-image').value='';return}
+ imageUrl=URL.createObjectURL(file);img.src=imageUrl;img.style.display='block';status('画像を読み込みました。文字認識を試すか、文字欄を入力してください。');
+});
+$120('pn120-ocr').addEventListener('click',async()=>{
+ const file=$120('pn120-image').files?.[0];if(!file)return status('先に画像を選択してください');
+ if(!('TextDetector' in window))return status('このブラウザは画像文字認識に対応していません。文字欄へ入力してください。');
+ status('画像の文字を認識しています…');let bitmap;
+ try{bitmap=await createImageBitmap(file);const detector=new window.TextDetector();const lines=await detector.detect(bitmap);const text=lines.map(x=>x.rawValue||'').join('\n');$120('pn120-text').value=text;status(text?'文字を取得しました。内容を確認して「文字から項目を抽出」を押してください。':'文字を検出できませんでした。手入力してください。')}
+ catch(e){status('文字認識できませんでした。文字欄へ入力してください。')}
+ finally{bitmap?.close?.()}
+});
+function guessCategory(s){if(/スーパー|コンビニ|飲食|カフェ|食堂|マクド|弁当|食品|ファミマ|セブン|ローソン/.test(s))return '食費';if(/薬局|ドラッグ|日用品/.test(s))return '日用品';if(/電車|バス|交通|タクシー|駅/.test(s))return '交通費';if(/書店|教科書|文具|教材/.test(s))return '学習費';return 'その他'}
+$120('pn120-parse').addEventListener('click',()=>{
+ const text=$120('pn120-text').value.trim();if(!text)return status('文字を入力するか画像から読み取ってください');
+ const dates=[...text.matchAll(/(20\d{2})[\/\.年-]\s*(\d{1,2})[\/\.月-]\s*(\d{1,2})/g)];
+ if(dates.length){const m=dates[0];const candidate=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;if(typeof validCalendarDate==='function'&&validCalendarDate(candidate))$120('pn120-date').value=candidate}
+ const patterns=[/(?:合計|お支払金額|支払金額|決済金額|お会計|領収金額|総額|お支払い)[^\d¥￥]{0,12}[¥￥]?\s*([\d,]{1,12})\s*円?/gi,/[¥￥]\s*([\d,]{1,12})/g,/(?:([\d,]{1,12})\s*円)/g];
+ let amount='';for(const pattern of patterns){const found=[...text.matchAll(pattern)].map(m=>Number(m[1].replaceAll(',',''))).filter(n=>Number.isSafeInteger(n)&&n>0&&n<=999999999);if(found.length){amount=String(found[found.length-1]);break}}
+ if(amount)$120('pn120-amount').value=amount;
+ const lines=text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);const shop=lines.find(s=>!/(合計|税込|消費税|¥|￥|20\d{2}[\/\.年-]|PayPay|取引番号|注文番号)/i.test(s)&&s.length<=60&&/[\p{L}]/u.test(s));if(shop)$120('pn120-shop').value=shop;
+ $120('pn120-category').value=guessCategory(text);
+ status(`抽出候補を入力しました。${amount?'':'金額は認識できませんでした。'}日付・店舗・金額を必ず確認してください。`);
+});
+$120('pn120-apply').addEventListener('click',()=>{
+ const date=$120('pn120-date').value,amount=Number($120('pn120-amount').value),shop=$120('pn120-shop').value.trim().slice(0,100),category=$120('pn120-category').value;
+ if(!validCalendarDate(date)||!Number.isSafeInteger(amount)||amount<1||amount>999999999)return status('日付と支払額を正しく入力してください');
+ const duplicate=(Array.isArray(data.finance)?data.finance:[]).some(x=>x.type==='expense'&&x.date===date&&Number(x.amount)===amount&&String(x.memo||'').trim()===shop);
+ if(duplicate&&!confirm('同じ日付・金額・店舗の記録があります。入力欄に反映しますか？'))return;
+ $120('financeDate').value=date;$120('financeType').value='expense';refreshFinanceCategories();$120('financeAmount').value=String(amount);$120('financeCategory').value=category;$120('financeMemo').value=shop.slice(0,120);
+ status(duplicate?'重複候補があります。記録前に履歴を確認してください。':'家計簿入力欄へ反映しました。「記録する」で保存してください。');$120('financeAmount').scrollIntoView({block:'center',behavior:'smooth'});
+});
+$120('pn120-clear').addEventListener('click',()=>{if(imageUrl)URL.revokeObjectURL(imageUrl);imageUrl=null;$120('pn120-image').value='';$120('pn120-preview').removeAttribute('src');$120('pn120-preview').style.display='none';$120('pn120-text').value='';status('画像を破棄しました。')});
+window.addEventListener('pagehide',()=>{if(imageUrl)URL.revokeObjectURL(imageUrl)});
+})();</script><style id="pn121-style">#pn120-ocr:disabled,#pn121-ocr:disabled{opacity:.55;cursor:wait}#pn120-status{overflow-wrap:anywhere}#pn120-import .pn120-actions{align-items:center}@media(max-width:420px){#pn120-import .pn120-actions button{flex:1 1 100%}}</style>
+<script id="pn121-script">(()=>{
+ const $=id=>document.getElementById(id),btn=$('pn121-ocr'),basic=$('pn120-ocr'),status=$('pn120-status');
+ if(!btn||!basic||!status)return;
+ let busy=false,loader=null;
+ const report=s=>{status.textContent=s};
+ const load=()=>{if(window.Tesseract?.createWorker)return Promise.resolve(window.Tesseract);if(loader)return loader;
+  loader=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';script.async=true;script.onload=()=>window.Tesseract?.createWorker?resolve(window.Tesseract):reject(new Error('OCRライブラリを読み込めません'));script.onerror=()=>reject(new Error('通信できません'));document.head.appendChild(script)}).catch(e=>{loader=null;throw e});return loader};
+ btn.addEventListener('click',async()=>{
+  const file=$('pn120-image')?.files?.[0];if(!file)return report('先にレシートかPayPay画面の画像を選択してください。');
+  if(busy)return;if(!navigator.onLine&&!window.Tesseract?.createWorker)return report('日本語OCRの初回利用には通信が必要です。オンラインで再試行してください。');
+  busy=true;btn.disabled=true;basic.disabled=true;let worker;
+  try{report('日本語OCRを準備しています。初回は言語データのダウンロードが必要です…');const tess=await load();
+   worker=await tess.createWorker('jpn+eng',1,{logger:m=>{if(m.status==='recognizing text')report('日本語OCRで認識中… '+Math.round((m.progress||0)*100)+'%');else if(m.status==='loading language traineddata')report('日本語の言語データを準備中… '+Math.round((m.progress||0)*100)+'%')}});
+   report('レシート・PayPay画像を認識しています…');const result=await worker.recognize(file);const value=String(result?.data?.text||'').trim();
+   if($('pn120-image')?.files?.[0]!==file){report('画像が変更されたため、古い読み取り結果を破棄しました。');return}
+   if(value){$('pn120-text').value=value;document.dispatchEvent(new CustomEvent('pn123-ocr-success',{detail:{file}}));report('日本語OCRの読み取りが完了しました。「文字から項目を抽出」を押し、金額・日付・店舗名を確認してください。')}
+   else {report('文字を認識できませんでした。鮮明な画像で再試行するか手入力してください。');document.dispatchEvent(new CustomEvent('pn127-ocr-failure',{detail:{file}}))}
+  }catch(e){report('日本語OCRを利用できませんでした。通信状況を確認するか、文字を手入力してください。');document.dispatchEvent(new CustomEvent('pn127-ocr-failure',{detail:{file}}))}finally{try{await worker?.terminate()}catch(e){}busy=false;btn.disabled=false;basic.disabled=false}
+ });
+})();</script>
+<style id="pn122-style">#pn120-import .pn122-mode{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}#pn120-import .pn122-mode label{font-weight:650}#pn122-source{min-height:44px;max-width:100%;padding:8px;border-radius:8px;background:#172e35;color:#f0ffff;border:1px solid #54747b}#pn122-explain{font-size:12px;line-height:1.65;color:#c2dddd;margin:6px 0 12px;overflow-wrap:anywhere}</style>
+<script id="pn122-script">(()=>{'use strict';
+const $=id=>document.getElementById(id),panel=$('pn120-import'),original=$('pn120-parse');if(!panel||!original)return;
+const mode=document.createElement('div');mode.className='pn122-mode';mode.innerHTML='<label for="pn122-source">画像の種類</label><select id="pn122-source"><option value="auto">自動判定</option><option value="receipt">レシート</option><option value="paypay">PayPay支払い画面</option></select>';
+const explain=document.createElement('p');explain.id='pn122-explain';explain.setAttribute('role','status');explain.setAttribute('aria-live','polite');explain.textContent='支払総額を優先して抽出します。税額・お釣り・単価は原則として候補から除外します。';
+const actions=original.parentElement;actions.before(mode);actions.after(explain);
+// Replace the old extraction button to avoid executing the RC120 last-match parser as well.
+const button=original.cloneNode(true);original.replaceWith(button);
+const clean=s=>s.replace(/[，]/g,',').replace(/[￥]/g,'¥').replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).replace(/[：]/g,':').replace(/[．]/g,'.');
+const money=s=>{const m=clean(s).match(/(?:¥\s*)?([0-9]{1,3}(?:,[0-9]{3})+|[0-9]{1,9})(?:\s*円)?/g)||[];return m.map(v=>Number(v.replace(/[^0-9]/g,''))).filter(v=>Number.isSafeInteger(v)&&v>=1&&v<=999999999)};
+function getAmount(lines,kind){let candidates=[];
+ const strong=kind==='paypay'?/(?:支払い(?:金額|完了)?|決済(?:金額|完了)?|お支払い(?:金額)?|送金(?:金額)?|取引金額|支払額|合計)/i:/(?:お支払(?:い)?(?:金額)?|お買上(?:げ)?(?:金額)?|領収(?:金額)?|合計(?:金額)?|総合計|ご請求(?:額)?|現計|お会計|支払額|決済金額)/i;
+ const negative=/(?:小計|税(?:率|額|込|抜)|消費税|内税|外税|お釣り|釣銭|お預かり|預り|値引|割引|ポイント|残高|チャージ|単価|商品数|個数|明細|手数料|還元|クーポン|利用可能額|注文番号|取引番号|電話番号|TEL|会員番号|適格請求書|登録番号)/i;
+ for(let i=0;i<lines.length;i++){
+  const line=lines[i],nums=money(line);if(!nums.length)continue;
+  const hasCurrency=/[¥円]/.test(line),label=strong.test(line),bad=negative.test(line);
+  const bareDate=/\b20\d{2}[\/.-]\d{1,2}[\/.-]\d{1,2}\b/.test(line);if(bareDate&&!label)continue;
+  // For a label-only line, allow the amount on the immediately following line.
+  for(const n of nums){let score=(label?120:0)+(hasCurrency?18:0)-(bad?170:0)+(kind==='paypay'&&/支払い|決済/.test(line)?25:0);
+   if(!label&&!hasCurrency)score-=40;if(/\d{1,2}:\d{2}/.test(line)&&!label)score-=35;
+   candidates.push({n,score,index:i,line});}
+  if(label&&!nums.length&&i+1<lines.length){} // kept for clarity
+ }
+ for(let i=0;i<lines.length-1;i++)if(strong.test(lines[i])&&!negative.test(lines[i])&&!money(lines[i]).length){const next=lines[i+1];if(next.length<25&&!negative.test(next)){for(const n of money(next))candidates.push({n,score:125,index:i+1,line:next})}}
+ candidates=candidates.filter(c=>c.score>=0).sort((a,b)=>b.score-a.score||b.index-a.index);
+ return candidates[0]||null;
+}
+function getDate(lines){const t=clean(lines.join('\n'));const patterns=[/(20\d{2})\s*[\/\.年-]\s*(\d{1,2})\s*[\/\.月-]\s*(\d{1,2})\s*日?/g,/(20\d{2})(\d{2})(\d{2})(?!\d)/g];for(const pattern of patterns){for(const m of t.matchAll(pattern)){const date=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;if(typeof validCalendarDate==='function'&&validCalendarDate(date))return date}}return null}
+function getShop(lines,kind){const bad=/(?:合計|支払|決済|取引|金額|日時|注文|お買上|税込|税率|消費税|残高|PayPay|ポイント|お釣り|レシート|領収書|ありがとう|電話|TEL|https?:|〒|¥|円|\d{4}[\/.-]\d{1,2})/i;
+ const labelled=lines.map(s=>s.match(/(?:支払先|加盟店|店舗名|利用店舗|お店|取引先)\s*[:：]?\s*(.{2,60})/i)).find(Boolean);
+ if(labelled&&labelled[1]&&!bad.test(labelled[1]))return labelled[1].trim().slice(0,100);
+ const candidates=lines.slice(0,kind==='paypay'?18:12).filter(s=>s.length>=2&&s.length<=50&&/[\p{L}]/u.test(s)&&!bad.test(s)&&!/^[\d\s\-:/.]+$/.test(s));return (candidates[0]||'').slice(0,100)}
+button.addEventListener('click',()=>{
+ const raw=$('pn120-text').value.trim(),status=$('pn120-status');if(!raw){status.textContent='先に文字認識を実行するか、文字欄へ入力してください。';return}
+ const lines=clean(raw).split(/\r?\n/).map(s=>s.trim()).filter(Boolean);const selected=$('pn122-source').value;
+ const kind=selected==='auto'?(/PayPay|ペイペイ|支払い完了|送金完了|取引詳細/i.test(raw)?'paypay':'receipt'):selected;
+ const best=getAmount(lines,kind),date=getDate(lines),shop=getShop(lines,kind);
+ if(best)$('pn120-amount').value=String(best.n);else $('pn120-amount').value='';
+ if(date)$('pn120-date').value=date;if(shop)$('pn120-shop').value=shop;
+ // Reuse the category vocabulary already provided by the finance form.
+ const text=raw+' '+shop;let cat='その他';if(/スーパー|コンビニ|飲食|カフェ|食堂|マクド|弁当|食品|ファミマ|セブン|ローソン/.test(text))cat='食費';else if(/薬局|ドラッグ|日用品/.test(text))cat='日用品';else if(/電車|バス|交通|タクシー|駅/.test(text))cat='交通費';else if(/書店|教科書|文具|教材/.test(text))cat='学習費';
+ if([...$('pn120-category').options].some(o=>o.value===cat))$('pn120-category').value=cat;
+ const kindName=kind==='paypay'?'PayPay':'レシート';explain.textContent=best?`${kindName}として解析：支払額候補 ¥${best.n.toLocaleString('ja-JP')}（「${best.line.slice(0,60)}」）。${date?'日付も抽出。':'日付は未検出。'}${shop?'店舗名候補あり。':'店舗名は未検出。'} 必ず確認してください。`:`${kindName}として解析しましたが支払総額を特定できませんでした。支払額を手入力してください。`;
+ status.textContent=best?'支払総額を優先して候補を入力しました。金額・日付・店舗を確認してください。':'支払総額を特定できませんでした。金額を手入力してください。';
+});
+})();</script>
+<style id="pn123-style">#pn123-auto-status{margin:8px 0;padding:9px 12px;border-radius:9px;background:#16353c;color:#d6f5f4;font-size:13px;line-height:1.5;overflow-wrap:anywhere}#pn123-auto-toggle{accent-color:#42d6cf;width:18px;height:18px;vertical-align:middle}#pn123-auto-label{display:flex;gap:8px;align-items:center;min-height:44px;cursor:pointer}</style>
+<script id="pn123-script">(()=>{'use strict';
+const $=id=>document.getElementById(id),panel=$('pn120-import'),input=$('pn120-image'),ocr=$('pn121-ocr'),parse=$('pn120-parse');if(!panel||!input||!ocr||!parse)return;
+const label=document.createElement('label');label.id='pn123-auto-label';label.innerHTML='<input id="pn123-auto-toggle" type="checkbox" checked> 画像選択後に日本語OCRと項目抽出を自動実行';
+const info=document.createElement('p');info.id='pn123-auto-status';info.setAttribute('role','status');info.setAttribute('aria-live','polite');info.textContent='画像を選ぶと読み取りを開始します。初回の日本語OCRには通信が必要です。';
+input.parentElement.after(label,info);
+let generation=0,waiting=null;
+input.addEventListener('change',()=>{
+ generation++;waiting=null;
+ const text=$('pn120-text');if(text)text.value='';
+ for(const id of ['pn120-amount','pn120-shop']){const field=$(id);if(field)field.value='';}
+ const file=input.files?.[0];if(!file){info.textContent='画像が選択されていません。';return}
+ if(!$('pn123-auto-toggle').checked){info.textContent='自動認識はオフです。必要に応じて日本語OCRを押してください。';return}
+ if(!file.type.startsWith('image/')||file.size>12*1024*1024){info.textContent='画像の形式・サイズを確認してください。';return}
+ const token=generation;waiting={file,token};info.textContent='画像を読み込みました。日本語OCRを自動開始します…';
+ setTimeout(()=>{if(waiting?.token!==token||input.files?.[0]!==file)return;if(ocr.disabled){waiting=null;info.textContent='別のOCR処理中です。完了後に再度画像を選択してください。';return}ocr.click()},0);
+});
+document.addEventListener('pn123-ocr-success',event=>{
+ const active=waiting;if(!active||event.detail?.file!==active.file||input.files?.[0]!==active.file)return;
+ waiting=null;parse.click();info.textContent='自動認識と項目抽出が完了しました。金額・日付・店舗名を確認して登録してください。';
+});
+document.addEventListener('pn127-ocr-failure',event=>{const active=waiting;if(!active||event.detail?.file!==active.file||input.files?.[0]!==active.file)return;waiting=null;info.textContent='自動認識に失敗しました。画像を撮り直すか、文字欄へ手入力してください。';});
+$('pn120-clear')?.addEventListener('click',()=>{generation++;waiting=null;info.textContent='画像を破棄しました。'});
+})();</script>
+
+<style id="pn124-style">#pn124-duplicate{margin:10px 0;padding:11px 12px;border:1px solid #806b48;border-radius:9px;background:#302a1c;color:#ffe5b6;font-size:13px;line-height:1.6;overflow-wrap:anywhere}#pn124-duplicate[hidden]{display:none}</style>
+<script id="pn124-script">(()=>{'use strict';
+ const $=id=>document.getElementById(id),fileInput=$('pn120-image'),apply=$('pn120-apply'),form=$('financeForm'),panel=$('pn120-import');
+ if(!fileInput||!apply||!form||!panel)return;
+ const warning=document.createElement('p');warning.id='pn124-duplicate';warning.setAttribute('role','alert');warning.hidden=true;panel.append(warning);
+ const KEY='plannote_receipt_image_fingerprints_v1';
+ let selected=null,hashPromise=null,armed=null;
+ const show=s=>{warning.hidden=!s;warning.textContent=s||''};
+ const getHashes=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch{return {}}};
+ const digest=async file=>{if(!crypto?.subtle)throw Error('この環境では画像の照合が利用できません');const buf=await file.arrayBuffer();const bytes=new Uint8Array(await crypto.subtle.digest('SHA-256',buf));return Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('')};
+ const sameRecord=(date,amount,memo)=>Array.isArray(data?.finance)&&data.finance.some(x=>x&&x.type==='expense'&&x.date===date&&Number(x.amount)===amount&&String(x.memo||'').trim()===memo);
+ fileInput.addEventListener('change',()=>{
+  armed=null;show('');selected=fileInput.files?.[0]||null;hashPromise=selected&&selected.type.startsWith('image/')&&selected.size<=12*1024*1024?digest(selected).catch(()=>null):null;
+  if(hashPromise){const f=selected;hashPromise.then(hash=>{if(fileInput.files?.[0]!==f||!hash)return;const record=getHashes()[hash];if(record)show('この画像は以前に登録されています（'+(record.date||'日付不明')+'・'+(record.amount||'?')+'円）。二重登録に注意してください。')})}
+ });
+ $('pn120-clear')?.addEventListener('click',()=>{selected=null;hashPromise=null;armed=null;show('')});
+ apply.addEventListener('click',async()=>{
+  const f=fileInput.files?.[0];if(!f||f!==selected||!hashPromise){armed=null;return}
+  const hash=await hashPromise;if(!hash||fileInput.files?.[0]!==f){armed=null;return}
+  // This event runs after the existing RC120 handler; only arm when its form values match.
+  const date=$('pn120-date').value,amount=Number($('pn120-amount').value),memo=$('pn120-shop').value.trim().slice(0,120);
+  if($('financeDate').value===date&&Number($('financeAmount').value)===amount&&$('financeMemo').value.trim()===memo){armed={hash,date,amount,memo};const old=getHashes()[hash];if(old)show('同じ画像からの登録履歴があります。再登録は停止します。')}
+ });
+ form.addEventListener('submit',event=>{
+  if(!armed)return;
+  const {hash}=armed,date=$('financeDate').value,amount=Number($('financeAmount').value),memo=$('financeMemo').value.trim();
+  if($('financeType').value!=='expense'||date!==armed.date||amount!==armed.amount||memo!==armed.memo){armed=null;return}
+  if(getHashes()[hash]){event.preventDefault();event.stopImmediatePropagation();show('登録を中止しました。同じ画像がすでに登録されています。別の取引の場合は画像を破棄し、通常の家計簿入力欄から登録してください。');return}
+  if(sameRecord(date,amount,memo)&&!confirm('同じ日付・金額・店舗の支出がすでにあります。別の取引として登録しますか？')){event.preventDefault();event.stopImmediatePropagation();show('重複候補のため登録を中止しました。');return}
+  const before=Array.isArray(data?.finance)?data.finance.length:0;
+  queueMicrotask(()=>{
+   const after=Array.isArray(data?.finance)?data.finance.length:0;
+   if(after<=before)return;
+   const hashes=getHashes();hashes[hash]={date,amount,memo,at:new Date().toISOString()};
+   try{localStorage.setItem(KEY,JSON.stringify(hashes));show('画像と取引の登録を記録しました。同じ画像からの再登録を防止します。')}catch{show('家計簿は登録されましたが、画像の重複防止履歴は保存できませんでした。')}
+   armed=null;
+  });
+ },true);
+})();</script>
+
+
+<style id="pn125-style">#pn125-history{margin-top:12px;padding:12px;border:1px solid #36545c;border-radius:10px;background:#142c33;color:#d9f4f1}#pn125-history p{margin:6px 0 10px;font-size:13px;line-height:1.6}#pn125-history button{min-height:44px}#pn125-history .pn125-actions{display:flex;flex-wrap:wrap;gap:8px}</style>
+<script id="pn125-script">(()=>{'use strict';
+ const key='plannote_receipt_image_fingerprints_v1';
+ const section=[...document.querySelectorAll('#settings .panel')].find(el=>el.querySelector('button[onclick="exportData()"]'));
+ if(!section)return;
+ const box=document.createElement('section');box.id='pn125-history';
+ const heading=document.createElement('strong');heading.textContent='レシート・PayPay画像の登録履歴';
+ const status=document.createElement('p');status.setAttribute('aria-live','polite');
+ const actions=document.createElement('div');actions.className='pn125-actions';
+ const clear=document.createElement('button');clear.className='btn';clear.type='button';clear.textContent='画像の照合履歴を消去';
+ actions.append(clear);box.append(heading,status,actions);section.append(box);
+ function refresh(){try{const obj=JSON.parse(localStorage.getItem(key)||'{}');const n=obj&&typeof obj==='object'&&!Array.isArray(obj)?Object.keys(obj).length:0;status.textContent=`照合履歴：${n}件。JSONバックアップに含まれ、復元時にも引き継がれます。画像本体は含まれません。`;clear.disabled=n===0;}catch{status.textContent='照合履歴を読み取れません。バックアップを保存してから確認してください。';clear.disabled=true;}}
+ clear.addEventListener('click',()=>{if(!confirm('画像の照合履歴だけを消去します。家計簿の取引は削除されませんが、同じ画像の二重登録を防げなくなる場合があります。続行しますか？'))return;try{localStorage.removeItem(key);refresh();}catch{status.textContent='履歴を消去できませんでした。'}});
+ window.addEventListener('pn125-history-updated',refresh);
+ window.addEventListener('focus',refresh);
+ refresh();
+})();</script>
+
+
+<style id="pn126-style">#pn126-register{min-height:48px;font-weight:700}#pn126-status{font-size:13px;line-height:1.6;margin:8px 0;color:#d9f4f1}#pn126-register:disabled{opacity:.6;cursor:wait}</style>
+<script id="pn126-script">(()=>{'use strict';
+ const $=id=>document.getElementById(id),apply=$('pn120-apply'),file=$('pn120-image'),form=$('financeForm');if(!apply||!file||!form)return;
+ const btn=document.createElement('button');btn.id='pn126-register';btn.type='button';btn.className='primary';btn.textContent='内容を確認して家計簿に登録';
+ const status=document.createElement('p');status.id='pn126-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.textContent='認識結果を確認・修正してから登録してください。';
+ apply.after(btn,status);apply.textContent='通常の家計簿入力欄へ反映';
+ const set=t=>status.textContent=t;let busy=false;
+ btn.addEventListener('click',async()=>{
+  if(busy)return;const image=file.files?.[0];if(!image){set('先に画像を選択してください。');return}
+  const date=$('pn120-date')?.value,amount=Number($('pn120-amount')?.value),shop=$('pn120-shop')?.value.trim().slice(0,120);
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isSafeInteger(amount)||amount<1||amount>999999999||!shop){set('日付・支払金額・店舗名を確認してください。');return}
+  if(!confirm(`${date}\n${shop}\n支出 ¥${amount.toLocaleString('ja-JP')}\n\nこの内容で家計簿に登録しますか？`))return;
+  busy=true;btn.disabled=true;set('登録内容を確認しています…');
+  try{
+   apply.click();await new Promise(resolve=>setTimeout(resolve,0));
+   if(file.files?.[0]!==image){set('画像が変更されたため登録を中止しました。');return}
+   if($('financeDate')?.value!==date||Number($('financeAmount')?.value)!==amount||$('financeMemo')?.value.trim()!==shop){set('入力欄への反映に失敗しました。');return}
+   if(!form.checkValidity()){form.reportValidity();set('入力欄の内容を確認してください。');return}
+   const before=new Set((Array.isArray(data?.finance)?data.finance:[]).map(x=>x.id));
+   // Let the existing form submit handler and duplicate guard make the final decision.
+   // Compare transaction IDs, not only array length, to detect a genuinely new entry.
+   form.requestSubmit();await new Promise(resolve=>setTimeout(resolve,0));
+   const added=(Array.isArray(data?.finance)?data.finance:[]).filter(x=>!before.has(x.id));
+   const matches=added.some(x=>x.type==='expense'&&x.date===date&&Number(x.amount)===amount&&String(x.memo||'').trim()===shop);
+   if(matches)set('家計簿に登録しました。');
+   else set('登録されませんでした。重複警告や入力内容を確認してください。');
+  }catch(err){set('登録処理に失敗しました。通常の家計簿入力欄から登録してください。')}
+  finally{busy=false;btn.disabled=false}
+ });
+})();</script>
+
+
+<style id="pn127-style">#pn123-auto-status{line-height:1.6;overflow-wrap:anywhere}#pn126-status{overflow-wrap:anywhere}</style>
+<script id="pn128-version">(()=>{'use strict';const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC128';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC128'):document.title+' · RC128';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC128')}})();</script>
+<style id="pn129-style">#pn129-export{margin-top:14px;padding:14px;border:1px solid #38616b;border-radius:12px;background:#102b33}#pn129-export h3{margin:0 0 8px}#pn129-export p{line-height:1.6}#pn129-export label{display:block;margin:10px 0 5px}#pn129-export input[type=date]{width:100%;max-width:280px;min-height:44px}#pn129-export button{min-height:46px;margin:6px 8px 6px 0}#pn129-export textarea{width:100%;min-height:120px;resize:vertical;font-size:13px;line-height:1.5}#pn129-export .pn129-options{display:flex;gap:14px;flex-wrap:wrap}#pn129-export .pn129-options label{display:flex;align-items:center;gap:6px}#pn129-export .pn129-note{font-size:12px;color:#c0d5db}</style>
+<script id="pn129-script">(()=>{'use strict';
+ const panel=document.getElementById('settings');if(!panel)return;
+ const section=document.createElement('section');section.id='pn129-export';section.innerHTML=`<h3>朝刊向けデータ出力（Muse連携準備）</h3><p>指定日の予定・未完了To Do・時間割だけをJSONにまとめます。家計簿や画像、認証情報は含みません。Museへの自動送信は行いません。</p><label for="pn129-date">新聞の日付</label><input type="date" id="pn129-date"><div class="pn129-options"><label><input id="pn129-events" type="checkbox" checked>予定</label><label><input id="pn129-tasks" type="checkbox" checked>To Do</label><label><input id="pn129-school" type="checkbox" checked>時間割</label></div><button class="primary" type="button" id="pn129-generate">JSONを作成</button><button class="btn" type="button" id="pn129-download" disabled>JSONを保存</button><button class="btn" type="button" id="pn129-copy" disabled>JSONをコピー</button><label for="pn129-preview">出力プレビュー</label><textarea id="pn129-preview" readonly placeholder="ここに出力結果を表示します"></textarea><p class="pn129-note" id="pn129-status" role="status">個人情報が含まれる可能性があります。共有する前に内容を確認してください。</p>`;
+ const first=panel.querySelector('.panel');if(first)first.after(section);else panel.prepend(section);
+ const $=id=>document.getElementById(id),dateInput=$('pn129-date'),preview=$('pn129-preview'),status=$('pn129-status');
+ const fmt=d=>`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+ dateInput.value=fmt(new Date());let last='';
+ function build(){const date=dateInput.value;if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||fmt(new Date(date+'T12:00:00'))!==date)throw Error('日付を確認してください');
+ const output={schema:'plannote-morning-brief-v1',date,timezone:'Asia/Tokyo'};
+ if($('pn129-events').checked){
+  const start=new Date(date+'T00:00:00'),end=new Date(start);end.setDate(end.getDate()+1);
+  const all=Array.isArray(data?.events)?data.events:[];
+  output.events=all.filter(e=>{const a=new Date(e.start||e.startTime||e.date||'');const b=new Date(e.end||e.endTime||e.start||e.date||'');return Number.isFinite(+a)&&a<end&&(Number.isFinite(+b)?b>start:a>=start)}).slice(0,200).map(e=>({title:String(e.name||e.title||'予定'),start:e.start||e.startTime||e.date||null,end:e.end||e.endTime||null,allDay:!!e.allDay,category:e.category||null}));
+ }
+ if($('pn129-tasks').checked){const all=Array.isArray(data?.tasks)?data.tasks:[];output.todos=all.filter(t=>!t.done&&(!t.due||String(t.due).slice(0,10)<=date)).slice(0,200).map(t=>({title:String(t.name||t.title||'タスク'),due:t.due||null,priority:t.priority||null}));}
+ if($('pn129-school').checked){const c=schoolConfig(date);output.school=c.enabled?{summary:schoolSummary(date),periods:schoolClock(date,c).filter(p=>p.kind==='class').map(p=>({name:p.name,start:p.start,end:p.end}))}:{summary:'学校なし',periods:[]};}
+ return JSON.stringify(output,null,2);
+ }
+ function generate(){try{last=build();preview.value=last;$('pn129-download').disabled=false;$('pn129-copy').disabled=false;status.textContent='JSONを作成しました。内容を確認して保存・コピーできます。'}catch(e){last='';preview.value='';$('pn129-download').disabled=true;$('pn129-copy').disabled=true;status.textContent='出力できませんでした：'+e.message}}
+ $('pn129-generate').addEventListener('click',generate);
+ $('pn129-download').addEventListener('click',()=>{if(!last)return;const url=URL.createObjectURL(new Blob([last],{type:'application/json;charset=utf-8'}));const a=document.createElement('a');a.href=url;a.download=`plannote-morning-${dateInput.value}.json`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+ $('pn129-copy').addEventListener('click',async()=>{if(!last)return;try{await navigator.clipboard.writeText(last);status.textContent='JSONをコピーしました。'}catch{preview.focus();preview.select();status.textContent='自動コピーできませんでした。プレビューを選択してコピーしてください。'}});
+ for(const id of ['pn129-date','pn129-events','pn129-tasks','pn129-school'])$(id).addEventListener('change',()=>{last='';preview.value='';$('pn129-download').disabled=true;$('pn129-copy').disabled=true;status.textContent='条件が変わりました。「JSONを作成」を押してください。'});
+})();</script>
+<script id="pn129-version">(()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC129';document.title=document.title.replace(/RC\d+/g,'RC129');for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC129')}})();</script>
 </body></html>
