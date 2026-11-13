@@ -2510,19 +2510,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();</script>
 
-<script id="pn85-script">(()=>{'use strict';
- const update=()=>{
-  const title=document.querySelector('header h1 small');if(title)title.textContent='v1.0.0 RC103';
-  document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC103'):document.title+' · RC103';
-  const labels={'pn53-version':'PlanNote RC103 · 表示整合性診断','pn52-build-note':'PlanNote RC103 · 実UI検索診断を追加','pn49-build':'アプリ版: RC103'};
-  for(const [id,value] of Object.entries(labels)){const el=document.getElementById(id);if(el)el.textContent=value}
- };
- if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});else update();
-})();</script>
-
-
-
-
 <script id="pn100-script">(()=>{'use strict';
  function init(){
   const target=document.querySelector('#pn81-diagnostics .pn81-body')||document.querySelector('#settings .panel');
@@ -3351,5 +3338,5 @@ $('pn120-clear')?.addEventListener('click',()=>{generation++;waiting=null;info.t
  for(const id of ['pn129-date','pn129-events','pn129-tasks','pn129-school'])$(id).addEventListener('change',()=>{last='';preview.value='';$('pn129-download').disabled=true;$('pn129-copy').disabled=true;status.textContent='条件が変わりました。「JSONを作成」を押してください。'});
 })();</script>
 <script id="pn129-version">(()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC129';document.title=document.title.replace(/RC\d+/g,'RC129');for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC129')}})();</script>
-<script id="pn130-version">(()=>{'use strict';const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC130';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC130'):document.title+' · RC130';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC130')}})();</script>
+<script id="pn130-version">(()=>{'use strict';const update=()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC130';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC130'):document.title+' · RC130';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC130')}};if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',update,{once:true});update()})();</script>
 </body></html>
