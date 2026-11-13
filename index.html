@@ -3313,9 +3313,34 @@ $('pn120-clear')?.addEventListener('click',()=>{generation++;waiting=null;info.t
  if($('pn129-events').checked){
   const start=new Date(date+'T00:00:00'),end=new Date(start);end.setDate(end.getDate()+1);
   const all=Array.isArray(data?.events)?data.events:[];
-  output.events=all.filter(e=>{const a=new Date(e.start||e.startTime||e.date||'');const b=new Date(e.end||e.endTime||e.start||e.date||'');return Number.isFinite(+a)&&a<end&&(Number.isFinite(+b)?b>start:a>=start)}).slice(0,200).map(e=>({title:String(e.name||e.title||'予定'),start:e.start||e.startTime||e.date||null,end:e.end||e.endTime||null,allDay:!!e.allDay,category:e.category||null}));
+  const candidates=[];
+  // Reuse the same occurrence expansion used by the calendar for recurring events.
+  if(typeof occurrences==='function'){
+   for(const e of occurrences(date)){
+    candidates.push({source:e,start:e.instanceStart,end:e.instanceEnd});
+   }
+  }
+  // Also include non-recurring events spanning midnight (including multi-day all-day events).
+  for(const e of all){
+   if(e.repeat&&e.repeat!=='none')continue;
+   const a=new Date(e.start||e.startTime||e.date||'');
+   const b=new Date(e.end||e.endTime||e.start||e.date||'');
+   if(Number.isFinite(+a)&&Number.isFinite(+b)&&a<end&&b>start)
+    candidates.push({source:e,start:a,end:b});
+  }
+  const seen=new Set();
+  output.events=candidates.filter(({source,start:a,end:b})=>{
+   if(!Number.isFinite(+a)||!Number.isFinite(+b)||b<=start||a>=end)return false;
+   const key=[source.id||source.name,a.toISOString(),b.toISOString()].join('|');
+   if(seen.has(key))return false;seen.add(key);return true;
+  }).sort((a,b)=>a.start-b.start).slice(0,200).map(({source:e,start:a,end:b})=>({
+   title:String(e.name||e.title||'予定').slice(0,160),
+   start:fmt(a)+'T'+String(a.getHours()).padStart(2,'0')+':'+String(a.getMinutes()).padStart(2,'0'),
+   end:fmt(b)+'T'+String(b.getHours()).padStart(2,'0')+':'+String(b.getMinutes()).padStart(2,'0'),
+   allDay:!!e.allDay,category:e.category||null,recurring:!!(e.repeat&&e.repeat!=='none')
+  }));
  }
- if($('pn129-tasks').checked){const all=Array.isArray(data?.tasks)?data.tasks:[];output.todos=all.filter(t=>!t.done&&(!t.due||String(t.due).slice(0,10)<=date)).slice(0,200).map(t=>({title:String(t.name||t.title||'タスク'),due:t.due||null,priority:t.priority||null}));}
+ if($('pn129-tasks').checked){const all=Array.isArray(data?.tasks)?data.tasks:[];output.todos=all.filter(t=>!t.done&&(!t.due||String(t.due).slice(0,10)<=date)).sort((a,b)=>(a.due||'9999-12-31').localeCompare(b.due||'9999-12-31')).slice(0,200).map(t=>({title:String(t.name||t.title||'タスク').slice(0,160),due:t.due||null,dueTime:t.dueTime||null,priority:t.priority||null,kind:t.kind||'general',overdue:!!t.due&&String(t.due).slice(0,10)<date}));}
  if($('pn129-school').checked){const c=schoolConfig(date);output.school=c.enabled?{summary:schoolSummary(date),periods:schoolClock(date,c).filter(p=>p.kind==='class').map(p=>({name:p.name,start:p.start,end:p.end}))}:{summary:'学校なし',periods:[]};}
  return JSON.stringify(output,null,2);
  }
@@ -3326,4 +3351,5 @@ $('pn120-clear')?.addEventListener('click',()=>{generation++;waiting=null;info.t
  for(const id of ['pn129-date','pn129-events','pn129-tasks','pn129-school'])$(id).addEventListener('change',()=>{last='';preview.value='';$('pn129-download').disabled=true;$('pn129-copy').disabled=true;status.textContent='条件が変わりました。「JSONを作成」を押してください。'});
 })();</script>
 <script id="pn129-version">(()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC129';document.title=document.title.replace(/RC\d+/g,'RC129');for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC129')}})();</script>
+<script id="pn130-version">(()=>{'use strict';const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC130';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC130'):document.title+' · RC130';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC130')}})();</script>
 </body></html>
