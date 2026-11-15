@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#12bfc4" name="theme-color"/><title>PlanNote v1.0.0 RC413 | 予定管理</title><link href="./manifest.webmanifest" rel="manifest"/><link href="./icon-192.png" rel="icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><style>
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#12bfc4" name="theme-color"/><title>PlanNote v1.0.0 RC414 | 予定管理</title><link href="./manifest.webmanifest" rel="manifest"/><link href="./icon-192.png" rel="icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><style>
 :root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#213c2c;background:#f5faf6}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}header{background:white;border-bottom:1px solid #d9e9dd;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:5}h1{font-size:22px;margin:0}h2{font-size:18px;margin:0 0 14px}.muted{color:#58705f;font-size:13px}.shell{max-width:1250px;margin:auto;padding:18px}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.nav button{border:0;border-radius:12px;padding:11px 15px;background:#e4f1e8;color:#284c38;white-space:nowrap}.nav button.active,.primary{background:#21865a!important;color:white!important}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.panel{background:white;border:1px solid #dbece0;border-radius:18px;padding:18px;box-shadow:0 3px 16px #26335b08;margin-bottom:16px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar button,.btn{border:1px solid #cfe4d6;border-radius:10px;background:white;padding:8px 12px}.primary{border:0;border-radius:10px;padding:10px 14px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.dow{text-align:center;font-size:12px;color:#6b7890;padding:8px 0}.day{border:1px solid #e7eaf2;border-radius:10px;min-height:100px;padding:7px;text-align:left;background:white;overflow:hidden}.day.dim{opacity:.35}.day.today{border:2px solid #21865a}.day.selected{background:#edf8f0}.date{font-weight:650;font-size:13px}.chip{display:block;margin-top:4px;border-radius:5px;padding:3px 5px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#edf8f0;border-left:3px solid var(--c,#21865a)}.agenda-item,.task-item{border-bottom:1px solid #eef1f7;padding:10px 0;display:flex;justify-content:space-between;gap:8px;align-items:center}.agenda-item:last-child,.task-item:last-child{border-bottom:0}.tag{display:inline-block;font-size:11px;border-radius:20px;padding:3px 7px;background:#edf8f0;color:#334}.view{display:none}.view.active{display:block}.field{display:grid;gap:5px;margin-bottom:12px}.field label{font-size:13px;font-weight:600}input,select,textarea{width:100%;border:1px solid #c7ddcf;border-radius:10px;padding:10px;background:white;color:#213c2c}textarea{min-height:80px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.danger{color:#c53030}.timeline{height:900px;overflow:auto;border:1px solid #e0ece4;border-radius:12px}.slot{display:grid;grid-template-columns:70px 1fr;min-height:46px;border-bottom:1px solid #e1ede5}.slot:nth-child(2n){background:#f8fcf9}.slot-time{padding:8px;color:#58705f;font-size:12px;border-right:1px solid #e1ede5}.slot-events{padding:3px 8px}.slot-event{background:#edf8f0;border-left:4px solid var(--c,#21865a);border-radius:5px;padding:5px;margin-bottom:3px;font-size:12px;cursor:pointer}.progress{height:9px;background:#e0ece4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#21865a}.habit{padding:12px;border:1px solid #e4e9f3;border-radius:12px;margin:8px 0;display:flex;align-items:center;gap:12px}.habit input,.task-item input{width:auto;accent-color:#21865a}.empty{padding:24px;text-align:center;color:#58705f}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:20}dialog{border:0;border-radius:18px;padding:22px;width:min(95vw,550px);box-shadow:0 25px 80px #0b193650}dialog::backdrop{background:#18243b77}.hint{font-size:12px;color:#58705f;line-height:1.6} @media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:10px}.panel{padding:12px}.day{min-height:78px;padding:4px}.chip{font-size:9px;padding:2px}.date{font-size:11px}.formgrid{grid-template-columns:1fr}header{padding:12px}h1{font-size:19px}}
 .vertical-all-day{border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:12px 0;background:#f8fafc}.vertical-all-day-title{font-weight:700;margin-bottom:8px}.vertical-all-day-event{border-left:5px solid var(--c);background:white;border-radius:6px;padding:8px 10px;margin:5px 0;cursor:pointer;overflow-wrap:anywhere}
 .timeline{height:900px;overflow:auto;position:relative}.vertical-canvas{position:relative;height:920px;min-width:0;background:repeating-linear-gradient(to bottom,#fff 0,#fff 45px,#e1ede5 45px,#e1ede5 46px)}.vertical-hour{position:absolute;left:0;width:64px;padding:5px 3px;color:#58705f;font-size:11px;border-right:1px solid #e1ede5;height:46px}.vertical-track{position:absolute;left:64px;right:0;top:0;height:920px}.vertical-card{position:absolute;box-sizing:border-box;border:1px solid var(--c);border-left:5px solid var(--c);background:#edf8f0;border-radius:7px;padding:5px 6px;overflow:hidden;font-size:12px;min-width:0;z-index:1;overflow-wrap:anywhere}.vertical-card.all-day{background:#e1f4e7}.vertical-card-title{font-weight:700;display:block;word-break:break-word}.vertical-card-time{font-size:11px;opacity:.85}.vertical-resize{position:absolute;bottom:0;left:0;right:0;height:25px;background:linear-gradient(transparent,#b7e4c6);border:0;width:100%;text-align:center;cursor:ns-resize;touch-action:none;color:#176341;font-weight:700}.vertical-all-day-action{position:absolute;top:30px;left:5px;right:5px;width:calc(100% - 10px);padding:5px;font-size:11px;background:#fff;border:1px solid #79b796;border-radius:5px;cursor:pointer}.vertical-drag-tip{font-size:11px;color:#58705f;margin:6px 0}
@@ -368,7 +368,7 @@ function pn322WriteCategoryLearning(){
   pn322CategoryBaseline=payload;return true;
  }catch(error){toast('分類学習の保存に失敗しました');return false}
 }
-// RC413: a non-destructive recovery notice for partially committed classification changes.
+// RC414: a non-destructive recovery notice for partially committed classification changes.
 const PN411_CATEGORY_PENDING_KEY='plannote-category-recovery-v1';
 function pn411RecordCategoryPartial(eventId,mode,category){
  try{
@@ -396,7 +396,7 @@ function pn411InspectCategoryRecovery(){
  toast('予定と分類学習データの更新が途中で失敗した可能性があります。バックアップを保存し、分類を確認してください');
  return 'needs-review';
 }
-// RC413: explicit, reviewed recovery; never silently overwrite learned classifications.
+// RC414: explicit, reviewed recovery; never silently overwrite learned classifications.
 function pn412RecoverySummary(){
  let raw;try{raw=localStorage.getItem(PN411_CATEGORY_PENDING_KEY)}catch(_){return {status:'unavailable'}}
  if(!raw)return {status:'clear'};
@@ -411,7 +411,7 @@ function pn412RecoverySummary(){
  if(!matching)return {status:'changed',raw,marker,event,key,learned};
  return {status:'ready',raw,marker,event,key,learned};
 }
-// RC413: readable, non-destructive differences; all displayed values use textContent.
+// RC414: readable, non-destructive differences; all displayed values use textContent.
 function pn413CategoryRecoveryDiff(summary){
  const state=summary.status,marker=summary.marker||{};
  const expected=marker.mode==='manual'?marker.category:null;
@@ -439,11 +439,28 @@ function pn413CategoryRecoveryDiff(summary){
  rows.push(conflict||state!=='ready'?'安全のため自動修復はしません。バックアップを保存し、内容を手動確認してください。':'JSONバックアップを保存し、差分を確認してから再試行してください。');
  return {text:rows.join('\n'),canRetry:state==='ready'&&!conflict};
 }
+// RC414: explain safe, manual next steps for each recovery state; never write data.
+function pn414CategoryRecoveryGuidance(summary,diff){
+ const status=summary.status;
+ const conflict=status==='ready'&&!diff.canRetry;
+ const instructions={
+  clear:'未完了の分類記録はありません。通常の分類画面で内容を確認してください。',
+  invalid:'復旧記録を読み取れません。JSONバックアップを保存し、記録を削除せず内容を確認してください。',
+  missing:'対象の予定が見つかりません。別タブで削除・変更されていないか確認し、必要ならバックアップから手動で照合してください。',
+  changed:'予定の分類または分類方式が記録と異なります。再読み込み後に予定を確認し、必要なら分類を手動で設定してください。',
+  unavailable:'保存領域にアクセスできません。ブラウザーの保存設定を確認し、データを上書きせずバックアップを確認してください。',
+  ready:conflict?'学習データが復旧記録と競合しています。別タブの編集を停止し、JSONバックアップを保存して、現在の分類と学習内容を手動で確認してください。':'予定と学習データの差分を確認し、JSONバックアップを保存してから「確認して再試行」を選択できます。'
+ };
+ const steps=['安全な対応方法：',instructions[status]||'状態を確認できません。自動上書きせずバックアップを保存してください。'];
+ if(status!=='clear')steps.push('再読み込みする場合は、未保存の変更を控え、ほかのPlanNoteタブでの編集を止めてから行ってください。');
+ if(conflict||status==='changed'||status==='missing'||status==='invalid'||status==='unavailable')steps.push('この画面からの再試行は無効です。復旧記録を勝手に削除しないでください。');
+ return steps.join('\n');
+}
 function pn412ShowCategoryRecovery(){
  const summary=pn412RecoverySummary(),dialog=document.getElementById('pn412RecoveryDialog'),details=document.getElementById('pn412RecoveryDetails');
  if(!dialog||!details)return false;
  const diff=pn413CategoryRecoveryDiff(summary);
- details.textContent=diff.text;
+ details.textContent=diff.text+"\n\n"+pn414CategoryRecoveryGuidance(summary,diff);
  const button=document.getElementById('pn412RecoveryRetry');if(button)button.disabled=!diff.canRetry;
  if(!dialog.open)dialog.showModal();return true;
 }
@@ -715,7 +732,7 @@ async function pn324ExclusiveMutation(label,mutate){
   return await navigator.locks.request('plannote-app-data-write-v1',
    {mode:'exclusive',ifAvailable:true},async lock=>{
     if(!lock){toast('別タブで保存操作中です。少し待って再試行してください');return false}
-    // RC413: migrated UI writes also respect the legacy synchronous-save lease.
+    // RC414: migrated UI writes also respect the legacy synchronous-save lease.
     // A lease owned by another tab must never be bypassed by the Web Lock.
     function pn406ForeignLease(){
      try{
@@ -728,7 +745,7 @@ async function pn324ExclusiveMutation(label,mutate){
     if(pn406ForeignLease()){toast('別タブが保存中です。保存を中止しました');return false}
     // The baseline must still match AFTER the lock is acquired.
     if(!pn321GuardSave()){toast('別タブの変更を検出しました。バックアップ後に再読み込みしてください');return false}
-    // RC413: hold the legacy cooperative lease throughout a Web-Locked
+    // RC414: hold the legacy cooperative lease throughout a Web-Locked
     // mutation so synchronous save() callers in other tabs fail closed.
     // This remains cooperative, not an atomic cross-tab transaction.
     const pn407Lease=pn323Acquire();
@@ -6895,7 +6912,7 @@ async function pn275Recover(){
  // Do not modify app data or clear safety markers. This panel is intentionally read-only until an explicit reload.
 })();
 </script>
-<script id="pn322-version-final">(()=>{const update=()=>{document.title='PlanNote v1.0.0 RC363 | 予定管理';const e=document.querySelector('header h1 small');if(e)e.textContent='v1.0.0 RC363'};update();window.addEventListener('load',update)})();</script><script id="pn332-consistency-diagnostic">
+<script id="pn322-version-final">(()=>{const update=()=>{document.title='PlanNote v1.0.0 RC414 | 予定管理';const e=document.querySelector('header h1 small');if(e)e.textContent='v1.0.0 RC414';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const n=document.getElementById(id);if(n)n.textContent=n.textContent.replace(/RC\d+/g,'RC414')}};update();window.addEventListener('load',update)})();</script><script id="pn332-consistency-diagnostic">
 (()=>{'use strict';
  const panel=document.getElementById('pn274-diagnostic');if(!panel)return;
  const btn=document.createElement('button');btn.type='button';btn.className='btn';btn.id='pn332-consistency-check';btn.textContent='端末内の同期整合性を診断（読み取り専用）';
@@ -7968,7 +7985,7 @@ window.pn361IntegrationTestManifest=Object.freeze({version:'RC363',scope:'Access
 function install(){
  const settings=document.getElementById('settings');if(!settings||document.getElementById('pn364-smoke'))return;
  const panel=document.createElement('section');panel.id='pn364-smoke';panel.className='panel';panel.setAttribute('aria-label','基本画面の構造点検');
- const title=document.createElement('h3');title.textContent='RC413 基本画面の構造点検';
+ const title=document.createElement('h3');title.textContent='RC414 基本画面の構造点検';
  const info=document.createElement('p');info.className='hint';info.textContent='読み取り専用。予定・タスク・同期状態を変更せず、画面要素の有無を確認します。';
  const button=document.createElement('button');button.type='button';button.className='btn';button.textContent='基本画面の構造を点検';
  const status=document.createElement('p');status.id='pn364-smoke-result';status.setAttribute('role','status');status.setAttribute('aria-live','polite');
