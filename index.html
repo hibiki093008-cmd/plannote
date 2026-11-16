@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#12bfc4" name="theme-color"/><title>PlanNote v1.0.0 RC414 | 予定管理</title><link href="./manifest.webmanifest" rel="manifest"/><link href="./icon-192.png" rel="icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><style>
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#12bfc4" name="theme-color"/><title>PlanNote v1.0.0 RC479 | 予定管理</title><link href="./manifest.webmanifest" rel="manifest"/><link href="./icon-192.png" rel="icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><style>
 :root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#213c2c;background:#f5faf6}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}header{background:white;border-bottom:1px solid #d9e9dd;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:5}h1{font-size:22px;margin:0}h2{font-size:18px;margin:0 0 14px}.muted{color:#58705f;font-size:13px}.shell{max-width:1250px;margin:auto;padding:18px}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.nav button{border:0;border-radius:12px;padding:11px 15px;background:#e4f1e8;color:#284c38;white-space:nowrap}.nav button.active,.primary{background:#21865a!important;color:white!important}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.panel{background:white;border:1px solid #dbece0;border-radius:18px;padding:18px;box-shadow:0 3px 16px #26335b08;margin-bottom:16px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar button,.btn{border:1px solid #cfe4d6;border-radius:10px;background:white;padding:8px 12px}.primary{border:0;border-radius:10px;padding:10px 14px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.dow{text-align:center;font-size:12px;color:#6b7890;padding:8px 0}.day{border:1px solid #e7eaf2;border-radius:10px;min-height:100px;padding:7px;text-align:left;background:white;overflow:hidden}.day.dim{opacity:.35}.day.today{border:2px solid #21865a}.day.selected{background:#edf8f0}.date{font-weight:650;font-size:13px}.chip{display:block;margin-top:4px;border-radius:5px;padding:3px 5px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#edf8f0;border-left:3px solid var(--c,#21865a)}.agenda-item,.task-item{border-bottom:1px solid #eef1f7;padding:10px 0;display:flex;justify-content:space-between;gap:8px;align-items:center}.agenda-item:last-child,.task-item:last-child{border-bottom:0}.tag{display:inline-block;font-size:11px;border-radius:20px;padding:3px 7px;background:#edf8f0;color:#334}.view{display:none}.view.active{display:block}.field{display:grid;gap:5px;margin-bottom:12px}.field label{font-size:13px;font-weight:600}input,select,textarea{width:100%;border:1px solid #c7ddcf;border-radius:10px;padding:10px;background:white;color:#213c2c}textarea{min-height:80px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.danger{color:#c53030}.timeline{height:900px;overflow:auto;border:1px solid #e0ece4;border-radius:12px}.slot{display:grid;grid-template-columns:70px 1fr;min-height:46px;border-bottom:1px solid #e1ede5}.slot:nth-child(2n){background:#f8fcf9}.slot-time{padding:8px;color:#58705f;font-size:12px;border-right:1px solid #e1ede5}.slot-events{padding:3px 8px}.slot-event{background:#edf8f0;border-left:4px solid var(--c,#21865a);border-radius:5px;padding:5px;margin-bottom:3px;font-size:12px;cursor:pointer}.progress{height:9px;background:#e0ece4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#21865a}.habit{padding:12px;border:1px solid #e4e9f3;border-radius:12px;margin:8px 0;display:flex;align-items:center;gap:12px}.habit input,.task-item input{width:auto;accent-color:#21865a}.empty{padding:24px;text-align:center;color:#58705f}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:20}dialog{border:0;border-radius:18px;padding:22px;width:min(95vw,550px);box-shadow:0 25px 80px #0b193650}dialog::backdrop{background:#18243b77}.hint{font-size:12px;color:#58705f;line-height:1.6} @media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:10px}.panel{padding:12px}.day{min-height:78px;padding:4px}.chip{font-size:9px;padding:2px}.date{font-size:11px}.formgrid{grid-template-columns:1fr}header{padding:12px}h1{font-size:19px}}
 .vertical-all-day{border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:12px 0;background:#f8fafc}.vertical-all-day-title{font-weight:700;margin-bottom:8px}.vertical-all-day-event{border-left:5px solid var(--c);background:white;border-radius:6px;padding:8px 10px;margin:5px 0;cursor:pointer;overflow-wrap:anywhere}
 .timeline{height:900px;overflow:auto;position:relative}.vertical-canvas{position:relative;height:920px;min-width:0;background:repeating-linear-gradient(to bottom,#fff 0,#fff 45px,#e1ede5 45px,#e1ede5 46px)}.vertical-hour{position:absolute;left:0;width:64px;padding:5px 3px;color:#58705f;font-size:11px;border-right:1px solid #e1ede5;height:46px}.vertical-track{position:absolute;left:64px;right:0;top:0;height:920px}.vertical-card{position:absolute;box-sizing:border-box;border:1px solid var(--c);border-left:5px solid var(--c);background:#edf8f0;border-radius:7px;padding:5px 6px;overflow:hidden;font-size:12px;min-width:0;z-index:1;overflow-wrap:anywhere}.vertical-card.all-day{background:#e1f4e7}.vertical-card-title{font-weight:700;display:block;word-break:break-word}.vertical-card-time{font-size:11px;opacity:.85}.vertical-resize{position:absolute;bottom:0;left:0;right:0;height:25px;background:linear-gradient(transparent,#b7e4c6);border:0;width:100%;text-align:center;cursor:ns-resize;touch-action:none;color:#176341;font-weight:700}.vertical-all-day-action{position:absolute;top:30px;left:5px;right:5px;width:calc(100% - 10px);padding:5px;font-size:11px;background:#fff;border:1px solid #79b796;border-radius:5px;cursor:pointer}.vertical-drag-tip{font-size:11px;color:#58705f;margin:6px 0}
@@ -302,7 +302,14 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 #pn254-google-advice{margin:6px 0 12px;padding:9px 12px;border-left:3px solid #d9a12c;background:rgba(217,161,44,.08);border-radius:4px;white-space:pre-wrap;overflow-wrap:anywhere}
 #pn254-google-advice[hidden]{display:none}
 </style>
-<style id="pn255-history-style">.pn255-history-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:12px 0}.pn255-history-controls label{display:flex;flex-direction:column;gap:5px;font-size:13px;flex:1 1 170px;min-width:0}.pn255-history-controls input,.pn255-history-controls select{width:100%;min-width:0;padding:9px;border:1px solid #a8c7bc;border-radius:8px;background:var(--card,#fff);color:inherit}.pn255-history-entry{padding:8px 0;border-bottom:1px solid #d9e9dd;overflow-wrap:anywhere}.pn255-history-entry[data-error="true"]{border-left:3px solid #cc8a2a;padding-left:8px}.pn255-history-entry small{display:block;margin-top:4px;opacity:.85}.pn255-history-empty{padding:10px 0}</style><style id="pn257-style">.pn257-locate{margin:6px 0 10px;min-height:38px}#pn257-locate-status:empty{display:none}.pn259-locate-detail{border:1px solid var(--line,#888);border-radius:8px;padding:10px;margin:8px 0}.pn259-locate-detail p{margin:4px 0;overflow-wrap:anywhere}</style><style id="pn260-style">.pn260-jump{margin-top:10px;min-height:38px}.pn260-highlight{outline:3px solid #13bfc5!important;outline-offset:-4px;box-shadow:inset 0 0 0 2px #062a2d!important}.pn260-highlight .date{font-weight:800}</style><style id="pn262-style">.pn262-event-highlight{outline:3px solid #13bfc5!important;outline-offset:2px;border-radius:8px;background:rgba(19,191,197,.12)!important}</style><style id="pn265-style">.pn265-occurrence-nav{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.pn265-occurrence-nav button{min-height:44px;flex:1 1 110px}</style><style id="pn264-style">#pn264-occurrence-date{min-height:40px;max-width:100%;margin:8px}.pn264-occurrence-go{min-height:40px}</style><style id="pn285-style">#pn285-storage-warning{border:2px solid #d18b28;border-radius:10px;background:#fff3d9;color:#432b0b;padding:14px;margin:12px 0;line-height:1.55;overflow-wrap:anywhere}#pn285-storage-warning[hidden]{display:none!important}#pn285-storage-warning strong{display:block;font-size:16px}#pn285-storage-warning p{margin:6px 0}#pn285-storage-warning button{min-height:42px;margin-top:8px}@media(prefers-color-scheme:dark){#pn285-storage-warning{background:#352716;color:#fff1d5;border-color:#e9a74d}}</style><style id="pn289-backup-style">#pn289-backup-status{margin-top:10px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}#pn289-backup-status[data-state="error"]{color:#c04444;font-weight:600}#pn289-backup-status[data-state="ready"]{color:inherit}</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC367</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><section aria-labelledby="pn120-title" id="pn120-import"><h3 id="pn120-title">📷 レシート・PayPay画像から入力（試験版）</h3><p class="pn120-hint">撮影または画像を選択してください。まず端末の文字認識を試し、非対応の場合は日本語OCRを利用できます。日本語OCRの初回利用時はインターネット経由でプログラム・言語データを取得します。画像の認識処理は端末内で行い、画像自体はOCRサービスへ送信しません。</p><div class="pn120-grid"><div><label for="pn120-image">レシート・支払い画面</label><div class="pn134-picker"><label class="btn" for="pn134-camera">📷 カメラで撮影</label><input accept="image/*" aria-label="カメラで撮影" capture="environment" id="pn134-camera" style="position:absolute;width:1px;height:1px;opacity:0" type="file"/><label class="btn" for="pn120-image">🖼️ 保存済み画像を選択</label></div><input accept="image/*" id="pn120-image" type="file"/><img alt="選択した画像のプレビュー" id="pn120-preview"/></div><div><label for="pn120-text">読み取った文字（編集可）</label><textarea id="pn120-text" placeholder="例：2026/11/13　コンビニ　合計 ¥580"></textarea></div></div><div class="pn120-actions"><button class="btn" id="pn120-ocr" type="button">画像から文字を読み取る</button><button class="btn" id="pn121-ocr" type="button">日本語OCRで読み取る（初回通信あり）</button><button class="btn" id="pn120-parse" type="button">文字から項目を抽出</button></div><p aria-live="polite" id="pn120-status" role="status">画像を選ぶとここに状態を表示します。</p><div class="pn120-grid"><div><label for="pn120-date">日付</label><input id="pn120-date" type="date"/></div><div><label for="pn120-amount">支払額（円）</label><input id="pn120-amount" max="999999999" min="1" type="number"/></div><div><label for="pn120-shop">店舗・支払先</label><input id="pn120-shop" maxlength="100"/></div><div><label for="pn120-category">カテゴリ</label><select id="pn120-category"></select></div></div><div class="pn120-actions"><button class="primary" id="pn120-apply" type="button">確認して家計簿入力欄へ反映</button><button class="btn" id="pn120-clear" type="button">画像を破棄</button></div><p class="pn120-hint">日本語OCRは初回の言語データ取得に時間がかかります。通信ができない場合は手入力してください。誤認識を防ぐため自動保存はしません。内容を確認してから家計簿の「記録する」を押してください。同日・同額・同じ店舗の記録がある場合は警告します。</p></section><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong>⚠ Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn285-storage-check" type="button">状態を再確認</button><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700">⚠ 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は診断結果を表示するだけで、安全停止を解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="btn" hidden="" id="pn391-open-diagnostic" type="button" aria-describedby="pn254-google-advice">安全停止の診断画面へ移動（読み取り専用）</button><p class="hint" id="pn391-diagnostic-feedback" role="status" aria-live="polite" hidden=""></p><section aria-label="同期未完了の診断" class="panel" id="pn274-diagnostic" style="margin:12px 0;padding:12px"><h3 style="margin:0 0 8px">同期未完了の診断（読み取り専用）</h3><p class="hint">Google側の予定と端末内の予定を比較します。診断では予定を変更・削除せず、安全停止も解除しません。</p><button class="btn" id="pn274-diagnose" onclick="pn274Diagnose()" type="button">同期未完了を診断する</button><p aria-live="polite" class="hint" id="pn274-diagnostic-result" role="status">診断前</p><button class="btn" disabled="" id="pn275-recover" onclick="pn275Recover()" type="button">一致を再確認して安全停止を解除</button><p class="hint">解除には予定内容・連携ID・同期管理情報の一致が必要です。解除前にJSONバックアップを保存してください。</p></section><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
+<style id="pn255-history-style">.pn255-history-controls{display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin:12px 0}.pn255-history-controls label{display:flex;flex-direction:column;gap:5px;font-size:13px;flex:1 1 170px;min-width:0}.pn255-history-controls input,.pn255-history-controls select{width:100%;min-width:0;padding:9px;border:1px solid #a8c7bc;border-radius:8px;background:var(--card,#fff);color:inherit}.pn255-history-entry{padding:8px 0;border-bottom:1px solid #d9e9dd;overflow-wrap:anywhere}.pn255-history-entry[data-error="true"]{border-left:3px solid #cc8a2a;padding-left:8px}.pn255-history-entry small{display:block;margin-top:4px;opacity:.85}.pn255-history-empty{padding:10px 0}</style><style id="pn257-style">.pn257-locate{margin:6px 0 10px;min-height:38px}#pn257-locate-status:empty{display:none}.pn259-locate-detail{border:1px solid var(--line,#888);border-radius:8px;padding:10px;margin:8px 0}.pn259-locate-detail p{margin:4px 0;overflow-wrap:anywhere}</style><style id="pn260-style">.pn260-jump{margin-top:10px;min-height:38px}.pn260-highlight{outline:3px solid #13bfc5!important;outline-offset:-4px;box-shadow:inset 0 0 0 2px #062a2d!important}.pn260-highlight .date{font-weight:800}</style><style id="pn262-style">.pn262-event-highlight{outline:3px solid #13bfc5!important;outline-offset:2px;border-radius:8px;background:rgba(19,191,197,.12)!important}</style><style id="pn265-style">.pn265-occurrence-nav{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}.pn265-occurrence-nav button{min-height:44px;flex:1 1 110px}</style><style id="pn264-style">#pn264-occurrence-date{min-height:40px;max-width:100%;margin:8px}.pn264-occurrence-go{min-height:40px}</style><style id="pn285-style">#pn285-storage-warning{border:2px solid #d18b28;border-radius:10px;background:#fff3d9;color:#432b0b;padding:14px;margin:12px 0;line-height:1.55;overflow-wrap:anywhere}#pn285-storage-warning[hidden]{display:none!important}#pn285-storage-warning strong{display:block;font-size:16px}#pn285-storage-warning p{margin:6px 0}#pn285-storage-warning button{min-height:42px;margin-top:8px}@media(prefers-color-scheme:dark){#pn285-storage-warning{background:#352716;color:#fff1d5;border-color:#e9a74d}}</style><style id="pn289-backup-style">#pn289-backup-status{margin-top:10px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}#pn289-backup-status[data-state="error"]{color:#c04444;font-weight:600}#pn289-backup-status[data-state="ready"]{color:inherit}</style><style id="pn475-simple-ui">
+#pn69-diagnostics,#pn72-diagnostics,#pn274-diagnostic,#pn391-open-diagnostic,#pn391-diagnostic-feedback,
+#pn332-consistency-diagnostic,#pn346-diagnostic-nav,#pn355-a11y-audit,#pn353-interaction-runner,
+[id$="-diagnostics"],[id$="-diagnostic-panel"]{display:none!important}
+/* Compact, readable controls across mobile and desktop. */
+#settings .panel{max-width:100%;overflow-wrap:anywhere}
+@media(max-width:650px){header h1{font-size:1.35rem}header .muted{font-size:.8rem}.nav{gap:4px}.nav button{min-height:42px}}
+</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC479</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><section aria-labelledby="pn120-title" id="pn120-import"><h3 id="pn120-title">📷 レシート・PayPay画像から入力（試験版）</h3><p class="pn120-hint">撮影または画像を選択してください。まず端末の文字認識を試し、非対応の場合は日本語OCRを利用できます。日本語OCRの初回利用時はインターネット経由でプログラム・言語データを取得します。画像の認識処理は端末内で行い、画像自体はOCRサービスへ送信しません。</p><div class="pn120-grid"><div><label for="pn120-image">レシート・支払い画面</label><div class="pn134-picker"><label class="btn" for="pn134-camera">📷 カメラで撮影</label><input accept="image/*" aria-label="カメラで撮影" capture="environment" id="pn134-camera" style="position:absolute;width:1px;height:1px;opacity:0" type="file"/><label class="btn" for="pn120-image">🖼️ 保存済み画像を選択</label></div><input accept="image/*" id="pn120-image" type="file"/><img alt="選択した画像のプレビュー" id="pn120-preview"/></div><div><label for="pn120-text">読み取った文字（編集可）</label><textarea id="pn120-text" placeholder="例：2026/11/13　コンビニ　合計 ¥580"></textarea></div></div><div class="pn120-actions"><button class="btn" id="pn120-ocr" type="button">画像から文字を読み取る</button><button class="btn" id="pn121-ocr" type="button">日本語OCRで読み取る（初回通信あり）</button><button class="btn" id="pn120-parse" type="button">文字から項目を抽出</button></div><p aria-live="polite" id="pn120-status" role="status">画像を選ぶとここに状態を表示します。</p><div class="pn120-grid"><div><label for="pn120-date">日付</label><input id="pn120-date" type="date"/></div><div><label for="pn120-amount">支払額（円）</label><input id="pn120-amount" max="999999999" min="1" type="number"/></div><div><label for="pn120-shop">店舗・支払先</label><input id="pn120-shop" maxlength="100"/></div><div><label for="pn120-category">カテゴリ</label><select id="pn120-category"></select></div></div><div class="pn120-actions"><button class="primary" id="pn120-apply" type="button">確認して家計簿入力欄へ反映</button><button class="btn" id="pn120-clear" type="button">画像を破棄</button></div><p class="pn120-hint">日本語OCRは初回の言語データ取得に時間がかかります。通信ができない場合は手入力してください。誤認識を防ぐため自動保存はしません。内容を確認してから家計簿の「記録する」を押してください。同日・同額・同じ店舗の記録がある場合は警告します。</p></section><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong>⚠ Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn285-storage-check" type="button">状態を再確認</button><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700">⚠ 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="btn" hidden="" id="pn391-open-diagnostic" type="button" aria-describedby="pn254-google-advice">安全停止の診断画面へ移動（読み取り専用）</button><p class="hint" id="pn391-diagnostic-feedback" role="status" aria-live="polite" hidden=""></p><section aria-label="同期未完了の診断" class="panel" id="pn274-diagnostic" style="margin:12px 0;padding:12px"><h3 style="margin:0 0 8px">同期未完了の診断（読み取り専用）</h3><p class="hint">Google側の予定と端末内の予定を比較します。診断では予定を変更・削除せず、安全停止も解除しません。</p><button class="btn" id="pn274-diagnose" onclick="pn274Diagnose()" type="button">同期未完了を診断する</button><p aria-live="polite" class="hint" id="pn274-diagnostic-result" role="status">診断前</p><button class="btn" disabled="" id="pn275-recover" onclick="pn275Recover()" type="button">一致を再確認して安全停止を解除</button><p class="hint">解除には予定内容・連携ID・同期管理情報の一致が必要です。解除前にJSONバックアップを保存してください。</p></section><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
 <label><input id="autoPullToggle" onchange="setAutoPull(this.checked)" type="checkbox"/> 自動取得を有効にする</label>
 <p aria-live="polite" class="hint" id="autoPullStatus">自動取得は停止中</p>
@@ -370,6 +377,8 @@ function pn322WriteCategoryLearning(){
 }
 // RC414: a non-destructive recovery notice for partially committed classification changes.
 const PN411_CATEGORY_PENDING_KEY='plannote-category-recovery-v1';
+// RC437: quarantine a pre-restore journal without changing the backup schema.
+const PN429_RESTORE_GUARD_KEY='plannote-category-restore-guard-v1';
 function pn411RecordCategoryPartial(eventId,mode,category){
  try{
   const payload=JSON.stringify({eventId:String(eventId),mode,category:category||null,created:Date.now()});
@@ -390,7 +399,9 @@ function pn411InspectCategoryRecovery(){
  const learned=categoryLearning[normalizeCategoryText(event.name)];
  const resolved=marker.mode==='manual' ? event.categoryManual===true&&event.category===marker.category&&learned?.category===marker.category : event.categoryManual===false&&!learned;
  if(resolved){
-  try{if(localStorage.getItem(PN411_CATEGORY_PENDING_KEY)===raw)localStorage.removeItem(PN411_CATEGORY_PENDING_KEY)}catch(_){}
+  // RC437: a completed learning write is not permission to silently erase its journal.
+  // The user must review it; re-running the learning write is unnecessary.
+  toast('分類学習の内容は一致しています。復旧記録は確認後に整理できます。');
   return 'resolved';
  }
  toast('予定と分類学習データの更新が途中で失敗した可能性があります。バックアップを保存し、分類を確認してください');
@@ -409,7 +420,8 @@ function pn412RecoverySummary(){
  const key=normalizeCategoryText(event.name),learned=categoryLearning[key];
  const matching=marker.mode==='manual' ? event.categoryManual===true&&event.category===marker.category : event.categoryManual===false;
  if(!matching)return {status:'changed',raw,marker,event,key,learned};
- return {status:'ready',raw,marker,event,key,learned};
+ const resolved=marker.mode==='manual'?learned?.category===marker.category:!learned;
+ return {status:resolved?'resolved':'ready',raw,marker,event,key,learned};
 }
 // RC414: readable, non-destructive differences; all displayed values use textContent.
 function pn413CategoryRecoveryDiff(summary){
@@ -418,7 +430,7 @@ function pn413CategoryRecoveryDiff(summary){
  const event=summary.event;
  const learned=summary.learned?.category||null;
  const conflict=state==='ready'&&(marker.mode==='manual'?!!learned&&learned!==expected:!!learned);
- const rows=['復旧状態：'+(conflict?'競合（再試行不可）':state==='ready'?'確認待ち':state)];
+ const rows=['復旧状態：'+(conflict?'競合（再試行不可）':state==='resolved'?'学習反映済み（記録確認待ち）':state==='ready'?'確認待ち':state)];
  if(marker.eventId)rows.push('記録の予定ID：'+marker.eventId);
  if(marker.mode)rows.push('記録の操作：'+(marker.mode==='manual'?'手動分類':'自動分類へ復帰'));
  if(marker.mode)rows.push('記録が期待する分類：'+(expected||'学習記録なし'));
@@ -430,6 +442,7 @@ function pn413CategoryRecoveryDiff(summary){
   rows.push('現在の学習：'+(learned||'なし'));
   if(state==='changed')rows.push('差分：予定の分類または分類方式が復旧記録と一致しません');
   if(conflict)rows.push('差分：現在の学習内容が復旧記録と異なります。自動上書きしません');
+  if(state==='resolved')rows.push('差分：学習データは反映済みです。再保存せず記録だけを確認できます');
   if(!conflict&&state==='ready')rows.push('差分：復旧記録に対して未完了の学習更新があります');
  }else if(state==='missing')rows.push('差分：対象の予定が削除されたか見つかりません');
  else if(state==='invalid')rows.push('差分：復旧記録が破損しており内容を比較できません');
@@ -437,7 +450,7 @@ function pn413CategoryRecoveryDiff(summary){
  else if(state==='clear')rows.push('未完了の分類記録はありません');
  rows.push('');
  rows.push(conflict||state!=='ready'?'安全のため自動修復はしません。バックアップを保存し、内容を手動確認してください。':'JSONバックアップを保存し、差分を確認してから再試行してください。');
- return {text:rows.join('\n'),canRetry:state==='ready'&&!conflict};
+ return {text:rows.join('\n'),canRetry:(state==='ready'&&!conflict)||state==='resolved'};
 }
 // RC414: explain safe, manual next steps for each recovery state; never write data.
 function pn414CategoryRecoveryGuidance(summary,diff){
@@ -449,6 +462,7 @@ function pn414CategoryRecoveryGuidance(summary,diff){
   missing:'対象の予定が見つかりません。別タブで削除・変更されていないか確認し、必要ならバックアップから手動で照合してください。',
   changed:'予定の分類または分類方式が記録と異なります。再読み込み後に予定を確認し、必要なら分類を手動で設定してください。',
   unavailable:'保存領域にアクセスできません。ブラウザーの保存設定を確認し、データを上書きせずバックアップを確認してください。',
+  resolved:'分類学習データは反映済みです。再保存せず、バックアップと内容を確認して復旧記録だけを整理できます。',
   ready:conflict?'学習データが復旧記録と競合しています。別タブの編集を停止し、JSONバックアップを保存して、現在の分類と学習内容を手動で確認してください。':'予定と学習データの差分を確認し、JSONバックアップを保存してから「確認して再試行」を選択できます。'
  };
  const steps=['安全な対応方法：',instructions[status]||'状態を確認できません。自動上書きせずバックアップを保存してください。'];
@@ -456,25 +470,200 @@ function pn414CategoryRecoveryGuidance(summary,diff){
  if(conflict||status==='changed'||status==='missing'||status==='invalid'||status==='unavailable')steps.push('この画面からの再試行は無効です。復旧記録を勝手に削除しないでください。');
  return steps.join('\n');
 }
+function pn424CategoryMonitorGuidance(){
+ if(pn423CategoryMonitorHealthy())return '';
+ return '【安全停止：保存変更監視を確認できません】\n分類学習の手動復旧は実行できません。復旧記録は削除しません。\nJSONバックアップを保存し、ほかのPlanNoteタブを閉じてからページを再読み込みしてください。改善しない場合は保存データを上書きせず、バックアップを保管してください。';
+}
+// RC437: an open recovery dialog is invalidated as soon as a watched write arrives.
+let pn425RecoveryDialogInvalidated=false;
+// RC437: external writes may arrive while the recovery dialog is closed.
+let pn426RecoveryNeedsReload=false;
+function pn425InvalidateRecoveryDialog(){
+ const dialog=document.getElementById('pn412RecoveryDialog');
+ if(!dialog||!dialog.open)return false;
+ pn425RecoveryDialogInvalidated=true;
+ const retry=document.getElementById('pn412RecoveryRetry');if(retry)retry.disabled=true;
+ const details=document.getElementById('pn412RecoveryDetails');
+ if(details&&!details.textContent.includes('【変更検出：再確認が必要】'))
+  details.textContent+='\n\n【変更検出：再確認が必要】\n復旧画面を開いている間に保存データが変更されました。再試行を停止しました。JSONバックアップを保存し、他のタブの編集を止めてから画面を閉じ、再読み込みして確認してください。';
+ return true;
+}
+// RC437: reopening must compare durable storage with in-memory recovery inputs.
+// This catches missed storage events while the dialog was closed or tab suspended.
+// RC437: ignore harmless object-key serialization order while preserving array order.
+// This comparison is used only for the recovery-dialog safety check.
+function pn428RecoveryCanonical(value){
+ if(Array.isArray(value))return value.map(pn428RecoveryCanonical);
+ if(value&&typeof value==='object'){
+  const result={};for(const key of Object.keys(value).sort())result[key]=pn428RecoveryCanonical(value[key]);
+  return result;
+ }
+ return value;
+}
+function pn428RecoveryEquivalent(a,b){
+ try{return JSON.stringify(pn428RecoveryCanonical(a))===JSON.stringify(pn428RecoveryCanonical(b))}catch(_){return false}
+}
+// RC437: explain why an old journal is quarantined; this function never modifies storage.
+function pn430RestoreJournalState(){
+ try{
+  const guard=localStorage.getItem(PN429_RESTORE_GUARD_KEY);
+  const marker=localStorage.getItem(PN411_CATEGORY_PENDING_KEY);
+  if(!guard)return {status:'none',message:''};
+  if(!marker)return {status:'cleared',message:''};
+  if(marker!==guard)return {status:'new',message:''};
+  return {status:'quarantined',message:'【復元前の復旧記録を隔離中】\nバックアップ復元前に作成された分類学習の復旧記録が残っています。復元後の予定に自動適用すると、異なる予定を変更するおそれがあります。\n復旧記録は削除・上書きしていません。JSONバックアップを保存し、復元した予定と分類を確認してください。別タブの編集を止め、必要に応じてバックアップと照合してください。隔離中は「確認して再試行」を利用できません。'};
+ }catch(_){return {status:'unavailable',message:'【隔離状態を確認できません】\n保存領域を読み取れず、隔離状態を検証できません。復旧操作を停止しました。データを上書きせず、バックアップを保管してください。'}}
+}
+// RC437: keep quarantine read-only and distinguish a stale journal from a new one.
+function pn431RecoveryJournalStatus(){
+ const state=pn430RestoreJournalState();
+ if(state.status==='quarantined')return {blocked:true,label:'復元前の記録を隔離中',message:state.message};
+ if(state.status==='unavailable')return {blocked:true,label:'隔離状態を確認できません',message:state.message};
+ if(state.status==='new')return {blocked:false,label:'復元後の新しい復旧記録',message:''};
+ if(state.status==='cleared')return {blocked:false,label:'復旧記録なし（隔離履歴あり）',message:''};
+ return {blocked:false,label:'隔離記録なし',message:''};
+}
+// RC437: verify that a restored dataset and its quarantine guard still refer to
+// the same pre-restore journal. A concurrent journal change must not be treated
+// as a successful quarantine, even when the backup data itself was committed.
+function pn434VerifyRestoreGuard(previousJournal){
+ try{
+  const current=localStorage.getItem(PN411_CATEGORY_PENDING_KEY);
+  const guard=localStorage.getItem(PN429_RESTORE_GUARD_KEY);
+  return {safe:current===previousJournal&&guard===(previousJournal||''),
+   reason:current!==previousJournal?'復元中に分類学習の復旧記録が変更されました':'復旧記録の隔離ガードを確認できません'};
+ }catch(_){return {safe:false,reason:'復旧記録と隔離ガードを読み取れません'}}
+}
+function pn429RestoreJournalWarning(){return pn430RestoreJournalState().message}
+function pn427RecoveryPersistedWarning(){
+ const restoreWarning=typeof pn429RestoreJournalWarning==='function'?pn429RestoreJournalWarning():'';
+ if(restoreWarning)return restoreWarning;
+ try{
+  const eventKey=typeof KEY==='string'?KEY:'plannote-v01';
+  const rawEvents=localStorage.getItem(eventKey);
+  const rawLearning=localStorage.getItem(CATEGORY_LEARNING_KEY);
+  if(rawEvents===null||rawLearning===null)return '保存済みの予定または分類学習データが見つかりません';
+  const storedEvents=JSON.parse(rawEvents),storedLearning=JSON.parse(rawLearning);
+  if(!storedEvents||!Array.isArray(storedEvents.events)||!storedLearning||typeof storedLearning!=='object'||Array.isArray(storedLearning))return '保存データの形式を確認できません';
+  if(!pn428RecoveryEquivalent(storedEvents.events,data?.events)||!pn428RecoveryEquivalent(storedLearning,categoryLearning))return '保存済みデータと画面内の予定・分類学習データが一致しません';
+  if(typeof pn322CategoryBaseline!=='undefined'&&rawLearning!==pn322CategoryBaseline)return '分類学習データの保存状態が一致しません';
+  return '';
+ }catch(_){return '保存データを読み取れないため安全を確認できません'}
+}
 function pn412ShowCategoryRecovery(){
  const summary=pn412RecoverySummary(),dialog=document.getElementById('pn412RecoveryDialog'),details=document.getElementById('pn412RecoveryDetails');
  if(!dialog||!details)return false;
  const diff=pn413CategoryRecoveryDiff(summary);
- details.textContent=diff.text+"\n\n"+pn414CategoryRecoveryGuidance(summary,diff);
- const button=document.getElementById('pn412RecoveryRetry');if(button)button.disabled=!diff.canRetry;
- if(!dialog.open)dialog.showModal();return true;
+ const monitorWarning=typeof pn424CategoryMonitorGuidance==='function'?pn424CategoryMonitorGuidance():'';
+ const persistedWarning=typeof pn427RecoveryPersistedWarning==='function'?pn427RecoveryPersistedWarning():'';
+ const journalState=typeof pn431RecoveryJournalStatus==='function'?pn431RecoveryJournalStatus():{blocked:false,label:'隔離状態未確認'};
+ const guardWarning=(typeof pn433GuardChangedDuringRecovery!=='undefined'&&pn433GuardChangedDuringRecovery)?'【隔離ガード変更を検出】\n隔離情報が変更されました。元の値に戻されても復旧は再試行できません。バックアップを保存してページを再読み込みしてください。':'';
+ if(persistedWarning&&typeof pn426RecoveryNeedsReload!=='undefined')pn426RecoveryNeedsReload=true;
+ if(journalState.blocked&&typeof pn425RecoveryDialogInvalidated!=='undefined'&&dialog.open){const retry=document.getElementById('pn412RecoveryRetry');if(retry)retry.disabled=true;}
+ // Reopening re-reads persisted journal state; external changes require a full reload
+ // because the in-memory event/learning snapshots may still be stale.
+ const reloadWarning=(typeof pn426RecoveryNeedsReload!=='undefined'&&pn426RecoveryNeedsReload)?'【再読み込みが必要】\n別タブで保存データが変更されました。復旧記録は保持します。JSONバックアップを保存し、ほかのタブの編集を止めてページを再読み込みしてください。':'';
+ details.textContent='【復旧記録】'+journalState.label+'\n\n'+diff.text+"\n\n"+pn414CategoryRecoveryGuidance(summary,diff)+(monitorWarning?'\n\n'+monitorWarning:'')+(reloadWarning?'\n\n'+reloadWarning:'')+(guardWarning?'\n\n'+guardWarning:'')+(persistedWarning?'\n\n【保存データ不一致：安全停止】\n'+persistedWarning+'。バックアップを保存し、ほかのタブを閉じてページを再読み込みしてください。':'');
+ const button=document.getElementById('pn412RecoveryRetry');if(button)button.disabled=!diff.canRetry||journalState.blocked||!!guardWarning||!!monitorWarning||!!reloadWarning||pn417RecoveryBusy||(typeof pn426RecoveryNeedsReload!=='undefined'&&pn426RecoveryNeedsReload)||(typeof pn425RecoveryDialogInvalidated!=='undefined'&&pn425RecoveryDialogInvalidated);
+ if(typeof pn425RecoveryDialogInvalidated!=='undefined'&&pn425RecoveryDialogInvalidated)details.textContent+='\n\n【変更検出：再確認が必要】\n保存データの変更を検出しました。画面を閉じて再読み込みしてください。';
+ if(!dialog.open){if(typeof pn425RecoveryDialogInvalidated!=='undefined')pn425RecoveryDialogInvalidated=false;dialog.showModal()}return true;
 }
+// RC437: reject concurrent retries even when the UI button is re-enabled by a dialog refresh.
+// RC421: a change-and-revert is still a competing write, even when bytes match.
+let pn421CategoryStorageRevision=0;
+// RC437: a guard change-and-revert remains a conflict even if its final bytes match.
+let pn433GuardChangedDuringRecovery=false;
+window.addEventListener('storage',event=>{
+ const keys=[typeof KEY==='string'?KEY:'plannote-v01',CATEGORY_LEARNING_KEY,PN411_CATEGORY_PENDING_KEY,typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1'];
+ if(event&&(event.key===null||keys.includes(event.key))){
+  pn421CategoryStorageRevision++;
+  if(event.key===null||event.key===(typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1'))pn433GuardChangedDuringRecovery=true;
+  const retry=document.getElementById('pn412RecoveryRetry');
+  if(retry)retry.disabled=true;
+  pn426RecoveryNeedsReload=true;
+  if(typeof pn425InvalidateRecoveryDialog==='function')pn425InvalidateRecoveryDialog();
+ }
+});
+// RC422: observe same-tab writes (including change-and-revert) to recovery inputs.
+// Wrapping Storage.prototype covers calls through the native localStorage object.
+let pn422CategoryLocalRevision=0;
+let pn422CategoryMonitorReady=false;
+(function pn422InstallCategoryMonitor(){
+ const keys=()=>[typeof KEY==='string'?KEY:'plannote-v01',CATEGORY_LEARNING_KEY,PN411_CATEGORY_PENDING_KEY,typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1'];
+ try{
+  const target=typeof Storage!=='undefined'&&Storage.prototype?Storage.prototype:localStorage;
+  if(!target||typeof target.setItem!=='function'||typeof target.removeItem!=='function' )return;
+  if(target.__pn422CategoryMonitor){pn422CategoryMonitorReady=true;return}
+  const set=target.setItem,remove=target.removeItem,clear=target.clear;
+  const wrappedSet=function(key,value){const result=set.call(this,key,value);if(this===localStorage&&keys().includes(String(key))){pn422CategoryLocalRevision++;if(String(key)===(typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1'))pn433GuardChangedDuringRecovery=true;if(typeof pn425InvalidateRecoveryDialog==='function')pn425InvalidateRecoveryDialog()}return result};
+  const wrappedRemove=function(key){const result=remove.call(this,key);if(this===localStorage&&keys().includes(String(key))){pn422CategoryLocalRevision++;if(String(key)===(typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1'))pn433GuardChangedDuringRecovery=true;if(typeof pn425InvalidateRecoveryDialog==='function')pn425InvalidateRecoveryDialog()}return result};
+  const wrappedClear=function(){const result=clear.call(this);if(this===localStorage){pn422CategoryLocalRevision++;pn433GuardChangedDuringRecovery=true;if(typeof pn425InvalidateRecoveryDialog==='function')pn425InvalidateRecoveryDialog()}return result};
+  target.setItem=wrappedSet;target.removeItem=wrappedRemove;if(typeof clear==='function')target.clear=wrappedClear;
+  if(target.setItem!==wrappedSet||target.removeItem!==wrappedRemove||(typeof clear==='function'&&target.clear!==wrappedClear)){
+   try{target.setItem=set;target.removeItem=remove;if(typeof clear==='function')target.clear=clear}catch(_){}return;
+  }
+  Object.defineProperty(target,'__pn422CategoryMonitor',{value:true,configurable:true});
+  pn422CategoryMonitorReady=true;
+ }catch(_){pn422CategoryMonitorReady=false}
+})();
+// RC437: fail closed if the same-tab monitor was replaced or cannot be verified.
+let pn423CategoryMonitorMethods=(()=>{
+ try{const target=typeof Storage!=='undefined'&&Storage.prototype?Storage.prototype:localStorage;
+  return pn422CategoryMonitorReady&&target&&target.__pn422CategoryMonitor?[target.setItem,target.removeItem,target.clear]:null;
+ }catch(_){return null}
+})();
+function pn423CategoryMonitorHealthy(){
+ if(!pn422CategoryMonitorReady)return false;
+ try{
+  const target=typeof Storage!=='undefined'&&Storage.prototype?Storage.prototype:localStorage;
+  if(!target||!target.__pn422CategoryMonitor)return false;
+  const current=[target.setItem,target.removeItem,target.clear];
+  if(!pn423CategoryMonitorMethods||current.some(fn=>typeof fn!=='function'))return false;
+  return current.every((fn,i)=>fn===pn423CategoryMonitorMethods[i]);
+ }catch(_){return false}
+}
+let pn417RecoveryBusy=false;
 async function pn412RetryCategoryRecovery(){
- const button=document.getElementById('pn412RecoveryRetry');if(!button||button.disabled)return false;
+ const button=document.getElementById('pn412RecoveryRetry');if(!button||button.disabled||pn417RecoveryBusy||(typeof pn425RecoveryDialogInvalidated!=='undefined'&&pn425RecoveryDialogInvalidated))return false;
+ pn417RecoveryBusy=true;
  button.disabled=true;
  try{
-  const initial=pn412RecoverySummary();if(initial.status!=='ready'){toast('復旧記録を再確認してください');return false}
-  if(!window.confirm('JSONバックアップを保存し、予定と学習内容を確認しましたか？ 分類学習データだけを再保存します。'))return false;
+  if(typeof pn433GuardChangedDuringRecovery!=='undefined'&&pn433GuardChangedDuringRecovery){toast('隔離ガードが変更されました。復旧記録を保持し、ページを再読み込みしてください');return false}
+  if(typeof pn431RecoveryJournalStatus==='function'&&pn431RecoveryJournalStatus().blocked){toast('隔離された復旧記録は再試行できません。バックアップを保存して内容を確認してください');return false}
+  if(!pn423CategoryMonitorHealthy()){toast('保存変更監視が無効です。復旧記録を保持し、バックアップ保存後に再読み込みしてください');return false}
+  if((typeof pn426RecoveryNeedsReload!=='undefined'&&pn426RecoveryNeedsReload)||(typeof pn427RecoveryPersistedWarning==='function'&&pn427RecoveryPersistedWarning())){toast('保存データの不一致を検出しました。復旧記録を保持して再読み込みしてください');return false}
+  const initial=pn412RecoverySummary();if(!['ready','resolved'].includes(initial.status)){toast('復旧記録を再確認してください');return false}
+  // RC437: track persisted events and learning across user confirmation and lock waits.
+  // The journal alone is insufficient: another tab can change an event without touching it.
+  const eventStorageKey=typeof KEY==='string'?KEY:'plannote-v01';
+  let approvedEvents,approvedLearning;
+  try{approvedEvents=localStorage.getItem(eventStorageKey);approvedLearning=localStorage.getItem(CATEGORY_LEARNING_KEY)}
+  catch(_){toast('保存データを確認できません。復旧記録を保持してください');return false}
+  let approvedGuard;try{approvedGuard=localStorage.getItem(typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1')}catch(_){return false}
+  const approvedRevision=pn421CategoryStorageRevision;
+  let approvedLocalRevision=pn422CategoryLocalRevision;
+  const stillApproved=()=>{
+   try{return pn423CategoryMonitorHealthy()&&!(typeof pn433GuardChangedDuringRecovery!=='undefined'&&pn433GuardChangedDuringRecovery)&&pn421CategoryStorageRevision===approvedRevision&&pn422CategoryLocalRevision===approvedLocalRevision&&localStorage.getItem(eventStorageKey)===approvedEvents&&
+      localStorage.getItem(CATEGORY_LEARNING_KEY)===approvedLearning&&
+      localStorage.getItem(PN411_CATEGORY_PENDING_KEY)===initial.raw&&
+      localStorage.getItem(typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1')===approvedGuard&&!(typeof pn431RecoveryJournalStatus==='function'&&pn431RecoveryJournalStatus().blocked)}
+   catch(_){return false}
+  };
+  if(!window.confirm('JSONバックアップを保存し、予定と学習内容を確認しましたか？ 未反映なら分類学習データを再保存し、反映済みなら記録だけ整理します。'))return false;
+  // RC437: a different tab may have changed the journal or classification during confirmation.
+  if(!stillApproved()){toast('別タブで保存データが変更されました。復旧記録を保持してください');return false}
+  const afterConfirm=pn412RecoverySummary();
+  if(afterConfirm.status!==initial.status||afterConfirm.raw!==initial.raw||
+     afterConfirm.event.name!==initial.event.name||afterConfirm.event.category!==initial.event.category||
+     afterConfirm.event.categoryManual!==initial.event.categoryManual||
+     (afterConfirm.learned?.category||null)!==(initial.learned?.category||null)||pn322CategoryStale){
+   toast('確認中に分類データが変更されました。復旧記録を保持し、再確認してください');return false;
+  }
   if(!navigator?.locks?.request){toast('排他ロック非対応のため安全に再試行できません');return false}
   const outcome=await navigator.locks.request('plannote-local-save',{mode:'exclusive',ifAvailable:true},async lock=>{
-   if(!lock)return false;
+   if(!lock||!stillApproved())return false;
    const current=pn412RecoverySummary();
-   if(current.status!=='ready'||current.raw!==initial.raw||current.event.id!==initial.event.id||
+   if(current.status!==initial.status||current.raw!==initial.raw||current.event.id!==initial.event.id||
       current.event.name!==initial.event.name||current.event.category!==initial.event.category||
       current.event.categoryManual!==initial.event.categoryManual||pn322CategoryStale)return false;
    let persisted;try{persisted=localStorage.getItem(CATEGORY_LEARNING_KEY)}catch(_){return false}
@@ -483,21 +672,42 @@ async function pn412RetryCategoryRecovery(){
    const expected=initial.marker.mode==='manual'?initial.marker.category:null;
    const existing=current.learned?.category||null;
    if(existing&&existing!==expected)return false;
-   const before=categoryLearning;
-   const next={...before};
-   if(initial.marker.mode==='manual')next[current.key]={category:expected,updated:Date.now()};
-   else delete next[current.key];
-   categoryLearning=next;
-   if(!pn322WriteCategoryLearning()){categoryLearning=before;return false}
-   // Never clear a changed marker; retain it for another review.
-   if(localStorage.getItem(PN411_CATEGORY_PENDING_KEY)!==initial.raw)return false;
-   localStorage.removeItem(PN411_CATEGORY_PENDING_KEY);
-   return localStorage.getItem(PN411_CATEGORY_PENDING_KEY)===null;
+   // RC437: check the journal once more before committing learning data.
+   if(!stillApproved())return false;
+   if(initial.status==='ready'){
+    const before=categoryLearning;
+    const next={...before};
+    if(initial.marker.mode==='manual')next[current.key]={category:expected,updated:Date.now()};
+    else delete next[current.key];
+    categoryLearning=next;
+    if(!pn322WriteCategoryLearning()){categoryLearning=before;return false}
+    // This is our own authorized learning write; later unexpected writes still invalidate recovery.
+    approvedLocalRevision=pn422CategoryLocalRevision;
+   }
+   // RC437: learning has committed, but journal removal is a separate write.
+   // A concurrent change or failed removal must not erase the recovery evidence.
+   let latest;
+   try{latest=pn412RecoverySummary()}catch(_){return false}
+   if(!pn423CategoryMonitorHealthy()||latest.status!=='resolved'||latest.raw!==initial.raw||
+      latest.event.id!==initial.event.id||latest.event.name!==initial.event.name||
+      latest.event.category!==initial.event.category||
+      latest.event.categoryManual!==initial.event.categoryManual||pn322CategoryStale)return false;
+   try{
+    const committed=localStorage.getItem(CATEGORY_LEARNING_KEY);
+    if(!pn423CategoryMonitorHealthy()||(initial.status==='resolved'&&committed!==approvedLearning)||
+       committed!==pn322CategoryBaseline||
+       localStorage.getItem(eventStorageKey)!==approvedEvents||
+       localStorage.getItem(PN411_CATEGORY_PENDING_KEY)!==initial.raw||
+       localStorage.getItem(typeof PN429_RESTORE_GUARD_KEY==='string'?PN429_RESTORE_GUARD_KEY:'plannote-category-restore-guard-v1')!==approvedGuard||(typeof pn431RecoveryJournalStatus==='function'&&pn431RecoveryJournalStatus().blocked)||
+       (typeof pn433GuardChangedDuringRecovery!=='undefined'&&pn433GuardChangedDuringRecovery)||pn421CategoryStorageRevision!==approvedRevision||pn422CategoryLocalRevision!==approvedLocalRevision)return false;
+    localStorage.removeItem(PN411_CATEGORY_PENDING_KEY);
+    return localStorage.getItem(PN411_CATEGORY_PENDING_KEY)===null;
+   }catch(_){return false}
   });
   toast(outcome?'分類学習の再保存を確認しました':'競合または保存失敗のため再試行を中止しました。記録を確認してください');
   return !!outcome;
  }catch(_){toast('復旧の再試行に失敗しました。記録を保持して確認してください');return false}
- finally{pn412ShowCategoryRecovery()}
+ finally{pn417RecoveryBusy=false;pn412ShowCategoryRecovery()}
 }
 function rememberCategoryCorrection(title,category){
  const key=normalizeCategoryText(title);
@@ -796,41 +1006,66 @@ if(!ok){toast('保存できませんでした。入力内容を保持してい�
 $('eventDialog').close();toast('予定を保存しました')};async function deleteCurrent(){if(await deleteLocalEvent($('eventId').value))$('eventDialog').close()}
 /* School timetable is a visual overlay, never a Google Calendar event. */
 const SCHOOL_KEY='plannote-school-v1';
-const SCHOOL_DEFAULT={1:['地総','物理','論表Ⅱ','数Ⅲ','論国','専門選択',''],2:['実習','実習','実習','論国','論表Ⅱ','体育','数C'],3:['数Ⅲ','数C','専門選択','課題研究','課題研究','課題研究',''],4:['物理','専門選択','CⅡ','専門選択','体育','HR',''],5:['論国','論表Ⅱ','数Ⅲ','CⅡ','地総','体育','']};
+const SCHOOL_DEFAULT={1:['地総','物理','論表Ⅱ','数Ⅲ','論国','電機',''],2:['実習','実習','実習','論国','論表Ⅱ','体育','数C'],3:['数Ⅲ','数C','電技','課題研究','課題研究','課題研究',''],4:['物理','電技','CⅡ','電機','体育','HR',''],5:['論国','論表Ⅱ','数Ⅲ','CⅡ','地総','体育','']};
 let schoolSettings={dates:{},times45:null};
 try{const x=JSON.parse(localStorage.getItem(SCHOOL_KEY)||'{}');if(x&&typeof x==='object')schoolSettings={...schoolSettings,...x,dates:x.dates||{}}}catch{}
 function schoolWeekday(day){return new Date(day+'T12:00:00').getDay()}
 function schoolConfig(day){const weekday=schoolWeekday(day),base=schoolSettings.dates[day]||{};return {enabled:weekday>=1&&weekday<=5,mode:'normal',period:50,seven:weekday===2,subjects:[...(SCHOOL_DEFAULT[weekday]||Array(7).fill(''))],...base}}
 function schoolClock(day,config){
- const minutes=t=>{const [h,m]=t.split(':').map(Number);return h*60+m};
- let starts,ends,lunch,clean;
- if(config.period===45){
-  // Confirmed 45-minute bell schedule: 09:05 start, 10-minute breaks, 45-minute lunch.
-  // Seventh period is 15:50-16:40, followed immediately by after-school time.
-  starts=['09:05','10:00','10:55','12:25','13:20','14:15','15:50'];
-  ends=['09:50','10:45','11:40','13:10','14:05','15:00','16:40'];
-  lunch=['11:40','12:25'];clean=['15:00','15:15'];
- }else{
-  starts=['09:05','10:05','11:05','12:40','13:40','14:40','15:50'];
-  ends=['09:55','10:55','11:55','13:30','14:30','15:30','16:40'];
-  lunch=['11:55','12:40'];clean=['15:30','15:45'];
+ const minutes=t=>{const [h,m]=String(t).split(':').map(Number);return h*60+m};
+ const timeAt=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+ const valid=t=>typeof t==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(t);
+ const count=Number.isInteger(Number(config.endPeriod))&&Number(config.endPeriod)>=1&&Number(config.endPeriod)<=7?Number(config.endPeriod):(config.seven?7:6);
+ const duration=Number(config.period)===45?45:50;
+ const preset=['normal','morning','short','custom','event'].includes(config.scheduleType)?config.scheduleType:'normal';
+ const defaultStart=9*60+5;
+ const start=valid(config.startTime)?minutes(config.startTime):defaultStart;
+ const gap=Number.isInteger(Number(config.breakMinutes))&&Number(config.breakMinutes)>=0&&Number(config.breakMinutes)<=60?Number(config.breakMinutes):10;
+ const lunchMinutes=Number.isInteger(Number(config.lunchMinutes))&&Number(config.lunchMinutes)>=0&&Number(config.lunchMinutes)<=120?Number(config.lunchMinutes):45;
+ const lunchAfter=Number.isInteger(Number(config.lunchAfter))&&Number(config.lunchAfter)>=1&&Number(config.lunchAfter)<=6?Number(config.lunchAfter):3;
+ const compact=preset==='morning'||preset==='short'||(preset==='normal'&&count<=4)||preset==='custom'&&count<=4;
+ const out=[];
+ const hrStart=start>=25?start-25:start;
+ if(preset==='event'){
+  const eventEnd=valid(config.eventEndTime)&&minutes(config.eventEndTime)>start?minutes(config.eventEndTime):start+180;
+  out.push({name:String(config.eventName||'学校行事').slice(0,80),start:timeAt(start),end:timeAt(eventEnd),kind:'other'});
+  out.push({name:'下校',start:timeAt(eventEnd),end:timeAt(eventEnd+10),kind:'other'});
+  return out;
  }
- const out=[{name:'HR等',start:'08:40',end:'09:05',kind:'other'}];
- for(let i=0;i<6;i++)out.push({name:(i+1)+'限 '+(config.subjects[i]||'授業'),start:starts[i],end:ends[i],kind:'class'});
- out.push({name:'昼休み',start:lunch[0],end:lunch[1],kind:'break'});
- out.push({name:'掃除',start:clean[0],end:clean[1],kind:'other'});
- if(config.seven)out.push({name:'7限 '+(config.subjects[6]||'授業'),start:starts[6],end:ends[6],kind:'class'});
- else out.push({name:'HR・放課後',start:clean[1],end:config.period===45?'15:30':'16:00',kind:'other'});
+ if(hrStart<start)out.push({name:'HR等',start:timeAt(hrStart),end:timeAt(start),kind:'other'});
+ // Preserve the existing standard bell times for untouched dates.
+ const standard=preset==='normal'&&(!config.startTime||config.startTime==='09:05')&&(config.breakMinutes==null||Number(config.breakMinutes)===10)&&(config.lunchMinutes==null||Number(config.lunchMinutes)===45)&&(config.lunchAfter==null||Number(config.lunchAfter)===3)&&count>=5;
+ if(standard){
+  const starts=duration===45?['09:05','10:00','10:55','12:25','13:20','14:15','15:50']:['09:05','10:05','11:05','12:40','13:40','14:40','15:50'];
+  const ends=duration===45?['09:50','10:45','11:40','13:10','14:05','15:00','16:40']:['09:55','10:55','11:55','13:30','14:30','15:30','16:40'];
+  const lunch=duration===45?['11:40','12:25']:['11:55','12:40'];
+  for(let i=0;i<Math.min(count,6);i++)out.push({name:(i+1)+'限 '+(config.subjects[i]||'授業'),start:starts[i],end:ends[i],kind:'class'});
+  out.push({name:'昼休み',start:lunch[0],end:lunch[1],kind:'break'});
+  if(count>=6){const cleaning=duration===45?['15:00','15:15']:['15:30','15:45'];out.push({name:'掃除',start:cleaning[0],end:cleaning[1],kind:'other'});
+   if(count===7)out.push({name:'7限 '+(config.subjects[6]||'授業'),start:starts[6],end:ends[6],kind:'class'});
+   else out.push({name:'HR・放課後',start:cleaning[1],end:duration===45?'15:30':'16:00',kind:'other'});}
+  else {const end=ends[count-1];out.push({name:'下校',start:end,end:timeAt(minutes(end)+10),kind:'other'});}
+  return out.sort((a,b)=>minutes(a.start)-minutes(b.start));
+ }
+ let clock=start;
+ for(let i=0;i<count;i++){
+  const end=clock+duration;
+  out.push({name:(i+1)+'限 '+(config.subjects[i]||'授業'),start:timeAt(clock),end:timeAt(end),kind:'class'});
+  clock=end;
+  if(i<count-1){if(!compact&&i+1===lunchAfter&&lunchMinutes>0){out.push({name:'昼休み',start:timeAt(clock),end:timeAt(clock+lunchMinutes),kind:'break'});clock+=lunchMinutes;}
+   else clock+=gap;}
+ }
+ out.push({name:'下校',start:timeAt(clock),end:timeAt(clock+10),kind:'other'});
  return out.sort((a,b)=>minutes(a.start)-minutes(b.start));
 }
-function schoolSummary(day){const c=schoolConfig(day);if(!c.enabled)return '学校なし';return `${c.mode==='normal'?'平常授業':'授業変更あり'}・${c.period}分時制${c.seven?'・7限あり':''}`}
+function schoolSummary(day){const c=schoolConfig(day);if(!c.enabled)return '学校なし';return `${c.scheduleType==='event'?'学校行事':c.scheduleType==='morning'?'午前授業':c.scheduleType==='short'?'短縮授業':c.scheduleType==='custom'?'変則時制':'通常時制'}・${c.period}分・${c.scheduleType==='event'?(c.eventName||'学校行事'):(c.endPeriod||(c.seven?7:6))+'限まで'}`}
 function schoolOverlay(day){const c=schoolConfig(day);if(!c.enabled)return '';
  const toY=t=>{const [h,m]=t.split(':').map(Number);return (h*60+m-300)*23/30};
  return schoolClock(day,c).map(slot=>{const top=toY(slot.start),height=toY(slot.end)-top;if(top<0||height<=0)return '';
  return `<div class="school-slot ${slot.kind}" style="top:${top}px;height:${height}px" title="${esc(slot.name)} ${slot.start}〜${slot.end}"><span>${esc(slot.name)}</span><small>${slot.start}〜${slot.end}</small></div>`;
  }).join('');
 }
-function refreshSchoolBar(){const day=$('verticalDate').value||today(),c=schoolConfig(day);$('schoolEnabled').value=c.enabled?'yes':'no';$('schoolMode').value=c.mode;$('schoolPeriod').value=String(c.period);$('schoolSummary').textContent=schoolSummary(day)+(c.seven?'（7限 15:50〜16:40）':'');$('schoolEdit').disabled=false}
+function refreshSchoolBar(){const day=$('verticalDate').value||today(),c=schoolConfig(day);$('schoolEnabled').value=c.enabled?'yes':'no';$('schoolMode').value=c.mode;$('schoolPeriod').value=String(c.period);$('schoolSummary').textContent=schoolSummary(day);$('schoolEdit').disabled=false}
 // RC323: cooperative Web Locks for the separate school-settings store.
 // The shared synchronous save() remains optimistic, not atomically locked.
 let pn322SchoolBaseline=(()=>{try{return localStorage.getItem(SCHOOL_KEY)}catch{return null}})();
@@ -850,7 +1085,8 @@ async function pn322WriteSchool(next){
 }
 async function updateSchoolOption(){const day=$('verticalDate').value||today(),c=schoolConfig(day);c.enabled=$('schoolEnabled').value==='yes';c.mode=$('schoolMode').value;c.period=Number($('schoolPeriod').value);const next={...schoolSettings,dates:{...schoolSettings.dates,[day]:c}};if(await pn322WriteSchool(next)){renderVertical();renderWeek()}else refreshSchoolBar()}
 let schoolEditingDate=null;
-function editSchoolDay(targetDay){const day=typeof targetDay==='string'?targetDay:($('verticalDate').value||today());schoolEditingDate=day;const c=schoolConfig(day);$('schoolEditTitle').textContent=day+' の時間割';$('schoolDialogEnabled').checked=!!c.enabled;$('schoolDialogPeriod').value=String(c.period);$('schoolSeven').checked=!!c.seven;
+function pn478ToggleSchoolFields(){const e=$('pn478EventFields');if(e)e.hidden=$('schoolScheduleType').value!=='event';}
+function editSchoolDay(targetDay){const day=typeof targetDay==='string'?targetDay:($('verticalDate').value||today());schoolEditingDate=day;const c=schoolConfig(day);$('schoolEditTitle').textContent=day+' の時間割';$('schoolDialogEnabled').checked=!!c.enabled;$('schoolDialogPeriod').value=String(c.period);$('schoolEndPeriod').value=String(c.endPeriod||(c.seven?7:6));$('schoolScheduleType').value=c.scheduleType||'normal';$('schoolStartTime').value=c.startTime||'09:05';$('schoolBreakMinutes').value=c.breakMinutes??10;$('schoolLunchMinutes').value=c.lunchMinutes??45;$('schoolLunchAfter').value=c.lunchAfter??3;$('schoolEventName').value=c.eventName||'';$('schoolEventEndTime').value=c.eventEndTime||'12:00';pn478ToggleSchoolFields();
  $('schoolSubjects').innerHTML=c.subjects.map((name,i)=>`<div class="field"><label for="schoolSubject${i}">${i+1}限</label><input id="schoolSubject${i}" value="${esc(name)}"></div>`).join('');$('schoolDialog').showModal()}
 async function persistSchoolDayChange(day,config){
  const dates={...schoolSettings.dates};
@@ -862,7 +1098,16 @@ async function saveSchoolDay(ev){
  const day=schoolEditingDate||$('verticalDate').value||today(),c=schoolConfig(day);
  c.enabled=$('schoolDialogEnabled').checked;
  c.period=Number($('schoolDialogPeriod').value);
- c.seven=$('schoolSeven').checked;
+ c.endPeriod=Number($('schoolEndPeriod').value);c.seven=c.endPeriod===7;c.scheduleType=$('schoolScheduleType').value;
+ const timeRe=/^([01]\d|2[0-3]):[0-5]\d$/;
+ const start=$('schoolStartTime').value,end=$('schoolEventEndTime').value;
+ const br=Number($('schoolBreakMinutes').value),lunch=Number($('schoolLunchMinutes').value);
+ if(!timeRe.test(start)||!timeRe.test(end)||!Number.isInteger(br)||br<0||br>60||!Number.isInteger(lunch)||lunch<0||lunch>120){toast('時刻・休み時間を確認してください');return}
+ if(c.scheduleType==='event'&&end<=start){toast('行事の終了時刻は開始時刻より後にしてください');return}
+ c.startTime=start;c.breakMinutes=br;c.lunchMinutes=lunch;c.lunchAfter=Number($('schoolLunchAfter').value);
+ c.eventName=$('schoolEventName').value.trim().slice(0,80);c.eventEndTime=end;
+ if(c.scheduleType==='morning'&&c.endPeriod>4)c.endPeriod=4;
+
  c.subjects=Array.from({length:7},(_,i)=>$('schoolSubject'+i).value.trim());
  if(!await persistSchoolDayChange(day,c))return;
  $('schoolDialog').close();schoolEditingDate=null;renderVertical();renderWeek();
@@ -1227,29 +1472,54 @@ function exportData(){const blob=new Blob([JSON.stringify({...data,categoryLearn
  return true;
 }
 // RC75: verify every restored key before updating in-memory state.
+// RC437: conditional rollback. Never overwrite a value another tab changed
+// after our own successful write. This is best-effort: localStorage has no CAS.
 function pn75AtomicRestore(updates,store=localStorage){
+ // RC437: verify every rollback and retain a safety lock if any state is uncertain.
  const previous=updates.map(([key])=>[key,store.getItem(key)]);
+ const written=new Map();
+ let conflict=false;
  try{
   for(const [key,value] of updates){
+   const old=previous.find(([k])=>k===key)[1];
+   if(store.getItem(key)!==old){conflict=true;throw Error('復元中に別タブの変更を検出: '+key)}
    store.setItem(key,value);
-   if(store.getItem(key)!==value)throw Error('復元データの保存確認に失敗: '+key);
+   written.set(key,value);
+   if(store.getItem(key)!==value){conflict=true;throw Error('復元データの保存確認に失敗: '+key)}
   }
   return true;
  }catch(error){
   let rollbackFailed=false;
-  for(const [key,value] of previous){
+  for(const [key,value] of previous.slice().reverse()){
+   if(!written.has(key))continue;
    try{
+    if(store.getItem(key)!==written.get(key)){
+     conflict=true;rollbackFailed=true;continue;
+    }
     if(value===null)store.removeItem(key);else store.setItem(key,value);
     if(store.getItem(key)!==value)rollbackFailed=true;
    }catch{rollbackFailed=true}
   }
-  if(rollbackFailed){
-   // RC312: an uncertain restore must not silently resume Google synchronization.
-   try{pn281TripSafetyLock('JSONバックアップ復元と元データの復旧が両方失敗しました')}catch(lockError){
-    // A failed safety-lock call must never make the restore look successful.
-    console.error('安全停止の記録に失敗しました',lockError);
-   }
-   throw Error('復元に失敗し、元データの復旧も確認できません。Google同期を安全停止しました。ページを閉じずJSONバックアップを保存してください。原因: '+String(error.message||error));
+  // Recheck *all* keys after rollback, including untouched keys. A failed
+  // rollback must not be mistaken for a complete restore of the prior state.
+  for(const [key,value] of previous){
+   try{if(store.getItem(key)!==value){rollbackFailed=true;conflict=true}}
+   catch{rollbackFailed=true}
+  }
+  if(rollbackFailed||conflict){
+   let lockConfirmed=false;
+   try{
+    // pn281TripSafetyLock deliberately returns false even on success. Verify
+    // the persisted lock rather than treating its return value as success.
+    const result=pn281TripSafetyLock('JSONバックアップ復元の競合・ロールバック異常を検出しました');
+    const lockKey=typeof PN281_LOCK_KEY==='string'?PN281_LOCK_KEY:'plannote-sync-uncertain-rc281';
+    const saved=store.getItem(lockKey);
+    lockConfirmed=!!saved && result!==true && !(typeof pn298LockPersistenceFailed!=='undefined'&&pn298LockPersistenceFailed);
+   }catch(lockError){console.error('安全停止の記録に失敗しました',lockError)}
+   // Even when persistent storage is unavailable, the current tab must
+   // refuse further synchronization until the user checks the saved state.
+   try{if(!lockConfirmed){pn281SafetyLock=pn281SafetyLock||'バックアップ復元のロールバックが不確実です';pn298LockPersistenceFailed=true}}catch(_ignored){}
+   throw Error('復元に失敗しました。'+(conflict?'別タブによる変更の可能性があります。':'ロールバックの完了を確認できません。')+(lockConfirmed?'Google同期の安全停止記録を確認しました。':'Google同期の安全停止を確認できません（記録未確認）。同期を再開しないでください。')+'ページを閉じずJSONバックアップを保存し、データを確認してください。原因: '+String(error.message||error));
   }
   throw error;
  }
@@ -1272,7 +1542,11 @@ async function importData(ev){
   const approval=prompt('最終確認：現在の端末データをバックアップ済みなら「復元」と入力してください。\\n入力が違う場合は中止します。'.replaceAll('\\n','\n'),'');
   if(approval!=='復元'){toast('復元を中止しました');return}
   // Stage all writes first; restore prior storage if a write fails.
-  const updates=[[KEY,JSON.stringify(next)]];
+  // The guard is committed in the same rollback-verified batch as restored data.
+  // A pre-restore journal may accidentally match a restored event ID/category.
+  // Keep the journal, but persist its quarantine across page reloads.
+  const pendingBeforeRestore=localStorage.getItem(PN411_CATEGORY_PENDING_KEY);
+  const updates=[[KEY,JSON.stringify(next)],[PN429_RESTORE_GUARD_KEY,pendingBeforeRestore||'']];
   // Old backups omit these optional settings. Reset them rather than mixing in settings from another dataset.
   const restoredLearning=obj.categoryLearning??{};
   const restoredSchool=obj.schoolSettings??{dates:{},times45:null};
@@ -1281,6 +1555,11 @@ async function importData(ev){
   updates.push([syncMetaKey,JSON.stringify(importedSyncMeta??{})]);
   updates.push(['plannote_receipt_image_fingerprints_v1',JSON.stringify(importedImageHashes??{})]);
   pn75AtomicRestore(updates);
+  // RC437: storage writes are not a single transaction across tabs. Check the
+  // journal/guard pairing after commit; never silently report a safe restore
+  // if another tab replaced the journal while the restore was being written.
+  const pn434GuardCheck=pn434VerifyRestoreGuard(pendingBeforeRestore);
+  if(!pn434GuardCheck.safe)pn426RecoveryNeedsReload=true;
   // A validated backup can recover from a corrupt startup payload.
   if(pn74DamagedReason){
    pn74DamagedReason='';pn74DamagedRaw=null;pnStorageError='';
@@ -1289,10 +1568,23 @@ async function importData(ev){
   }
   data=next;
   categoryLearning=restoredLearning;
+  // RC437: restore is an intentional local write; rebase learning only after atomic restore succeeds.
+  try{pn322CategoryBaseline=localStorage.getItem(CATEGORY_LEARNING_KEY);pn322CategoryStale=false}
+  catch(_){pn322CategoryStale=true}
+  // An old pending recovery journal must never be applied to a newly restored backup.
+  try{if(localStorage.getItem(PN411_CATEGORY_PENDING_KEY)!==null)pn426RecoveryNeedsReload=true}
+  catch(_){pn426RecoveryNeedsReload=true}
   schoolSettings={dates:{},times45:null,...restoredSchool,dates:restoredSchool.dates??{}};
   syncMeta=importedSyncMeta??{};
-  render();window.dispatchEvent(new Event('pn125-history-updated'));toast('バックアップを復元しました');
- }catch(error){console.error('Backup import failed:',error);toast('復元できません: '+String(error?.message||'ファイルを確認してください').slice(0,100))}
+  render();window.dispatchEvent(new Event('pn125-history-updated'));toast(pn434GuardCheck.safe?'バックアップを復元しました':'バックアップは保存されましたが、'+pn434GuardCheck.reason+'。復旧記録を操作せずページを再読み込みしてください');
+ }catch(error){
+  console.error('Backup import failed:',error);
+  const message=String(error?.message||'ファイルを確認してください');
+  if(message.includes('ロールバック')||message.includes('安全停止')){
+   try{window.pn285RefreshStorageWarning?.()}catch(_ignored){}
+   toast('復元失敗：保存状態が不確実です。同期を再開せず、JSONバックアップを保存して確認してください');
+  }else toast('復元できません: '+message.slice(0,100));
+ }
  finally{ev.target.value=''}
 }
 const FINANCE_CATEGORIES={expense:['食費','日用品','交通費','住居費','水道・光熱費','通信費','学習費','娯楽費','医療費','その他'],income:['アルバイト','お小遣い','給与','臨時収入','その他']};
@@ -1599,29 +1891,33 @@ function googleStatus(message){
  }
  window.pn187RefreshSyncButton?.();
 }
-function googleDisconnect(){googleToken=null;googleTokenClient=null;googleAccount=null;googleStatus('接続解除済み（再接続で同期可能）');}
+function googleDisconnect(){googleToken=null;googleTokenClient=null;googleAccount=null;window.pn451ClearReadonlyAccount?.();window.pn452NotifyReadonlyAuthChange?.();googleStatus('接続解除済み（再接続で同期可能）');}
 async function googleConnect(){
  if(!window.isSecureContext || location.protocol==='file:'){googleStatus('HTTPS または localhost で開いてください。file:// は認証できません');return}
  const clientId=(data.googleClient||'').trim();if(!clientId){googleStatus('先にOAuthクライアントIDを保存してください');return}if(!/^[0-9]+-[a-zA-Z0-9_-]+\.apps\.googleusercontent\.com$/.test(clientId)){googleStatus('Client IDの形式が違います。末尾が .apps.googleusercontent.com のIDを確認してください');return}
  if(!window.google?.accounts?.oauth2){googleStatus('Google認証ライブラリを読み込めません。Chromeで開き、ページを再読み込みしてください。');return}
  try{
  googleTokenClient=google.accounts.oauth2.initTokenClient({client_id:clientId,scope:GC_SCOPE,callback:response=>{
- if(response.error){googleToken=null;googleStatus('認証失敗: '+response.error);return}
- googleToken=response.access_token;setTimeout(()=>autoPullGoogle(false),0);googleStatus('Google認証成功。同期前にJSONバックアップを保存し、テスト用カレンダーで確認してください');
+ if(response.error){googleToken=null;window.pn451ClearReadonlyAccount?.();window.pn452NotifyReadonlyAuthChange?.();googleStatus('認証失敗: '+response.error);return}
+ googleToken=response.access_token;window.pn451ClearReadonlyAccount?.();window.pn452NotifyReadonlyAuthChange?.();setTimeout(()=>autoPullGoogle(false),0);googleStatus('Google認証成功。同期前にJSONバックアップを保存し、テスト用カレンダーで確認してください');
  }});
  googleTokenClient.requestAccessToken({prompt:'consent'});
  }catch(e){googleStatus('認証設定エラー: '+e.message)}
 }
 async function googleRequest(url,method='GET',body,expectedEtag){
- if(method!=='GET'&&window.pn312SyncBlocked?.()){throw Error('RC313: 別タブで同期安全記録が変更されたか、保存状態を確認できないためGoogleへの書き込みを停止しました。')}
+ if(method!=='GET'&&window.pn312SyncBlocked?.(true)){throw Error('RC313: 別タブで同期安全記録が変更されたか、保存状態を確認できないためGoogleへの書き込みを停止しました。')}
 
  // Only GET is safe to retry automatically; a failed write may have succeeded remotely.
  const options={method,headers:{Authorization:'Bearer '+googleToken,...(body?{'Content-Type':'application/json'}:{}),...(expectedEtag?{'If-Match':expectedEtag}:{})},body:body?JSON.stringify(body):undefined};
  let r;
  for(let attempt=0;;attempt++){
   // RC313: retries and new requests must respect safety changes observed mid-sync.
-  if((googleBusy||autoPullBusy)&&window.pn312SyncBlocked?.())
+  if((googleBusy||autoPullBusy)&&window.pn312SyncBlocked?.(method!=='GET'))
    throw Error('RC313安全停止：通信の継続前に同期安全状態の変更を検出しました');
+  // RC473: every write attempt must pass a fresh probe immediately before HTTP setup,
+  // including calls made outside an active sync loop. GET does not need this extra probe.
+  if(['POST','PATCH','DELETE','PUT'].includes(String(method).toUpperCase())&&window.pn312SyncBlocked?.(true))
+   throw Error('RC443安全停止：Google書き込み直前の保存領域検査に失敗しました');
   // RC398: bound each HTTP attempt; never replay an uncertain write.
   // A fresh controller per GET retry avoids reusing an aborted signal.
   const controller=typeof AbortController==='function'?new AbortController():null;
@@ -1647,6 +1943,14 @@ async function googleRequest(url,method='GET',body,expectedEtag){
   }finally{
    if(deadline!==null)clearTimeout(deadline);
   }
+  // RC473: a safety stop raised while an HTTP request was in flight must
+  // not be silently ignored. A completed write may already exist remotely.
+  if(method!=='GET'&&window.pn312SyncBlocked?.(true)){
+   try{window.pn281TripSafetyLock?.('RC473: Google書き込み中に安全停止状態が変化しました。通信結果をGoogle側で照合してください')}catch(_ignored){}
+   throw Error('RC473安全停止：Google書き込み中に安全状態が変化しました。結果不明のため自動再送信せずGoogle側を確認してください');
+  }
+  if(method==='GET'&&(googleBusy||autoPullBusy||!r.ok)&&window.pn312SyncBlocked?.(false))
+   throw Error('RC473安全停止：Google読み取り中に安全状態が変化しました。再試行を停止しました');
   if(method==='GET'&&attempt<2&&(r.status===429||r.status>=500&&r.status<=599)){
    await new Promise(resolve=>setTimeout(resolve,250*(attempt+1)));
    continue;
@@ -1664,12 +1968,32 @@ async function googleRequest(url,method='GET',body,expectedEtag){
    412:'Google側の予定が直前に変更されました。上書きを停止しました。',
    429:'Google APIの利用制限に達しました。しばらく待ってから再同期してください。'
   };
-  if(r.status===401)googleToken=null;
+  if(r.status===401){googleToken=null;window.pn451ClearReadonlyAccount?.();window.pn452NotifyReadonlyAuthChange?.();}
   let message=explanations[r.status]||(r.status>=500?'Google側で一時的な障害が発生しました。時間をおいて再同期してください。':'Google同期の処理に失敗しました。');
   if(r.status===403&&/rateLimitExceeded|userRateLimitExceeded|quotaExceeded/i.test(reason+' '+detail))message='Google APIの利用制限に達しました。しばらく待ってから再同期してください。';
   throw Error('HTTP '+r.status+'：'+message);
  }
  return r.status===204?null:r.json();
+}
+// RC473: read-only reconciliation of an uncertain Google write. Never retry a write.
+// A missing or differing remote event is not proof that the original write failed.
+async function pn445ReconcileWriteOutcome(url,expected,method='PATCH'){
+ const verb=String(method||'').toUpperCase();
+ if(!['POST','PATCH','PUT','DELETE'].includes(verb))throw Error('照合対象の書き込み操作が不正です');
+ if(window.pn312SyncBlocked?.(false))return {status:'blocked',message:'安全停止中です。自動再送信せず、Googleカレンダーを別画面で確認してください。'};
+ if(!url||typeof url!=='string')return {status:'unknown',message:'照合先が特定できません。Googleカレンダーで対象予定を手動確認してください。'};
+ // GET only. The caller must supply a specific event URL, never a collection URL.
+ if(!/\/events\/[^/?#]+(?:[?#]|$)/.test(url))return {status:'unknown',message:'予定IDが不明なため、Googleカレンダーで手動照合してください。'};
+ let remote;
+ try{remote=await googleRequest(url,'GET')}
+ catch(error){return {status:'unknown',message:'読み取り専用照合に失敗しました。Google側を確認してください。',detail:String(error.message||error)}}
+ if(window.pn312SyncBlocked?.(false))return {status:'blocked',message:'照合中に安全停止を検出しました。同期を再開しないでください。'};
+ if(verb==='DELETE')return {status:'unknown',message:'予定が残っています。削除が失敗したとは断定できません。自動再送信しないでください。'};
+ const fields=['summary','description','location','start','end'];
+ const supplied=expected&&typeof expected==='object'?fields.filter(k=>Object.prototype.hasOwnProperty.call(expected,k)):[];
+ if(!supplied.length)return {status:'unknown',message:'比較する予定内容がないため結果を確定できません。'};
+ const same=supplied.every(k=>JSON.stringify(remote?.[k])===JSON.stringify(expected[k]));
+ return same?{status:'matched',message:'Google側に一致する予定が存在します。端末側の同期記録は自動更新せず、手動で整合性を確認してください。'}:{status:'unknown',message:'Google側の予定内容が一致しません。失敗と断定せず、自動再送信しないでください。'};
 }
 const googleStamp=s=>new Date(s).toISOString();
 const googleLocal=s=>localTime(new Date(s));
@@ -2009,7 +2333,7 @@ async function autoPullGoogle(force=false){
 function initAutoPull(){
  const checkbox=$('autoPullToggle');if(checkbox)checkbox.checked=autoPullEnabled;
  autoPullMessage(!pn206StorageAvailable?'保存領域を利用できないため自動取得は停止中です。':autoPullEnabled?'自動取得は有効です。Google接続後に開始します。':'自動取得は停止中');
- document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')autoPullGoogle(false)});
+ document.addEventListener?.('visibilitychange',()=>{if(document.visibilityState==='visible')autoPullGoogle(false)});
  window.addEventListener('focus',()=>autoPullGoogle(false));
  setInterval(()=>autoPullGoogle(false),AUTO_PULL_INTERVAL);
 }
@@ -2557,7 +2881,7 @@ if('serviceWorker' in navigator && location.protocol!=='file:')window.addEventLi
 <p class="muted" id="daySchoolSummary"></p><button class="btn" onclick="openDayVertical()">この日の時間割を表示・変更</button><div id="dayAgendaList"></div><div class="dialog-actions">
 <button class="btn" onclick="$('dayAgendaDialog').close();openEvent(null,selectedDate)">＋ この日に予定を追加</button>
 <button class="btn" onclick="$('dayAgendaDialog').close()">閉じる</button></div></dialog>
-<dialog aria-label="学校の時間割を編集" id="schoolDialog"><form onsubmit="saveSchoolDay(event)"><h2 id="schoolEditTitle">時間割</h2><p class="muted">科目を変更できます。変更内容は選択した日付だけに適用されます。</p><div class="row"><label><input id="schoolDialogEnabled" type="checkbox"/> この日は学校あり</label><label>授業時間 <select id="schoolDialogPeriod"><option value="50">50分</option><option value="45">45分</option></select></label></div><div class="school-subject-grid" id="schoolSubjects"></div><label><input id="schoolSeven" type="checkbox"/> 7限あり</label><div class="dialog-actions"><button class="btn" onclick="$('schoolDialog').close()" type="button">キャンセル</button><button class="btn" onclick="restoreSchoolDay()" type="button">通常科目に戻す</button><button class="primary" type="submit">保存</button></div></form></dialog><script id="pn-rc36-script">
+<dialog aria-label="学校の時間割を編集" id="schoolDialog"><form onsubmit="saveSchoolDay(event)"><h2 id="schoolEditTitle">時間割</h2><p class="muted">時制や科目をこの日だけ変更できます。</p><div class="row"><label><input id="schoolDialogEnabled" type="checkbox"/> この日は学校あり</label><label>授業時間 <select id="schoolDialogPeriod"><option value="50">50分</option><option value="45">45分</option></select></label></div><div class="pn479-presets" role="group" aria-label="時制を選択"><button type="button" data-preset="normal" onclick="pn479ApplyPreset('normal')">通常授業</button><button type="button" data-preset="morning" onclick="pn479ApplyPreset('morning')">午前授業</button><button type="button" data-preset="short" onclick="pn479ApplyPreset('short')">45分短縮</button><button type="button" data-preset="event" onclick="pn479ApplyPreset('event')">学校行事</button></div><details id="pn479Advanced"><summary>開始時刻・休み時間などを調整</summary><div class="formgrid" style="margin:12px 0"><div class="field"><label for="schoolScheduleType">この日の時制</label><select id="schoolScheduleType" onchange="pn479TypeChanged()"><option value="normal">通常授業</option><option value="morning">午前授業（昼休みなし）</option><option value="short">短縮授業（昼休みなし）</option><option value="custom">変則時制（時間を指定）</option><option value="event">学校行事</option></select></div><div class="field"><label for="schoolStartTime">1限・行事の開始時刻</label><input id="schoolStartTime" type="time" value="09:05"/></div><div class="field"><label for="schoolBreakMinutes">授業間の休み（分）</label><input id="schoolBreakMinutes" type="number" min="0" max="60" value="10"/></div><div class="field"><label for="schoolLunchMinutes">昼休み（分）</label><input id="schoolLunchMinutes" type="number" min="0" max="120" value="45"/></div><div class="field"><label for="schoolLunchAfter">昼休みを入れる時限の後</label><select id="schoolLunchAfter"><option value="3">3限後</option><option value="4">4限後</option><option value="5">5限後</option><option value="6">6限後</option></select></div></div></details><div id="pn478EventFields" hidden><label for="schoolEventName">行事名</label><input id="schoolEventName" maxlength="80" placeholder="例：体育祭・学年集会"/><label for="schoolEventEndTime">行事の終了時刻</label><input id="schoolEventEndTime" type="time" value="12:00"/></div><div class="school-subject-grid" id="schoolSubjects"></div><label for="schoolEndPeriod">この日の最終授業</label><select id="schoolEndPeriod"><option value="1">1限まで</option><option value="2">2限まで</option><option value="3">3限まで（午前終了）</option><option value="4">4限まで（短縮日）</option><option value="5">5限まで</option><option value="6">6限まで</option><option value="7">7限まで</option></select><p class="muted">最終授業以降は表示しません。午前・短縮授業では昼休みを省略します。</p><div class="dialog-actions"><button class="btn" onclick="$('schoolDialog').close()" type="button">キャンセル</button><button class="btn" onclick="restoreSchoolDay()" type="button">通常科目に戻す</button><button class="primary" type="submit">保存</button></div></form></dialog><script id="pn-rc36-script">
 (function(){
 'use strict';
 const $pn=id=>document.getElementById(id);
@@ -2614,7 +2938,7 @@ function checkReminders(){
   }else{toast('リマインダー '+messages.length+'件: '+messages[0])}}
 }
 window.addEventListener('focus',checkReminders);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkReminders()});
+document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)checkReminders()});
 if('Notification'in window&&Notification.permission==='default'){const notify=document.createElement('button');notify.className='btn';notify.textContent='通知を許可';notify.onclick=()=>Notification.requestPermission().then(()=>{notify.textContent=Notification.permission==='granted'?'通知許可済み':'通知は未許可'});status.after(notify)}
 setInterval(checkReminders,60000);setTimeout(()=>{renderTasks();checkReminders()},200);
 // Touch navigation: prevent drag activation on initial touch. Mouse/pen drag remains available.
@@ -2792,7 +3116,7 @@ const permission=document.getElementById('pn45-reminder-permission');permission.
 const oldRender=window.renderTasks;if(typeof oldRender==='function')window.renderTasks=function(...args){const result=oldRender.apply(this,args);refresh45();return result};
 switcher.addEventListener('click',e=>{const tab=e.target.closest('[data-todo]');if(tab)section.hidden=tab.dataset.todo==='study'});
 const nav=document.getElementById('nav');nav?.addEventListener('click',e=>{if(e.target.closest('[data-view="tasks"]'))setTimeout(refresh45,0)});
-window.addEventListener('focus',refresh45);document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh45()});setInterval(refresh45,60000);refresh45();
+window.addEventListener('focus',refresh45);document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)refresh45()});setInterval(refresh45,60000);refresh45();
 })();
 </script>
 <style id="pn-rc47-css">
@@ -2933,7 +3257,7 @@ summary.querySelector('#pn51-new-task').addEventListener('click',()=>{if(typeof 
 summary.querySelector('#pn51-new-study').addEventListener('click',()=>{const btn=document.getElementById('pn-new-study-plan');if(btn){btn.click();return;}if(typeof window.addTask==='function'){window.addTask();const kind=document.getElementById('pn-task-kind');if(kind){kind.value='study';kind.dispatchEvent(new Event('change'))}}});
 const old=window.renderTasks;if(typeof old==='function')window.renderTasks=function(...args){const result=old.apply(this,args);refresh();return result};
 document.getElementById('nav')?.addEventListener('click',e=>{if(e.target.closest('[data-view="tasks"]'))setTimeout(refresh,0)});
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh()});
+document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)refresh()});
 refresh();
 })();
 </script>
@@ -3099,7 +3423,7 @@ sync();
  observer.observe(taskList,{childList:true});
  // Refresh date-sensitive counts when returning to the app after a day change.
  let lastDay=localDay();
- document.addEventListener('visibilitychange',()=>{
+ document.addEventListener?.('visibilitychange',()=>{
   if(document.visibilityState!=='visible')return;
   const day=localDay();if(day!==lastDay){lastDay=day;update()}
  });
@@ -4414,7 +4738,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  let queued=false;
  const schedule=()=>{if(queued)return;queued=true;requestAnimationFrame(()=>{queued=false;refresh()})};
  new MutationObserver(schedule).observe(list,{childList:true});
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)schedule()});
+ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)schedule()});
  window.addEventListener('focus',schedule);
  window.addEventListener('pageshow',schedule);
  window.addEventListener('storage',e=>{if(e.key!==null)schedule()});
@@ -4667,34 +4991,59 @@ $('pn120-clear')?.addEventListener('click',()=>{generation++;waiting=null;info.t
  const SCHOOL_KEY='plannote-school-v1';
 
  const section=document.createElement('section');section.id='pn129-export';section.innerHTML=`<h3>朝刊向けデータ出力（Muse連携準備）</h3><p>指定日の予定・未完了To Do・時間割だけをJSONにまとめます。家計簿や画像、認証情報は含みません。Museへの自動送信は行いません。</p><label for="pn129-date">新聞の日付</label><input type="date" id="pn129-date"><div class="pn129-options"><label><input id="pn129-events" type="checkbox" checked>予定</label><label><input id="pn129-tasks" type="checkbox" checked>To Do</label><label><input id="pn129-school" type="checkbox" checked>時間割</label></div><button class="primary" type="button" id="pn129-generate">JSONを作成</button><button class="btn" type="button" id="pn129-download" disabled>JSONを保存</button><button class="btn" type="button" id="pn129-copy" disabled>JSONをコピー</button><label for="pn129-preview">出力プレビュー</label><textarea id="pn129-preview" readonly placeholder="ここに出力結果を表示します"></textarea><p class="pn129-note" id="pn129-status" role="status">個人情報が含まれる可能性があります。共有する前に内容を確認してください。</p>`;
-const SCHOOL_DEFAULT={1:['地総','物理','論表Ⅱ','数Ⅲ','論国','専門選択',''],2:['実習','実習','実習','論国','論表Ⅱ','体育','数C'],3:['数Ⅲ','数C','専門選択','課題研究','課題研究','課題研究',''],4:['物理','専門選択','CⅡ','専門選択','体育','HR',''],5:['論国','論表Ⅱ','数Ⅲ','CⅡ','地総','体育','']};
+const SCHOOL_DEFAULT={1:['地総','物理','論表Ⅱ','数Ⅲ','論国','電機',''],2:['実習','実習','実習','論国','論表Ⅱ','体育','数C'],3:['数Ⅲ','数C','電技','課題研究','課題研究','課題研究',''],4:['物理','電技','CⅡ','電機','体育','HR',''],5:['論国','論表Ⅱ','数Ⅲ','CⅡ','地総','体育','']};
 let schoolSettings={dates:{},times45:null};
 try{const x=JSON.parse(localStorage.getItem(SCHOOL_KEY)||'{}');if(x&&typeof x==='object')schoolSettings={...schoolSettings,...x,dates:x.dates||{}}}catch{}
 function schoolWeekday(day){return new Date(day+'T12:00:00').getDay()}
 function schoolConfig(day){const weekday=schoolWeekday(day),base=schoolSettings.dates[day]||{};return {enabled:weekday>=1&&weekday<=5,mode:'normal',period:50,seven:weekday===2,subjects:[...(SCHOOL_DEFAULT[weekday]||Array(7).fill(''))],...base}}
 function schoolClock(day,config){
- const minutes=t=>{const [h,m]=t.split(':').map(Number);return h*60+m};
- let starts,ends,lunch,clean;
- if(config.period===45){
-  // Confirmed 45-minute bell schedule: 09:05 start, 10-minute breaks, 45-minute lunch.
-  // Seventh period is 15:50-16:40, followed immediately by after-school time.
-  starts=['09:05','10:00','10:55','12:25','13:20','14:15','15:50'];
-  ends=['09:50','10:45','11:40','13:10','14:05','15:00','16:40'];
-  lunch=['11:40','12:25'];clean=['15:00','15:15'];
- }else{
-  starts=['09:05','10:05','11:05','12:40','13:40','14:40','15:50'];
-  ends=['09:55','10:55','11:55','13:30','14:30','15:30','16:40'];
-  lunch=['11:55','12:40'];clean=['15:30','15:45'];
+ const minutes=t=>{const [h,m]=String(t).split(':').map(Number);return h*60+m};
+ const timeAt=n=>String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');
+ const valid=t=>typeof t==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(t);
+ const count=Number.isInteger(Number(config.endPeriod))&&Number(config.endPeriod)>=1&&Number(config.endPeriod)<=7?Number(config.endPeriod):(config.seven?7:6);
+ const duration=Number(config.period)===45?45:50;
+ const preset=['normal','morning','short','custom','event'].includes(config.scheduleType)?config.scheduleType:'normal';
+ const defaultStart=9*60+5;
+ const start=valid(config.startTime)?minutes(config.startTime):defaultStart;
+ const gap=Number.isInteger(Number(config.breakMinutes))&&Number(config.breakMinutes)>=0&&Number(config.breakMinutes)<=60?Number(config.breakMinutes):10;
+ const lunchMinutes=Number.isInteger(Number(config.lunchMinutes))&&Number(config.lunchMinutes)>=0&&Number(config.lunchMinutes)<=120?Number(config.lunchMinutes):45;
+ const lunchAfter=Number.isInteger(Number(config.lunchAfter))&&Number(config.lunchAfter)>=1&&Number(config.lunchAfter)<=6?Number(config.lunchAfter):3;
+ const compact=preset==='morning'||preset==='short'||(preset==='normal'&&count<=4)||preset==='custom'&&count<=4;
+ const out=[];
+ const hrStart=start>=25?start-25:start;
+ if(preset==='event'){
+  const eventEnd=valid(config.eventEndTime)&&minutes(config.eventEndTime)>start?minutes(config.eventEndTime):start+180;
+  out.push({name:String(config.eventName||'学校行事').slice(0,80),start:timeAt(start),end:timeAt(eventEnd),kind:'other'});
+  out.push({name:'下校',start:timeAt(eventEnd),end:timeAt(eventEnd+10),kind:'other'});
+  return out;
  }
- const out=[{name:'HR等',start:'08:40',end:'09:05',kind:'other'}];
- for(let i=0;i<6;i++)out.push({name:(i+1)+'限 '+(config.subjects[i]||'授業'),start:starts[i],end:ends[i],kind:'class'});
- out.push({name:'昼休み',start:lunch[0],end:lunch[1],kind:'break'});
- out.push({name:'掃除',start:clean[0],end:clean[1],kind:'other'});
- if(config.seven)out.push({name:'7限 '+(config.subjects[6]||'授業'),start:starts[6],end:ends[6],kind:'class'});
- else out.push({name:'HR・放課後',start:clean[1],end:config.period===45?'15:30':'16:00',kind:'other'});
+ if(hrStart<start)out.push({name:'HR等',start:timeAt(hrStart),end:timeAt(start),kind:'other'});
+ // Preserve the existing standard bell times for untouched dates.
+ const standard=preset==='normal'&&(!config.startTime||config.startTime==='09:05')&&(config.breakMinutes==null||Number(config.breakMinutes)===10)&&(config.lunchMinutes==null||Number(config.lunchMinutes)===45)&&(config.lunchAfter==null||Number(config.lunchAfter)===3)&&count>=5;
+ if(standard){
+  const starts=duration===45?['09:05','10:00','10:55','12:25','13:20','14:15','15:50']:['09:05','10:05','11:05','12:40','13:40','14:40','15:50'];
+  const ends=duration===45?['09:50','10:45','11:40','13:10','14:05','15:00','16:40']:['09:55','10:55','11:55','13:30','14:30','15:30','16:40'];
+  const lunch=duration===45?['11:40','12:25']:['11:55','12:40'];
+  for(let i=0;i<Math.min(count,6);i++)out.push({name:(i+1)+'限 '+(config.subjects[i]||'授業'),start:starts[i],end:ends[i],kind:'class'});
+  out.push({name:'昼休み',start:lunch[0],end:lunch[1],kind:'break'});
+  if(count>=6){const cleaning=duration===45?['15:00','15:15']:['15:30','15:45'];out.push({name:'掃除',start:cleaning[0],end:cleaning[1],kind:'other'});
+   if(count===7)out.push({name:'7限 '+(config.subjects[6]||'授業'),start:starts[6],end:ends[6],kind:'class'});
+   else out.push({name:'HR・放課後',start:cleaning[1],end:duration===45?'15:30':'16:00',kind:'other'});}
+  else {const end=ends[count-1];out.push({name:'下校',start:end,end:timeAt(minutes(end)+10),kind:'other'});}
+  return out.sort((a,b)=>minutes(a.start)-minutes(b.start));
+ }
+ let clock=start;
+ for(let i=0;i<count;i++){
+  const end=clock+duration;
+  out.push({name:(i+1)+'限 '+(config.subjects[i]||'授業'),start:timeAt(clock),end:timeAt(end),kind:'class'});
+  clock=end;
+  if(i<count-1){if(!compact&&i+1===lunchAfter&&lunchMinutes>0){out.push({name:'昼休み',start:timeAt(clock),end:timeAt(clock+lunchMinutes),kind:'break'});clock+=lunchMinutes;}
+   else clock+=gap;}
+ }
+ out.push({name:'下校',start:timeAt(clock),end:timeAt(clock+10),kind:'other'});
  return out.sort((a,b)=>minutes(a.start)-minutes(b.start));
 }
-function schoolSummary(day){const c=schoolConfig(day);if(!c.enabled)return '学校なし';return `${c.mode==='normal'?'平常授業':'授業変更あり'}・${c.period}分時制${c.seven?'・7限あり':''}`}
+function schoolSummary(day){const c=schoolConfig(day);if(!c.enabled)return '学校なし';return `${c.scheduleType==='event'?'学校行事':c.scheduleType==='morning'?'午前授業':c.scheduleType==='short'?'短縮授業':c.scheduleType==='custom'?'変則時制':'通常時制'}・${c.period}分・${c.scheduleType==='event'?(c.eventName||'学校行事'):(c.endPeriod||(c.seven?7:6))+'限まで'}`}
 
  const first=panel.querySelector('.panel');if(first)first.after(section);else panel.prepend(section);
  const $=id=>document.getElementById(id),dateInput=$('pn129-date'),preview=$('pn129-preview'),status=$('pn129-status');
@@ -6211,7 +6560,7 @@ redraw();
  window.pn186DiagnosticSnapshot=snapshot;
  window.pn187RefreshSyncButton=()=>updateSyncButton(snapshot());
  window.addEventListener('focus',()=>window.pn187RefreshSyncButton());
- document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')window.pn187RefreshSyncButton()});
+ document.addEventListener?.('visibilitychange',()=>{if(document.visibilityState==='visible')window.pn187RefreshSyncButton()});
  const navSettings=document.querySelector('#nav [data-view="settings"]');
  navSettings?.addEventListener('click',()=>check());
 })();
@@ -6442,7 +6791,7 @@ async function pn275Recover(){
   if(status)status.textContent='データ管理のバックアップボタンへ移動しました。書き出し後、ファイルが保存されたことを確認してください。';
  });
  inspect();
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)inspect()});
+ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)inspect()});
  window.addEventListener('storage',inspect);
 })();
 </script><script id="pn289-backup-script">
@@ -6497,7 +6846,7 @@ async function pn275Recover(){
     if(panel)panel.hidden=false;
     window.pn285RefreshStorageWarning?.();
   };
-  document.addEventListener('visibilitychange',()=>{
+  document.addEventListener?.('visibilitychange',()=>{
     if(document.visibilityState==='visible')showWarning();
   });
   window.addEventListener('pageshow',showWarning);
@@ -6549,9 +6898,57 @@ async function pn275Recover(){
   if(event.key===LOCK||event.key===PENDING||event.key===null){externalChange=true;inspect()}
  });
  window.addEventListener('pageshow',inspect);
- document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')inspect()});
+ document.addEventListener?.('visibilitychange',()=>{if(document.visibilityState==='visible')inspect()});
  window.pn311InspectSafety=inspect;
  inspect();
+})();
+</script>
+<!-- RC438: fail-closed startup probe for storage write failures after reload. -->
+<script id="pn438-storage-write-probe">
+(()=>{'use strict';
+ let failed=false, reason='', attempts=0;
+ // RC473: coalesce checks made in the same JavaScript turn; async boundaries always re-probe.
+ let turnProbeOK=false, turnProbeScheduled=false;
+ function clearTurnCache(){turnProbeOK=false;turnProbeScheduled=false;}
+ function scheduleTurnClear(){
+  if(turnProbeScheduled)return;
+  turnProbeScheduled=true;
+  Promise.resolve().then(clearTurnCache);
+ }
+ const messages={write:'書き込み',read:'読み取り',remove:'削除',cleanup:'削除後の確認'};
+ function showFailure(){
+  if(!failed)return;
+  const warning=document.getElementById('pn285-storage-warning');
+  if(warning)warning.hidden=false;
+  const result=document.getElementById('pn311-safety-result');
+  if(result){result.dataset.state='warning';result.textContent='RC473安全停止：端末の保存領域の'+(messages[reason]||'操作')+'に失敗しました。Google同期は停止しています。JSONバックアップを確認し、保存容量・ブラウザー設定を点検してください。再読み込み前に予定の保存状態を確認してください。';}
+  const button=document.getElementById('googleSync');if(button)button.disabled=true;
+ }
+ function probe(forceFresh=false){
+  if(failed){showFailure();return false;}
+  if(turnProbeOK&&!forceFresh)return true;
+  const key='plannote-rc438-probe-'+Date.now()+'-'+Math.random().toString(36).slice(2);
+  let stage='write';attempts++;
+  try{
+   localStorage.setItem(key,'1');
+   stage='read';if(localStorage.getItem(key)!=='1')throw Error('probe verification failed');
+   stage='remove';localStorage.removeItem(key);
+   stage='cleanup';if(localStorage.getItem(key)!==null)throw Error('probe cleanup failed');
+   turnProbeOK=true;scheduleTurnClear();
+   return true;
+  }catch(_){
+   failed=true;reason=stage;clearTurnCache();
+   try{localStorage.removeItem(key)}catch(_ignored){}
+   showFailure();return false;
+  }
+ }
+ window.pn438StorageWriteFailed=()=>failed;
+ window.pn438CheckStorageWritable=probe;
+ window.pn439StorageProbeStatus=()=>({failed,reason,attempts});
+ window.pn440StorageProbeCacheActive=()=>turnProbeOK;
+ window.addEventListener('pageshow',showFailure);
+ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)showFailure()});
+ probe();
 })();
 </script>
 <!-- RC312: sticky cross-tab safety gate; no storage keys or user events are mutated. -->
@@ -6560,8 +6957,9 @@ async function pn275Recover(){
  const LOCK='plannote-sync-uncertain-rc281';
  const PENDING='plannote-google-write-pending-rc273';
  let changedInOtherTab=false;
- function blocked(){
-   if(changedInOtherTab)return true;
+ function blocked(forceFresh=false){
+   if(changedInOtherTab||window.pn438StorageWriteFailed?.())return true;
+   if(!window.pn438CheckStorageWritable?.(forceFresh))return true;
    try{
      if(localStorage.getItem(LOCK))return true;
      const pending=localStorage.getItem(PENDING);
@@ -6585,7 +6983,7 @@ async function pn275Recover(){
  window.addEventListener('storage',event=>{
    if(event.key===LOCK||event.key===PENDING||event.key===null){changedInOtherTab=true;alertUser();}
  });
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)alertUser()});
+ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)alertUser()});
  window.addEventListener('pageshow',alertUser);
  alertUser();
 })();
@@ -6601,8 +6999,303 @@ async function pn275Recover(){
  };
  window.addEventListener('storage',e=>{if(e.key===null||e.key==='plannote-sync-uncertain-rc281'||e.key==='plannote-google-write-pending-rc273')show()});
  window.addEventListener('pageshow',show);
- document.addEventListener('visibilitychange',()=>{if(!document.hidden)show()});
+ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)show()});
  show();
+})();
+</script>
+<!-- RC473: settings UI for explicit read-only reconciliation; never unlock or replay writes. -->
+<script id="pn446-readonly-ui">
+(()=>{'use strict';
+ const panel=document.getElementById('pn274-diagnostic');if(!panel)return;
+ const area=document.createElement('section');area.id='pn446-reconcile-panel';area.className='panel';
+ area.style.marginTop='12px';area.style.padding='12px';
+ const heading=document.createElement('h4');heading.textContent='書き込み結果不明の予定を照合（読み取り専用）';area.append(heading);
+ const help=document.createElement('p');help.className='hint';help.textContent='Google予定IDが分かる場合だけ照合できます。安全停止は解除せず、Googleへの書き込み・再送信は行いません。ID不明の場合は下の「送信前記録とGoogle予定を照合」を利用するか、Googleカレンダーを手動確認してください。';area.append(help);
+ const idLabel=document.createElement('label');idLabel.textContent='Google予定ID';idLabel.htmlFor='pn446-event-id';area.append(idLabel);
+ const idInput=document.createElement('input');idInput.id='pn446-event-id';idInput.maxLength=512;idInput.placeholder='Google側の予定ID';area.append(idInput);
+ const summaryLabel=document.createElement('label');summaryLabel.textContent='確認する予定名（任意）';summaryLabel.htmlFor='pn446-summary';area.append(summaryLabel);
+ const summary=document.createElement('input');summary.id='pn446-summary';summary.maxLength=300;summary.placeholder='端末内の予定名';area.append(summary);
+ const button=document.createElement('button');button.type='button';button.className='btn';button.id='pn446-check';button.textContent='Google予定を読み取り専用で確認';area.append(button);
+ const output=document.createElement('p');output.id='pn446-result';output.className='hint';output.setAttribute('role','status');output.setAttribute('aria-live','polite');output.textContent='未照合。同期の安全停止状態は変更しません。';area.append(output);panel.append(area);
+ let generation=0;
+ // RC473: do not retain an account's event ID, title, or result after an auth transition.
+ let lastToken=googleToken,lastAccount=typeof googleAccount==='undefined'?null:googleAccount;
+ const clearAccount=()=>{generation++;button.disabled=false;idInput.value='';summary.value='';output.textContent='Google認証状態が変わりました。以前の予定情報を消去しました。必要なら再照合してください。同期は再開しません。';lastToken=googleToken;lastAccount=typeof googleAccount==='undefined'?null:googleAccount;};
+ if(typeof window!=='undefined')window.pn451ClearReadonlyAccount=clearAccount;
+ const checkAccount=()=>{const account=typeof googleAccount==='undefined'?null:googleAccount;if(googleToken!==lastToken||account!==lastAccount){clearAccount();return true}return false};
+ // RC473: other tabs receive only a non-sensitive invalidation signal, never account data.
+ const AUTH_SIGNAL='plannote-readonly-auth-invalidate-rc452';
+ // RC473: retain one marker per tab as well as the legacy last-writer marker.
+ // This lets resumed tabs discover concurrent changes even when the shared
+ // last-writer marker was overwritten. Markers contain no account details.
+ const TAB_PREFIX=AUTH_SIGNAL+'-tab-';
+ const tabId=Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
+ const tabKey=TAB_PREFIX+tabId;
+ let authChannel=null,lastSignal='';
+ const recentSignals=new Set();
+ const rememberSignal=value=>{if(!value)return;recentSignals.add(value);if(recentSignals.size>128)recentSignals.delete(recentSignals.values().next().value)};
+ let pn458WasSuspended=false;
+ const observedTabs=new Map();
+ // RC473: preserve legacy tab markers; IndexedDB journal cleanup is transactional.
+ // An old marker is only pruned after its age is known; legacy records are kept.
+ const MARKER_TTL=30*24*60*60*1000;
+ // RC473: non-destructive cleanup. A read-then-remove sequence can erase a
+ // concurrent update, even when values are checked immediately beforehand.
+ // Keep markers immutable here; never remove another tab's record. Old records
+ // are still useful for detecting a missed auth change after a long suspension.
+ // Storage growth is a known trade-off until an atomic coordination mechanism
+ // (e.g. IndexedDB transaction) is introduced and migration is verified.
+ // RC473: IndexedDB is an optional, transactional shadow journal. Never
+ // migrate/delete localStorage markers here: IDB transactions cannot atomically
+ // commit a localStorage removal, and older clients still need those markers.
+ // Each write and expiration sweep share a readwrite transaction. The journal
+ // is not a substitute for the fail-closed localStorage / BroadcastChannel path.
+ const IDB_DB='plannote-auth-journal-v1',IDB_STORE='changes';
+ let idbUnavailable=false;
+ // RC473: recovery is event-driven and bounded, never a tight retry loop.
+ // A new lifecycle event is required after failure; stale opens are rejected.
+ let journalEpoch=0,journalFailures=0,journalRecoveryEvents=0,journalMutationEpoch=0;
+ let journalWriteSerial=0;
+ const journalPendingWrites=new Set();
+ // RC473: one outage is one recovery-budget failure, even when read/write,
+ // abort/error and versionchange callbacks race in the same failure epoch.
+ const markJournalFailure=()=>{
+  if(idbUnavailable){clearAccount();return}
+  idbUnavailable=true;journalFailures++;journalRecoveryEvents=0;journalEpoch++;clearAccount()
+ };
+ const maybeRecoverJournal=()=>{
+  if(!idbUnavailable)return;
+  clearAccount(); // A retry never restores an old reconciliation result.
+  if(journalFailures>=3)return;
+  if(++journalRecoveryEvents<2)return;
+  journalRecoveryEvents=0;idbUnavailable=false;journalEpoch++;
+ };
+ // RC473: every asynchronous open has a terminal guard. Late successes after
+ // blocked/error/upgrade failure must close their connection, not write data.
+ const withAuthJournal=(work,onTerminal)=>{
+  // RC473: all terminal paths release their pending write bookkeeping.
+  // A failed write remains failed; releasing its in-memory slot is not a commit.
+  let terminalCalled=false;
+  const terminal=ok=>{if(terminalCalled)return;terminalCalled=true;try{onTerminal?.(ok)}catch(_){clearAccount()}};
+  if(idbUnavailable||typeof indexedDB==='undefined'||typeof indexedDB.open!=='function'){terminal(false);clearAccount();return;}
+  let settled=false,db=null;
+  const epoch=journalEpoch;
+  const close=()=>{if(db){try{db.close()}catch(_){}db=null}};
+  const fail=()=>{if(settled){close();return}settled=true;markJournalFailure();terminal(false);close()};
+  try{
+   const request=indexedDB.open(IDB_DB,1);
+   request.onblocked=fail;
+   request.onerror=fail;
+   request.onupgradeneeded=()=>{if(settled)return;try{const next=request.result;if(!next.objectStoreNames.contains(IDB_STORE))next.createObjectStore(IDB_STORE,{keyPath:'id'})}catch(_){fail()}};
+   request.onsuccess=()=>{
+    db=request.result;
+    if(settled||idbUnavailable||epoch!==journalEpoch){terminal(false);close();return}
+    settled=true;
+    let connectionFailed=false,txSettled=false;
+    const failConnection=()=>{if(connectionFailed||txSettled){close();return}connectionFailed=true;if(epoch===journalEpoch&&!idbUnavailable)markJournalFailure();terminal(false);close()};
+    db.onversionchange=failConnection;
+    try{
+     const tx=db.transaction(IDB_STORE,'readwrite');
+     const txFail=()=>{if(txSettled)return;failConnection();txSettled=true};
+     tx.onabort=txFail;
+     tx.onerror=txFail;
+     tx.oncomplete=()=>{if(txSettled)return;txSettled=true;terminal(epoch===journalEpoch&&!idbUnavailable);close()};
+     if(epoch!==journalEpoch||idbUnavailable){terminal(false);close();return}
+     work(tx.objectStore(IDB_STORE),tx);
+    }catch(_){failConnection()}
+   };
+  }catch(_){fail()}
+ };
+ // A journal write invalidates all in-flight read snapshots before the
+ // asynchronous open starts. A stale read must not reset recovery state.
+ const journalAuthChange=signal=>{
+  const writeSerial=++journalWriteSerial;
+  journalPendingWrites.add(writeSerial);
+  journalMutationEpoch++;
+  journalReadSerial++;
+  clearAccount();
+  return withAuthJournal((store,tx)=>{
+  // A write is committed only on transaction completion, never at put().
+  tx.addEventListener?.('complete',()=>journalPendingWrites.delete(writeSerial));
+  const now=Date.now();
+  // A single transaction serializes puts and cursor deletes in this store.
+  store.put({id:tabId+':'+signal,tab:tabId,signal,created:now});
+  const cursor=store.openCursor();
+  cursor.onerror=()=>clearAccount();
+  cursor.onsuccess=event=>{
+   const item=event.target.result;
+   if(!item)return;
+   const value=item.value;
+   if(value&&typeof value.created==='number'&&Number.isFinite(value.created)&&value.created<now-MARKER_TTL){
+    try{item.delete()}catch(_){clearAccount()}
+   }
+   item.continue();
+  };
+ },()=>journalPendingWrites.delete(writeSerial));
+ };
+ // RC473: compare an IndexedDB journal snapshot on tab return. Treat the
+ // first observed snapshot conservatively: a paused tab may have missed writes.
+ // Read-only transaction; never delete records or unlock synchronization.
+ let journalSnapshot=null,journalReadSerial=0;
+ // RC473: a pending asynchronous read must not preserve previously shown account data.
+ const journalFailClosed=()=>{journalReadSerial++;clearAccount()};
+ const checkAuthJournal=()=>{
+  if(idbUnavailable||typeof indexedDB==='undefined'||typeof indexedDB.open!=='function')return;
+  const serial=++journalReadSerial;
+  const mutationAtStart=journalMutationEpoch;
+  const pendingWriteAtStart=journalPendingWrites.size>0;
+  // A fresh read is required after a failure; never trust a stale result.
+  clearAccount();
+  let settled=false,db=null;
+  const epoch=journalEpoch;
+  const close=()=>{if(db){try{db.close()}catch(_){}db=null}};
+  let readFailed=false;
+  let readCompleted=false;
+  const fail=()=>{if(readFailed||readCompleted){close();return}readFailed=true;settled=true;if(epoch===journalEpoch&&!idbUnavailable)markJournalFailure();journalFailClosed();close()};
+  try{
+   const request=indexedDB.open(IDB_DB,1);
+   request.onblocked=fail;
+   request.onerror=fail;
+   request.onupgradeneeded=()=>{if(settled)return;try{const next=request.result;if(!next.objectStoreNames.contains(IDB_STORE))next.createObjectStore(IDB_STORE,{keyPath:'id'})}catch(_){fail()}};
+   request.onsuccess=()=>{
+    db=request.result;
+    if(settled||idbUnavailable||epoch!==journalEpoch||serial!==journalReadSerial||mutationAtStart!==journalMutationEpoch){close();return}
+    settled=true;
+    db.onversionchange=()=>{fail()};
+    try{
+     const tx=db.transaction(IDB_STORE,'readonly');
+     const store=tx.objectStore(IDB_STORE),ids=[];
+     tx.onerror=fail;tx.onabort=fail;
+     const cursor=store.openCursor();
+     cursor.onerror=fail;
+     cursor.onsuccess=e=>{
+      if(serial!==journalReadSerial)return;
+      if(epoch!==journalEpoch||idbUnavailable||readFailed)return;
+      const item=e.target.result;
+      if(item){if(item.value&&typeof item.value.id==='string')ids.push(item.value.id);else clearAccount();item.continue()}
+     };
+     tx.oncomplete=()=>{
+      if(readCompleted)return;readCompleted=true;close();
+      if(serial!==journalReadSerial||idbUnavailable||epoch!==journalEpoch||readFailed||mutationAtStart!==journalMutationEpoch)return;
+      ids.sort();const snapshot=JSON.stringify(ids);
+      if((journalSnapshot===null&&ids.length>0)||(journalSnapshot!==null&&journalSnapshot!==snapshot))clearAccount();
+      journalSnapshot=snapshot;
+      // RC473: only a completed, current-generation read proves recovery.
+      // Stale completions cannot reset the failure budget.
+      // A read cannot certify recovery while a journal write is pending.
+      if(!pendingWriteAtStart&&journalPendingWrites.size===0){journalFailures=0;journalRecoveryEvents=0;}
+     };
+    }catch(_){fail()}
+   };
+  }catch(_){fail()}
+ };
+ const pruneOldTabMarkers=()=>{
+  try{
+   if(typeof localStorage==='undefined'||typeof localStorage.key!=='function')return 0;
+   // Probe readability only. Do not delete or rewrite any tab marker.
+   for(let i=0;i<localStorage.length;i++){
+    const key=localStorage.key(i);
+    if(typeof key==='string'&&key.startsWith(TAB_PREFIX)&&localStorage.getItem(key)===null)clearAccount();
+   }
+  }catch(_){clearAccount()}
+  return 0;
+ };
+ const scanTabMarkers=()=>{
+  if(typeof localStorage==='undefined')return;
+  try{
+   if(typeof localStorage.length!=='number'||typeof localStorage.key!=='function')return;
+   const current=new Map();
+   for(let i=0;i<localStorage.length;i++){
+    const key=localStorage.key(i);
+    if(typeof key==='string'&&key.startsWith(TAB_PREFIX))current.set(key,localStorage.getItem(key)||'');
+   }
+   for(const [key,value] of current){
+    if(key!==tabKey&&value&&observedTabs.get(key)!==value)clearAccount();
+   }
+   observedTabs.clear();for(const [key,value] of current)observedTabs.set(key,value);
+  }catch(_){clearAccount()}
+ };
+ try{if(typeof localStorage!=='undefined'){lastSignal=localStorage.getItem(AUTH_SIGNAL)||'';rememberSignal(lastSignal);scanTabMarkers();pruneOldTabMarkers()}}catch(_){if(typeof localStorage!=='undefined')clearAccount()}
+ const checkMissedSignal=()=>{
+  scanTabMarkers();
+  try{
+   if(typeof localStorage==='undefined'||typeof localStorage.getItem!=='function')return;
+   const persisted=localStorage.getItem(AUTH_SIGNAL);
+   if(persisted&&persisted!==lastSignal)receiveSignal(persisted);
+  }catch(_){
+   // If storage is unreadable, the current account's reconciliation result
+   // cannot be trusted after suspension. Clear only the read-only UI.
+   clearAccount();
+  }
+ };
+ // RC473: the same invalidation can arrive over both BroadcastChannel and storage.
+ // Ignore duplicate delivery, but never skip a genuinely new account change.
+ const receiveSignal=signal=>{
+  if(typeof signal!=='string'||!signal||recentSignals.has(signal))return;
+  // Never rank independent tabs by Date.now(): clocks can differ and
+  // notifications may share a millisecond. Prefer the marker currently in
+  // shared storage; if unavailable, invalidate rather than trust stale UI.
+  let persisted='',readable=true;
+  try{persisted=localStorage.getItem(AUTH_SIGNAL)||''}catch(_){readable=false}
+  if(!readable){rememberSignal(signal);clearAccount();return}
+  if(persisted&&persisted!==signal){
+   rememberSignal(signal);
+   if(persisted!==lastSignal&&!recentSignals.has(persisted))receiveSignal(persisted);
+   return;
+  }
+  lastSignal=signal;rememberSignal(signal);
+  clearAccount(); // Also invalidates any in-flight reconciliation generation.
+ };
+ try{if(typeof BroadcastChannel==='function'){authChannel=new BroadcastChannel(AUTH_SIGNAL);authChannel.onmessage=e=>receiveSignal(e?.data)}}catch(_){authChannel=null}
+ const notifyOtherTabs=()=>{
+  const signal=String(Date.now())+'-'+Math.random();
+  lastSignal=signal;rememberSignal(signal); // Local auth changes already cleared the current UI.
+  try{authChannel?.postMessage(signal)}catch(_){}
+  journalAuthChange(signal);
+  try{localStorage.setItem(AUTH_SIGNAL,signal);if(typeof localStorage.getItem==='function'&&localStorage.getItem(AUTH_SIGNAL)!==signal)clearAccount();if(typeof localStorage.key==='function'&&typeof localStorage.length==='number'){const marker='v2:'+Date.now()+':'+signal;localStorage.setItem(tabKey,marker);if(typeof localStorage.getItem==='function'&&localStorage.getItem(tabKey)!==marker)clearAccount()}}catch(_){clearAccount()}
+ };
+ if(typeof window!=='undefined'){
+  window.pn452NotifyReadonlyAuthChange=notifyOtherTabs;
+  window.addEventListener?.('storage',e=>{if(e.key===AUTH_SIGNAL&&e.newValue)receiveSignal(e.newValue);else if(typeof e.key==='string'&&e.key.startsWith(TAB_PREFIX)&&e.key!==tabKey&&e.newValue){scanTabMarkers();clearAccount()}});
+  // Suspended tabs may miss notifications; clear stale results on return.
+  window.addEventListener?.('pageshow',()=>{if(pn458WasSuspended){clearAccount();pn458WasSuspended=false}checkMissedSignal();maybeRecoverJournal();checkAuthJournal();checkAccount();if(document.hidden)invalidate()});
+ }
+
+ const invalidate=()=>{generation++;button.disabled=false;if(output.textContent.includes('確認しています'))output.textContent='画面または認証状態が変わりました。必要なら再照合してください。同期は再開しません。'};
+ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden){if(pn458WasSuspended){clearAccount();pn458WasSuspended=false}checkMissedSignal();maybeRecoverJournal();checkAuthJournal();checkAccount()}else {pn458WasSuspended=true;invalidate()}});
+ if(typeof window!=='undefined')window.addEventListener?.('focus',()=>{checkMissedSignal();maybeRecoverJournal();checkAuthJournal();checkAccount()});
+ 
+ if(typeof window!=='undefined')window.addEventListener?.('pagehide',()=>{pn458WasSuspended=true;invalidate()}); // RC473: navigation invalidates in-flight results
+ button.addEventListener('click',async()=>{
+  checkMissedSignal();checkAuthJournal();
+  if(checkAccount())return;
+  if(button.disabled)return;
+  const current=++generation;
+  button.disabled=true;
+  const tokenAtStart=googleToken;
+  const accountAtStart=typeof googleAccount==='undefined'?null:googleAccount; // RC473: detect account replacement even if access token is reused
+  try{
+   if(!googleToken){output.textContent='Googleに接続してください。同期は再開しません。';return}
+   const id=idInput.value.trim();
+   if(!id||id.length>512||/[\/\?#]/.test(id)){output.textContent='有効なGoogle予定IDが必要です。IDが不明なら送信前記録の診断、またはGoogleカレンダーで手動確認してください。';return}
+   if(typeof pn445ReconcileWriteOutcome!=='function'){output.textContent='照合機能を利用できません。同期を再開せず手動確認してください。';return}
+   output.textContent='読み取り専用で確認しています…';
+   const expected=summary.value.trim()?{summary:summary.value.trim()}:{};
+   // RC473: settle once, clear the timer on early completion, and ignore late replies.
+   let timeoutHandle;
+   const remote=Promise.resolve(pn445ReconcileWriteOutcome(GC_BASE+'/'+encodeURIComponent(id),expected,'PATCH'));
+   const timed=new Promise(resolve=>{timeoutHandle=setTimeout(()=>resolve({status:'unknown',message:'照合がタイムアウトしました。Google側を手動確認してください。'}),15000)});
+   let result;
+   try{result=await Promise.race([remote,timed])}
+   finally{if(typeof clearTimeout==='function')clearTimeout(timeoutHandle)}
+   if(current!==generation||!area.isConnected&&typeof area.isConnected==='boolean')return;
+   if(document.hidden){output.textContent='画面が非表示になりました。再照合してください。同期は再開しません。';return}
+   if(googleToken!==tokenAtStart||(typeof googleAccount==='undefined'?null:googleAccount)!==accountAtStart){clearAccount();return}
+   output.textContent=(result.message||'結果を確認できません。')+' 判定：'+result.status+'。安全停止は解除せず、自動再送信もしません。';
+   if(result.status==='blocked')output.textContent+=' 安全停止中の照合には、既存の「送信前記録とGoogle予定を照合（読み取り専用）」を利用できます。';
+  }catch(error){if(current===generation&&(googleToken!==tokenAtStart||(typeof googleAccount==='undefined'?null:googleAccount)!==accountAtStart)){clearAccount();return}if(current===generation&&(!('isConnected' in area)||area.isConnected))output.textContent='照合エラー：'+String(error?.message||error)+'。安全停止を維持してください。'}
+  finally{if(current===generation)button.disabled=false}
+ });
 })();
 </script>
 <!-- RC314: read-only remote duplicate inspection. Does not clear any safety markers. -->
@@ -6912,7 +7605,7 @@ async function pn275Recover(){
  // Do not modify app data or clear safety markers. This panel is intentionally read-only until an explicit reload.
 })();
 </script>
-<script id="pn322-version-final">(()=>{const update=()=>{document.title='PlanNote v1.0.0 RC414 | 予定管理';const e=document.querySelector('header h1 small');if(e)e.textContent='v1.0.0 RC414';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const n=document.getElementById(id);if(n)n.textContent=n.textContent.replace(/RC\d+/g,'RC414')}};update();window.addEventListener('load',update)})();</script><script id="pn332-consistency-diagnostic">
+<script id="pn322-version-final">(()=>{const update=()=>{document.title='PlanNote v1.0.0 RC363 | 予定管理';const e=document.querySelector('header h1 small');if(e)e.textContent='v1.0.0 RC363'};update();window.addEventListener('load',update)})();</script><script id="pn332-consistency-diagnostic">
 (()=>{'use strict';
  const panel=document.getElementById('pn274-diagnostic');if(!panel)return;
  const btn=document.createElement('button');btn.type='button';btn.className='btn';btn.id='pn332-consistency-check';btn.textContent='端末内の同期整合性を診断（読み取り専用）';
@@ -8367,4 +9060,61 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-</body></html>
+<style id="pn476-simple-ui">
+/* User-facing diagnostic panels are not part of the PlanNote interface. */
+#pn69-diagnostics,#pn72-diagnostics,#pn274-diagnostic,#pn391-open-diagnostic,#pn391-diagnostic-feedback,
+#pn332-consistency-diagnostic,#pn346-diagnostic-nav,#pn355-a11y-audit,#pn353-interaction-runner,
+[id$="-diagnostics"],[id$="-diagnostic-panel"],#pn398-storage-panel,#pn398-simulation,
+#pn398-recovery-panel{display:none!important}
+/* Keep the core event and timetable forms clear and touch friendly. */
+#eventDialog,#schoolDialog{width:min(96vw,580px);max-height:90dvh;overflow-y:auto}
+#eventDialog input,#eventDialog select,#schoolDialog input,#schoolDialog select{min-height:42px}
+#schoolSubjects{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+#schoolSubjects .field{margin:0}
+#schoolDialog .dialog-actions,#eventDialog .dialog-actions{position:sticky;bottom:0;background:var(--panel,#14252b);padding:10px 0;z-index:1}
+@media(max-width:650px){#schoolSubjects{grid-template-columns:1fr 1fr}#schoolSubjects input{width:100%}#eventDialog,#schoolDialog{padding:14px}}
+</style>
+<script id="pn476-version-and-ui">(()=>{'use strict';
+const VERSION='RC479', TITLE='PlanNote v1.0.0 '+VERSION+' | 予定管理';
+const DIAGNOSTIC_IDS=['pn69-diagnostics','pn72-diagnostics','pn391-open-diagnostic','pn391-diagnostic-feedback','pn332-consistency-diagnostic','pn346-diagnostic-nav','pn355-a11y-audit','pn353-interaction-runner'];
+function update(){
+ if(document.title!==TITLE)document.title=TITLE;
+ const header=document.querySelector('header h1 small');if(header&&header.textContent!=='v1.0.0 '+VERSION)header.textContent='v1.0.0 '+VERSION;
+ for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e){const t=id==='pn49-build'?'アプリ版: '+VERSION:'PlanNote '+VERSION;if(e.textContent!==t)e.textContent=t;}}
+ // Remove diagnostic-only interface controls. Do not remove the hidden sync
+ // recovery panel, whose nodes are referenced by existing safety logic.
+ for(const id of DIAGNOSTIC_IDS){const e=document.getElementById(id);if(e)e.remove();}
+ const panel=document.getElementById('pn274-diagnostic');if(panel)panel.hidden=true;
+ const school=document.getElementById('schoolEdit');if(school)school.textContent='時間割を編集';
+ const event=document.querySelector('header button[onclick="openEvent()"]');if(event)event.textContent='＋ 予定';
+}
+function install(){update();
+ // The old RC3xx scripts may rewrite the version after initial load.
+ const header=document.querySelector('header h1');
+ if(header&&typeof MutationObserver==='function'){
+  let pending=false;const observer=new MutationObserver(()=>{if(pending)return;pending=true;queueMicrotask(()=>{pending=false;update()})});
+  observer.observe(header,{subtree:true,childList:true,characterData:true});
+ }
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
+window.addEventListener('load',update);window.addEventListener('pageshow',update);
+})();</script><script id="pn477-version-guard">(()=>{const update=()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC479';document.title=document.title.replace(/RC\d+/g,'RC479');};update();window.addEventListener('pageshow',update);})();</script><style id="pn479-style">
+.pn479-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0}
+.pn479-presets button{min-height:48px;border:1px solid var(--border,#507078);border-radius:10px;background:var(--panel,#172a30);color:inherit;font:inherit;cursor:pointer}
+.pn479-presets button[aria-pressed="true"]{outline:2px solid #29c7c7;border-color:#29c7c7;font-weight:700}
+#pn479Advanced{margin:10px 0;padding:10px;border:1px solid var(--border,#507078);border-radius:9px}
+#pn479Advanced summary{cursor:pointer;padding:5px}
+</style><script id="pn479-presets">(()=>{'use strict';
+function refresh(){const sel=document.getElementById('schoolScheduleType');if(!sel)return;document.querySelectorAll('.pn479-presets button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.preset===sel.value)));if(typeof pn478ToggleSchoolFields==='function')pn478ToggleSchoolFields();}
+window.pn479ApplyPreset=function(type){const $=id=>document.getElementById(id),sel=$('schoolScheduleType');if(!sel)return;sel.value=type;
+const day=typeof schoolEditingDate==='string'?schoolEditingDate:($('verticalDate')?.value||new Date().toISOString().slice(0,10));const weekday=new Date(day+'T12:00:00').getDay();
+if(type==='normal'){ $('schoolDialogPeriod').value='50';$('schoolEndPeriod').value=weekday===2?'7':'6';$('schoolStartTime').value='09:05';$('schoolBreakMinutes').value='10';$('schoolLunchMinutes').value='45';$('schoolLunchAfter').value='3';}
+else if(type==='morning'){ $('schoolDialogPeriod').value='50';$('schoolEndPeriod').value='3';$('schoolStartTime').value='09:05';$('schoolBreakMinutes').value='10';$('schoolLunchMinutes').value='0';}
+else if(type==='short'){ $('schoolDialogPeriod').value='45';$('schoolEndPeriod').value='4';$('schoolStartTime').value='09:05';$('schoolBreakMinutes').value='10';$('schoolLunchMinutes').value='0';}
+else if(type==='event'){ $('schoolStartTime').value='09:05';$('schoolEventEndTime').value='12:00';}
+refresh();};
+window.pn479TypeChanged=function(){refresh();};
+const oldEdit=window.editSchoolDay;
+if(typeof oldEdit==='function')window.editSchoolDay=function(...args){const result=oldEdit.apply(this,args);refresh();return result;};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});else refresh();
+})();</script></body></html>
