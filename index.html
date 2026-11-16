@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#12bfc4" name="theme-color"/><title>PlanNote v1.0.0 RC479 | 予定管理</title><link href="./manifest.webmanifest" rel="manifest"/><link href="./icon-192.png" rel="icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><style>
+
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#12bfc4" name="theme-color"/><meta name="plannote-build" content="RC481"/><title>PlanNote v1.0.0 RC481 | 予定管理</title><link href="./manifest.webmanifest" rel="manifest"/><link href="./icon-192.png" rel="icon"/><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/><style>
 :root{font-family:system-ui,-apple-system,'Noto Sans JP',sans-serif;color:#213c2c;background:#f5faf6}*{box-sizing:border-box}body{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer}header{background:white;border-bottom:1px solid #d9e9dd;padding:16px 22px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;position:sticky;top:0;z-index:5}h1{font-size:22px;margin:0}h2{font-size:18px;margin:0 0 14px}.muted{color:#58705f;font-size:13px}.shell{max-width:1250px;margin:auto;padding:18px}.nav{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.nav button{border:0;border-radius:12px;padding:11px 15px;background:#e4f1e8;color:#284c38;white-space:nowrap}.nav button.active,.primary{background:#21865a!important;color:white!important}.layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px}.panel{background:white;border:1px solid #dbece0;border-radius:18px;padding:18px;box-shadow:0 3px 16px #26335b08;margin-bottom:16px}.toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}.toolbar button,.btn{border:1px solid #cfe4d6;border-radius:10px;background:white;padding:8px 12px}.primary{border:0;border-radius:10px;padding:10px 14px}.calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px}.dow{text-align:center;font-size:12px;color:#6b7890;padding:8px 0}.day{border:1px solid #e7eaf2;border-radius:10px;min-height:100px;padding:7px;text-align:left;background:white;overflow:hidden}.day.dim{opacity:.35}.day.today{border:2px solid #21865a}.day.selected{background:#edf8f0}.date{font-weight:650;font-size:13px}.chip{display:block;margin-top:4px;border-radius:5px;padding:3px 5px;font-size:11px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:#edf8f0;border-left:3px solid var(--c,#21865a)}.agenda-item,.task-item{border-bottom:1px solid #eef1f7;padding:10px 0;display:flex;justify-content:space-between;gap:8px;align-items:center}.agenda-item:last-child,.task-item:last-child{border-bottom:0}.tag{display:inline-block;font-size:11px;border-radius:20px;padding:3px 7px;background:#edf8f0;color:#334}.view{display:none}.view.active{display:block}.field{display:grid;gap:5px;margin-bottom:12px}.field label{font-size:13px;font-weight:600}input,select,textarea{width:100%;border:1px solid #c7ddcf;border-radius:10px;padding:10px;background:white;color:#213c2c}textarea{min-height:80px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions{display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}.danger{color:#c53030}.timeline{height:900px;overflow:auto;border:1px solid #e0ece4;border-radius:12px}.slot{display:grid;grid-template-columns:70px 1fr;min-height:46px;border-bottom:1px solid #e1ede5}.slot:nth-child(2n){background:#f8fcf9}.slot-time{padding:8px;color:#58705f;font-size:12px;border-right:1px solid #e1ede5}.slot-events{padding:3px 8px}.slot-event{background:#edf8f0;border-left:4px solid var(--c,#21865a);border-radius:5px;padding:5px;margin-bottom:3px;font-size:12px;cursor:pointer}.progress{height:9px;background:#e0ece4;border-radius:20px;overflow:hidden}.progress>div{height:100%;background:#21865a}.habit{padding:12px;border:1px solid #e4e9f3;border-radius:12px;margin:8px 0;display:flex;align-items:center;gap:12px}.habit input,.task-item input{width:auto;accent-color:#21865a}.empty{padding:24px;text-align:center;color:#58705f}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1e293b;color:white;padding:12px 18px;border-radius:12px;display:none;z-index:20}dialog{border:0;border-radius:18px;padding:22px;width:min(95vw,550px);box-shadow:0 25px 80px #0b193650}dialog::backdrop{background:#18243b77}.hint{font-size:12px;color:#58705f;line-height:1.6} @media(max-width:800px){.layout{grid-template-columns:1fr}.shell{padding:10px}.panel{padding:12px}.day{min-height:78px;padding:4px}.chip{font-size:9px;padding:2px}.date{font-size:11px}.formgrid{grid-template-columns:1fr}header{padding:12px}h1{font-size:19px}}
 .vertical-all-day{border:1px solid #cbd5e1;border-radius:10px;padding:12px;margin:12px 0;background:#f8fafc}.vertical-all-day-title{font-weight:700;margin-bottom:8px}.vertical-all-day-event{border-left:5px solid var(--c);background:white;border-radius:6px;padding:8px 10px;margin:5px 0;cursor:pointer;overflow-wrap:anywhere}
 .timeline{height:900px;overflow:auto;position:relative}.vertical-canvas{position:relative;height:920px;min-width:0;background:repeating-linear-gradient(to bottom,#fff 0,#fff 45px,#e1ede5 45px,#e1ede5 46px)}.vertical-hour{position:absolute;left:0;width:64px;padding:5px 3px;color:#58705f;font-size:11px;border-right:1px solid #e1ede5;height:46px}.vertical-track{position:absolute;left:64px;right:0;top:0;height:920px}.vertical-card{position:absolute;box-sizing:border-box;border:1px solid var(--c);border-left:5px solid var(--c);background:#edf8f0;border-radius:7px;padding:5px 6px;overflow:hidden;font-size:12px;min-width:0;z-index:1;overflow-wrap:anywhere}.vertical-card.all-day{background:#e1f4e7}.vertical-card-title{font-weight:700;display:block;word-break:break-word}.vertical-card-time{font-size:11px;opacity:.85}.vertical-resize{position:absolute;bottom:0;left:0;right:0;height:25px;background:linear-gradient(transparent,#b7e4c6);border:0;width:100%;text-align:center;cursor:ns-resize;touch-action:none;color:#176341;font-weight:700}.vertical-all-day-action{position:absolute;top:30px;left:5px;right:5px;width:calc(100% - 10px);padding:5px;font-size:11px;background:#fff;border:1px solid #79b796;border-radius:5px;cursor:pointer}.vertical-drag-tip{font-size:11px;color:#58705f;margin:6px 0}
@@ -309,7 +310,8 @@ button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid 
 /* Compact, readable controls across mobile and desktop. */
 #settings .panel{max-width:100%;overflow-wrap:anywhere}
 @media(max-width:650px){header h1{font-size:1.35rem}header .muted{font-size:.8rem}.nav{gap:4px}.nav button{min-height:42px}}
-</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC479</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><section aria-labelledby="pn120-title" id="pn120-import"><h3 id="pn120-title">📷 レシート・PayPay画像から入力（試験版）</h3><p class="pn120-hint">撮影または画像を選択してください。まず端末の文字認識を試し、非対応の場合は日本語OCRを利用できます。日本語OCRの初回利用時はインターネット経由でプログラム・言語データを取得します。画像の認識処理は端末内で行い、画像自体はOCRサービスへ送信しません。</p><div class="pn120-grid"><div><label for="pn120-image">レシート・支払い画面</label><div class="pn134-picker"><label class="btn" for="pn134-camera">📷 カメラで撮影</label><input accept="image/*" aria-label="カメラで撮影" capture="environment" id="pn134-camera" style="position:absolute;width:1px;height:1px;opacity:0" type="file"/><label class="btn" for="pn120-image">🖼️ 保存済み画像を選択</label></div><input accept="image/*" id="pn120-image" type="file"/><img alt="選択した画像のプレビュー" id="pn120-preview"/></div><div><label for="pn120-text">読み取った文字（編集可）</label><textarea id="pn120-text" placeholder="例：2026/11/13　コンビニ　合計 ¥580"></textarea></div></div><div class="pn120-actions"><button class="btn" id="pn120-ocr" type="button">画像から文字を読み取る</button><button class="btn" id="pn121-ocr" type="button">日本語OCRで読み取る（初回通信あり）</button><button class="btn" id="pn120-parse" type="button">文字から項目を抽出</button></div><p aria-live="polite" id="pn120-status" role="status">画像を選ぶとここに状態を表示します。</p><div class="pn120-grid"><div><label for="pn120-date">日付</label><input id="pn120-date" type="date"/></div><div><label for="pn120-amount">支払額（円）</label><input id="pn120-amount" max="999999999" min="1" type="number"/></div><div><label for="pn120-shop">店舗・支払先</label><input id="pn120-shop" maxlength="100"/></div><div><label for="pn120-category">カテゴリ</label><select id="pn120-category"></select></div></div><div class="pn120-actions"><button class="primary" id="pn120-apply" type="button">確認して家計簿入力欄へ反映</button><button class="btn" id="pn120-clear" type="button">画像を破棄</button></div><p class="pn120-hint">日本語OCRは初回の言語データ取得に時間がかかります。通信ができない場合は手入力してください。誤認識を防ぐため自動保存はしません。内容を確認してから家計簿の「記録する」を押してください。同日・同額・同じ店舗の記録がある場合は警告します。</p></section><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong>⚠ Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn285-storage-check" type="button">状態を再確認</button><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700">⚠ 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="btn" hidden="" id="pn391-open-diagnostic" type="button" aria-describedby="pn254-google-advice">安全停止の診断画面へ移動（読み取り専用）</button><p class="hint" id="pn391-diagnostic-feedback" role="status" aria-live="polite" hidden=""></p><section aria-label="同期未完了の診断" class="panel" id="pn274-diagnostic" style="margin:12px 0;padding:12px"><h3 style="margin:0 0 8px">同期未完了の診断（読み取り専用）</h3><p class="hint">Google側の予定と端末内の予定を比較します。診断では予定を変更・削除せず、安全停止も解除しません。</p><button class="btn" id="pn274-diagnose" onclick="pn274Diagnose()" type="button">同期未完了を診断する</button><p aria-live="polite" class="hint" id="pn274-diagnostic-result" role="status">診断前</p><button class="btn" disabled="" id="pn275-recover" onclick="pn275Recover()" type="button">一致を再確認して安全停止を解除</button><p class="hint">解除には予定内容・連携ID・同期管理情報の一致が必要です。解除前にJSONバックアップを保存してください。</p></section><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
+[hidden]{display:none!important}
+</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#71dfe0">v1.0.0 RC481</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav"><button class="active" data-view="calendar">📆 カレンダー</button><button data-view="vertical">🕒 バーチカル</button><button data-view="week">📅 週間</button><button data-view="tasks">☑ タスク</button><button data-view="habits">🌱 習慣</button><button data-view="finance">💰 家計簿</button><button data-view="study">📚 学習</button><button data-view="settings">⚙ 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong>🏫 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。終日予定は縦長に表示し、重なる予定は横並びです。スマホでは予定をタップして操作メニューを開きます。マウス操作では予定名をドラッグして移動できます。終日化は予定をタップして開く操作メニューから選べます。Google連携予定は変更後に手動同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に収めて表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2>💰 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2>📚 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2>📊 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2>✨ 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong>⚠ Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn285-storage-check" type="button">状態を再確認</button><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700">⚠ 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button aria-describedby="pn254-google-advice" class="btn" hidden="" id="pn391-open-diagnostic" type="button">安全停止の診断画面へ移動（読み取り専用）</button><p aria-live="polite" class="hint" hidden="" id="pn391-diagnostic-feedback" role="status"></p><section aria-label="同期未完了の診断" class="panel" hidden="" id="pn274-diagnostic" style="margin:12px 0;padding:12px"><h3 style="margin:0 0 8px">同期未完了の診断（読み取り専用）</h3><p class="hint">Google側の予定と端末内の予定を比較します。診断では予定を変更・削除せず、安全停止も解除しません。</p><button class="btn" id="pn274-diagnose" onclick="pn274Diagnose()" type="button">同期未完了を診断する</button><p aria-live="polite" class="hint" id="pn274-diagnostic-result" role="status">診断前</p><button class="btn" disabled="" id="pn275-recover" onclick="pn275Recover()" type="button">一致を再確認して安全停止を解除</button><p class="hint">解除には予定内容・連携ID・同期管理情報の一致が必要です。解除前にJSONバックアップを保存してください。</p></section><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2>🔄 Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
 <label><input id="autoPullToggle" onchange="setAutoPull(this.checked)" type="checkbox"/> 自動取得を有効にする</label>
 <p aria-live="polite" class="hint" id="autoPullStatus">自動取得は停止中</p>
@@ -2863,7 +2865,7 @@ let installPrompt=null;
 window.addEventListener('beforeinstallprompt',ev=>{ev.preventDefault();installPrompt=ev;document.getElementById('installBtn').style.display='inline-block'});
 async function installPlanNote(){if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;document.getElementById('installBtn').style.display='none'}
 if('serviceWorker' in navigator && location.protocol!=='file:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-</script><script async="" defer="" src="https://accounts.google.com/gsi/client"></script><dialog aria-label="分類の復旧確認" id="pn412RecoveryDialog"><h2>分類の未完了記録</h2><p id="pn412RecoveryDetails" style="white-space:pre-wrap"></p><div class="dialog-actions"><button class="btn" type="button" onclick="$('pn412RecoveryDialog').close()">閉じる</button><button class="primary" id="pn412RecoveryRetry" type="button" onclick="pn412RetryCategoryRecovery()">確認して再試行</button></div></dialog><dialog aria-label="分類を変更" id="categoryDialog"><form onsubmit="submitCategoryChoice(event)">
+</script><script async="" defer="" src="https://accounts.google.com/gsi/client"></script><dialog aria-label="分類の復旧確認" id="pn412RecoveryDialog"><h2>分類の未完了記録</h2><p id="pn412RecoveryDetails" style="white-space:pre-wrap"></p><div class="dialog-actions"><button class="btn" onclick="$('pn412RecoveryDialog').close()" type="button">閉じる</button><button class="primary" id="pn412RecoveryRetry" onclick="pn412RetryCategoryRecovery()" type="button">確認して再試行</button></div></dialog><dialog aria-label="分類を変更" id="categoryDialog"><form onsubmit="submitCategoryChoice(event)">
 <h2>分類を変更</h2><p class="muted" id="categoryEventName"></p>
 <input id="categoryEventId" type="hidden"/><label for="categoryChoice">分類</label>
 <select id="categoryChoice" required="" style="width:100%;margin:10px 0 16px"></select>
@@ -2881,7 +2883,7 @@ if('serviceWorker' in navigator && location.protocol!=='file:')window.addEventLi
 <p class="muted" id="daySchoolSummary"></p><button class="btn" onclick="openDayVertical()">この日の時間割を表示・変更</button><div id="dayAgendaList"></div><div class="dialog-actions">
 <button class="btn" onclick="$('dayAgendaDialog').close();openEvent(null,selectedDate)">＋ この日に予定を追加</button>
 <button class="btn" onclick="$('dayAgendaDialog').close()">閉じる</button></div></dialog>
-<dialog aria-label="学校の時間割を編集" id="schoolDialog"><form onsubmit="saveSchoolDay(event)"><h2 id="schoolEditTitle">時間割</h2><p class="muted">時制や科目をこの日だけ変更できます。</p><div class="row"><label><input id="schoolDialogEnabled" type="checkbox"/> この日は学校あり</label><label>授業時間 <select id="schoolDialogPeriod"><option value="50">50分</option><option value="45">45分</option></select></label></div><div class="pn479-presets" role="group" aria-label="時制を選択"><button type="button" data-preset="normal" onclick="pn479ApplyPreset('normal')">通常授業</button><button type="button" data-preset="morning" onclick="pn479ApplyPreset('morning')">午前授業</button><button type="button" data-preset="short" onclick="pn479ApplyPreset('short')">45分短縮</button><button type="button" data-preset="event" onclick="pn479ApplyPreset('event')">学校行事</button></div><details id="pn479Advanced"><summary>開始時刻・休み時間などを調整</summary><div class="formgrid" style="margin:12px 0"><div class="field"><label for="schoolScheduleType">この日の時制</label><select id="schoolScheduleType" onchange="pn479TypeChanged()"><option value="normal">通常授業</option><option value="morning">午前授業（昼休みなし）</option><option value="short">短縮授業（昼休みなし）</option><option value="custom">変則時制（時間を指定）</option><option value="event">学校行事</option></select></div><div class="field"><label for="schoolStartTime">1限・行事の開始時刻</label><input id="schoolStartTime" type="time" value="09:05"/></div><div class="field"><label for="schoolBreakMinutes">授業間の休み（分）</label><input id="schoolBreakMinutes" type="number" min="0" max="60" value="10"/></div><div class="field"><label for="schoolLunchMinutes">昼休み（分）</label><input id="schoolLunchMinutes" type="number" min="0" max="120" value="45"/></div><div class="field"><label for="schoolLunchAfter">昼休みを入れる時限の後</label><select id="schoolLunchAfter"><option value="3">3限後</option><option value="4">4限後</option><option value="5">5限後</option><option value="6">6限後</option></select></div></div></details><div id="pn478EventFields" hidden><label for="schoolEventName">行事名</label><input id="schoolEventName" maxlength="80" placeholder="例：体育祭・学年集会"/><label for="schoolEventEndTime">行事の終了時刻</label><input id="schoolEventEndTime" type="time" value="12:00"/></div><div class="school-subject-grid" id="schoolSubjects"></div><label for="schoolEndPeriod">この日の最終授業</label><select id="schoolEndPeriod"><option value="1">1限まで</option><option value="2">2限まで</option><option value="3">3限まで（午前終了）</option><option value="4">4限まで（短縮日）</option><option value="5">5限まで</option><option value="6">6限まで</option><option value="7">7限まで</option></select><p class="muted">最終授業以降は表示しません。午前・短縮授業では昼休みを省略します。</p><div class="dialog-actions"><button class="btn" onclick="$('schoolDialog').close()" type="button">キャンセル</button><button class="btn" onclick="restoreSchoolDay()" type="button">通常科目に戻す</button><button class="primary" type="submit">保存</button></div></form></dialog><script id="pn-rc36-script">
+<dialog aria-label="学校の時間割を編集" id="schoolDialog"><form onsubmit="saveSchoolDay(event)"><h2 id="schoolEditTitle">時間割</h2><p class="muted">時制や科目をこの日だけ変更できます。</p><div class="row"><label><input id="schoolDialogEnabled" type="checkbox"/> この日は学校あり</label><label>授業時間 <select id="schoolDialogPeriod"><option value="50">50分</option><option value="45">45分</option></select></label></div><div aria-label="時制を選択" class="pn479-presets" role="group"><button data-preset="normal" onclick="pn479ApplyPreset('normal')" type="button">通常授業</button><button data-preset="morning" onclick="pn479ApplyPreset('morning')" type="button">午前授業</button><button data-preset="short" onclick="pn479ApplyPreset('short')" type="button">45分短縮</button><button data-preset="event" onclick="pn479ApplyPreset('event')" type="button">学校行事</button></div><details id="pn479Advanced"><summary>開始時刻・休み時間などを調整</summary><div class="formgrid" style="margin:12px 0"><div class="field"><label for="schoolScheduleType">この日の時制</label><select id="schoolScheduleType" onchange="pn479TypeChanged()"><option value="normal">通常授業</option><option value="morning">午前授業（昼休みなし）</option><option value="short">短縮授業（昼休みなし）</option><option value="custom">変則時制（時間を指定）</option><option value="event">学校行事</option></select></div><div class="field"><label for="schoolStartTime">1限・行事の開始時刻</label><input id="schoolStartTime" type="time" value="09:05"/></div><div class="field"><label for="schoolBreakMinutes">授業間の休み（分）</label><input id="schoolBreakMinutes" max="60" min="0" type="number" value="10"/></div><div class="field"><label for="schoolLunchMinutes">昼休み（分）</label><input id="schoolLunchMinutes" max="120" min="0" type="number" value="45"/></div><div class="field"><label for="schoolLunchAfter">昼休みを入れる時限の後</label><select id="schoolLunchAfter"><option value="3">3限後</option><option value="4">4限後</option><option value="5">5限後</option><option value="6">6限後</option></select></div></div></details><div hidden="" id="pn478EventFields"><label for="schoolEventName">行事名</label><input id="schoolEventName" maxlength="80" placeholder="例：体育祭・学年集会"/><label for="schoolEventEndTime">行事の終了時刻</label><input id="schoolEventEndTime" type="time" value="12:00"/></div><div class="school-subject-grid" id="schoolSubjects"></div><label for="schoolEndPeriod">この日の最終授業</label><select id="schoolEndPeriod"><option value="1">1限まで</option><option value="2">2限まで</option><option value="3">3限まで（午前終了）</option><option value="4">4限まで（短縮日）</option><option value="5">5限まで</option><option value="6">6限まで</option><option value="7">7限まで</option></select><p class="muted">最終授業以降は表示しません。午前・短縮授業では昼休みを省略します。</p><div class="dialog-actions"><button class="btn" onclick="$('schoolDialog').close()" type="button">キャンセル</button><button class="btn" onclick="restoreSchoolDay()" type="button">通常科目に戻す</button><button class="primary" type="submit">保存</button></div></form></dialog><script id="pn-rc36-script">
 (function(){
 'use strict';
 const $pn=id=>document.getElementById(id);
@@ -4114,7 +4116,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();</script>
 <style id="pn77-style">#pn77-save-hint{font-size:12px;line-height:1.55;color:#a9c2ca;margin:4px 0 10px}#pn-task-dialog:open{max-height:92dvh;overflow:auto}</style>
-<script id="pn77-script">(()=>{function init(){const form=document.getElementById('pn-task-form');if(form&&!document.getElementById('pn77-save-hint')){const hint=document.createElement('p');hint.id='pn77-save-hint';hint.textContent='保存できなかった場合は入力内容を保持します。画面を閉じる前に保存エラーをご確認ください。';form.querySelector('.pn-actions')?.before(hint)}const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC99';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC77':'PlanNote RC77 · 保存失敗時の入力保護'}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
+<script id="pn77-script">(()=>{function init(){const form=document.getElementById('pn-task-form');if(form&&!document.getElementById('pn77-save-hint')){const hint=document.createElement('p');hint.id='pn77-save-hint';hint.textContent='保存できなかった場合は入力内容を保持します。画面を閉じる前に保存エラーをご確認ください。';form.querySelector('.pn-actions')?.before(hint)}for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC77':'PlanNote RC77 · 保存失敗時の入力保護'}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
 <style id="pn78-style">
 #pn78-undo{position:fixed;left:12px;right:12px;bottom:88px;z-index:9998;max-width:560px;margin:auto;padding:12px 14px;background:#203943;color:#f1f8fa;border:1px solid #5a9ba3;border-radius:12px;box-shadow:0 8px 24px #0008;display:flex;align-items:center;justify-content:space-between;gap:12px}
 #pn78-undo[hidden]{display:none!important}#pn78-undo button{min-height:42px;padding:8px 14px;border-radius:9px;background:#24777e;border:1px solid #72b5b8;color:white;font-weight:700}
@@ -4151,35 +4153,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 #pn79-check{margin:14px 0;padding:13px;border:1px solid #456974;border-radius:12px;background:#182d35;color:#e5f2f3}
 #pn79-check button{min-height:42px;margin-top:8px}#pn79-results{white-space:pre-wrap;font-size:13px;line-height:1.65;margin-top:10px}
 </style>
-<script id="pn79-script">(()=>{
-function init(){
- const v=document.querySelector('header h1 small');if(v)v.textContent='v1.0.0 RC99';
- 
- for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC79':'PlanNote RC79 · タスク操作診断';}
- const settings=document.querySelector('#settings .panel');if(!settings||document.getElementById('pn79-check'))return;
- const box=document.createElement('section');box.id='pn79-check';
- const h=document.createElement('h3');h.textContent='タスク操作の安全診断（RC79）';
- const p=document.createElement('p');p.textContent='実際の登録データは変更せず、タスクの追加・編集・削除・復元を模擬データで検証します。';
- const btn=document.createElement('button');btn.type='button';btn.className='btn';btn.textContent='タスク操作を診断';
- const out=document.createElement('div');out.id='pn79-results';out.setAttribute('role','status');out.setAttribute('aria-live','polite');
- box.append(h,p,btn,out);settings.append(box);
- btn.addEventListener('click',()=>{
-  const results=[];const check=(label,fn)=>{try{if(!fn())throw Error('結果が一致しません');results.push('✓ '+label)}catch(e){results.push('✗ '+label+'：'+e.message)}};
-  const original=[{id:'a',name:'最初のタスク',done:false,subtasks:[{id:'s',name:'準備',done:true}]}];
-  let tasks=JSON.parse(JSON.stringify(original));
-  check('追加',()=>{tasks.push({id:'b',name:'追加',done:false});return tasks.length===2});
-  check('編集',()=>{tasks[1].name='編集後';return tasks[1].name==='編集後'});
-  check('完了と取り消し',()=>{tasks[1].done=true;tasks[1].done=false;return !tasks[1].done});
-  let removed=null;
-  check('削除',()=>{const index=tasks.findIndex(t=>t.id==='a');removed={task:JSON.parse(JSON.stringify(tasks[index])),index};tasks.splice(index,1);return tasks.length===1});
-  check('元に戻す（サブタスク含む）',()=>{tasks.splice(removed.index,0,removed.task);return tasks[0].subtasks[0].done===true&&tasks.length===2});
-  check('JSON保存・読み戻し',()=>JSON.parse(JSON.stringify(tasks))[1].name==='編集後');
-  check('登録済みデータの不変性',()=>original.length===1&&original[0].name==='最初のタスク');
-  out.textContent=results.join('\n')+'\n'+results.filter(x=>x.startsWith('✓')).length+'/'+results.length+'項目合格';
- });
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
-})();</script>
+
 <style id="pn80-style">
 #pn80-note{margin:12px 0;padding:12px 14px;border-radius:10px;background:#19333b;border:1px solid #4a7b83;color:#e2f5f5;font-size:13px;line-height:1.65}
 #pn80-note strong{display:block;margin-bottom:4px}
@@ -4744,247 +4718,21 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  window.addEventListener('storage',e=>{if(e.key!==null)schedule()});
  refresh();
 })();</script>
-<script id="pn119-version">(()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC119';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC119'):document.title+' · RC119';for(const [id,value] of Object.entries({'pn53-version':'PlanNote RC119 · 締切件数の表示改善','pn52-build-note':'PlanNote RC119 · To Doの締切表示を改善','pn49-build':'アプリ版: RC119'})){const el=document.getElementById(id);if(el)el.textContent=value}})();</script>
-<script id="pn120-script">(()=>{
-const $120=id=>document.getElementById(id);
-const status=s=>{$120('pn120-status').textContent=s};
-let imageUrl=null;
-const dateToday=()=>{const d=new Date();return [d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-')};
-$120('pn120-date').value=dateToday();
-$120('pn120-category').innerHTML=FINANCE_CATEGORIES.expense.map(c=>`<option value="${c}">${c}</option>`).join('');
-$120('pn120-image').addEventListener('change',()=>{
- if(imageUrl)URL.revokeObjectURL(imageUrl);imageUrl=null;
- const file=$120('pn120-image').files?.[0];const img=$120('pn120-preview');
- if(!file){img.removeAttribute('src');img.style.display='none';status('画像が選択されていません');return}
- if(!file.type.startsWith('image/')){status('画像ファイルを選んでください');$120('pn120-image').value='';return}
- if(file.size>12*1024*1024){status('画像は12MB以下にしてください');$120('pn120-image').value='';return}
- imageUrl=URL.createObjectURL(file);img.src=imageUrl;img.style.display='block';status('画像を読み込みました。文字認識を試すか、文字欄を入力してください。');
-});
-$120('pn120-ocr').addEventListener('click',async()=>{
- const file=$120('pn120-image').files?.[0];if(!file)return status('先に画像を選択してください');
- if(!('TextDetector' in window))return status('このブラウザは画像文字認識に対応していません。文字欄へ入力してください。');
- status('画像の文字を認識しています…');let bitmap;
- try{bitmap=await createImageBitmap(file);const detector=new window.TextDetector();const lines=await detector.detect(bitmap);const text=lines.map(x=>x.rawValue||'').join('\n');$120('pn120-text').value=text;status(text?'文字を取得しました。内容を確認して「文字から項目を抽出」を押してください。':'文字を検出できませんでした。手入力してください。')}
- catch(e){status('文字認識できませんでした。文字欄へ入力してください。')}
- finally{bitmap?.close?.()}
-});
-function guessCategory(s){if(/スーパー|コンビニ|飲食|カフェ|食堂|マクド|弁当|食品|ファミマ|セブン|ローソン/.test(s))return '食費';if(/薬局|ドラッグ|日用品/.test(s))return '日用品';if(/電車|バス|交通|タクシー|駅/.test(s))return '交通費';if(/書店|教科書|文具|教材/.test(s))return '学習費';return 'その他'}
-$120('pn120-parse').addEventListener('click',()=>{
- const text=$120('pn120-text').value.trim();if(!text)return status('文字を入力するか画像から読み取ってください');
- const dates=[...text.matchAll(/(20\d{2})[\/\.年-]\s*(\d{1,2})[\/\.月-]\s*(\d{1,2})/g)];
- if(dates.length){const m=dates[0];const candidate=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;if(typeof validCalendarDate==='function'&&validCalendarDate(candidate))$120('pn120-date').value=candidate}
- const patterns=[/(?:合計|お支払金額|支払金額|決済金額|お会計|領収金額|総額|お支払い)[^\d¥￥]{0,12}[¥￥]?\s*([\d,]{1,12})\s*円?/gi,/[¥￥]\s*([\d,]{1,12})/g,/(?:([\d,]{1,12})\s*円)/g];
- let amount='';for(const pattern of patterns){const found=[...text.matchAll(pattern)].map(m=>Number(m[1].replaceAll(',',''))).filter(n=>Number.isSafeInteger(n)&&n>0&&n<=999999999);if(found.length){amount=String(found[found.length-1]);break}}
- if(amount)$120('pn120-amount').value=amount;
- const lines=text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);const shop=lines.find(s=>!/(合計|税込|消費税|¥|￥|20\d{2}[\/\.年-]|PayPay|取引番号|注文番号)/i.test(s)&&s.length<=60&&/[\p{L}]/u.test(s));if(shop)$120('pn120-shop').value=shop;
- $120('pn120-category').value=guessCategory(text);
- status(`抽出候補を入力しました。${amount?'':'金額は認識できませんでした。'}日付・店舗・金額を必ず確認してください。`);
-});
-$120('pn120-apply').addEventListener('click',()=>{
- const date=$120('pn120-date').value,amount=Number($120('pn120-amount').value),shop=$120('pn120-shop').value.trim().slice(0,100),category=$120('pn120-category').value;
- if(!validCalendarDate(date)||!Number.isSafeInteger(amount)||amount<1||amount>999999999)return status('日付と支払額を正しく入力してください');
- const duplicate=(Array.isArray(data.finance)?data.finance:[]).some(x=>x.type==='expense'&&x.date===date&&Number(x.amount)===amount&&String(x.memo||'').trim()===shop);
- if(duplicate&&!confirm('同じ日付・金額・店舗の記録があります。入力欄に反映しますか？'))return;
- $120('financeDate').value=date;$120('financeType').value='expense';refreshFinanceCategories();$120('financeAmount').value=String(amount);$120('financeCategory').value=category;$120('financeMemo').value=shop.slice(0,120);
- status(duplicate?'重複候補があります。記録前に履歴を確認してください。':'家計簿入力欄へ反映しました。「記録する」で保存してください。');$120('financeAmount').scrollIntoView({block:'center',behavior:'smooth'});
-});
-$120('pn120-clear').addEventListener('click',()=>{if(imageUrl)URL.revokeObjectURL(imageUrl);imageUrl=null;$120('pn120-image').value='';$120('pn120-preview').removeAttribute('src');$120('pn120-preview').style.display='none';$120('pn120-text').value='';status('画像を破棄しました。')});
-window.addEventListener('pagehide',()=>{if(imageUrl)URL.revokeObjectURL(imageUrl)});
-})();</script><style id="pn121-style">#pn120-ocr:disabled,#pn121-ocr:disabled{opacity:.55;cursor:wait}#pn120-status{overflow-wrap:anywhere}#pn120-import .pn120-actions{align-items:center}@media(max-width:420px){#pn120-import .pn120-actions button{flex:1 1 100%}}</style>
-<script id="pn121-script">(()=>{
- const $=id=>document.getElementById(id),btn=$('pn121-ocr'),basic=$('pn120-ocr'),status=$('pn120-status');
- if(!btn||!basic||!status)return;
- let busy=false,loader=null;
- const report=s=>{status.textContent=s};
- const load=()=>{if(window.Tesseract?.createWorker)return Promise.resolve(window.Tesseract);if(loader)return loader;
-  loader=new Promise((resolve,reject)=>{const script=document.createElement('script');script.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';script.async=true;script.onload=()=>window.Tesseract?.createWorker?resolve(window.Tesseract):reject(new Error('OCRライブラリを読み込めません'));script.onerror=()=>reject(new Error('通信できません'));document.head.appendChild(script)}).catch(e=>{loader=null;throw e});return loader};
- btn.addEventListener('click',async()=>{
-  const file=$('pn120-image')?.files?.[0];if(!file)return report('先にレシートかPayPay画面の画像を選択してください。');
-  if(busy)return;if(!navigator.onLine&&!window.Tesseract?.createWorker)return report('日本語OCRの初回利用には通信が必要です。オンラインで再試行してください。');
-  busy=true;btn.disabled=true;basic.disabled=true;let worker;
-  try{report('日本語OCRを準備しています。初回は言語データのダウンロードが必要です…');const tess=await load();
-   worker=await tess.createWorker('jpn+eng',1,{logger:m=>{if(m.status==='recognizing text')report('日本語OCRで認識中… '+Math.round((m.progress||0)*100)+'%');else if(m.status==='loading language traineddata')report('日本語の言語データを準備中… '+Math.round((m.progress||0)*100)+'%')}});
-   report('レシート・PayPay画像を認識しています…');const result=await worker.recognize(file);const value=String(result?.data?.text||'').trim();
-   if($('pn120-image')?.files?.[0]!==file){report('画像が変更されたため、古い読み取り結果を破棄しました。');return}
-   if(value){$('pn120-text').value=value;document.dispatchEvent(new CustomEvent('pn123-ocr-success',{detail:{file}}));report('日本語OCRの読み取りが完了しました。「文字から項目を抽出」を押し、金額・日付・店舗名を確認してください。')}
-   else {report('文字を認識できませんでした。鮮明な画像で再試行するか手入力してください。');document.dispatchEvent(new CustomEvent('pn127-ocr-failure',{detail:{file}}))}
-  }catch(e){report('日本語OCRを利用できませんでした。通信状況を確認するか、文字を手入力してください。');document.dispatchEvent(new CustomEvent('pn127-ocr-failure',{detail:{file}}))}finally{try{await worker?.terminate()}catch(e){}busy=false;btn.disabled=false;basic.disabled=false}
- });
-})();</script>
+
+<style id="pn121-style">#pn120-ocr:disabled,#pn121-ocr:disabled{opacity:.55;cursor:wait}#pn120-status{overflow-wrap:anywhere}#pn120-import .pn120-actions{align-items:center}@media(max-width:420px){#pn120-import .pn120-actions button{flex:1 1 100%}}</style>
+
 <style id="pn122-style">#pn120-import .pn122-mode{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0}#pn120-import .pn122-mode label{font-weight:650}#pn122-source{min-height:44px;max-width:100%;padding:8px;border-radius:8px;background:#172e35;color:#f0ffff;border:1px solid #54747b}#pn122-explain{font-size:12px;line-height:1.65;color:#c2dddd;margin:6px 0 12px;overflow-wrap:anywhere}</style>
-<script id="pn122-script">(()=>{'use strict';
-const $=id=>document.getElementById(id),panel=$('pn120-import'),original=$('pn120-parse');if(!panel||!original)return;
-const mode=document.createElement('div');mode.className='pn122-mode';mode.innerHTML='<label for="pn122-source">画像の種類</label><select id="pn122-source"><option value="auto">自動判定</option><option value="receipt">レシート</option><option value="paypay">PayPay支払い画面</option></select>';
-const explain=document.createElement('p');explain.id='pn122-explain';explain.setAttribute('role','status');explain.setAttribute('aria-live','polite');explain.textContent='支払総額を優先して抽出します。税額・お釣り・単価は原則として候補から除外します。';
-const actions=original.parentElement;actions.before(mode);actions.after(explain);
-// Replace the old extraction button to avoid executing the RC120 last-match parser as well.
-const button=original.cloneNode(true);original.replaceWith(button);
-const clean=s=>s.replace(/[，]/g,',').replace(/[￥]/g,'¥').replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-65248)).replace(/[：]/g,':').replace(/[．]/g,'.');
-const money=s=>{const m=clean(s).match(/(?:¥\s*)?([0-9]{1,3}(?:,[0-9]{3})+|[0-9]{1,9})(?:\s*円)?/g)||[];return m.map(v=>Number(v.replace(/[^0-9]/g,''))).filter(v=>Number.isSafeInteger(v)&&v>=1&&v<=999999999)};
-function getAmount(lines,kind){let candidates=[];
- const strong=kind==='paypay'?/(?:支払い(?:金額|完了)?|決済(?:金額|完了)?|お支払い(?:金額)?|送金(?:金額)?|取引金額|支払額|合計)/i:/(?:お支払(?:い)?(?:金額)?|お買上(?:げ)?(?:金額)?|領収(?:金額)?|合計(?:金額)?|総合計|ご請求(?:額)?|現計|お会計|支払額|決済金額)/i;
- const negative=/(?:小計|税(?:率|額|込|抜)|消費税|内税|外税|お釣り|釣銭|お預かり|預り|値引|割引|ポイント|残高|チャージ|単価|商品数|個数|明細|手数料|還元|クーポン|利用可能額|注文番号|取引番号|電話番号|TEL|会員番号|適格請求書|登録番号)/i;
- for(let i=0;i<lines.length;i++){
-  const line=lines[i],nums=money(line);if(!nums.length)continue;
-  const hasCurrency=/[¥円]/.test(line),label=strong.test(line),bad=negative.test(line);
-  const bareDate=/\b20\d{2}[\/.-]\d{1,2}[\/.-]\d{1,2}\b/.test(line);if(bareDate&&!label)continue;
-  // For a label-only line, allow the amount on the immediately following line.
-  for(const n of nums){let score=(label?120:0)+(hasCurrency?18:0)-(bad?170:0)+(kind==='paypay'&&/支払い|決済/.test(line)?25:0);
-   if(!label&&!hasCurrency)score-=40;if(/\d{1,2}:\d{2}/.test(line)&&!label)score-=35;
-   candidates.push({n,score,index:i,line});}
-  if(label&&!nums.length&&i+1<lines.length){} // kept for clarity
- }
- for(let i=0;i<lines.length-1;i++)if(strong.test(lines[i])&&!negative.test(lines[i])&&!money(lines[i]).length){const next=lines[i+1];if(next.length<25&&!negative.test(next)){for(const n of money(next))candidates.push({n,score:125,index:i+1,line:next})}}
- candidates=candidates.filter(c=>c.score>=0).sort((a,b)=>b.score-a.score||b.index-a.index);
- return candidates[0]||null;
-}
-function getDate(lines){const t=clean(lines.join('\n'));const patterns=[/(20\d{2})\s*[\/\.年-]\s*(\d{1,2})\s*[\/\.月-]\s*(\d{1,2})\s*日?/g,/(20\d{2})(\d{2})(\d{2})(?!\d)/g];for(const pattern of patterns){for(const m of t.matchAll(pattern)){const date=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;if(typeof validCalendarDate==='function'&&validCalendarDate(date))return date}}return null}
-function getShop(lines,kind){const bad=/(?:合計|支払|決済|取引|金額|日時|注文|お買上|税込|税率|消費税|残高|PayPay|ポイント|お釣り|レシート|領収書|ありがとう|電話|TEL|https?:|〒|¥|円|\d{4}[\/.-]\d{1,2})/i;
- const labelled=lines.map(s=>s.match(/(?:支払先|加盟店|店舗名|利用店舗|お店|取引先)\s*[:：]?\s*(.{2,60})/i)).find(Boolean);
- if(labelled&&labelled[1]&&!bad.test(labelled[1]))return labelled[1].trim().slice(0,100);
- const candidates=lines.slice(0,kind==='paypay'?18:12).filter(s=>s.length>=2&&s.length<=50&&/[\p{L}]/u.test(s)&&!bad.test(s)&&!/^[\d\s\-:/.]+$/.test(s));return (candidates[0]||'').slice(0,100)}
-button.addEventListener('click',()=>{
- const raw=$('pn120-text').value.trim(),status=$('pn120-status');if(!raw){status.textContent='先に文字認識を実行するか、文字欄へ入力してください。';return}
- const lines=clean(raw).split(/\r?\n/).map(s=>s.trim()).filter(Boolean);const selected=$('pn122-source').value;
- const kind=selected==='auto'?(/PayPay|ペイペイ|支払い完了|送金完了|取引詳細/i.test(raw)?'paypay':'receipt'):selected;
- const best=getAmount(lines,kind),date=getDate(lines),shop=getShop(lines,kind);
- if(best)$('pn120-amount').value=String(best.n);else $('pn120-amount').value='';
- if(date)$('pn120-date').value=date;if(shop)$('pn120-shop').value=shop;
- // Reuse the category vocabulary already provided by the finance form.
- const text=raw+' '+shop;let cat='その他';if(/スーパー|コンビニ|飲食|カフェ|食堂|マクド|弁当|食品|ファミマ|セブン|ローソン/.test(text))cat='食費';else if(/薬局|ドラッグ|日用品/.test(text))cat='日用品';else if(/電車|バス|交通|タクシー|駅/.test(text))cat='交通費';else if(/書店|教科書|文具|教材/.test(text))cat='学習費';
- if([...$('pn120-category').options].some(o=>o.value===cat))$('pn120-category').value=cat;
- const kindName=kind==='paypay'?'PayPay':'レシート';explain.textContent=best?`${kindName}として解析：支払額候補 ¥${best.n.toLocaleString('ja-JP')}（「${best.line.slice(0,60)}」）。${date?'日付も抽出。':'日付は未検出。'}${shop?'店舗名候補あり。':'店舗名は未検出。'} 必ず確認してください。`:`${kindName}として解析しましたが支払総額を特定できませんでした。支払額を手入力してください。`;
- status.textContent=best?'支払総額を優先して候補を入力しました。金額・日付・店舗を確認してください。':'支払総額を特定できませんでした。金額を手入力してください。';
-});
-})();</script>
+
 <style id="pn123-style">#pn123-auto-status{margin:8px 0;padding:9px 12px;border-radius:9px;background:#16353c;color:#d6f5f4;font-size:13px;line-height:1.5;overflow-wrap:anywhere}#pn123-auto-toggle{accent-color:#42d6cf;width:18px;height:18px;vertical-align:middle}#pn123-auto-label{display:flex;gap:8px;align-items:center;min-height:44px;cursor:pointer}</style>
-<script id="pn123-script">(()=>{'use strict';
-const $=id=>document.getElementById(id),panel=$('pn120-import'),input=$('pn120-image'),ocr=$('pn121-ocr'),parse=$('pn120-parse');if(!panel||!input||!ocr||!parse)return;
-const label=document.createElement('label');label.id='pn123-auto-label';label.innerHTML='<input id="pn123-auto-toggle" type="checkbox" checked> 画像選択後に画像補正OCRと項目抽出を自動実行';
-const info=document.createElement('p');info.id='pn123-auto-status';info.setAttribute('role','status');info.setAttribute('aria-live','polite');info.textContent='画像を選ぶと読み取りを開始します。初回の日本語OCRには通信が必要です。';
-input.parentElement.after(label,info);
-let generation=0,waiting=null;
-input.addEventListener('change',()=>{
- generation++;waiting=null;
- const text=$('pn120-text');if(text)text.value='';
- for(const id of ['pn120-amount','pn120-shop']){const field=$(id);if(field)field.value='';}
- const file=input.files?.[0];if(!file){info.textContent='画像が選択されていません。';return}
- if(!$('pn123-auto-toggle').checked){info.textContent='自動認識はオフです。必要に応じて日本語OCRを押してください。';return}
- if(!file.type.startsWith('image/')||file.size>12*1024*1024){info.textContent='画像の形式・サイズを確認してください。';return}
- const token=generation;waiting={file,token};info.textContent='画像を読み込みました。日本語OCRを自動開始します…';
- setTimeout(()=>{if(waiting?.token!==token||input.files?.[0]!==file)return;if(ocr.disabled){waiting=null;info.textContent='別のOCR処理中です。完了後に再度画像を選択してください。';return}ocr.click()},0);
-});
-document.addEventListener('pn123-ocr-success',event=>{
- const active=waiting;if(!active||event.detail?.file!==active.file||input.files?.[0]!==active.file)return;
- waiting=null;parse.click();
- const amount=$('pn120-amount')?.value,day=$('pn120-date')?.value,shop=$('pn120-shop')?.value;
- info.textContent=amount&&day&&shop
-  ?`自動読み取り完了：${Number(amount).toLocaleString('ja-JP')}円 / ${day} / ${shop}。内容を確認して登録してください。`
-  :'文字認識は完了しましたが、抽出できない項目があります。金額・日付・店舗名を確認し、足りない項目を入力してください。';
-});
-document.addEventListener('pn127-ocr-failure',event=>{const active=waiting;if(!active||event.detail?.file!==active.file||input.files?.[0]!==active.file)return;waiting=null;info.textContent='自動認識に失敗しました。画像を撮り直すか、文字欄へ手入力してください。';});
-$('pn120-clear')?.addEventListener('click',()=>{generation++;waiting=null;info.textContent='画像を破棄しました。'});
-})();</script>
+
 <style id="pn124-style">#pn124-duplicate{margin:10px 0;padding:11px 12px;border:1px solid #806b48;border-radius:9px;background:#302a1c;color:#ffe5b6;font-size:13px;line-height:1.6;overflow-wrap:anywhere}#pn124-duplicate[hidden]{display:none}</style>
-<script id="pn124-script">(()=>{'use strict';
- const $=id=>document.getElementById(id),fileInput=$('pn120-image'),apply=$('pn120-apply'),form=$('financeForm'),panel=$('pn120-import');
- if(!fileInput||!apply||!form||!panel)return;
- const warning=document.createElement('p');warning.id='pn124-duplicate';warning.setAttribute('role','alert');warning.hidden=true;panel.append(warning);
- const KEY='plannote_receipt_image_fingerprints_v1';
- let selected=null,hashPromise=null,armed=null;
- const show=s=>{warning.hidden=!s;warning.textContent=s||''};
- const getHashes=()=>{try{const v=JSON.parse(localStorage.getItem(KEY)||'{}');return v&&typeof v==='object'&&!Array.isArray(v)?v:{}}catch{return {}}};
- const digest=async file=>{if(!crypto?.subtle)throw Error('この環境では画像の照合が利用できません');const buf=await file.arrayBuffer();const bytes=new Uint8Array(await crypto.subtle.digest('SHA-256',buf));return Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('')};
- const sameRecord=(date,amount,memo)=>Array.isArray(data?.finance)&&data.finance.some(x=>x&&x.type==='expense'&&x.date===date&&Number(x.amount)===amount&&String(x.memo||'').trim()===memo);
- fileInput.addEventListener('change',()=>{
-  armed=null;show('');selected=fileInput.files?.[0]||null;hashPromise=selected&&selected.type.startsWith('image/')&&selected.size<=12*1024*1024?digest(selected).catch(()=>null):null;
-  if(hashPromise){const f=selected;hashPromise.then(hash=>{if(fileInput.files?.[0]!==f||!hash)return;const record=getHashes()[hash];if(record)show('この画像は以前に登録されています（'+(record.date||'日付不明')+'・'+(record.amount||'?')+'円）。二重登録に注意してください。')})}
- });
- $('pn120-clear')?.addEventListener('click',()=>{selected=null;hashPromise=null;armed=null;show('')});
- apply.addEventListener('click',async()=>{
-  const f=fileInput.files?.[0];if(!f||f!==selected||!hashPromise){armed=null;return}
-  const hash=await hashPromise;if(!hash||fileInput.files?.[0]!==f){armed=null;return}
-  // This event runs after the existing RC120 handler; only arm when its form values match.
-  const date=$('pn120-date').value,amount=Number($('pn120-amount').value),memo=$('pn120-shop').value.trim().slice(0,120);
-  if($('financeDate').value===date&&Number($('financeAmount').value)===amount&&$('financeMemo').value.trim()===memo){armed={hash,date,amount,memo};const old=getHashes()[hash];if(old)show('同じ画像からの登録履歴があります。再登録は停止します。')}
- });
- form.addEventListener('submit',event=>{
-  if(!armed)return;
-  const {hash}=armed,date=$('financeDate').value,amount=Number($('financeAmount').value),memo=$('financeMemo').value.trim();
-  if($('financeType').value!=='expense'||date!==armed.date||amount!==armed.amount||memo!==armed.memo){armed=null;return}
-  if(getHashes()[hash]){event.preventDefault();event.stopImmediatePropagation();show('登録を中止しました。同じ画像がすでに登録されています。別の取引の場合は画像を破棄し、通常の家計簿入力欄から登録してください。');return}
-  if(sameRecord(date,amount,memo)&&!confirm('同じ日付・金額・店舗の支出がすでにあります。別の取引として登録しますか？')){event.preventDefault();event.stopImmediatePropagation();show('重複候補のため登録を中止しました。');return}
-  const before=Array.isArray(data?.finance)?data.finance.length:0;
-  queueMicrotask(()=>{
-   const after=Array.isArray(data?.finance)?data.finance.length:0;
-   if(after<=before)return;
-   // RC329: receipt fingerprint ledger is a separate localStorage key.
-   // Serialize cooperating tabs, re-read under the lock, and refuse on unsupported browsers.
-   const commitHash=()=>{
-    const hashes=getHashes();
-    if(hashes[hash]){show('画像の登録履歴が別タブで更新されました。重複の可能性があるため履歴を上書きしません。');return}
-    hashes[hash]={date,amount,memo,at:new Date().toISOString()};
-    const payload=JSON.stringify(hashes);
-    localStorage.setItem(KEY,payload);
-    if(localStorage.getItem(KEY)!==payload)throw Error('画像登録履歴の保存照合に失敗');
-    show('画像と取引の登録を記録しました。同じ画像からの再登録を防止します。');
-   };
-   if(!navigator.locks?.request){show('家計簿は登録されましたが、画像履歴の排他制御が利用できません。再登録に注意してください。')}
-   else navigator.locks.request('plannote-receipt-hashes-rc329',{mode:'exclusive'},commitHash)
-    .catch(()=>show('家計簿は登録されましたが、画像の重複防止履歴は保存できませんでした。'));
-   armed=null;
-  });
- },true);
-})();</script>
+
 <style id="pn125-style">#pn125-history{margin-top:12px;padding:12px;border:1px solid #36545c;border-radius:10px;background:#142c33;color:#d9f4f1}#pn125-history p{margin:6px 0 10px;font-size:13px;line-height:1.6}#pn125-history button{min-height:44px}#pn125-history .pn125-actions{display:flex;flex-wrap:wrap;gap:8px}</style>
-<script id="pn125-script">(()=>{'use strict';
- const key='plannote_receipt_image_fingerprints_v1';
- const section=[...document.querySelectorAll('#settings .panel')].find(el=>el.querySelector('button[onclick="exportData()"]'));
- if(!section)return;
- const box=document.createElement('section');box.id='pn125-history';
- const heading=document.createElement('strong');heading.textContent='レシート・PayPay画像の登録履歴';
- const status=document.createElement('p');status.setAttribute('aria-live','polite');
- const actions=document.createElement('div');actions.className='pn125-actions';
- const clear=document.createElement('button');clear.className='btn';clear.type='button';clear.textContent='画像の照合履歴を消去';
- actions.append(clear);box.append(heading,status,actions);section.append(box);
- function refresh(){try{const obj=JSON.parse(localStorage.getItem(key)||'{}');const n=obj&&typeof obj==='object'&&!Array.isArray(obj)?Object.keys(obj).length:0;status.textContent=`照合履歴：${n}件。JSONバックアップに含まれ、復元時にも引き継がれます。画像本体は含まれません。`;clear.disabled=n===0;}catch{status.textContent='照合履歴を読み取れません。バックアップを保存してから確認してください。';clear.disabled=true;}}
- clear.addEventListener('click',()=>{if(!confirm('画像の照合履歴だけを消去します。家計簿の取引は削除されませんが、同じ画像の二重登録を防げなくなる場合があります。続行しますか？'))return;try{localStorage.removeItem(key);refresh();}catch{status.textContent='履歴を消去できませんでした。'}});
- window.addEventListener('pn125-history-updated',refresh);
- window.addEventListener('focus',refresh);
- refresh();
-})();</script>
+
 <style id="pn126-style">#pn126-register{min-height:48px;font-weight:700}#pn126-status{font-size:13px;line-height:1.6;margin:8px 0;color:#d9f4f1}#pn126-register:disabled{opacity:.6;cursor:wait}</style>
-<script id="pn126-script">(()=>{'use strict';
- const $=id=>document.getElementById(id),apply=$('pn120-apply'),file=$('pn120-image'),form=$('financeForm');if(!apply||!file||!form)return;
- const btn=document.createElement('button');btn.id='pn126-register';btn.type='button';btn.className='primary';btn.textContent='内容を確認して家計簿に登録';
- const status=document.createElement('p');status.id='pn126-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.textContent='認識結果を確認・修正してから登録してください。';
- apply.after(btn,status);apply.textContent='通常の家計簿入力欄へ反映';
- const set=t=>status.textContent=t;let busy=false;
- btn.addEventListener('click',async()=>{
-  if(busy)return;const image=file.files?.[0];if(!image){set('先に画像を選択してください。');return}
-  const date=$('pn120-date')?.value,amount=Number($('pn120-amount')?.value),shop=$('pn120-shop')?.value.trim().slice(0,120);
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(date)||!Number.isSafeInteger(amount)||amount<1||amount>999999999||!shop){set('日付・支払金額・店舗名を確認してください。');return}
-  if(!confirm(`${date}\n${shop}\n支出 ¥${amount.toLocaleString('ja-JP')}\n\nこの内容で家計簿に登録しますか？`))return;
-  busy=true;btn.disabled=true;set('登録内容を確認しています…');
-  try{
-   apply.click();await new Promise(resolve=>setTimeout(resolve,0));
-   if(file.files?.[0]!==image){set('画像が変更されたため登録を中止しました。');return}
-   if($('financeDate')?.value!==date||Number($('financeAmount')?.value)!==amount||$('financeMemo')?.value.trim()!==shop){set('入力欄への反映に失敗しました。');return}
-   if(!form.checkValidity()){form.reportValidity();set('入力欄の内容を確認してください。');return}
-   const before=new Set((Array.isArray(data?.finance)?data.finance:[]).map(x=>x.id));
-   // Let the existing form submit handler and duplicate guard make the final decision.
-   // Compare transaction IDs, not only array length, to detect a genuinely new entry.
-   form.requestSubmit();await new Promise(resolve=>setTimeout(resolve,0));
-   const added=(Array.isArray(data?.finance)?data.finance:[]).filter(x=>!before.has(x.id));
-   const matches=added.some(x=>x.type==='expense'&&x.date===date&&Number(x.amount)===amount&&String(x.memo||'').trim()===shop);
-   if(matches)set('家計簿に登録しました。');
-   else set('登録されませんでした。重複警告や入力内容を確認してください。');
-  }catch(err){set('登録処理に失敗しました。通常の家計簿入力欄から登録してください。')}
-  finally{busy=false;btn.disabled=false}
- });
-})();</script>
+
 <style id="pn127-style">#pn123-auto-status{line-height:1.6;overflow-wrap:anywhere}#pn126-status{overflow-wrap:anywhere}</style>
-<script id="pn128-version">(()=>{'use strict';const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC128';document.title=/RC\d+/.test(document.title)?document.title.replace(/RC\d+/g,'RC128'):document.title+' · RC128';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC128')}})();</script>
+
 <style id="pn129-style">#pn129-export{margin-top:14px;padding:14px;border:1px solid #38616b;border-radius:12px;background:#102b33}#pn129-export h3{margin:0 0 8px}#pn129-export p{line-height:1.6}#pn129-export label{display:block;margin:10px 0 5px}#pn129-export input[type=date]{width:100%;max-width:280px;min-height:44px}#pn129-export button{min-height:46px;margin:6px 8px 6px 0}#pn129-export textarea{width:100%;min-height:120px;resize:vertical;font-size:13px;line-height:1.5}#pn129-export .pn129-options{display:flex;gap:14px;flex-wrap:wrap}#pn129-export .pn129-options label{display:flex;align-items:center;gap:6px}#pn129-export .pn129-note{font-size:12px;color:#c0d5db}</style>
 <script id="pn131-export-script">(()=>{'use strict';
  const panel=document.getElementById('settings');if(!panel)return;
@@ -5096,293 +4844,13 @@ function occurrences(day,data){const target=new Date(day+'T00:00:00');return dat
  $('pn129-copy').addEventListener('click',async()=>{if(!last)return;try{await navigator.clipboard.writeText(last);status.textContent='JSONをコピーしました。'}catch{preview.focus();preview.select();status.textContent='自動コピーできませんでした。プレビューを選択してコピーしてください。'}});
  for(const id of ['pn129-date','pn129-events','pn129-tasks','pn129-school'])$(id).addEventListener('change',()=>{last='';preview.value='';$('pn129-download').disabled=true;$('pn129-copy').disabled=true;status.textContent='条件が変わりました。「JSONを作成」を押してください。'});
 })();</script>
-<script id="pn133-version">(()=>{'use strict';const update=()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC319';document.title='PlanNote v1.0.0 RC321 | 予定管理';for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=e.textContent.replace(/RC\d+/g,'RC312')}};update();document.addEventListener('DOMContentLoaded',update,{once:true});window.addEventListener('load',update,{once:true})})();</script><style id="pn134-style">.pn134-picker{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.pn134-picker label.btn{cursor:pointer}#pn120-image{width:100%;max-width:100%;margin:6px 0}</style>
-<script id="pn134-script">(()=>{const camera=document.getElementById('pn134-camera'),gallery=document.getElementById('pn120-image'),status=document.getElementById('pn120-status');if(!camera||!gallery)return;camera.addEventListener('change',()=>{const file=camera.files&&camera.files[0];if(!file)return;try{const dt=new DataTransfer();dt.items.add(file);gallery.files=dt.files;gallery.dispatchEvent(new Event('change',{bubbles:true}));}catch(e){if(status)status.textContent='撮影画像を受け渡せませんでした。「保存済み画像を選択」から撮影した写真を選択してください。';}camera.value='';});})();</script><script id="pn134-version">(()=>{const h=document.querySelector("header h1 small");if(h)h.textContent="v1.0.0 RC319";document.title=document.title.replace(/RC\d+/g,"RC312");})();</script>
-<script id="pn137-universal-parser">
-(()=>{
-'use strict';
-const el=id=>document.getElementById(id),button=el('pn120-parse');
-if(!button)return;
-const compact=t=>String(t).normalize('NFKC').replace(/[\u200b-\u200d]/g,'').replace(/\s+/g,'').replace(/[￥]/g,'¥');
-const priceRE=/(?:¥\s*)?(?:\d{1,3}(?:,\d{3})+|\d{1,7})(?:\s*円)?/g;
-const exclusions=/消費税|税率|税額|内税|外税|税抜|軽減税|課税対象|非課税|小計|お預|預り|お釣|釣銭|釣り|値引|割引|クーポン|ポイント|還元|獲得|付与|残高|チャージ|手数料|単価|数量|個数|商品数|電話|TEL|FAX|登録番号|インボイス|会員番号|注文番号|伝票番号|レジ番号|レシート番号|カード番号|有効期限|支払回数|支払い回数|条件達成|ステップ|キャンペーン|来月|あと\d+回/;
-const strong=/総合計|お買上合計|お買い上げ合計|お支払金額|お支払い金額|お支払額|お会計金額|お会計|ご請求額|領収金額|合計金額|税込合計|現計|決済金額|決済額|支払金額|支払い受付|ご利用金額|ご利用額|取引金額|お買上金額|お買い上げ金額|合計|TOTAL|AMOUNTDUE|GRANDTOTAL|BALANCEDUE|AMOUNTPAID|TOTALPAID/i;
-const medium=/現金|クレジット|電子マネー|QR決済|お支払い|支払い完了|支払済|支払額|決済完了|領収額|カード決済|支払方法/i;
-const dateRE=/(20\d{2})[\/.年-](\d{1,2})[\/.月-](\d{1,2})日?/;
-const timeRE=/\d{1,2}:\d{2}(?::\d{2})?|\d{1,2}時\d{1,2}分/;
-const money=t=>[...String(t).matchAll(priceRE)].map(m=>({n:Number(m[0].replace(/[^\d]/g,'')),currency:/¥|円/.test(m[0]),text:m[0],index:m.index})).filter(v=>Number.isSafeInteger(v.n)&&v.n>=1&&v.n<=9999999);
-function parse(){
- const raw=el('pn120-text')?.value||'',status=el('pn120-status'),explain=el('pn122-explain');
- if(!raw.trim()){status.textContent='先に文字認識を実行してください。';return}
- const lines=raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean),norm=lines.map(compact),joined=compact(raw);
- const selected=el('pn122-source')?.value||'auto';
- const paypay=selected==='paypay'||(selected==='auto'&&/PayPay|ペイペイ|支払い受付|PayPayステップ/.test(joined));
- const candidates=[];
- for(let i=0;i<norm.length;i++){
-  const t=norm[i],prev=norm[i-1]||'',next=norm[i+1]||'';
-  if(exclusions.test(t))continue;
-  const isDate=dateRE.test(t)||/20\d{6}/.test(t),isTime=timeRE.test(t);
-  if(isDate||isTime)continue;
-  const label=strong.test(t),med=medium.test(t);
-  const values=money(t);
-  for(const v of values){
-   if(/%|回|件|個|点|枚/.test(t)&&!label)continue;
-   const bare=!v.currency&&!label&&!med;
-   let score=(label?170:0)+(med?65:0)+(v.currency?40:0)
-     +(paypay&&/支払い受付|支払金額|決済金額/.test(t)?55:0)
-     +(/総合計|お支払金額|領収金額|GRANDTOTAL|AMOUNTDUE/i.test(t)?40:0)
-     -(bare?130:0)-(/単品|商品|品名|品目|単価/.test(t)?65:0);
-   if(score>=40)candidates.push({n:v.n,score,line:lines[i],index:i});
-  }
-  if((label||med)&&!values.length&&i+1<norm.length&&!exclusions.test(next)&&next.length<26&&!dateRE.test(next)&&!timeRE.test(next)){
-   for(const v of money(next)){
-    if(!v.currency&&money(next).length>1)continue;
-    candidates.push({n:v.n,score:label?190:100,line:lines[i]+' / '+lines[i+1],index:i+1});
-   }
-  }
- }
- candidates.sort((a,b)=>b.score-a.score||b.index-a.index);
- const best=candidates[0];
- const conflict=best&&candidates.some(c=>c.n!==best.n&&c.score>=best.score-35);
- let date='';
- for(const t of norm){
-  const m=t.match(dateRE);
-  if(m){const y=+m[1],mo=+m[2],d=+m[3],dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()===y&&dt.getUTCMonth()===mo-1&&dt.getUTCDate()===d){date=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;break}}
-  const n=t.match(/(?:^|\D)(20\d{2})(\d{2})(\d{2})(?!\d)/);
-  if(n){const y=+n[1],mo=+n[2],d=+n[3],dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()===y&&dt.getUTCMonth()===mo-1&&dt.getUTCDate()===d){date=`${n[1]}-${n[2]}-${n[3]}`;break}}
- }
- const bad=/支払|決済|取引|金額|日時|注文|お買上|税|残高|PayPay|ポイント|お釣|レシート|領収書|ありがとう|電話|TEL|FAX|https?:|〒|¥|円|ステップ|カード|確認|完了|表示|詳細|^\d|[©@<>]/i;
- let shop='';
- for(const t of norm.slice(0,25)){
-  const m=t.match(/^(?:店舗名|店名|加盟店名|加盟店|支払先|利用店舗|ご利用店舗)[:：]?(.{2,60})$/);
-  if(m&&!bad.test(m[1])){shop=m[1];break}
- }
- if(!shop){
-  let backup='';
-  for(const t of norm.slice(0,Math.min(norm.length,22))){
-   if(t.length<3||t.length>55||bad.test(t)||!/[\p{Script=Han}\p{Script=Katakana}\p{Script=Hiragana}\p{Script=Latin}]/u.test(t))continue;
-   if(/自販機|販売機|ストア|商店|スーパー|コンビニ|マート|薬局|ドラッグ|セブン|ローソン|ファミリー|キリン|イオン|ドンキ|ダイソー|無印|ユニクロ|ファスト|コスモス|マックスバリュ/.test(t)){shop=t;break}
-   if(!backup)backup=t;
-  }
-  shop=backup;
- }
- let category='その他';
- if(/飲料|自販機|販売機|コンビニ|スーパー|食品|食堂|弁当|カフェ|レストラン|キリン|食料品|惣菜|パン|コーヒー/.test(joined+shop))category='食費';
- else if(/ドラッグ|薬局|日用品|洗剤|ティッシュ|トイレットペーパー/.test(joined+shop))category='日用品';
- else if(/鉄道|電車|バス|タクシー|乗車|交通費|駐車場/.test(joined+shop))category='交通費';
- else if(/書店|教科書|文具|教材|参考書/.test(joined+shop))category='学習費';
- const amount=el('pn120-amount'),dateEl=el('pn120-date'),shopEl=el('pn120-shop'),cat=el('pn120-category');
- amount.value=best&&!conflict?String(best.n):'';
- dateEl.value=date||'';
- shopEl.value=shop||'';
- if(cat&&[...cat.options].some(o=>o.value===category))cat.value=category;
- const message=!best?'合計金額を特定できません。金額を手入力してください。':conflict?'異なる金額候補が複数あります。誤登録防止のため金額は空欄にしました。レシートの合計金額を確認してください。':`支払総額候補 ¥${best.n.toLocaleString('ja-JP')}（根拠: ${best.line.slice(0,65)}）。`;
- const note=`${message} ${!date?'日付未検出。 ':''}${!shop?'店舗名未検出。 ':''}すべての項目を確認してから登録してください。`;
- status.textContent=note;if(explain)explain.textContent=note;
-}
-button.addEventListener('click',e=>{e.stopImmediatePropagation();parse()},true);
-})();</script>
-<script id="pn136-receipt">(()=>{
-'use strict';
-const byId=id=>document.getElementById(id),button=byId('pn120-parse');
-if(!button)return;
-const compact=s=>String(s).normalize('NFKC').replace(/\s+/g,'').replace(/[￥]/g,'¥');
-const priceTokens=s=>[...compact(s).matchAll(/(?:¥|￥)?(\d{1,3}(?:,\d{3})+|\d{1,7})(円)?/g)]
- .map(m=>({value:Number(m[1].replace(/,/g,'')),hasCurrency:m[0].includes('¥')||!!m[2]}))
- .filter(v=>v.value>0&&v.value<=9999999);
-const reject=/消費税|内税|外税|税率|税額|対象額|税抜|値引|割引|クーポン|ポイント|お釣|釣銭|お預|預り|単価|数量|個数|商品数|電話|TEL|登録番号|適格|カード番号|伝票番号|取引番号|会員番号|残高|小計前/;
-const totals=/総合計|合計金額|お買上合計|お買い上げ合計|お支払金額|お支払い金額|お支払額|お会計|ご請求額|領収金額|現計|税込合計|合計|ご利用金額/;
-function validDate(y,m,d){const dt=new Date(Date.UTC(y,m-1,d));return dt.getUTCFullYear()===y&&dt.getUTCMonth()===m-1&&dt.getUTCDate()===d}
-function parseReceipt(){
- const raw=byId('pn120-text').value,lines=raw.split(/\r?\n/).map(s=>s.trim()).filter(Boolean),normalized=lines.map(compact);
- let choices=[];
- for(let i=0;i<lines.length;i++){
-  const s=normalized[i];if(reject.test(s))continue;
-  const isTotal=totals.test(s);
-  const hasDate=/20\d{2}[\/.年-]\d{1,2}|20\d{6}/.test(s);
-  const hasTime=/\d{1,2}:\d{2}|\d{1,2}時\d{1,2}分/.test(s);
-  if(hasDate||hasTime)continue;
-  const nums=priceTokens(s);
-  for(const p of nums){
-   const score=(isTotal?140:0)+(p.hasCurrency?35:0)+(isTotal&&/総合計|お支払|現計|領収金額/.test(s)?40:0)
-    -(/点|個|数量|商品コード/.test(s)?75:0)-(!isTotal&&!p.hasCurrency?120:0);
-   if(score>=35)choices.push({value:p.value,score,line:lines[i]});
-  }
-  if(isTotal&&!nums.length&&i+1<lines.length&&!reject.test(normalized[i+1])&&normalized[i+1].length<24){
-   for(const p of priceTokens(normalized[i+1]))choices.push({value:p.value,score:155+(p.hasCurrency?25:0),line:lines[i]+' / '+lines[i+1]});
-  }
- }
- choices.sort((a,b)=>b.score-a.score);
- const best=choices[0]||null;
- let date='';
- for(const s of normalized){
-  const m=s.match(/(20\d{2})[\/.年-](\d{1,2})[\/.月-](\d{1,2})日?/);
-  if(m&&validDate(+m[1],+m[2],+m[3])){date=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;break}
- }
- const shopReject=/合計|支払|決済|お買上|お会計|領収|金額|税|円|¥|ポイント|電話|TEL|レシート|ありがとう|担当|日時|^\d|^[\W_]+$/;
- let shop='';
- for(const s of normalized.slice(0,16)){
-  const m=s.match(/^(?:店舗名|店名|加盟店名|支払先)[:：]?(.{2,50})$/);
-  if(m&&!shopReject.test(m[1])){shop=m[1];break}
- }
- if(!shop)for(const s of normalized.slice(0,12)){
-  if(s.length<3||s.length>45||shopReject.test(s)||!/[\p{Script=Han}\p{Script=Katakana}\p{Script=Hiragana}]/u.test(s))continue;
-  if(/店|ストア|マート|スーパー|薬局|ドラッグ|コンビニ|マーケット/.test(s)){shop=s;break}
-  if(!shop)shop=s;
- }
- byId('pn120-amount').value=best?best.value:'';
- if(date)byId('pn120-date').value=date;
- byId('pn120-shop').value=shop;
- let category='その他',all=compact(raw+shop);
- if(/スーパー|コンビニ|食品|弁当|食堂|飲料|飲食|カフェ|レストラン|セブン|ローソン|ファミリーマート/.test(all))category='食費';
- else if(/ドラッグ|薬局|洗剤|日用品/.test(all))category='日用品';
- else if(/電車|バス|鉄道|交通|タクシー/.test(all))category='交通費';
- else if(/書店|本屋|文具|教材|教科書/.test(all))category='学習費';
- const cat=byId('pn120-category');if([...cat.options].some(o=>o.value===category))cat.value=category;
- const message=best?`紙レシート：合計候補 ¥${best.value.toLocaleString('ja-JP')}（根拠: ${best.line.slice(0,75)}）。登録前に金額・日付・店舗を確認してください。`:'紙レシート：支払総額を特定できません。合計金額を手入力してください。';
- byId('pn120-status').textContent=message;
- if(byId('pn122-explain'))byId('pn122-explain').textContent=message;
-}
-button.addEventListener('click',event=>{
- const raw=byId('pn120-text').value,choice=byId('pn122-source')?.value||'auto';
- if(!raw.trim())return;
- const isPayPay=choice==='paypay'||(choice==='auto'&&/PayPay|ペイペイ|支払い完了|支払い受付/.test(compact(raw)));
- if(isPayPay)return;
- event.stopImmediatePropagation();
- parseReceipt();
-},true);
-})();</script>
-<script id="pn135-extract">(()=>{'use strict';
-const $=id=>document.getElementById(id);const btn=$('pn120-parse');if(!btn)return;
-function norm(s){return s.normalize('NFKC').replace(/[\u200b-\u200d]/g,'').replace(/\s+/g,' ').trim()}
-function compact(s){return norm(s).replace(/\s+/g,'')}
-function amounts(s){let t=norm(s);const out=[];for(const m of t.matchAll(/(?:¥\s*)?(\d{1,3}(?:,\d{3})+|\d{1,7})\s*(円|¥)?/g)){const n=Number(m[1].replace(/,/g,''));if(n>0&&n<10000000)out.push({n,currency:!!m[2]||m[0].includes('¥')})}return out}
-function parse(){const raw=$('pn120-text').value;if(!raw.trim()){ $('pn120-status').textContent='文字を読み取ってから抽出してください。';return}
-const lines=raw.split(/\r?\n/).map(norm).filter(Boolean),cs=lines.map(compact),full=compact(raw);
-const kind=$('pn122-source')?.value==='auto'?(/PayPay|ペイペイ|支払い完了|支払い受付/.test(full)?'paypay':'receipt'):$('pn122-source')?.value;
-const skip=/ステップ|付与|条件達成|支払い回数|ポイント|残高|クーポン|還元|おトク|あと\d+回|200円以上|税額|消費税|お釣り|お預かり|割引|チャージ|来月|利用可能|キャンペーン/;
-let picks=[];
-for(let i=0;i<lines.length;i++){const t=cs[i];if(skip.test(t))continue;
-const pay=/(支払い受付|支払受付|支払い完了|支払金額|支払い金額|決済金額|取引金額|お支払い|合計金額|ご利用金額|支払額|合計)/.test(t);
-const isDate=/20\d\d年|20\d\d[\/-]\d/.test(t),time=/\d{1,2}時\d{1,2}分|\d{1,2}:\d{2}/.test(t);
-for(const a of amounts(lines[i])){if(isDate||time)continue;let score=(pay?150:0)+(a.currency?55:0)+(kind==='paypay'&&/支払い受付|支払い完了/.test(t)?50:0);
-if(!pay&&!a.currency)score-=120;if(/回|件|%|\/20|8,000/.test(t))score-=150;
-picks.push({n:a.n,score,line:lines[i]})}
-if(pay&&i+1<lines.length&&!skip.test(cs[i+1])&&cs[i+1].length<22){for(const a of amounts(lines[i+1]))picks.push({n:a.n,score:130+(a.currency?35:0),line:lines[i+1]})}
-}
-picks.sort((a,b)=>b.score-a.score);let best=picks[0];if(!best||best.score<45)best=null;
-let date='';for(const t of cs){const m=t.match(/(20\d{2})[年\/.-](\d{1,2})[月\/.-](\d{1,2})日?/);if(m){const d=`${m[1]}-${m[2].padStart(2,'0')}-${m[3].padStart(2,'0')}`;const dt=new Date(d+'T12:00:00');if(!Number.isNaN(dt.getTime())&&dt.toISOString().slice(0,10)===d){date=d;break}}}
-const shopBad=/PayPay|ペイペイ|支払|決済|取引|受付|完了|詳細|表示|ステップ|付与|条件|回数|金額|日付|日時|時刻|領収|レシート|ポイント|カード|確認|残高|税込|合計|円|¥|自販機飲料|飲料$|来月|アップ|おトク|^\d|https?:|[©@<>]/;
-let shop='';for(let i=0;i<Math.min(lines.length,25);i++){let t=cs[i];let m=t.match(/^(?:店舗名|加盟店|支払先|利用店舗)[:：]?(.+)$/);if(m&&!shopBad.test(m[1])){shop=m[1];break}}
-if(!shop){for(let i=0;i<Math.min(lines.length,20);i++){let t=cs[i];if(t.length<3||t.length>45||shopBad.test(t)||!/[\p{Script=Han}\p{Script=Katakana}\p{Script=Hiragana}]/u.test(t))continue;if(/自販機|販売機|ストア|商店|スーパー|コンビニ|キリン|セブン|ローソン|ファミリーマート/.test(t)){shop=t;break}if(!shop)shop=t}}
-$('pn120-amount').value=best?String(best.n):'';if(date)$('pn120-date').value=date;$('pn120-shop').value=shop;
-let category='その他';if(/飲料|自販機|販売機|コンビニ|スーパー|食品|食堂|弁当|カフェ|レストラン|キリン/.test(full+shop))category='食費';
-else if(/ドラッグ|薬局|日用品/.test(full+shop))category='日用品';
-const select=$('pn120-category');if([...select.options].some(o=>o.value===category))select.value=category;
-const msg=best?`金額候補 ¥${best.n.toLocaleString('ja-JP')}（根拠: ${best.line}）。店舗・日付・金額を必ず確認してください。`:'支払額を確実に抽出できませんでした。手入力してください。';
-$('pn120-status').textContent=msg;const explain=$('pn122-explain');if(explain)explain.textContent=msg;
-}
-btn.addEventListener('click',e=>{e.stopImmediatePropagation();parse()},true);
-})();</script>
+<style id="pn134-style">.pn134-picker{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}.pn134-picker label.btn{cursor:pointer}#pn120-image{width:100%;max-width:100%;margin:6px 0}</style>
+
+
+
+
 <style id="pn138-style">#pn138-options{margin:9px 0;display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:13px}#pn138-options select{width:auto;min-width:150px}#pn138-options small{opacity:.8}</style>
-<script id="pn138-ocr">
-(()=>{
-'use strict';
-const $=id=>document.getElementById(id),btn=$('pn121-ocr'),basic=$('pn120-ocr'),panel=$('pn120-import');
-if(!btn||!panel)return;
-const options=document.createElement('div');options.id='pn138-options';
-options.innerHTML='<label for="pn138-quality">OCR画質補正</label><select id="pn138-quality"><option value="auto">自動（推奨）</option><option value="original">元画像のみ</option><option value="strong">強い補正（薄い印字向け）</option></select><small>画像処理は端末内・結果は保存前に確認</small>';
-btn.closest('.pn120-actions')?.before(options);
-btn.textContent='日本語OCR（画質補正つき）';
-let running=false,loading=null;
-function message(t){$('pn120-status').textContent=t}
-function getTesseract(){
- if(window.Tesseract?.createWorker)return Promise.resolve(window.Tesseract);
- if(loading)return loading;
- loading=new Promise((resolve,reject)=>{
-  const tag=document.createElement('script');tag.src='https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js';
-  tag.onload=()=>window.Tesseract?.createWorker?resolve(window.Tesseract):reject(Error('OCRの起動に失敗'));
-  tag.onerror=()=>reject(Error('OCRの初回ダウンロードに失敗'));document.head.append(tag);
- }).catch(e=>{loading=null;throw e});return loading;
-}
-async function bitmapFrom(file){
- if(typeof createImageBitmap==='function')return await createImageBitmap(file);
- return await new Promise((resolve,reject)=>{
-  const url=URL.createObjectURL(file),img=new Image();
-  img.onload=()=>{URL.revokeObjectURL(url);resolve(img)};img.onerror=()=>{URL.revokeObjectURL(url);reject(Error('画像を開けません'))};img.src=url;
- });
-}
-function preprocess(img,mode){
- const w=img.width||img.naturalWidth,h=img.height||img.naturalHeight;
- if(!w||!h)throw Error('画像サイズを取得できません');
- // Keep pixel count bounded on mobile to avoid browser crashes.
- const scale=Math.min(3,Math.max(1,1800/Math.max(w,h)));
- const cap=Math.min(scale,Math.sqrt(4500000/(w*h)));
- const cw=Math.max(1,Math.round(w*cap)),ch=Math.max(1,Math.round(h*cap));
- const canvas=document.createElement('canvas');canvas.width=cw;canvas.height=ch;
- const ctx=canvas.getContext('2d',{willReadFrequently:true});if(!ctx)throw Error('画像補正が利用できません');
- ctx.fillStyle='#fff';ctx.fillRect(0,0,cw,ch);ctx.imageSmoothingEnabled=true;ctx.imageSmoothingQuality='high';ctx.drawImage(img,0,0,cw,ch);
- if(mode==='original')return canvas;
- const frame=ctx.getImageData(0,0,cw,ch),a=frame.data;
- const lum=new Uint8Array(cw*ch),hist=new Uint32Array(256);
- for(let i=0,j=0;i<a.length;i+=4,j++){const y=Math.round(.299*a[i]+.587*a[i+1]+.114*a[i+2]);lum[j]=y;hist[y]++}
- const count=lum.length;let low=0,high=255,sum=0;
- for(let i=0;i<256;i++){sum+=hist[i];if(sum>=count*.02){low=i;break}}
- sum=0;for(let i=255;i>=0;i--){sum+=hist[i];if(sum>=count*.02){high=i;break}}
- const range=Math.max(35,high-low);
- for(let i=0,j=0;i<a.length;i+=4,j++){
-  let v=Math.max(0,Math.min(255,(lum[j]-low)*255/range));
-  if(mode==='strong'){v=v>175?255:Math.max(0,v*.68)}
-  else v=Math.max(0,Math.min(255,(v-128)*1.18+128));
-  a[i]=a[i+1]=a[i+2]=v;
- }
- ctx.putImageData(frame,0,0);return canvas;
-}
-function quality(text){
- const t=String(text||''),chars=t.replace(/\s/g,'');
- const meaningful=(chars.match(/[\p{L}\p{N}¥￥円]/gu)||[]).length;
- const garbage=(chars.match(/[|{}<>\\^~©®]/g)||[]).length;
- const anchors=(t.match(/合計|金額|支払|税込|現計|円|¥|レシート|領収|PayPay|20\d\d[\/.年-]/gi)||[]).length;
- return meaningful+Math.min(anchors,15)*15-garbage*5;
-}
-btn.addEventListener('click',async e=>{
- e.stopImmediatePropagation();
- const file=$('pn120-image')?.files?.[0];
- if(!file)return message('先に画像を選択してください');
- if(running)return;
- running=true;btn.disabled=true;if(basic)basic.disabled=true;
- let worker,img;
- try{
-  message('日本語OCRを準備しています…初回はOCRプログラムと言語データの取得が必要です。');
-  const tess=await getTesseract();
-  worker=await tess.createWorker('jpn+eng',1,{logger:m=>{
-   if(m.status==='recognizing text')message('画像を解析中… '+Math.round((m.progress||0)*100)+'%');
-  }});
-  img=await bitmapFrom(file);
-  const mode=$('pn138-quality').value;
-  const modes=mode==='original'?['original']:mode==='strong'?['strong','original']:['auto','original'];
-  const results=[];
-  for(let i=0;i<modes.length;i++){
-   message(`画像補正と文字認識 ${i+1}/${modes.length}…`);
-   const canvas=preprocess(img,modes[i]);
-   const result=await worker.recognize(canvas);
-   const t=String(result?.data?.text||'').trim();
-   results.push({text:t,score:quality(t),mode:modes[i]});
-   canvas.width=canvas.height=0;
-  }
-  if($('pn120-image')?.files?.[0]!==file){message('別の画像が選ばれたため認識結果を破棄しました。');return}
-  results.sort((a,b)=>b.score-a.score);
-  const best=results[0];
-  if(best?.text){
-   $('pn120-text').value=best.text;
-   document.dispatchEvent(new CustomEvent('pn123-ocr-success',{detail:{file}}));
-   message(`文字認識完了（${best.mode==='original'?'元画像':'補正画像'}を採用）。誤読の可能性があるため、金額・日付・店舗名を確認してください。`);
-  }else {message('文字を検出できませんでした。画像を明るく撮り直すか手入力してください。');document.dispatchEvent(new CustomEvent('pn127-ocr-failure',{detail:{file}}));}
- }catch(err){message('OCRに失敗しました：'+String(err?.message||err).slice(0,120)+'。通信状態や画像サイズを確認してください。');document.dispatchEvent(new CustomEvent('pn127-ocr-failure',{detail:{file}}))}
- finally{try{img?.close?.()}catch(e){}try{await worker?.terminate()}catch(e){}running=false;btn.disabled=false;if(basic)basic.disabled=false}
-},true);
-})();
-</script>
+
 <style id="pn140-motion">
 /* Gentle page changes: the inactive display:none rule remains unchanged. */
 @keyframes pn140-enter{from{opacity:0;transform:translate3d(0,9px,0)}to{opacity:1;transform:translate3d(0,0,0)}}
@@ -5400,21 +4868,7 @@ dialog::backdrop{animation:pn140-enter .2s ease both}
 @media(hover:hover){button:not(:disabled):hover,.btn:hover{filter:brightness(1.12)}}
 @media(prefers-reduced-motion:reduce){.view.active,.view.active>.panel,dialog[open],dialog::backdrop,button.pn140-pressed{animation:none!important}button,.btn,[role="button"]{transition:none!important}}
 </style>
-<script id="pn140-motion-script">
-(()=>{
-'use strict';
-document.addEventListener('pointerdown',e=>{
- const b=e.target.closest?.('button');
- if(!b||b.disabled||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
- b.classList.remove('pn140-pressed');
- void b.offsetWidth;
- b.classList.add('pn140-pressed');
-}, {passive:true});
-document.addEventListener('animationend',e=>{
- if(e.target.classList?.contains('pn140-pressed'))e.target.classList.remove('pn140-pressed');
-});
-})();
-</script>
+
 <style id="pn141-style">
 #pn141-items{margin:12px 0;padding:12px;border:1px solid #35565d;border-radius:12px;background:#102b32}
 #pn141-items[hidden]{display:none}#pn141-items .pn141-row{display:grid;grid-template-columns:minmax(0,1fr) 85px 58px 36px;gap:6px;align-items:center;margin:7px 0}
@@ -5423,282 +4877,14 @@ document.addEventListener('animationend',e=>{
 #pn141-items .pn141-actions{display:flex;flex-wrap:wrap;gap:8px}
 @media(max-width:480px){#pn141-items .pn141-row{grid-template-columns:minmax(0,1fr) 76px 48px 32px}}
 </style>
-<script id="pn141-items-script">
-(()=>{
-'use strict';
-const $=id=>document.getElementById(id),parse=$('pn120-parse'),panel=$('pn120-import'),form=$('financeForm');
-if(!parse||!panel||!form)return;
-const box=document.createElement('section');box.id='pn141-items';box.hidden=true;
-box.innerHTML='<h4>🧾 商品明細（編集可能）</h4><p class="muted">OCRの誤読を修正してください。金額欄には各行の合計金額を入力してください（数量を掛け直しません）。商品明細は1件の支出にまとめて保存し、二重計上を防ぎます。</p><div id="pn141-rows"></div><p id="pn218-empty" role="status" hidden>商品明細を読み取れませんでした。レシート原本を確認し、「＋ 商品を追加」から手入力できます。</p><div class="pn141-actions"><button type="button" class="btn" id="pn141-add">＋ 商品を追加</button><button type="button" class="btn" id="pn141-reparse">明細を再抽出</button><button type="button" class="btn" id="pn219-undo" hidden disabled>削除を取り消す</button><button type="button" class="btn" id="pn222-restore" hidden>編集中の明細を復元</button><button type="button" class="btn" id="pn222-forget" hidden>下書きを破棄</button></div><p id="pn223-draft-status" role="status" aria-live="polite" class="muted">下書きはまだありません</p><p class="pn141-summary" id="pn141-summary" aria-live="polite"></p>';
-const anchor=$('pn120-amount')?.closest('label')||$('pn120-amount')?.parentElement;
-(anchor?.parentElement||panel).append(box);
-let items=[],lastText='',lastDate='',lastShop='',lastDeleted=null,baseline='[]';
-// RC277: tab-scoped draft recovery. Store only edited line items, never receipt images or OCR text.
-const draftKey='plannote.receiptDraft.rc222';
-const draftMaxAgeMs=7*24*60*60*1000,draftMaxBytes=40000;
-let pendingRecovery=false;
 
-const restoreButton=$('pn222-restore'),forgetButton=$('pn222-forget'),draftStatus=$('pn223-draft-status');
-let draftSaveFailed=false;
-function setDraftStatus(message){draftStatus.textContent=message;draftStatus.dataset.state=draftSaveFailed?'failed':storedDraft()?'saved':'empty';}
-
-function storedDraft(){try{
- const raw=sessionStorage.getItem(draftKey);if(!raw||raw.length>draftMaxBytes)return null;
- const d=JSON.parse(raw);
- if(!d||!Array.isArray(d.items)||d.items.length>100||!d.items.every(x=>x&&typeof x.name==='string'&&x.name.length<=80&&Number.isFinite(x.amount)&&Number.isFinite(x.qty)))return null;
- // Legacy drafts without a timestamp remain recoverable; new drafts expire after seven days.
- if(d.savedAt!==undefined&&(!Number.isFinite(d.savedAt)||d.savedAt>Date.now()+60000||Date.now()-d.savedAt>draftMaxAgeMs))return null;
- return d;
- }catch{return null;}}
-function showDraftButtons(){const found=!!storedDraft();restoreButton.hidden=!found;forgetButton.hidden=!found;
- if(draftSaveFailed){setDraftStatus('下書きの一時保存に失敗しました。画面を閉じる前に入力内容を確認してください。');return;}
- if(found){setDraftStatus('編集中の明細をこのタブに一時保存しました。再読み込み後は「編集中の明細を復元」を押してください。');return;}
- setDraftStatus('下書きはありません。');}
-function persistDraft(){try{
- // Never silently overwrite a draft awaiting the user's recovery decision.
- if(pendingRecovery){showDraftButtons();return;}
- if(!box.hidden&&JSON.stringify(items)!==baseline){
-  const payload=JSON.stringify({items:items.map(x=>({...x})),lastText,lastDate,lastShop,baseline,savedAt:Date.now()});
-  if(payload.length>draftMaxBytes)throw Error('下書きが容量上限を超えています');
-  sessionStorage.setItem(draftKey,payload);
- }else{sessionStorage.removeItem(draftKey);}
- draftSaveFailed=false;showDraftButtons();
- }catch(error){draftSaveFailed=true;showDraftButtons();console.warn('Receipt draft could not be stored',error);}}
-function clearDraft(){pendingRecovery=false;try{sessionStorage.removeItem(draftKey);draftSaveFailed=false;}catch{draftSaveFailed=true;}showDraftButtons();}
-restoreButton.addEventListener('click',()=>{const d=storedDraft();if(!d)return;if(hasDraftChanges()&&!confirm('現在の編集中の明細を保存済み下書きで置き換えますか？'))return;pendingRecovery=false;items=d.items.map(x=>({...x}));lastText=String(d.lastText||'');lastDate=String(d.lastDate||'');lastShop=String(d.lastShop||'');baseline=String(d.baseline||'[]');const t=$('pn120-text');if(t)t.value=lastText;const dt=$('pn120-date');if(dt)dt.value=lastDate;const sh=$('pn120-shop');if(sh)sh.value=lastShop;render();});
-forgetButton.addEventListener('click',()=>{if(confirm('保存済みのレシート下書きを破棄しますか？'))clearDraft();});
-pendingRecovery=!!storedDraft();showDraftButtons();if(pendingRecovery){box.hidden=false;setDraftStatus('前回の編集中の明細があります。「編集中の明細を復元」か「下書きを破棄」を選んでください。');}
-const undoButton=$('pn219-undo');
-function resetUndo(){lastDeleted=null;undoButton.hidden=true;undoButton.disabled=true;}
-function showUndo(){undoButton.hidden=false;undoButton.disabled=false;}
-undoButton.addEventListener('click',()=>{if(!lastDeleted)return;const {index,item}=lastDeleted;items.splice(Math.min(index,items.length),0,item);resetUndo();render();$('pn141-rows').children[Math.min(index,items.length-1)]?.querySelector('input')?.focus();});
-const esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const norm=t=>String(t).normalize('NFKC').trim().replace(/[￥]/g,'¥');
-const reject=/合計|小計|お会計|お支払|ご請求|総額|消費税|税率|税込|税抜|内税|外税|課税|非課税|軽減|お釣|釣銭|お預|預り|値引|割引|クーポン|ポイント|残高|現金|クレジット|カード|電子マネー|決済|領収|取引|日時|電話|TEL|FAX|レジ|担当|番号|登録|インボイス|ありがとう|商品数|お買上点数|総点数|明細|単価|数量|PayPay|支払い受付|支払い完了|ステップ|キャンペーン|^[\s\d¥,.:/()-]+$/i;
-const money=/(?:¥\s*)?(\d{1,3}(?:,\d{3})+|\d{1,7})\s*(?:円)?\s*$/;
-function extract(raw){
- const lines=raw.split(/\r?\n/).map(norm).filter(Boolean),out=[];
- for(let i=0;i<lines.length;i++){
-  const line=lines[i];if(reject.test(line)||/20\d{2}[\/.年-]\d{1,2}/.test(line))continue;
-  let m=line.match(money),name='',amount=0;
-  if(m){amount=Number(m[1].replace(/,/g,''));name=line.slice(0,m.index).replace(/[\s:：¥￥*＊×xX]+$/g,'').trim();}
-  else if(i+1<lines.length&&lines[i+1].match(/^\s*[¥￥]?\s*\d{1,3}(?:,\d{3})*\s*円?\s*$/)){
-   m=lines[i+1].match(money);amount=Number(m[1].replace(/,/g,''));name=line;i++;
-  }
-  if(!name||name.length<2||name.length>80||!/[\p{L}]/u.test(name)||!Number.isSafeInteger(amount)||amount<1||amount>9999999)continue;
-  if(/^\d{1,2}:\d{2}|^\d{4}[\/.-]/.test(name)||/^\d+$/.test(name))continue;
-  // Unit quantity is left at 1 unless the line explicitly states xN or ×N.
-  let qty=1;const qm=name.match(/(?:×|x|X)\s*(\d{1,2})\s*$/);
-  if(qm){qty=Math.max(1,Number(qm[1]));name=name.slice(0,qm.index).trim();}
-  if(qty>99)qty=1;
-  out.push({name,amount,qty});
-  if(out.length>=100)break;
- }
- return out;
-}
-function getItems(){return items.map(x=>({name:String(x.name).trim().slice(0,80),amount:Number(x.amount),qty:Number(x.qty)})).filter(x=>x.name&&Number.isSafeInteger(x.amount)&&x.amount>0&&x.amount<=9999999&&Number.isInteger(x.qty)&&x.qty>0&&x.qty<=99)}
-function update(){
- const list=getItems(),sum=list.reduce((n,x)=>n+x.amount,0),total=Number($('pn120-amount')?.value);
- const diff=Number.isSafeInteger(total)&&total>0?total-sum:null;
- const invalid=items.length!==list.length;
- const summary=$('pn141-summary');
- const state=invalid?'invalid':diff===null?'unconfirmed':diff===0?'matched':'mismatch';
- summary.dataset.reviewState=state;
- summary.setAttribute('role',state==='matched'?'status':'alert');
- summary.textContent=`${list.length}商品・明細合計 ¥${sum.toLocaleString('ja-JP')} / レシート支払総額 ${diff!==null?'¥'+total.toLocaleString('ja-JP'):'未入力'}。`+
- (invalid?' 未入力・不正な商品明細があります。修正するまで登録できません。':
- diff===null?' 支払総額を入力し、レシート原本と照合してください。':
- diff===0?' 金額は一致しています。ただしOCRの読み取り結果と商品名を原本で確認してください。':
- ` 差額 ${diff>0?'+':''}${diff.toLocaleString('ja-JP')}円。割引・税・OCR誤認識・明細の抜けを原本で確認してください。登録時に調整額として記録するか確認します。`);
-}
-function render(){
- box.hidden=false;
- $('pn141-rows').replaceChildren();
- $('pn218-empty').hidden=items.length>0;
- items.forEach((it,i)=>{
-  const row=document.createElement('div');row.className='pn141-row';
-  row.innerHTML=`<input aria-label="商品名 ${i+1}" placeholder="商品名" value="${esc(it.name)}"><input aria-label="商品金額 ${i+1}" type="number" min="1" max="9999999" value="${it.amount}"><input aria-label="数量 ${i+1}" type="number" min="1" max="99" value="${it.qty}"><button type="button" class="btn" aria-label="商品${i+1}を削除">×</button>`;
-  const fields=row.querySelectorAll('input');
-  fields[0].addEventListener('input',()=>{it.name=fields[0].value;update();persistDraft()});
-  fields[1].addEventListener('input',()=>{it.amount=Number(fields[1].value);update();persistDraft()});
-  fields[2].addEventListener('input',()=>{it.qty=Number(fields[2].value);update();persistDraft()});
-  row.querySelector('button').onclick=()=>{lastDeleted={index:i,item:{...items[i]}};items.splice(i,1);render();showUndo()};
-  $('pn141-rows').append(row);
- });
- update();persistDraft();
-}
-function hasDraftChanges(){return !box.hidden&&JSON.stringify(items)!==baseline;}
-function confirmDiscard(){return !hasDraftChanges()||confirm('編集中の商品明細が失われます。再解析してもよろしいですか？');}
-function reparse(){
- if(pendingRecovery){
-  if(!confirm('保存済みの下書きがあります。復元せずに新しい解析を開始すると下書きが破棄されます。続行しますか？'))return;
-  clearDraft();
- }
- resetUndo();
- const text=$('pn120-text')?.value||'';
- if(!text.trim()){items=[];lastText='';lastDate=$('pn120-date')?.value||'';lastShop=$('pn120-shop')?.value||'';baseline='[]';render();return}
- items=extract(text);lastText=text;lastDate=$('pn120-date')?.value||'';lastShop=$('pn120-shop')?.value||'';baseline=JSON.stringify(items);
- render();
-}
-// Capture before any OCR/parser click handlers. Cancel prevents both parsing and draft replacement.
-parse.addEventListener('click',e=>{if(!confirmDiscard()){e.preventDefault();e.stopImmediatePropagation();return;}queueMicrotask(reparse);},true);
-$('pn141-reparse').onclick=()=>{if(confirmDiscard())reparse();};
-$('pn141-add').onclick=()=>{
- if(box.hidden)return;
- if(pendingRecovery){
-  if(!confirm('保存済みの下書きがあります。復元せずに新しい入力を始めると下書きが破棄されます。続行しますか？'))return;
-  clearDraft();
- }
- lastText=$('pn120-text')?.value||'';lastDate=$('pn120-date')?.value||'';lastShop=$('pn120-shop')?.value||'';
- items.push({name:'',amount:0,qty:1});render();
- $('pn141-rows').lastElementChild?.querySelector('input')?.focus();
-};
-$('pn120-clear')?.addEventListener('click',e=>{if(!confirmDiscard()){e.preventDefault();e.stopImmediatePropagation();return;}resetUndo();items=[];baseline='[]';box.hidden=true;lastText='';clearDraft();},true);
-// RC277: protect edits before OCR and before replacing the selected image.
-// File inputs can change through camera hand-off without a picker click, so guard change too.
-let acceptedImage=$('pn120-image')?.files?.[0]||null;
-const imageInput=$('pn120-image');
-function restoreAcceptedImage(){
- try{const transfer=new DataTransfer();if(acceptedImage)transfer.items.add(acceptedImage);imageInput.files=transfer.files;}catch(error){console.warn('Could not restore prior receipt image',error);}
-}
-for(const id of ['pn120-ocr','pn121-ocr']){
- $(id)?.addEventListener('click',event=>{
-  if(!confirmDiscard()){event.preventDefault();event.stopImmediatePropagation();}
- },true);
-}
-for(const id of ['pn120-image','pn134-camera']){
- $(id)?.addEventListener('click',event=>{
-  if(!confirmDiscard()){event.preventDefault();event.stopImmediatePropagation();}
- },true);
-}
-imageInput?.addEventListener('change',event=>{
- if(!confirmDiscard()){
-  event.preventDefault();event.stopImmediatePropagation();restoreAcceptedImage();return;
- }
- acceptedImage=imageInput.files?.[0]||null;
- resetUndo();items=[];baseline='[]';box.hidden=true;lastText='';clearDraft();
-},true);
-$('pn120-amount')?.addEventListener('input',update);
-window.addEventListener('pn151-receipt-saved',()=>{
- resetUndo();items=[];baseline='[]';box.hidden=true;lastText='';clearDraft();
- $('pn141-rows')?.replaceChildren();
- clearDraft();const receiptText=$('pn120-text');if(receiptText)receiptText.value='';
- const receiptImage=$('pn120-image');if(receiptImage)receiptImage.value='';acceptedImage=null;
-});
-
-// RC277: the core saveFinance function writes item details atomically with the transaction.
-// No deferred mutation or second save; a failed form validation cannot attach items to another record.
-window.pn144ReceiptDraft=({date,amount,memo})=>{
- if(box.hidden||!items.length)return null;
- if(!lastText.trim()&&($('pn120-text')?.value||'').trim())return {cancelled:true};
- if(($('pn120-text')?.value||'')!==lastText){
-  alert('レシートの読み取りテキストが変更されています。「商品を再解析」を押して明細を更新してください。');
-  return {cancelled:true};
- }
- if(date!==$('pn120-date')?.value||amount!==Number($('pn120-amount')?.value)||memo!==$('pn120-shop')?.value?.trim()){
-  const choice=confirm('レシートの明細と家計簿の入力内容が一致しません。明細を付けずに通常の支出として登録しますか？\n「キャンセル」を押すと登録を中止し、入力を修正できます。');
-  return choice?null:{cancelled:true};
- }
- const list=getItems();
- if(list.length!==items.length||!list.length){alert('商品明細に未入力または不正な金額があります。明細を修正してから登録してください。');return {cancelled:true};}
- const sum=list.reduce((n,x)=>n+x.amount,0);
- const adjustment=amount-sum;
- if(adjustment!==0&&!confirm(`商品明細の合計は ${sum.toLocaleString('ja-JP')}円、支払総額は ${amount.toLocaleString('ja-JP')}円です。差額 ${adjustment.toLocaleString('ja-JP')}円を割引・税・その他調整として記録しますか？`))return {cancelled:true};
- return {items:list,sum,adjustment};
-};
-form.addEventListener('submit',()=>{
- // The original form handler performs validation and saving; the draft is read synchronously.
-},true);
-const records=$('financeRecords');
-if(records){
- const observer=new MutationObserver(()=>{
-  if(observerBusy)return;
-  observerBusy=true;
-  try{
-   const month=$('financeMonth')?.value||'';
-   const dataRows=(typeof financeMonthRecords==='function'?financeMonthRecords(month):[]);
-   const domRows=[...records.querySelectorAll(':scope > .finance-entry')];
-   if(domRows.length!==dataRows.length)return;
-   domRows.forEach((row,i)=>{
-    const rec=dataRows[i];
-    if(!rec?.receiptItems?.length||row.querySelector('.pn141-history'))return;
-    const detail=document.createElement('details');detail.className='pn141-history';detail.style.marginTop='7px';
-    const summary=document.createElement('summary');summary.textContent=`🧾 商品明細 ${rec.receiptItems.length}件`;
-    detail.append(summary);
-    rec.receiptItems.forEach(item=>{
-     const div=document.createElement('div');div.textContent=`${item.name} ×${item.qty}　¥${Number(item.amount).toLocaleString('ja-JP')}`;detail.append(div);
-    });
-    if(Number.isFinite(rec.receiptAdjustment)&&rec.receiptAdjustment!==0){
-     const div=document.createElement('div');div.textContent=`割引・税などの調整：${rec.receiptAdjustment>0?'+':''}¥${rec.receiptAdjustment.toLocaleString('ja-JP')}`;detail.append(div);
-    }
-    row.firstElementChild?.append(detail);
-   });
-  }finally{observerBusy=false}
- });
- let observerBusy=false;observer.observe(records,{childList:true});
-}
-
-})();
-</script>
 <style id="pn142-style">
 #pn142-cloud{margin:14px 0;padding:13px;border:1px solid #39717b;border-radius:12px;background:#122e35}
 #pn142-cloud .pn142-line{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin:9px 0}
 #pn142-cloud input[type=url]{width:100%;max-width:620px}#pn142-cloud .pn142-note{font-size:12px;opacity:.85;line-height:1.6}
 #pn142-cloud #pn142-review{white-space:pre-wrap;overflow-wrap:anywhere;max-height:220px;overflow:auto;font-size:12px}
 </style>
-<script id="pn142-cloud-script">
-(()=>{'use strict';
-const $=id=>document.getElementById(id),panel=$('pn120-import'),input=$('pn120-image'),parse=$('pn120-parse');if(!panel||!input||!parse)return;
-const section=document.createElement('section');section.id='pn142-cloud';
-section.innerHTML='<h4>☁ 高精度クラウドOCR（個人用Worker接続）</h4><p class="pn142-note">クラウド解析は明示的に実行した場合のみ画像を送信します。無料の端末内OCRは引き続き利用できます。GoogleのAPIキー・秘密鍵は入力しないでください。個人用アクセスキーは送信時だけ使用し、端末に保存しません。</p><label for="pn142-endpoint">認証付き中継サーバーのURL（HTTPS）</label><input type="url" id="pn142-endpoint" placeholder="https://your-private-worker.example/receipt" autocomplete="off" spellcheck="false"><div class="pn142-line"><label for="pn143-token">個人用アクセスキー（保存しません）</label><input type="password" id="pn143-token" autocomplete="off" placeholder="Cloudflare Workerで設定したPLANNOTE_TOKEN" style="width:100%;max-width:620px"></div><div class="pn142-line"><label><input type="checkbox" id="pn142-consent"> 今回のレシート画像を指定したサーバーへ送信することに同意する</label></div><div class="pn142-line"><button type="button" class="btn" id="pn142-send">クラウドで解析（手動実行）</button><button type="button" class="btn" id="pn142-cancel" disabled>中止</button></div><p id="pn142-status" role="status" aria-live="polite" class="pn142-note">未接続。中継サーバーの設定が必要です。</p><details><summary>解析結果の確認</summary><pre id="pn142-review">まだ解析していません。</pre></details>';
-panel.append(section);
-const status=$('pn142-status'),send=$('pn142-send'),cancel=$('pn142-cancel');let controller=null,token=0;
-function safeText(v,max){return typeof v==='string'?v.trim().slice(0,max):''}
-function validDate(v){if(!/^20\d\d-\d\d-\d\d$/.test(v))return false;const [y,m,d]=v.split('-').map(Number),x=new Date(Date.UTC(y,m-1,d));return x.getUTCFullYear()===y&&x.getUTCMonth()===m-1&&x.getUTCDate()===d}
-function validAmount(v){const n=Number(v);return Number.isSafeInteger(n)&&n>0&&n<=999999999?n:null}
-function cleanItems(raw){if(!Array.isArray(raw))return[];return raw.slice(0,100).map(x=>({name:safeText(x?.name,80),amount:validAmount(x?.amount),qty:Number(x?.quantity??x?.qty??1)})).filter(x=>x.name&&x.amount!==null&&Number.isInteger(x.qty)&&x.qty>=1&&x.qty<=99)}
-function escapeText(v){return String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function clearPending(){token++;controller?.abort();controller=null;cancel.disabled=true;send.disabled=false}
-input.addEventListener('change',()=>{if(controller){clearPending();status.textContent='画像が変更されたため前回のクラウド解析を中止しました。'}});
-cancel.onclick=()=>{if(controller){clearPending();status.textContent='解析を中止しました。'}};
-send.onclick=async()=>{
- if(controller)return;
- const file=input.files?.[0],url=$('pn142-endpoint').value.trim();
- if(!file||!file.type.startsWith('image/')||file.size>12*1024*1024){status.textContent='12MB以下の画像を選択してください。';return}
- if(!$('pn142-consent').checked){status.textContent='画像送信への同意を確認してください。';return}
- const privateToken=$('pn143-token').value;if(!privateToken){status.textContent='個人用アクセスキーを入力してください。';return}
- let endpoint;try{endpoint=new URL(url);if(endpoint.protocol!=='https:'||endpoint.username||endpoint.password||endpoint.hash)throw Error('invalid')}catch{status.textContent='HTTPSの中継サーバーURLを入力してください。';return}
- // Deliberately no API key, token, or Google credentials in the public page.
- const id=++token,ctrl=new AbortController();controller=ctrl;send.disabled=true;cancel.disabled=false;
- status.textContent='指定されたサーバーへ画像を送信して解析しています…';
- try{
-  const form=new FormData();form.append('image',file,file.name);form.append('schema','plannote-receipt-v1');
-  const res=await fetch(endpoint.href,{method:'POST',headers:{Authorization:'Bearer '+privateToken},body:form,signal:ctrl.signal,cache:'no-store',credentials:'omit',redirect:'error'});
-  if(!res.ok)throw Error('サーバーがHTTP '+res.status+'を返しました');
-  const raw=await res.text();if(raw.length>150000)throw Error('応答が大きすぎます');
-  const json=JSON.parse(raw);if(!json||typeof json!=='object'||Array.isArray(json))throw Error('解析結果の形式が不正です');
-  if(json.schema!=='plannote-receipt-v1')throw Error('中継サーバーの応答形式が一致しません');
-  if(id!==token||input.files?.[0]!==file)return;
-  const amount=validAmount(json.total),date=validDate(json.date)?json.date:'',merchant=safeText(json.merchant,100),items=cleanItems(json.items);
-  $('pn142-review').textContent=JSON.stringify({merchant,date,total:amount,items,notes:safeText(json.notes,400)},null,2);
-  if(merchant)$('pn120-shop').value=merchant;
-  if(date)$('pn120-date').value=date;
-  if(amount!==null)$('pn120-amount').value=amount;
-  // Item details are displayed for review, not automatically saved or silently injected into the local parser.
-  if(items.length){
-   const lines=items.map(x=>`${x.name} ${x.qty>1?'×'+x.qty+' ':''}¥${x.amount}`);
-   const text=$('pn120-text');text.value=lines.join('\n')+(amount!==null?'\n合計 ¥'+amount:'');
-   parse.click(); // triggers the existing RC277 item-detail editor
-   if(merchant)$('pn120-shop').value=merchant;
-   if(date)$('pn120-date').value=date;
-   if(amount!==null)$('pn120-amount').value=amount;
-  }
-  status.textContent=`解析結果を入力候補に反映しました（${items.length}商品）。商品・数量・金額を確認してから登録してください。`;
- }catch(e){if(id===token)status.textContent=e.name==='AbortError'?'解析を中止しました。':'解析に失敗しました：'+String(e.message||e).slice(0,150)}
- finally{if(id===token){controller=null;send.disabled=false;cancel.disabled=true;$('pn142-consent').checked=false;$('pn143-token').value=''}}
-};
-})();
-</script>
+
 <style id="pn145-style">
 #pn145-export{margin:10px 0 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 #pn145-export .muted{font-size:12px}
@@ -6575,51 +5761,7 @@ redraw();
 #pn202-report dt{font-weight:700;opacity:.85}
 #pn202-report dd{margin:0;overflow-wrap:anywhere}
 </style>
-<script id="pn-rc201-js">
-(()=>{'use strict';
- const BUILD='RC277', MARKER='PlanNote v1.0.0 '+BUILD+' | 予定管理';
- const header=document.querySelector('header h1 small');if(header)header.textContent='v1.0.0 '+BUILD;
- const settings=document.getElementById('settings');if(!settings)return;
- const panel=document.createElement('section');panel.id='pn201-deploy';panel.setAttribute('aria-label','公開版の確認');
- const heading=document.createElement('h3');heading.textContent='公開版・更新確認';panel.append(heading);
- const local=document.createElement('p');local.id='pn201-local';local.textContent='現在開いているアプリ：'+BUILD;panel.append(local);
- const hint=document.createElement('p');hint.textContent='公開URLからHTMLを再取得し、RC277の識別子を照合します。GitHubやCloudflareのデプロイ状況、端末のキャッシュ全体を保証する検査ではありません。';panel.append(hint);
- const button=document.createElement('button');button.type='button';button.className='btn';button.id='pn201-check';button.textContent='公開URLを確認';panel.append(button);
- const status=document.createElement('p');status.id='pn201-status';status.className='pn201-status';status.setAttribute('role','status');status.setAttribute('aria-live','polite');status.textContent='未確認';panel.append(status);
- const details=document.createElement('p');details.id='pn201-detail';panel.append(details);
- const report=document.createElement('dl');report.id='pn202-report';report.setAttribute('aria-label','公開版の確認詳細');panel.append(report);
- const reportFields=[['公開URL','pn202-url'],['取得バージョン','pn202-version'],['最終確認','pn202-checked'],['確認結果','pn202-result']];
- for(const [name,id] of reportFields){const dt=document.createElement('dt');dt.textContent=name;const dd=document.createElement('dd');dd.id=id;dd.textContent='未確認';report.append(dt,dd)}
- const setField=(id,value)=>{document.getElementById(id).textContent=value};
- const currentUrl=()=>{try{const u=new URL(location.href);u.searchParams.delete('pn_build_check');u.hash='';return u.toString()}catch(_){return '取得できません'}};
- settings.insertBefore(panel,settings.firstChild);setField('pn202-url',currentUrl());
- async function check(){
-  setField('pn202-url',currentUrl());
-  if(location.protocol==='file:'){setField('pn202-checked',new Date().toLocaleString('ja-JP'));status.textContent='確認できません';details.textContent='ローカルファイルで開いています。公開URLから開いて確認してください。';setField('pn202-result','ローカルファイルのため確認不可');return}
-  if(!/^https?:$/.test(location.protocol)){setField('pn202-checked',new Date().toLocaleString('ja-JP'));status.textContent='確認できません';details.textContent='HTTPまたはHTTPSで開いてください。';setField('pn202-result','公開URLではないため確認不可');return}
-  button.disabled=true;status.textContent='確認中…';details.textContent='';setField('pn202-checked',new Date().toLocaleString('ja-JP'));setField('pn202-result','確認中');setField('pn202-version','取得中');
-  try{
-   const url=new URL(location.href);url.searchParams.set('pn_build_check',String(Date.now()));url.hash='';
-   const response=await fetch(url.toString(),{cache:'no-store',credentials:'same-origin',redirect:'follow'});
-   if(!response.ok)throw Error('HTTP '+response.status);
-   const contentType=response.headers.get('content-type')||'';
-   if(contentType&&!/text\/html|application\/xhtml\+xml/i.test(contentType))throw Error('HTMLではない応答：'+contentType);
-   const html=await response.text();
-   const title=html.match(/<title[^>]*>([^<]*)<\/title>/i)?.[1]?.trim()||'タイトル不明';
-   const same=title===MARKER;
-   const match=title.match(/PlanNote\s+v[^\s]+\s+(RC\d+)/i);
-   setField('pn202-version',match?match[1]:'判定できません');
-   setField('pn202-url',response.url||currentUrl());
-   setField('pn202-result',same?'RC277と一致':'RC277と不一致');
-   status.textContent=same?'公開URLのHTMLは'+BUILD+'と一致':'公開URLのHTMLが'+BUILD+'と一致しません';
-   details.textContent='取得したタイトル：'+title+'。'+(same?'ブラウザーのキャッシュやGoogle同期の状態は別途確認してください。':'Cloudflare Pagesの公開先、デプロイ完了、キャッシュを確認してください。');
-  }catch(e){status.textContent='公開URLを確認できません';details.textContent='通信エラー：'+String(e?.message||e);setField('pn202-version','取得できません');setField('pn202-result','通信エラー（公開URLを取得できません）')}
-  finally{button.disabled=false}
- }
- button.addEventListener('click',check);
- window.pn201CheckPublished=check;
-})();
-</script>
+
 <script id="pn274-diagnostic-script">
 // RC277: read-only diagnosis. Do not clear RC273 marker or mutate local/remote events.
 let pn395DiagnosisBusy=false;
@@ -7333,7 +6475,7 @@ async function pn275Recover(){
   }catch(error){output.textContent='診断に失敗しました。安全停止を維持してください：'+String(error?.message||error);}
   finally{button.disabled=false;}
  });
- const setVersion=()=>{document.title='PlanNote v1.0.0 RC321 | 予定管理';const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC319';};
+ const setVersion=()=>{};
  setVersion();window.addEventListener('load',setVersion);
 })();
 </script>
@@ -7382,7 +6524,7 @@ async function pn275Recover(){
   }catch(e){output.textContent='照合できません：'+String(e?.message||e)+'。安全停止を維持してください。'}
   finally{button.disabled=false}
  });
- const setVersion=()=>{document.title='PlanNote v1.0.0 RC321 | 予定管理';const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC319';};setVersion();window.addEventListener('load',setVersion);
+ const setVersion=()=>{};setVersion();window.addEventListener('load',setVersion);
 })();
 </script>
 <script id="pn317-safe-relink-script">
@@ -7605,7 +6747,7 @@ async function pn275Recover(){
  // Do not modify app data or clear safety markers. This panel is intentionally read-only until an explicit reload.
 })();
 </script>
-<script id="pn322-version-final">(()=>{const update=()=>{document.title='PlanNote v1.0.0 RC363 | 予定管理';const e=document.querySelector('header h1 small');if(e)e.textContent='v1.0.0 RC363'};update();window.addEventListener('load',update)})();</script><script id="pn332-consistency-diagnostic">
+<script id="pn332-consistency-diagnostic">
 (()=>{'use strict';
  const panel=document.getElementById('pn274-diagnostic');if(!panel)return;
  const btn=document.createElement('button');btn.type='button';btn.className='btn';btn.id='pn332-consistency-check';btn.textContent='端末内の同期整合性を診断（読み取り専用）';
@@ -8395,7 +7537,6 @@ async function pn275Recover(){
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <style id="pn355-a11y-style">
 #pn346-diagnostic-nav button:focus-visible,
 #pn346-diagnostic-nav [tabindex="-1"]:focus-visible {
@@ -8438,7 +7579,6 @@ async function pn275Recover(){
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn356-accessibility-report">
 /* RC356: explicit audit execution and privacy-preserving JSON export. */
 (function(){'use strict';
@@ -8672,7 +7812,6 @@ async function pn275Recover(){
 /* RC363: integration coverage manifest; tests execute in the companion Node.js virtual-DOM harness. */
 window.pn361IntegrationTestManifest=Object.freeze({version:'RC363',scope:'Accessibility audit JSON export/import, comparison, history export/import, validation and button wiring',environment:'Node.js vm with simulated DOM and file APIs',liveBrowserVerified:true});
 </script>
-
 <script id="pn364-ui-regression-check">
 (function(){'use strict';
 function install(){
@@ -8692,7 +7831,6 @@ function install(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn367-storage-probe">
 (function(){'use strict';
  const id='pn367-storage-probe';
@@ -8730,7 +7868,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn368-storage-safety">
 (function(){'use strict';
  const safeCodes=Object.freeze({
@@ -8767,7 +7904,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn369-cross-tab-status">
 (function(){'use strict';
  const APP_KEY='plannote-v01';
@@ -8802,7 +7938,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn370-conflict-tests">
 (function(){'use strict';
  const KEY='plannote-v01',LEASE='plannote-app-save-lease-rc323';
@@ -8851,7 +7986,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn371-conflict-draft">
 (function(){'use strict';
  const MAX=20000;
@@ -8933,7 +8067,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn373-manual-recovery">
 (function(){'use strict';
  const STEPS=['別タブの編集を停止し、競合状態を確認する','必要なデータのバックアップがあることを確認する','読み込んだメモをコピーして手元に保管する','最新の予定・タスクを確認して重複を避ける','予定・タスクを手動で登録し、保存結果を確認する'];
@@ -8979,7 +8112,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn378-recovery-keyboard">
 (function(){'use strict';
  function install(){
@@ -9074,31 +8206,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 #schoolDialog .dialog-actions,#eventDialog .dialog-actions{position:sticky;bottom:0;background:var(--panel,#14252b);padding:10px 0;z-index:1}
 @media(max-width:650px){#schoolSubjects{grid-template-columns:1fr 1fr}#schoolSubjects input{width:100%}#eventDialog,#schoolDialog{padding:14px}}
 </style>
-<script id="pn476-version-and-ui">(()=>{'use strict';
-const VERSION='RC479', TITLE='PlanNote v1.0.0 '+VERSION+' | 予定管理';
-const DIAGNOSTIC_IDS=['pn69-diagnostics','pn72-diagnostics','pn391-open-diagnostic','pn391-diagnostic-feedback','pn332-consistency-diagnostic','pn346-diagnostic-nav','pn355-a11y-audit','pn353-interaction-runner'];
-function update(){
- if(document.title!==TITLE)document.title=TITLE;
- const header=document.querySelector('header h1 small');if(header&&header.textContent!=='v1.0.0 '+VERSION)header.textContent='v1.0.0 '+VERSION;
- for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e){const t=id==='pn49-build'?'アプリ版: '+VERSION:'PlanNote '+VERSION;if(e.textContent!==t)e.textContent=t;}}
- // Remove diagnostic-only interface controls. Do not remove the hidden sync
- // recovery panel, whose nodes are referenced by existing safety logic.
- for(const id of DIAGNOSTIC_IDS){const e=document.getElementById(id);if(e)e.remove();}
- const panel=document.getElementById('pn274-diagnostic');if(panel)panel.hidden=true;
- const school=document.getElementById('schoolEdit');if(school)school.textContent='時間割を編集';
- const event=document.querySelector('header button[onclick="openEvent()"]');if(event)event.textContent='＋ 予定';
-}
-function install(){update();
- // The old RC3xx scripts may rewrite the version after initial load.
- const header=document.querySelector('header h1');
- if(header&&typeof MutationObserver==='function'){
-  let pending=false;const observer=new MutationObserver(()=>{if(pending)return;pending=true;queueMicrotask(()=>{pending=false;update()})});
-  observer.observe(header,{subtree:true,childList:true,characterData:true});
- }
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
-window.addEventListener('load',update);window.addEventListener('pageshow',update);
-})();</script><script id="pn477-version-guard">(()=>{const update=()=>{const h=document.querySelector('header h1 small');if(h)h.textContent='v1.0.0 RC479';document.title=document.title.replace(/RC\d+/g,'RC479');};update();window.addEventListener('pageshow',update);})();</script><style id="pn479-style">
+<style id="pn479-style">
 .pn479-presets{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:14px 0}
 .pn479-presets button{min-height:48px;border:1px solid var(--border,#507078);border-radius:10px;background:var(--panel,#172a30);color:inherit;font:inherit;cursor:pointer}
 .pn479-presets button[aria-pressed="true"]{outline:2px solid #29c7c7;border-color:#29c7c7;font-weight:700}
