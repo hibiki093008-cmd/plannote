@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#087f84" name="theme-color"/><meta content="RC511" name="plannote-build"/><title>PlanNote v1.0.0 RC511 | 予定管理</title><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 
-
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#087f84" name="theme-color"/><meta content="RC518" name="plannote-build"/><title>PlanNote v1.0.0 RC518 | 予定管理</title><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 <style id="pn500-turquoise-design">:root{font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;color:#203747;background:#f5faf9;--ink:#203747;--muted:#526c7c;--blue:#087f84;--deep:#075e63;--pale:#e4f4f2;--line:#cbdde7;--paper:#fff;color-scheme:light}
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth}body{margin:0;background:#f5faf9;color:var(--ink);font-size:15px;line-height:1.55;overflow-x:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer;touch-action:manipulation}button:disabled{opacity:.5;cursor:not-allowed}a{color:var(--deep)}
@@ -253,11 +252,149 @@ input,select,textarea{color:var(--ink);background:#fff;border-color:#bdcbd2}
  .shell{padding-inline:8px}.panel{padding-inline:11px}
  header h1{font-size:18px}header h1 small{font-weight:500}
 }
-</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#547c7e">v1.0.0 RC511</small></h1></div><button class="primary" onclick="openEvent()">＋ 予定</button></header><div class="shell"><nav class="nav" id="nav" aria-label="主要メニュー"><button class="active" data-view="calendar"><span class="pn-illustration pn-icon-calendar" aria-hidden="true"></span> カレンダー</button><button data-view="vertical"><span class="pn-illustration pn-icon-clock" aria-hidden="true"></span> バーチカル</button><button data-view="week"><span class="pn-illustration pn-icon-calendar" aria-hidden="true"></span> 週間</button><button data-view="tasks"><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> タスク</button><button data-view="habits"><span class="pn-illustration pn-icon-leaf" aria-hidden="true"></span> 習慣</button><button data-view="finance"><span class="pn-illustration pn-icon-wallet" aria-hidden="true"></span> 家計簿</button><button data-view="study"><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 学習</button><button data-view="settings"><span class="pn-illustration pn-icon-settings" aria-hidden="true"></span> 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>1日の予定</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong><span class="pn-illustration pn-icon-school" aria-hidden="true"></span> 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">予定をドラッグして移動。タップして長さを調整。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間予定</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">曜日をタップして時間割を編集</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2><span class="pn-illustration pn-icon-wallet" aria-hidden="true"></span> 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><details><summary>固定費の計算方法</summary><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p></details><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><details><summary>残高の計算方法</summary><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p></details><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2><span class="pn-illustration pn-icon-star" aria-hidden="true"></span> 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong><span class="pn-illustration pn-icon-bell" aria-hidden="true"></span> Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700"><span class="pn-illustration pn-icon-bell" aria-hidden="true"></span> 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2><span class="pn-illustration pn-icon-sync" aria-hidden="true"></span> Google予定の自動取得</h2>
+</style>
+<style id="pn512-layout">
+/* Date columns keep their own timetable and appointments on the same clock. */
+#timeline,#weekTimeline{--half-hour:48px;--grid-height:calc(40 * var(--half-hour));--grid-line:#dce7e9}
+#weekTimeline{--school-width:84px}
+#timeline{--school-width:clamp(96px,32%,152px)}
+#weekTimeline .week-grid{width:100%;min-width:0}
+.week-head.week-day-edit{padding:4px 0 0;line-height:1.4}
+.schedule-names,.schedule-columns{display:grid;grid-template-columns:minmax(0,1fr)}
+.with-school{grid-template-columns:var(--school-width) minmax(0,1fr)}
+.schedule-names>span{padding:3px 4px;text-align:center;background:#def7f6;color:#17474a;font-size:11px;font-weight:650}
+.schedule-names.with-school>span:first-child{background:#e3f1fb;color:#234d68}
+#weekTimeline .week-allday.align-events{padding-left:var(--school-width)}
+#weekTimeline .week-time,#weekTimeline .week-day,#timeline .vertical-canvas{
+ height:var(--grid-height);background:repeating-linear-gradient(to bottom,#fff 0,#fff calc(var(--half-hour) - 1px),var(--grid-line) calc(var(--half-hour) - 1px),var(--grid-line) var(--half-hour))}
+#timeline .vertical-track{height:var(--grid-height);left:48px}
+#timeline .vertical-hour{width:48px;height:var(--half-hour);font-size:11px}
+#timeline .day-legend{display:grid;grid-template-columns:48px 1fr;position:sticky;top:0;z-index:7;background:white;font-size:11px;text-align:center}
+.class-track,.event-track{position:relative;min-width:0;overflow:hidden}
+.class-track{background:#e8f3fa55;border-right:1px solid #b9d8e2}
+.class-track .school-slot{left:0;right:0;width:100%;font-size:11px;line-height:1.3;padding:2px 4px}
+.class-track .school-slot span{font-size:11px}
+.class-track .school-slot.short-slot{padding-block:0;display:flex;align-items:center}
+.short-slot small{display:none}
+#weekTimeline .week-event{padding:2px 3px}
+#weekTimeline .week-event b{padding:0 25px 0 0!important;line-height:1.3;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#weekTimeline .week-delete{height:24px!important;width:24px!important;min-height:24px!important;line-height:22px!important}
+#weekTimeline .week-time{position:sticky;left:0;z-index:4}
+#finance .finance-modes,#pn-task-filters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;background:#eef4f5;border-radius:12px;padding:4px;margin:8px 0 14px}
+#finance .finance-modes button,#pn-task-filters button{min-width:0;min-height:42px;padding:4px 1px;font-size:13px;border:0;background:transparent;font-weight:650}
+#finance .finance-modes [aria-pressed=true],#pn-task-filters [aria-pressed=true]{background:#b8efed;color:#123337;box-shadow:inset 0 -3px #00878a}
+.finance-pane[hidden]{display:none!important}
+.finance-pane h3{margin:16px 0 10px;font-size:16px}
+.finance-entry,.finance-category-row,.pn148-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.finance-entry>div:first-child{min-width:0;overflow-wrap:anywhere}
+#finance .finance-summary{grid-template-columns:repeat(auto-fit,minmax(110px,1fr))}
+#finance .finance-summary>div:last-child{grid-column:auto}
+#financeForm button.primary{width:100%;min-height:44px}
+#pn233FinanceEditor{--surface:#fff;--text:#14282c}
+.pn148-summary,.pn149-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.pn148-card,.pn149-tile{background:#f0f7fa;padding:10px;border-radius:10px}
+.pn148-card strong,.pn149-tile strong{display:block}
+#tasks #pn-todo-overview{display:none!important}
+#tasks .pn-task-row{display:grid;grid-template-columns:24px minmax(0,1fr) auto auto;gap:6px;padding-block:12px}
+#tasks .pn-task-row[hidden]{display:none}
+#tasks .pn-task-row button{padding:5px 7px;font-size:12px}
+#tasks .pn-task-main{line-height:1.5;font-weight:600}
+#tasks .pn-task-meta{font-weight:400;margin-top:3px}
+.task-fold summary,.manage-fold summary{padding-block:5px;min-height:36px}
+#habitProgress{width:100%;height:8px;accent-color:#00898f;margin-bottom:10px}
+#habitList .habit{display:grid;grid-template-columns:1fr 42px;min-height:56px;gap:4px;padding:4px 6px}
+#habitList .habit label{display:flex;align-items:center;gap:12px;padding:8px;min-height:44px;min-width:0;color:var(--ink);font-size:15px;overflow-wrap:anywhere}
+#habitList .habit:has(input:checked){background:#e6f7f5;border-color:#9ad8d5}
+#habitList .habit-remove{padding:4px;background:transparent;border:0;min-height:42px}
+#habitList .habit-remove .pn-illustration{margin:0}
+</style><style id="pn513-compact-ui">
+/* RC516: presentation-only refinements; no changes to storage, sync or form identifiers. */
+:root{--line:#d5e4e5;--muted:#52656a}
+header{padding:11px 16px}header h1{display:flex;align-items:center;gap:6px}header h1 small{white-space:nowrap}
+.shell{padding-top:12px}.panel{box-shadow:0 2px 10px #183c4009}
+#nav{gap:3px;padding:4px;margin-bottom:12px;justify-content:space-between}
+#nav button{min-width:0;flex:1 1 0;padding:8px 5px;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
+#nav button:focus-visible{outline-offset:-3px}
+#tasks .task-fold,#finance .manage-fold{border:1px solid var(--line);border-radius:11px;padding:4px 10px;margin:9px 0;background:#fbfdfd}
+#tasks .task-fold>summary,#finance .manage-fold>summary{cursor:pointer;min-height:44px;display:list-item;align-content:center;font-weight:650}
+#tasks .task-fold[open],#finance .manage-fold[open]{background:#fff}
+#tasks .pn-task-row{align-items:center}#tasks .pn-task-main{overflow-wrap:anywhere}
+#finance .finance-modes button[aria-pressed=true]{background:#c8f0ec;color:#10484a}
+#finance .finance-summary>div{min-width:0}#finance .finance-summary strong{overflow-wrap:anywhere}
+#habitList .habit{border-radius:10px}#habitList .habit label{cursor:pointer}
+#timeline .vertical-card-title,#weekTimeline .week-event b{overflow-wrap:anywhere;white-space:normal;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-height:1.25}
+#timeline .vertical-card{padding:3px 4px}#timeline .vertical-card-time{font-size:10px;line-height:1.2}
+#timeline .class-track .school-slot span{white-space:normal;overflow-wrap:anywhere;line-height:1.2;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+#weekTimeline .week-head{line-height:1.3;overflow-wrap:anywhere}
+@media(max-width:760px){
+ header{padding:9px 12px}header h1{font-size:19px}header h1 small{font-size:10px!important}
+ .shell{padding:9px}.panel{padding:12px;border-radius:13px;margin-bottom:11px}
+ .toolbar{gap:8px;margin-bottom:10px}.toolbar h2{font-size:18px}
+ #nav{position:sticky;top:0;z-index:30;background:#edf5f5;border:1px solid #d7e8e7;box-shadow:0 2px 8px #14383a12;overflow-x:auto;justify-content:flex-start;scrollbar-width:none}
+ #nav button{flex:0 0 auto;min-width:67px;max-width:96px;padding:8px 6px;font-size:11px;white-space:nowrap}
+ #nav button.active{color:#075e63}
+ .formgrid{gap:8px}.formgrid>.field{min-width:0}
+ #finance .finance-modes button{font-size:12px;min-height:44px}
+ #weekTimeline .week-grid{min-width:700px;width:100%}
+ #weekTimeline{overflow-x:auto;overscroll-behavior-x:contain}
+ #weekTimeline .week-head{font-size:11px;min-width:0}
+ #weekTimeline .week-event b{font-size:10px}
+ #timeline{--school-width:clamp(94px,33%,135px)}
+ #timeline .vertical-card-title{font-size:11px}
+ #tasks .pn-task-row{gap:4px}
+ #tasks .pn-task-row button{min-width:34px;min-height:36px}
+}
+@media(max-width:380px){#nav button{min-width:62px}.formgrid{grid-template-columns:1fr}#finance .finance-summary{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style><style id="pn514-navigation-focus">
+/* RC516: one compact navigation row; existing view buttons and handlers stay mounted. */
+#nav{display:flex!important;align-items:stretch;justify-content:space-between;gap:5px;overflow:visible!important;flex-wrap:nowrap}
+#nav button[data-view="week"],#nav button[data-view="vertical"],#nav button[data-view="habits"],#nav button[data-view="study"],#nav button[data-view="settings"]{display:none!important}
+#nav button[data-view="calendar"],#nav button[data-view="tasks"],#nav button[data-view="finance"],#nav button[data-view="more"]{display:flex!important;flex:1 1 0!important;min-width:0!important;max-width:none!important;justify-content:center;align-items:center;flex-direction:column;gap:3px;white-space:normal;min-height:50px;padding:7px 3px!important;font-size:11px;line-height:1.15}
+#nav button[data-view="more"]{border-radius:10px}
+#nav button[data-view="more"].pn514-current{background:#d9f3f1;color:#075e63;box-shadow:inset 0 -2px #008b8e}
+#pn-more-panel{border:1px solid #d5e4e5;border-radius:12px;padding:12px;background:#fff;box-shadow:0 6px 18px #16383b14;margin:-5px 0 12px}
+#pn-more-panel h2{font-size:14px;margin:0 0 9px}
+#pn-more-panel button{min-height:44px;flex:1 1 90px}
+#pn-cal-switch{max-width:100%;min-width:0;display:flex;flex-wrap:nowrap;gap:4px}
+#pn-cal-switch button{min-width:0;flex:1 1 0;padding-inline:3px;white-space:nowrap}
+#tasks .pn-task-row .pn-task-meta{font-size:11px;line-height:1.4}
+#tasks .pn-task-row{min-width:0}
+#finance .finance-modes{gap:3px}
+#finance .finance-modes button{overflow-wrap:anywhere}
+@media(max-width:760px){#nav{position:sticky;top:0;z-index:30;margin-bottom:10px;padding:4px}#nav button[data-view="calendar"],#nav button[data-view="tasks"],#nav button[data-view="finance"],#nav button[data-view="more"]{min-width:0!important;max-width:none!important}#pn-more-panel{position:relative;z-index:29}}
+@media(max-width:380px){#nav button[data-view="calendar"],#nav button[data-view="tasks"],#nav button[data-view="finance"],#nav button[data-view="more"]{font-size:10px}}
+</style><style id="pn516-mobile-usability">
+/* RC516 presentation-only: mobile keyboard zoom, clipping and touch layout. */
+html{scroll-padding-top:90px}
+.view,.panel,.toolbar,.formgrid,.field{min-width:0}
+.panel :is(h2,h3,h4,p,summary,label){overflow-wrap:anywhere}
+:where(input,textarea,select){max-width:100%;min-width:0}
+:where(button,a,input,textarea,select,summary):focus-visible{outline:3px solid #087f84;outline-offset:2px}
+#pn-more-panel{max-width:min(420px,calc(100vw - 24px));box-sizing:border-box}
+#pn-more-panel>div{min-width:0}
+#pn-more-panel button{min-width:0;overflow-wrap:anywhere;line-height:1.35}
+#pn-fab{right:max(12px,env(safe-area-inset-right));bottom:calc(14px + env(safe-area-inset-bottom))}
+#pn-fab-menu{max-width:calc(100vw - 24px);max-height:min(60dvh,480px);overflow-y:auto;overscroll-behavior:contain}
+@media(max-width:760px){
+  html{scroll-padding-top:78px}
+  input,textarea,select{font-size:16px!important} /* prevent Android/iOS input magnification */
+  #nav{scroll-margin-top:0}
+  #pn-more-panel{width:100%;max-width:100%;max-height:min(50dvh,360px);margin:0 0 10px;padding:10px;overflow:auto}
+  #pn-more-panel>div{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px!important}
+  #pn-more-panel button{width:100%;min-height:44px;padding:9px 10px;text-align:left}
+  #pn-cal-switch button{min-height:44px;line-height:1.3}
+  .toolbar{min-width:0}
+  .toolbar>*{max-width:100%}
+  #pn-fab-menu{right:10px;bottom:calc(76px + env(safe-area-inset-bottom))}
+}
+@media(max-width:360px){#pn-more-panel>div{grid-template-columns:1fr 1fr}#nav button{letter-spacing:-.02em}}
+@media(prefers-reduced-motion:reduce){#pn-more-panel,#pn-fab-menu{scroll-behavior:auto}}
+</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#547c7e">v1.0.0 RC517</small></h1></div></header><div class="shell"><nav aria-label="主要メニュー" class="nav" id="nav"><button class="active" data-view="calendar"><span aria-hidden="true" class="pn-illustration pn-icon-calendar"></span> カレンダー</button><button data-view="vertical"><span aria-hidden="true" class="pn-illustration pn-icon-clock"></span> バーチカル</button><button data-view="week"><span aria-hidden="true" class="pn-illustration pn-icon-calendar"></span> 週間</button><button data-view="tasks"><span aria-hidden="true" class="pn-illustration pn-icon-tasks"></span> タスク</button><button data-view="habits"><span aria-hidden="true" class="pn-illustration pn-icon-leaf"></span> 習慣</button><button data-view="finance"><span aria-hidden="true" class="pn-illustration pn-icon-wallet"></span> 家計簿</button><button data-view="study"><span aria-hidden="true" class="pn-illustration pn-icon-tasks"></span> 学習</button><button data-view="settings"><span aria-hidden="true" class="pn-illustration pn-icon-settings"></span> 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>1日の予定</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong><span aria-hidden="true" class="pn-illustration pn-icon-school"></span> 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">予定をドラッグして移動。タップして長さを調整。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間予定</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">曜日をタップして時間割を編集</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p aria-live="polite" class="muted" id="habitDay"></p><progress aria-label="今日の習慣の達成数" id="habitProgress"></progress><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2><span aria-hidden="true" class="pn-illustration pn-icon-wallet"></span> 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div aria-label="家計簿の表示" class="finance-modes" role="group"><button aria-controls="finance-pane-entry" aria-pressed="true" data-finance-pane="entry" type="button">記録</button><button aria-controls="finance-pane-records" aria-pressed="false" data-finance-pane="records" type="button">明細</button><button aria-controls="finance-pane-review" aria-pressed="false" data-finance-pane="review" type="button">分析</button><button aria-controls="finance-pane-manage" aria-pressed="false" data-finance-pane="manage" type="button">管理</button></div><div class="finance-pane" id="finance-pane-entry"><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form></div><div class="finance-pane" hidden="" id="finance-pane-records"><h3>今月の記録</h3><div id="financeRecords"></div></div><div class="finance-pane" hidden="" id="finance-pane-review"><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div></div><div class="finance-pane" hidden="" id="finance-pane-manage"><details class="manage-fold"><summary>月間予算</summary><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div></details><details class="manage-fold"><summary>固定費</summary><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><details><summary>固定費の計算方法</summary><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p></details><div id="financeFixedList"></div></details><details class="manage-fold"><summary>口座・残高管理</summary><details><summary>残高の計算方法</summary><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p></details><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button></details><details class="manage-fold"><summary>口座間振替</summary><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div></details><details class="manage-fold"><summary>費目別予算</summary><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></details></div></div></section><section class="view" id="study"><div class="panel"><h2><span aria-hidden="true" class="pn-illustration pn-icon-tasks"></span> 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2><span aria-hidden="true" class="pn-illustration pn-icon-tasks"></span> 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2><span aria-hidden="true" class="pn-illustration pn-icon-star"></span> 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong><span aria-hidden="true" class="pn-illustration pn-icon-bell"></span> Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700"><span aria-hidden="true" class="pn-illustration pn-icon-bell"></span> 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2><span aria-hidden="true" class="pn-illustration pn-icon-sync"></span> Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
-<label><input id="autoPullToggle" onchange="setAutoPull(this.checked)" type="checkbox"/> 自動取得を有効にする</label>
+<label><input id="autoPullToggle" onchange="setAutoPull(this.checked)" type="checkbox"> 自動取得を有効にする</input></label>
 <p aria-live="polite" class="hint" id="autoPullStatus">自動取得は停止中</p>
-<button class="btn" onclick="autoPullGoogle(true)">今すぐ読み取り専用で取得</button></div><div class="panel" style="margin-top:14px"><h2><span class="pn-illustration pn-icon-settings" aria-hidden="true"></span> 削除候補（確認のみ）</h2><p class="hint">Google側で見つからない連携済み予定を表示します。削除は一切実行しません。Googleカレンダーの表示対象やアカウントも確認してください。</p><div class="muted" id="deletionPreview">同期を実行すると確認結果が表示されます。</div></div><div class="panel" style="margin-top:14px"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 同期履歴（この端末）</h2><div class="pn255-history-controls"><label>表示<select id="pn255-history-filter" onchange="renderSyncHistory();renderSyncHistoryDetail()"><option value="all">すべて</option><option value="failed">エラー・途中停止のみ</option><option value="success">正常終了のみ</option></select></label><label>検索<input autocomplete="off" id="pn255-history-search" oninput="renderSyncHistory();renderSyncHistoryDetail()" placeholder="エラー内容・停止箇所を検索" type="search"/></label></div><div aria-live="polite" class="muted" id="pn255-history-count"></div><div class="muted" id="syncHistory">履歴はありません。</div><button class="btn" onclick="exportSyncHistory()">同期履歴をJSON保存</button></div><p class="hint">必要な設定：Google Cloud ConsoleでCalendar APIを有効化し、OAuth同意画面を設定して、ウェブアプリの「承認済みJavaScript生成元」に公開先のHTTPS URL（または開発用localhost）を登録してください。HTMLをfile://で開いた場合はGoogle認証できません。公開前にOAuthテストユーザーも設定してください。</p></div><div class="panel"><h2>アプリのインストール</h2><p class="hint">HTTPSで公開した後、Android Chromeのメニューから「ホーム画面に追加」または「アプリをインストール」を選択してください。PCのChromeやEdgeでもアドレスバーのインストール操作から追加できます。</p><button class="btn" id="installBtn" onclick="installPlanNote()" style="display:none">アプリをインストール</button></div><div class="panel"><h2>データ管理</h2><p class="muted">この端末のブラウザーに保存されています。バックアップをおすすめします。</p><button class="btn" onclick="exportData()">JSONバックアップを書き出す</button> <label class="btn" style="display:inline-block">JSONを読み込む<input accept="application/json" hidden="" onchange="importData(event)" type="file"/></label></div><div class="panel"><h2>通知について</h2><p class="hint">この画面を開いている間は、通知許可済みの場合に予定前のブラウザー通知を試みます。アプリを閉じた状態での確実な通知には、後のバージョンでPush通知とサーバー側の仕組みが必要です。</p><button class="btn" onclick="requestNotify()">通知を許可する</button></div></section></main><aside><div class="panel"><h2>今日の予定</h2><div id="todayAgenda"></div></div><div class="panel"><h2>今日の進捗</h2><p class="muted" id="progressLabel"></p><div class="progress"><div id="progressBar"></div></div></div><div class="panel"><h2>分類カラー</h2><button class="btn" onclick="reclassifyGoogleEvents()" style="margin-bottom:10px" type="button">全予定を自動分類（再判定）</button><p class="muted">端末内で予定名・説明を判定。PlanNoteで作った予定も対象です。手動変更は保持し、Google側の色は変更しません。</p><div id="legend"></div></div></aside></div></div><dialog id="eventDialog"><h2 id="dialogTitle">予定を追加</h2><form id="eventForm"><input id="eventId" type="hidden"/><div class="field"><label>予定名</label><input id="eventName" maxlength="120" required=""/></div><div class="formgrid"><div class="field"><label>開始</label><input id="eventStart" required="" type="datetime-local"/></div><div class="field"><label>終了</label><input id="eventEnd" required="" type="datetime-local"/></div></div><p class="hint">分類・色は予定名から自動判定します。保存後、バーチカル画面の予定をタップして「分類変更」から手動調整できます。</p><div class="formgrid"><div class="field"><label>繰り返し</label><select id="eventRepeat"><option value="none">なし</option><option value="daily">毎日</option><option value="weekly">毎週</option><option value="monthly">毎月</option></select></div></div><div class="field"><label>通知</label><select id="eventReminder"><option value="0">なし</option><option value="5">5分前</option><option value="10">10分前</option><option value="30">30分前</option><option value="60">1時間前</option></select></div><div class="actions"><button class="btn danger" id="deleteEvent" onclick="deleteCurrent()" type="button">削除</button><button class="btn" onclick="eventDialog.close()" type="button">キャンセル</button><button class="primary" type="submit">保存</button></div></form></dialog><div class="toast" id="toast"></div><script>
+<button class="btn" onclick="autoPullGoogle(true)">今すぐ読み取り専用で取得</button></div><div class="panel" style="margin-top:14px"><h2><span aria-hidden="true" class="pn-illustration pn-icon-settings"></span> 削除候補（確認のみ）</h2><p class="hint">Google側で見つからない連携済み予定を表示します。削除は一切実行しません。Googleカレンダーの表示対象やアカウントも確認してください。</p><div class="muted" id="deletionPreview">同期を実行すると確認結果が表示されます。</div></div><div class="panel" style="margin-top:14px"><h2><span aria-hidden="true" class="pn-illustration pn-icon-tasks"></span> 同期履歴（この端末）</h2><div class="pn255-history-controls"><label>表示<select id="pn255-history-filter" onchange="renderSyncHistory();renderSyncHistoryDetail()"><option value="all">すべて</option><option value="failed">エラー・途中停止のみ</option><option value="success">正常終了のみ</option></select></label><label>検索<input autocomplete="off" id="pn255-history-search" oninput="renderSyncHistory();renderSyncHistoryDetail()" placeholder="エラー内容・停止箇所を検索" type="search"/></label></div><div aria-live="polite" class="muted" id="pn255-history-count"></div><div class="muted" id="syncHistory">履歴はありません。</div><button class="btn" onclick="exportSyncHistory()">同期履歴をJSON保存</button></div><p class="hint">必要な設定：Google Cloud ConsoleでCalendar APIを有効化し、OAuth同意画面を設定して、ウェブアプリの「承認済みJavaScript生成元」に公開先のHTTPS URL（または開発用localhost）を登録してください。HTMLをfile://で開いた場合はGoogle認証できません。公開前にOAuthテストユーザーも設定してください。</p></div><div class="panel"><h2>アプリのインストール</h2><p class="hint">HTTPSで公開した後、Android Chromeのメニューから「ホーム画面に追加」または「アプリをインストール」を選択してください。PCのChromeやEdgeでもアドレスバーのインストール操作から追加できます。</p><button class="btn" id="installBtn" onclick="installPlanNote()" style="display:none">アプリをインストール</button></div><div class="panel"><h2>データ管理</h2><p class="muted">この端末のブラウザーに保存されています。バックアップをおすすめします。</p><button class="btn" onclick="exportData()">JSONバックアップを書き出す</button> <label class="btn" style="display:inline-block">JSONを読み込む<input accept="application/json" hidden="" onchange="importData(event)" type="file"/></label></div><div class="panel"><h2>通知について</h2><p class="hint">この画面を開いている間は、通知許可済みの場合に予定前のブラウザー通知を試みます。アプリを閉じた状態での確実な通知には、後のバージョンでPush通知とサーバー側の仕組みが必要です。</p><button class="btn" onclick="requestNotify()">通知を許可する</button></div></section></main><aside><div class="panel"><h2>今日の予定</h2><div id="todayAgenda"></div></div><div class="panel"><h2>今日の進捗</h2><p class="muted" id="progressLabel"></p><div class="progress"><div id="progressBar"></div></div></div><div class="panel"><h2>分類カラー</h2><button class="btn" onclick="reclassifyGoogleEvents()" style="margin-bottom:10px" type="button">全予定を自動分類（再判定）</button><p class="muted">端末内で予定名・説明を判定。PlanNoteで作った予定も対象です。手動変更は保持し、Google側の色は変更しません。</p><div id="legend"></div></div></aside></div></div><dialog id="eventDialog"><h2 id="dialogTitle">予定を追加</h2><form id="eventForm"><input id="eventId" type="hidden"><div class="field"><label>予定名</label><input id="eventName" maxlength="120" required=""/></div><div class="formgrid"><div class="field"><label>開始</label><input id="eventStart" required="" type="datetime-local"/></div><div class="field"><label>終了</label><input id="eventEnd" required="" type="datetime-local"/></div></div><p class="hint">分類・色は予定名から自動判定します。保存後、バーチカル画面の予定をタップして「分類変更」から手動調整できます。</p><div class="formgrid"><div class="field"><label>繰り返し</label><select id="eventRepeat"><option value="none">なし</option><option value="daily">毎日</option><option value="weekly">毎週</option><option value="monthly">毎月</option></select></div></div><div class="field"><label>通知</label><select id="eventReminder"><option value="0">なし</option><option value="5">5分前</option><option value="10">10分前</option><option value="30">30分前</option><option value="60">1時間前</option></select></div><div class="actions"><button class="btn danger" id="deleteEvent" onclick="deleteCurrent()" type="button">削除</button><button class="btn" onclick="eventDialog.close()" type="button">キャンセル</button><button class="primary" type="submit">保存</button></div></input></form></dialog><div class="toast" id="toast"></div><script>
 const KEY='plannote-v01',COLORS={'学校':'#36b58d','勉強':'#548ef2','私生活':'#ed8ab8','仕事':'#f1a54a','健康':'#aa89ee','その他':'#879ba3'};
 /* Local classification v1.0.0 RC88: weighted context rules + on-device correction memory.
    No network, external AI, API key or third-party data transfer. */
@@ -1046,10 +1183,14 @@ function schoolClock(day,config){
  return out.sort((a,b)=>minutes(a.start)-minutes(b.start));
 }
 function schoolSummary(day){const c=schoolConfig(day);if(!c.enabled)return '学校なし';return `${c.scheduleType==='event'?'学校行事':c.scheduleType==='morning'?'午前授業':c.scheduleType==='short'?'短縮授業':c.scheduleType==='custom'?'変則時制':'通常時制'}・${c.period}分・${c.scheduleType==='event'?(c.eventName||'学校行事'):(c.endPeriod||(c.seven?7:6))+'限まで'}`}
+const halfHourHeight = 48;
+function scheduleColumnNames(school){
+ return school ? '<span>時間割</span><span>予定</span>' : '<span>予定</span>';
+}
 function schoolOverlay(day){const c=schoolConfig(day);if(!c.enabled)return '';
- const toY=t=>{const [h,m]=t.split(':').map(Number);return (h*60+m-300)*23/30};
+ const toY=t=>{const [h,m]=t.split(':').map(Number);return (h*60+m-300)*halfHourHeight/30};
  return schoolClock(day,c).map(slot=>{const top=toY(slot.start),height=toY(slot.end)-top;if(top<0||height<=0)return '';
- return `<div class="school-slot ${slot.kind}" style="top:${top}px;height:${height}px" title="${esc(slot.name)} ${slot.start}〜${slot.end}"><span>${esc(slot.name)}</span><small>${slot.start}〜${slot.end}</small></div>`;
+ return `<div class="school-slot ${slot.kind} ${height<34?'short-slot':''}" style="top:${top}px;height:${height}px" title="${esc(slot.name)} ${slot.start}〜${slot.end}"><span>${esc(slot.name)}</span><small>${slot.start}〜${slot.end}</small></div>`;
  }).join('');
 }
 function refreshSchoolBar(){const day=$('verticalDate').value||today(),c=schoolConfig(day);$('schoolEnabled').value=c.enabled?'yes':'no';$('schoolMode').value=c.mode;$('schoolPeriod').value=String(c.period);$('schoolSummary').textContent=schoolSummary(day);$('schoolEdit').disabled=false}
@@ -1119,8 +1260,8 @@ function verticalIntervals(day){
   let start=e.allDay?new Date(e.start.slice(0,10)+'T00:00:00'):e.instanceStart;
   let end=e.allDay?new Date(e.end.slice(0,10)+'T00:00:00'):e.instanceEnd;
   if(+end<=+origin||+start>=+finish)continue;
-  const top=Math.max(0,(+start-+origin)/60000/30*23);
-  const bottom=Math.min(920,(+end-+origin)/60000/30*23);
+  const top=Math.max(0,(+start-+origin)/60000/30*halfHourHeight);
+  const bottom=Math.min(40*halfHourHeight,(+end-+origin)/60000/30*halfHourHeight);
   if(bottom-top<=0)continue;
   items.push({e,start,end,top,bottom});
  }
@@ -1129,26 +1270,56 @@ function verticalIntervals(day){
 let weekAnchor=today();
 function weekDates(anchor){const d=new Date(anchor+'T12:00:00');d.setDate(d.getDate()-(d.getDay()+6)%7);return Array.from({length:7},(_,i)=>{const x=new Date(d);x.setDate(d.getDate()+i);return localDate(x)})}
 function changeWeek(n){if(n===0)weekAnchor=today();else{const d=new Date(weekAnchor+'T12:00:00');d.setDate(d.getDate()+7*n);weekAnchor=localDate(d)}renderWeek()}
+function allocateEventLanes(items){
+ // Group intersecting intervals and assign each event a separate horizontal lane.
+ let groups=[],group=[],maxEnd=-1;
+ for(const item of items){
+  if(group.length&&item.top>=maxEnd){groups.push(group);group=[];maxEnd=-1}
+  group.push(item);maxEnd=Math.max(maxEnd,item.bottom);
+ }
+ if(group.length)groups.push(group);
+ for(const g of groups){
+  const lanes=[];
+  for(const item of g){let lane=lanes.findIndex(end=>end<=item.top);if(lane<0){lane=lanes.length;lanes.push(0)}lanes[lane]=item.bottom;item.lane=lane}
+  for(const item of g)item.lanes=lanes.length;
+ }
+
+ return items.reduce((count,item)=>Math.max(count,item.lanes),1);
+}
 function renderWeek(){
- const days=weekDates(weekAnchor),labels=['月','火','水','木','金','土','日'];
- $('weekTitle').textContent=days[0]+' 〜 '+days[6];
- let html='<div class="week-grid"><div class="week-head">時刻</div>';
- for(let i=0;i<7;i++)html+=`<button type="button" class="week-head week-day-edit" data-school-day="${days[i]}" title="${days[i]}の時間割を編集" aria-label="${days[i]} ${labels[i]}曜日の時間割を編集">${labels[i]}<br>${days[i].slice(5)}<small> ✎</small></button>`;
- html+='<div class="week-allday">終日</div>';
- for(const day of days){const events=verticalIntervals(day).filter(x=>x.e.allDay);html+='<div class="week-allday">'+events.map(({e})=>`<button style="--c:${COLORS[e.category]||COLORS['その他']}" data-week-event="${esc(e.id)}" aria-label="${esc(e.name)}の操作メニューを開く">${esc(e.name)}</button>`).join('')+'</div>'}
- html+='<div class="week-time">';
- for(let i=0;i<40;i++){const h=5+Math.floor(i/2),m=i%2?30:0;html+=`<span class="week-time-label" style="top:${i*23}px">${pad(h)}:${pad(m)}</span>`}
- html+='</div>';
- for(const day of days){
+ const days=weekDates(weekAnchor);
+ const labels=['月','火','水','木','金','土','日'];
+ const columns=days.map(day=>{
+  const intervals=verticalIntervals(day);
+  const events=intervals.filter(item=>!item.e.allDay);
   const school=schoolConfig(day).enabled;
-  html+='<div class="week-day">';
-  if(school){const toY=t=>{const [h,m]=t.split(':').map(Number);return (h*60+m-300)*23/30};for(const slot of schoolClock(day,schoolConfig(day))){const top=toY(slot.start),height=toY(slot.end)-top;if(top<0||height<=0)continue;html+=`<div class="week-school" style="top:${top}px;height:${height}px" title="${esc(slot.name)} ${slot.start}〜${slot.end}">${esc(slot.name)}<small>${slot.start}</small></div>`}}
-  const items=verticalIntervals(day).filter(x=>!x.e.allDay);
-  const groups=[];let group=[],maxEnd=-1;
-  for(const item of items){if(group.length&&item.top>=maxEnd){groups.push(group);group=[];maxEnd=-1}group.push(item);maxEnd=Math.max(maxEnd,item.bottom)}if(group.length)groups.push(group);
-  for(const g of groups){const lanes=[];for(const item of g){let lane=lanes.findIndex(end=>end<=item.top);if(lane<0){lane=lanes.length;lanes.push(0)}lanes[lane]=item.bottom;item.lane=lane}for(const item of g)item.lanes=lanes.length}
-  for(const {e,top,bottom,lane,lanes} of items){const left=0,usable=100;const l=left+usable*lane/lanes,w=usable/lanes;const color=COLORS[e.category]||COLORS['その他'];html+=`<div class="week-event has-delete" role="button" tabindex="0" aria-label="${esc(e.name)}の操作メニューを開く" data-week-event="${esc(e.id)}" style="--c:${color};top:${top}px;height:${bottom-top}px;left:calc(${l}% + 1px);width:calc(${w}% - 2px)" title="${esc(e.name)}"><button type="button" class="week-delete" data-week-delete="${esc(e.id)}" aria-label="${esc(e.name)}を削除">×</button><b>${esc(e.name)}</b></div>`}
+  const lanes=allocateEventLanes(events);
+  return {day,school,events,allDay:intervals.filter(item=>item.e.allDay),width:(school?84:0)+lanes*110};
+ });
+ $('weekTitle').textContent=days[0]+' 〜 '+days[6];
+ const tracks=columns.map(col=>'minmax('+col.width+'px,1fr)').join(' ');
+ let html='<div class="week-grid" style="grid-template-columns:44px '+tracks+'"><div class="week-head">時刻</div>';
+ for(const [i,col] of columns.entries()){
+  html+=`<button type="button" class="week-head week-day-edit" data-school-day="${col.day}" aria-label="${col.day}の時間割を編集">${labels[i]}　${col.day.slice(5)}<span class="schedule-names ${col.school?'with-school':''}">${scheduleColumnNames(col.school)}</span></button>`;
+ }
+ html+='<div class="week-allday">終日</div>';
+ for(const col of columns){
+  html+='<div class="week-allday '+(col.school?'align-events':'')+'">';
+  for(const {e} of col.allDay)html+=`<button style="--c:${COLORS[e.category]||COLORS['その他']}" data-week-event="${esc(e.id)}">${esc(e.name)}</button>`;
   html+='</div>';
+ }
+ html+='<div class="week-time">';
+ for(let i=0;i<40;i++)html+=`<span class="week-time-label" style="top:${i*halfHourHeight}px">${pad(5+Math.floor(i/2))}:${i%2?'30':'00'}</span>`;
+ html+='</div>';
+ for(const col of columns){
+  html+='<div class="week-day schedule-columns '+(col.school?'with-school':'')+'">';
+  if(col.school)html+='<div class="class-track">'+schoolOverlay(col.day)+'</div>';
+  html+='<div class="event-track">';
+  for(const {e,top,bottom,lane,lanes} of col.events){
+   const color=COLORS[e.category]||COLORS['その他'];
+   html+=`<div class="week-event" role="button" tabindex="0" data-week-event="${esc(e.id)}" aria-label="${esc(e.name)}の操作メニューを開く" style="--c:${color};top:${top}px;height:${bottom-top}px;left:calc(${100*lane/lanes}% + 1px);width:calc(${100/lanes}% - 2px)" title="${esc(e.name)}"><b>${esc(e.name)}</b><button type="button" class="week-delete" data-week-delete="${esc(e.id)}" aria-label="${esc(e.name)}を削除">×</button></div>`;
+  }
+  html+='</div></div>';
  }
  $('weekTimeline').innerHTML=html+'</div>';
 }
@@ -1167,37 +1338,31 @@ $('weekTimeline').addEventListener('click',ev=>{
  if(button)openEventActions(button.dataset.weekEvent);
 });
 function renderVertical(){
- const day=$('verticalDate').value||today();$('verticalDate').value=day;refreshSchoolBar();
+ const day=$('verticalDate').value||today();
+ $('verticalDate').value=day;
+ refreshSchoolBar();
  const items=verticalIntervals(day);
- // Group intersecting intervals and assign each event a separate horizontal lane.
- let groups=[],group=[],maxEnd=-1;
- for(const item of items){
-  if(group.length&&item.top>=maxEnd){groups.push(group);group=[];maxEnd=-1}
-  group.push(item);maxEnd=Math.max(maxEnd,item.bottom);
- }
- if(group.length)groups.push(group);
- for(const g of groups){
-  const lanes=[];
-  for(const item of g){let lane=lanes.findIndex(end=>end<=item.top);if(lane<0){lane=lanes.length;lanes.push(0)}lanes[lane]=item.bottom;item.lane=lane}
-  for(const item of g)item.lanes=lanes.length;
- }
- let html='<div class="vertical-canvas">';
- for(let i=0;i<40;i++){const h=5+Math.floor(i/2),m=i%2?30:0;html+=`<div class="vertical-hour" style="top:${i*23}px">${pad(h)}:${pad(m)}</div>`}
  const schoolVisible=schoolConfig(day).enabled;
- html+='<div class="vertical-track'+(schoolVisible?' has-school':'')+'">'+schoolOverlay(day);
+ const layout=schoolVisible?'with-school':'';
+ const lanes=allocateEventLanes(items);
+ const minimum=48+(schoolVisible?100:0)+108*lanes;
+ let html=`<div class="daily-sheet" style="min-width:${minimum}px"><div class="day-legend"><span>時刻</span><div class="schedule-names ${layout}">${scheduleColumnNames(schoolVisible)}</div></div><div class="vertical-canvas">`;
+ for(let i=0;i<40;i++){const h=5+Math.floor(i/2),m=i%2?30:0;html+=`<div class="vertical-hour" style="top:${i*halfHourHeight}px">${pad(h)}:${pad(m)}</div>`}
+ html+='<div class="vertical-track schedule-columns '+layout+'">';
+ if(schoolVisible)html+='<div class="class-track">'+schoolOverlay(day)+'</div>';
+ html+='<div class="event-track">';
  for(const {e,top,bottom,lane,lanes} of items){
   const color=COLORS[e.category]||COLORS['その他'];
-  const schoolFraction=schoolVisible?35:0;
-  const left=schoolFraction+lane/lanes*(100-schoolFraction),width=(100-schoolFraction)/lanes;
+  const left=100*lane/lanes,width=100/lanes;
   const height=bottom-top;
   const label=e.allDay?'終日':`${pad(e.instanceStart.getHours())}:${pad(e.instanceStart.getMinutes())}〜${pad(e.instanceEnd.getHours())}:${pad(e.instanceEnd.getMinutes())}`;
   const isEditable=!e.allDay&&!e.conflictCopy&&e.repeat==='none';
   html+=`<div class="vertical-card ${e.allDay?'all-day':''}" style="--c:${color};top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${width}% - 4px)" title="${esc(e.name)} ${label}" onclick="verticalCardTap(event,'${e.id}')">${isEditable?`<button class="vertical-move" aria-label="${esc(e.name)}の開始時刻を移動" onpointerdown="beginVerticalMove(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')"><span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span> </button>`:`<span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span>`}`;
   if(e.allDay){html+=height>=85?`<span class="vertical-all-day-action" style="pointer-events:none">終日予定 · タップで操作</span>`:''}
-  else if(isEditable&&height>=32){html+=`<button class="vertical-resize" aria-label="${esc(e.name)}の終了時刻を変更" onpointerdown="beginVerticalResize(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')">↕ 終了</button>`}
+  else if(isEditable&&height>=80){html+=`<button class="vertical-resize" aria-label="${esc(e.name)}の終了時刻を変更" onpointerdown="beginVerticalResize(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')">↕ 終了</button>`}
   html+=`</div>`;
  }
- html+='</div></div>';
+ html+='</div></div></div></div>';
  $('timeline').innerHTML=html;
 }
 let verticalMove=null;
@@ -1226,8 +1391,8 @@ function beginVerticalMove(ev,id){
 }
 function moveVerticalMove(ev){
  const r=verticalMove;if(!r)return;
- const step=Math.round((ev.clientY-r.originY)/23);
- r.step=step;r.card.style.transform=`translateY(${step*23}px)`;
+ const step=Math.round((ev.clientY-r.originY)/halfHourHeight);
+ r.step=step;r.card.style.transform=`translateY(${step*halfHourHeight}px)`;
 }
 function cleanupVerticalMove(){if(!verticalMove)return;const h=verticalMove.handle;h.onpointermove=h.onpointerup=h.onpointercancel=null;verticalMove=null}
 async function finishVerticalMove(){
@@ -1263,14 +1428,14 @@ function beginVerticalResize(ev,id){
 function moveVerticalResize(ev){
  const r=verticalResize;if(!r)return;
  const delta=ev.clientY-r.initialY;
- const steps=Math.round(delta/23);
+ const steps=Math.round(delta/halfHourHeight);
  r.steps=steps;
  const e=data.events.find(x=>x.id===r.id);if(!e)return;
  const minEnd=+new Date(e.start)+30*60000;
  const proposed=+new Date(r.originalEnd)+steps*30*60000;
  r.newEnd=localTime(new Date(Math.max(minEnd,proposed)));
  const actualMinutes=(+new Date(r.newEnd)-+new Date(r.originalEnd))/60000;
- r.card.style.height=Math.max(28,r.originalHeight+actualMinutes/30*23)+'px';
+ r.card.style.height=Math.max(28,r.originalHeight+actualMinutes/30*halfHourHeight)+'px';
 }
 async function finishVerticalResize(){
  const r=verticalResize;if(!r)return;cleanupVerticalResize();verticalSuppressTapUntil=Date.now()+450;
@@ -1328,13 +1493,41 @@ async function addHabit(){
  const habit={id:crypto.randomUUID(),name:name.trim()};
  if(await pn324ExclusiveMutation('habit-add',()=>data.habits.push(habit)))toast('習慣を保存しました');
 }
-function renderHabits(){$('habitDay').textContent=`${today()} の達成状況`;$('habitList').innerHTML=data.habits.length?data.habits.map(h=>`<label class="habit"><input type="checkbox" ${data.checks[today()+'_'+h.id]?'checked':''} onchange="toggleHabit('${h.id}',this.checked)"><span>${esc(h.name)}</span><button class="btn danger" style="margin-left:auto" onclick="event.preventDefault();removeHabit('${h.id}')">削除</button></label>`).join(''):'<div class="empty">習慣を追加しましょう</div>'}
+function renderHabits(){
+ const day=today();
+ const total=data.habits.length;
+ const completed=data.habits.filter(habit=>data.checks[day+'_'+habit.id]).length;
+ $('habitDay').textContent=day+'　今日の達成 '+completed+' / '+total;
+ $('habitProgress').max=Math.max(1,total);
+ $('habitProgress').value=completed;
+ const list=$('habitList');
+ list.replaceChildren();
+ if(!total){
+  const empty=document.createElement('p');
+  empty.className='empty';empty.textContent='まだ習慣がありません';
+  list.append(empty);
+ }
+ for(const habit of data.habits){
+  const row=document.createElement('div');row.className='habit';
+  const label=document.createElement('label');
+  const checkbox=document.createElement('input');checkbox.type='checkbox';
+  checkbox.checked=Boolean(data.checks[day+'_'+habit.id]);
+  checkbox.onchange=()=>toggleHabit(habit.id,checkbox.checked);
+  const name=document.createElement('span');name.textContent=habit.name;
+  label.append(checkbox,name);
+  const remove=document.createElement('button');remove.type='button';remove.className='habit-remove';
+  remove.innerHTML='<span aria-hidden="true" class="pn-illustration pn-icon-trash"></span>';
+  remove.setAttribute('aria-label',habit.name+'を削除');remove.title='習慣を削除';
+  remove.onclick=()=>{if(confirm('「'+habit.name+'」を削除しますか？'))removeHabit(habit.id)};
+  row.append(label,remove);list.append(row);
+ }
+}
 async function toggleHabit(id,checked){
  const day=today(),key=day+'_'+id;
- const ok=await pn324ExclusiveMutation('habit-toggle',()=>{
+ await pn324ExclusiveMutation('habit-toggle',()=>{
   if(!data.habits.some(h=>h.id===id))throw Error('習慣が見つかりません');
   data.checks[key]=!!checked;
- });if(!ok)render();
+ });renderHabits();
 }
 async function removeHabit(id){
  const ok=await pn324ExclusiveMutation('habit-remove',()=>{
@@ -2852,13 +3045,13 @@ if('serviceWorker' in navigator && location.protocol!=='file:')window.addEventLi
 <button class="primary" type="submit">分類を保存</button></div></form></dialog>
 <dialog aria-label="予定の操作" id="eventActionDialog"><h2 id="actionEventName"></h2>
 <p class="muted" id="actionEventCategory"></p>
-<fieldset id="durationControls" hidden>
- <legend>終了時刻</legend>
- <div class="duration-row">
-  <button type="button" id="durationShorter" aria-label="終了を15分早める" onclick="adjustDuration(-15)">↑ 15分</button>
-  <output id="durationEnd" aria-live="polite"></output>
-  <button type="button" aria-label="終了を15分遅らせる" onclick="adjustDuration(15)">↓ 15分</button>
- </div>
+<fieldset hidden="" id="durationControls">
+<legend>終了時刻</legend>
+<div class="duration-row">
+<button aria-label="終了を15分早める" id="durationShorter" onclick="adjustDuration(-15)" type="button">↑ 15分</button>
+<output aria-live="polite" id="durationEnd"></output>
+<button aria-label="終了を15分遅らせる" onclick="adjustDuration(15)" type="button">↓ 15分</button>
+</div>
 </fieldset><input id="actionEventId" type="hidden"/>
 <div class="dialog-actions"><button class="btn" id="actionEdit" onclick="eventActionEdit()">編集</button>
 <button class="btn" onclick="eventActionCategory()">分類変更</button>
@@ -2942,7 +3135,6 @@ const fab=document.getElementById('pn-fab');if(fab)fab.innerHTML='<svg aria-hidd
 const menu=document.getElementById('pn-fab-menu');document.addEventListener('pointerdown',e=>{if(menu?.classList.contains('open')&&!menu.contains(e.target)&&!fab?.contains(e.target)){menu.classList.remove('open');fab?.setAttribute('aria-expanded','false')}});
 syncNav();
 })();</script>
-
 <script id="pn-rc40-script">(function(){'use strict';
 const nav=document.getElementById('nav'),tasks=document.getElementById('tasks'),study=document.getElementById('study');if(!nav||!tasks||!study)return;
 const taskPanel=tasks.querySelector(':scope > .panel');if(!taskPanel)return;
@@ -2958,7 +3150,6 @@ tabs.addEventListener('click',e=>{const b=e.target.closest('[data-todo]');if(b)s
 const oldStudy=nav.querySelector('[data-view="study"]');if(oldStudy)oldStudy.addEventListener('click',()=>{setTimeout(()=>{taskButton?.click();switchTodo('study')},0)});
 switchTodo('tasks');
 })();</script>
-
 <script id="pn-rc41-script">(function(){'use strict';
 const tasks=document.getElementById('tasks'),nav=document.getElementById('nav');if(!tasks||!nav)return;
 const switcher=document.getElementById('pn-todo-switch');if(!switcher)return;
@@ -3008,7 +3199,6 @@ const goalSummary=document.createElement('section');goalSummary.id='pn-goal-link
 renderPlans();
 })();
 </script>
-
 <script id="pn-rc44-js">
 (()=>{
 'use strict';
@@ -3035,7 +3225,6 @@ const tabs=document.getElementById('pn-todo-switch');if(tabs)tabs.addEventListen
 refresh44();
 })();
 </script>
-
 <script id="pn-rc45-script">
 (()=>{'use strict';
 const switcher=document.getElementById('pn-todo-switch');const list=document.getElementById('taskList');
@@ -3057,7 +3246,6 @@ const nav=document.getElementById('nav');nav?.addEventListener('click',e=>{if(e.
 window.addEventListener('focus',refresh45);document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)refresh45()});setInterval(refresh45,60000);refresh45();
 })();
 </script>
-
 <script id="pn-rc47-js">
 (()=>{'use strict';
  const list=document.getElementById('taskList');if(!list)return;
@@ -3073,7 +3261,6 @@ window.addEventListener('focus',refresh45);document.addEventListener?.('visibili
  const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const stamp=document.createElement('p');stamp.id='pn48-build';stamp.textContent='アプリ版: RC86';panel.append(stamp);}
 })();
 </script>
-
 <script id="pn-rc48-script">
 function verticalHandleTap(ev,id){
  if(ev.detail!==0 || Date.now()<verticalSuppressTapUntil)return;
@@ -3081,7 +3268,6 @@ function verticalHandleTap(ev,id){
  openEventActions(id);
 }
 </script>
-
 <script id="pn-rc49-script">
 (function(){
   // Close overlays without forcing a page navigation.
@@ -3102,7 +3288,6 @@ function verticalHandleTap(ev,id){
   if(fab){fab.setAttribute('aria-haspopup','true');fab.setAttribute('title','予定・タスクを追加');}
 })();
 </script>
-
 <script id="pn-rc50-script">
 (()=>{'use strict';
 const list=document.getElementById('taskList');if(!list||!window.renderTasks)return;
@@ -3116,7 +3301,6 @@ if(typeof window.renderTasks==='function')window.renderTasks();
 toast(`${targets.length}件を完了しました`)});
 })();
 </script>
-
 <script id="pn-rc51-js">
 (()=>{'use strict';
 const switcher=document.getElementById('pn-todo-switch');
@@ -3138,7 +3322,6 @@ document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)refresh(
 refresh();
 })();
 </script>
-
 <script id="pn-rc52-script">
 (()=>{'use strict';
 // RC53 is a progressive enhancement: never modify existing saved user data.
@@ -3168,7 +3351,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&more){more.style.di
 const settings=$('settings');const p=settings?.querySelector('.panel');if(p){const note=document.createElement('p');note.id='pn52-build-note';note.textContent='PlanNote RC54 · 操作改善版 · 通知はアプリ起動中のみ対応';p.append(note)}
 })();
 </script>
-
 <script id="pn-rc53-script">
 (()=>{'use strict';
 const list=document.getElementById('taskList');if(!list)return;
@@ -3186,7 +3368,6 @@ const reminders=document.getElementById('pn45-reminders');if(reminders&&!reminde
 const settings=document.getElementById('settings');const panel=settings?.querySelector('.panel');if(panel){const v=document.createElement('p');v.id='pn53-version';v.textContent='PlanNote RC59 · 操作・表示整理';panel.append(v)}
 })();
 </script>
-
 <script id="pn-rc54-script">
 (()=>{'use strict';
 const switcher=document.getElementById('pn-cal-switch');
@@ -3219,7 +3400,6 @@ try{const saved=sessionStorage.getItem(key);if(valid.has(saved)&&saved!=='calend
 sync();
 })();
 </script>
-
 <script id="pn-rc55-script">
 (()=>{'use strict';
  const taskList=document.getElementById('taskList');if(!taskList||typeof data==='undefined')return;
@@ -3257,7 +3437,6 @@ sync();
  update();
 })();
 </script>
-
 <script id="pn-rc56-script">
 (()=>{'use strict';
  const deadlines=document.getElementById('pn55-deadlines');
@@ -3278,7 +3457,6 @@ sync();
  syncVisibility();
 })();
 </script>
-
 <script id="pn-rc57-script">
 (()=>{'use strict';
  const todo=document.getElementById('tasks');
@@ -3309,7 +3487,6 @@ sync();
  });
 })();
 </script>
-
 <script id="pn-rc58-script">
 (()=>{'use strict';
  const switcher=document.getElementById('pn-todo-switch');
@@ -3336,7 +3513,6 @@ sync();
 
 })();
 </script>
-
 <script id="pn-rc59-script">
 (function(){'use strict';
 const dlg=document.getElementById('pn-task-dialog');
@@ -3368,7 +3544,6 @@ refresh();
 
 })();
 </script>
-
 <script id="pn-rc67-recurrence-core">
 /* Pure date and duplicate guards; shared by completion and preview. */
 window.pn67Recurrence=Object.freeze({
@@ -3412,7 +3587,6 @@ window.renderTasks();
 
 })();
 </script>
-
 <script id="pn-rc61-script">
 (()=>{'use strict';
 const dialog=document.getElementById('pn-task-dialog'),form=document.getElementById('pn-task-form'),list=document.getElementById('taskList');
@@ -3445,7 +3619,7 @@ if(typeof window.renderTasks==='function')window.renderTasks()},0)});
 function updateOptions(){const old=select.value;const values=[...new Set(data.tasks.flatMap(t=>Array.isArray(t.tags)?t.tags:[]))].sort((a,b)=>a.localeCompare(b,'ja'));select.replaceChildren();const all=new Option('すべてのタグ','');select.add(all);for(const tag of values)select.add(new Option(tag,tag));select.value=values.includes(old)?old:''}
 function apply(){const chosen=select.value,query=(document.getElementById('pn53-search')?.value||'').trim().toLocaleLowerCase('ja-JP');const active=document.querySelector('#pn-task-filters [aria-pressed="true"]')?.dataset.filter||'all';const today=new Date().toLocaleDateString('sv-SE');let count=0;const taskById=new Map(data.tasks.map(t=>[String(t.id),t]));
 for(const row of list.querySelectorAll('.pn-task-row')){const id=row.querySelector('button[onclick^="pnEditTask"]')?.getAttribute('onclick')?.match(/pnEditTask\('([^']+)'\)/)?.[1];const t=taskById.get(id);if(!t)continue;const status=active==='all'||active==='open'&&!t.done||active==='today'&&!t.done&&t.due===today||active==='overdue'&&!t.done&&t.due&&t.due<today;const text=[t.name,t.studySubject,...(t.tags||[])].join(' ').toLocaleLowerCase('ja-JP');const visible=!!status&&(!chosen||(t.tags||[]).includes(chosen))&&(!query||text.includes(query));if(row.hidden===visible)row.hidden=!visible;const display=visible?'':'none';if(row.style.display!==display)row.style.display=display;if(visible)count++}
-const countNode=document.getElementById('pn53-search-count');if(countNode)countNode.textContent=chosen||query?`検索・タグの結果：${count}件`:'タスクを検索できます';
+const countNode=document.getElementById('pn53-search-count');if(countNode)countNode.textContent=chosen||query?`検索・タグの結果：${count}件`:'';
 const empty=document.getElementById('pn-filter-empty');if(empty)empty.textContent=data.tasks.length&&!count?'この条件に該当するタスクはありません。':'';
 const searchEmpty=document.getElementById('pn53-search-empty');if(searchEmpty)searchEmpty.hidden=true;
 }
@@ -3467,7 +3641,6 @@ filters?.addEventListener('click',scheduleFilter);
 window.renderTasks();
 })();
 </script>
-
 <script id="pn-rc62-script">
 (()=>{'use strict';
 const list=document.getElementById('taskList'),repeat=document.getElementById('pn-task-repeat'),due=document.getElementById('pn-task-due'),form=document.getElementById('pn-task-form');
@@ -3543,7 +3716,6 @@ const add=window.addTask;if(typeof add==='function')window.addTask=function(){if
 
 })();
 </script>
-
 <script id="pn-rc64-script">
 (()=>{'use strict';
 const due=document.getElementById('pn-task-due'),repeat=document.getElementById('pn-task-repeat'),form=document.getElementById('pn-task-form');
@@ -3579,7 +3751,6 @@ function updatePreview(){const rule=repeat.value;const date=due.value;info.hidde
  updatePreview();window.renderTasks();
 })();
 </script>
-
 <script id="pn-rc65-script">
 (()=>{'use strict';
 if(typeof data==='undefined'||!Array.isArray(data.tasks))return;
@@ -3629,7 +3800,6 @@ if(typeof oldToggle==='function')window.toggleTask=function(id){
 window.renderTasks();
 })();
 </script>
-
 <script id="pn-rc66-script">
 (()=>{'use strict';
  if(typeof data==='undefined'||!Array.isArray(data.tasks))return;
@@ -3692,11 +3862,9 @@ if(typeof oldHas==='function'){
 
 })();
 </script>
-
 <script id="pn-rc70-backup-note">
 (()=>{function setup(){const input=document.querySelector('input[type="file"][onchange*="importData"]');if(!input||document.getElementById('pn70-backup-note'))return;const note=document.createElement('p');note.id='pn70-backup-note';note.className='hint';note.textContent='RC73: 復元前に件数を表示し、重複ID・不正な項目・10MB超のファイルを検査します。復元前に現在のデータをJSONで保存してください。';input.insertAdjacentElement('afterend',note)}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup()})();
 </script>
-
 <script id="pn71-script">(()=>{
 function setup(){if(document.getElementById('pn71-storage'))return;
  const banner=document.createElement('div');banner.id='pn71-storage';banner.setAttribute('role','alert');banner.setAttribute('aria-hidden','true');
@@ -3709,8 +3877,6 @@ function setup(){if(document.getElementById('pn71-storage'))return;
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();</script>
-
-
 <script id="pn73-script">(()=>{
  function setup(){const settings=document.getElementById('settings');if(!settings||document.getElementById('pn73-check'))return;
  const box=document.createElement('section');box.id='pn73-check';const h=document.createElement('h3');h.textContent='保存の整合性チェック';const p=document.createElement('p');p.textContent='本番データを変更せず、一時領域への保存・読み戻しと破損JSONの検出を確認します。';const b=document.createElement('button');b.type='button';b.textContent='保存チェックを実行';const out=document.createElement('div');out.id='pn73-result';out.setAttribute('role','status');box.append(h,p,b,out);settings.append(box);
@@ -3724,7 +3890,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();</script>
-
 <script id="pn74-script">(()=>{
  function init(){
   
@@ -3753,7 +3918,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();</script>
-
 <script id="pn76-script">(()=>{
  function setup(){
   
@@ -3781,9 +3945,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();</script>
-
 <script id="pn77-script">(()=>{function init(){const form=document.getElementById('pn-task-form');if(form&&!document.getElementById('pn77-save-hint')){const hint=document.createElement('p');hint.id='pn77-save-hint';hint.textContent='保存できなかった場合は入力内容を保持します。画面を閉じる前に保存エラーをご確認ください。';form.querySelector('.pn-actions')?.before(hint)}for(const id of ['pn53-version','pn52-build-note','pn49-build']){const e=document.getElementById(id);if(e)e.textContent=id==='pn49-build'?'アプリ版: RC77':'PlanNote RC77 · 保存失敗時の入力保護'}}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init()})();</script>
-
 <script id="pn78-script">(()=>{
  function setup(){
   // Version labels are updated centrally by pn84-script.
@@ -3812,8 +3974,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',setup);else setup();
 })();</script>
-
-
 <script id="pn80-script">(()=>{
  function init(){
   const form=document.getElementById('pn-task-form');
@@ -3824,12 +3984,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  }
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();</script>
-
-
-
-
-
-
 <script id="pn119-script">(()=>{'use strict';
  const fold=document.getElementById('pn56-deadline-fold');
  const panel=document.getElementById('pn55-deadlines');
@@ -3859,14 +4013,6 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
  window.addEventListener('storage',e=>{if(e.key!==null)schedule()});
  refresh();
 })();</script>
-
-
-
-
-
-
-
-
 <script id="pn131-export-script">(()=>{'use strict';
  const panel=document.getElementById('settings');if(!panel)return;
  const SCHOOL_KEY='plannote-school-v1';
@@ -3977,22 +4123,10 @@ function occurrences(day,data){const target=new Date(day+'T00:00:00');return dat
  $('pn129-copy').addEventListener('click',async()=>{if(!last)return;try{await navigator.clipboard.writeText(last);status.textContent='JSONをコピーしました。'}catch{preview.focus();preview.select();status.textContent='自動コピーできませんでした。プレビューを選択してコピーしてください。'}});
  for(const id of ['pn129-date','pn129-events','pn129-tasks','pn129-school'])$(id).addEventListener('change',()=>{last='';preview.value='';$('pn129-download').disabled=true;$('pn129-copy').disabled=true;status.textContent='条件が変わりました。「JSONを作成」を押してください。'});
 })();</script>
-
-
-
-
-
-
-
-
-
-
-
-
 <script id="pn148-script">
 (()=>{
 'use strict';
-const parent=document.querySelector('#finance > .panel');if(!parent)return;
+const parent=document.getElementById('finance-pane-review');if(!parent)return;
 const el=document.createElement('section');el.id='pn148-breakdown';
 el.innerHTML='<h4> 費目別の支出・前月比較</h4><p class="muted">表示月の支出を費目別に集計します。収入は含めず、支出のみを集計します。</p><div class="pn148-summary" id="pn148-summary"></div><div id="pn148-rows"></div>';
 parent.append(el);
@@ -4025,11 +4159,10 @@ window.pn146Render=month=>{old?.(month);render(month)};
 render(document.getElementById('financeMonth')?.value);
 })();
 </script>
-
 <script id="pn149-budget-script">
 (()=>{
 'use strict';
-const root=document.querySelector('#finance > .panel');if(!root)return;
+const root=document.getElementById('finance-pane-manage');if(!root)return;
 const section=document.createElement('section');section.id='pn149-budget';
 section.innerHTML='<h4> 予算の見通し</h4><p class="muted">既存の月間予算・費目別予算を使用します。月の途中では、実際の支出ペースから月末を推定します。推定は将来の支出を保証するものではありません。</p><div id="pn149-overview" class="pn149-grid"></div><p id="pn149-message" class="pn149-warning" aria-live="polite"></p><div id="pn149-categories"></div>';
 root.append(section);
@@ -4075,91 +4208,18 @@ window.pn146Render=month=>{previous?.(month);render(month)};
 render(document.getElementById('financeMonth')?.value);
 })();
 </script>
-
-<script id="pn150-script">
-(()=>{
-'use strict';
-const section=document.getElementById('finance');
-const panel=section?.querySelector(':scope > .panel');
-const month=document.getElementById('financeMonth');
-if(!panel||!month)return;
-const headings=[...panel.querySelectorAll(':scope > h3')];
-const targets=[
- ['収支入力',headings.find(x=>x.textContent.includes('収入・支出を記録'))],
- ['月間予算',headings.find(x=>x.textContent.includes('月間予算'))],
- ['固定費',headings.find(x=>x.textContent==='固定費')],
- ['記録一覧','financeRecords'],
- ['口座管理',headings.find(x=>x.textContent.includes('口座・残高管理'))],
- ['費目予算',headings.find(x=>x.textContent.includes('費目別予算'))]
-];
-const nav=document.createElement('nav');nav.id='pn150-nav';nav.setAttribute('aria-label','家計簿の画面内移動');
-for(const [name,ref] of targets){
- const target=typeof ref==='string'?document.getElementById(ref):ref;
- if(!target)continue;
- const btn=document.createElement('button');btn.type='button';btn.textContent=name;
- btn.addEventListener('click',()=>{
-  // Analytics is injected after this script by other scripts, so resolve its id again at click time.
-  const current=typeof ref==='string'?document.getElementById(ref):ref;
-  if(!current)return;
-  current.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'start'});
- });
- nav.append(btn);
-}
-const analyticsButton=document.createElement('button');analyticsButton.type='button';analyticsButton.textContent='商品分析';
-analyticsButton.addEventListener('click',()=>document.getElementById('pn148-breakdown')?.scrollIntoView({behavior:'smooth',block:'start'}));
-nav.append(analyticsButton);
-const toolbar=panel.querySelector(':scope > .toolbar');(toolbar||panel.firstElementChild).after(nav);
-const top=document.createElement('button');top.id='pn150-top';top.type='button';top.textContent='↑';top.title='家計簿の先頭へ';top.setAttribute('aria-label','家計簿の先頭へ');
-top.addEventListener('click',()=>panel.scrollIntoView({behavior:'smooth',block:'start'}));
-document.body.append(top);
-let queued=false;
-addEventListener('scroll',()=>{
- if(queued)return;queued=true;
- requestAnimationFrame(()=>{queued=false;const active=section.classList.contains('active');const rect=panel.getBoundingClientRect();top.classList.toggle('visible',active&&rect.top< -280&&rect.bottom>120)});
-},{passive:true});
-const observer=new MutationObserver(()=>{if(!section.classList.contains('active'))top.classList.remove('visible')});
-observer.observe(section,{attributes:true,attributeFilter:['class']});
-})();
+<script>
+const financeModes=document.querySelector('.finance-modes');
+financeModes.addEventListener('click',event=>{
+ const active=event.target.closest('[data-finance-pane]');
+ if(!active)return;
+ for(const button of financeModes.querySelectorAll('button')){
+  const selected=button===active;
+  button.setAttribute('aria-pressed',String(selected));
+  document.getElementById(button.getAttribute('aria-controls')).hidden=!selected;
+ }
+});
 </script>
-
-
-
-
-
-
-<script id="pn156-script">(()=>{
-'use strict';
-const $=id=>document.getElementById(id),finance=$('finance'),monthInput=$('financeMonth');if(!finance||!monthInput)return;
-const hub=document.createElement('section');hub.id='pn156-hub';hub.setAttribute('aria-label','家計簿の操作ダッシュボード');
-hub.innerHTML='<h3>今月の収支</h3><div class="pn156-grid" id="pn156-summary" aria-live="polite"></div><div class="pn156-actions" id="pn156-actions"></div>';
-const summary=finance.querySelector('.finance-summary');if(!summary)return;summary.before(hub);
-const actions=[['記録','financeForm'],['分析','pn148-breakdown'],['明細','financeRecords']];
-for(const [name,id] of actions){const button=document.createElement('button');button.type='button';
- const glyph={'financeForm':'<span class="pn-illustration pn-icon-edit" aria-hidden="true"></span>',
-              'pn148-breakdown':'<svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5"/></svg>','financeRecords':'<svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8m-8 4h8m-8 4h5"/></svg>'};
- button.innerHTML=glyph[id];
- button.append(document.createTextNode(name));
- button.onclick=()=>{const el=$(id);if(!el)return;el.scrollIntoView({block:'start',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});if(id==='pn146-search')el.focus({preventScroll:true})};$('pn156-actions').append(button)}
-const yen=n=>'¥'+Math.round(n).toLocaleString('ja-JP');
-function draw(){const month=monthInput.value;if(!/^\d{4}-\d{2}$/.test(month))return;
- const records=Array.isArray(data.finance)?data.finance:[];
- const matching=records.filter(r=>String(r.date||'').startsWith(month));
- const expenses=matching.filter(r=>r.type==='expense');
- const income=matching.filter(r=>r.type==='income').reduce((sum,r)=>sum+(Number(r.amount)||0),0);
- const expense=expenses.reduce((sum,r)=>sum+(Number(r.amount)||0),0);
- const stats=[['収入（記録済み）',yen(income)],['支出（記録済み）',yen(expense)],['支出の記録数',expenses.length+'件']];
- const host=$('pn156-summary');host.replaceChildren();
- for(const [label,value] of stats){const card=document.createElement('div');card.className='pn156-card';const small=document.createElement('small');small.textContent=label;const strong=document.createElement('strong');strong.textContent=value;card.append(small,strong);host.append(card)}
-}
-const prior=window.pn146Render;window.pn146Render=month=>{prior?.(month);draw()};
-monthInput.addEventListener('change',draw);
-
-finance.querySelector('#financeForm')?.addEventListener('submit',()=>queueMicrotask(draw));
-draw();
-})();</script>
-
-
-
 <script id="pn174-script">
 (()=>{
 'use strict';
@@ -4227,8 +4287,6 @@ redraw();
 })();
 </script>
 <script id="pn182-script">(()=>{const target=document.getElementById('syncHistory');if(!target)return;const section=document.createElement('section');section.id='pn182-history';target.insertAdjacentElement('afterend',section);renderSyncHistoryDetail()})();</script>
-
-
 <script id="pn285-warning-script">
 (function(){
  function inspect(){
@@ -4621,7 +4679,6 @@ redraw();
  // Do not modify app data or clear safety markers. This panel is intentionally read-only until an explicit reload.
 })();
 </script>
-
 <script id="pn368-storage-safety">
 (function(){'use strict';
  const safeCodes=Object.freeze({
@@ -4851,7 +4908,6 @@ redraw();
  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();
 </script>
-
 <script id="pn479-presets">(()=>{'use strict';
 function refresh(){const sel=document.getElementById('schoolScheduleType');if(!sel)return;document.querySelectorAll('.pn479-presets button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.preset===sel.value)));if(typeof pn478ToggleSchoolFields==='function')pn478ToggleSchoolFields();}
 window.pn479ApplyPreset=function(type){const $=id=>document.getElementById(id),sel=$('schoolScheduleType');if(!sel)return;sel.value=type;
@@ -4866,11 +4922,6 @@ const oldEdit=window.editSchoolDay;
 if(typeof oldEdit==='function')window.editSchoolDay=function(...args){const result=oldEdit.apply(this,args);refresh();return result;};
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh,{once:true});else refresh();
 })();</script>
-
-
-
-
-
 <script id="pn489-accessibility-navigation">(()=>{'use strict';
 /* Presentation enhancement: no changes to event handlers, data, or sync. */
 function refresh(){
@@ -4887,12 +4938,6 @@ function start(){refresh();const nav=document.getElementById('nav');if(nav){nav.
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
 })();</script>
-
-
-
-
-
-
 <script id="pn491-entry-a11y">
 (()=>{'use strict';
 function init(){
@@ -4920,25 +4965,18 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 else init();
 })();
 </script>
-<dialog id="pn492-task-dialog" aria-labelledby="pn492-task-title">
+<dialog aria-labelledby="pn492-task-title" id="pn492-task-dialog">
 <form id="pn492-task-form" onsubmit="pn492SaveTask(event)">
 <h2 id="pn492-task-title">タスクを追加</h2>
 <label for="pn492-task-name">タスク名</label>
-<input id="pn492-task-name" type="text" maxlength="200" placeholder="やることを入力" required autocomplete="off"/>
+<input autocomplete="off" id="pn492-task-name" maxlength="200" placeholder="やることを入力" required="" type="text"/>
 <label for="pn492-task-due">期限（任意）</label>
 <input id="pn492-task-due" type="date"/>
 <div class="pn492-actions">
-<button type="button" class="btn" onclick="document.getElementById('pn492-task-dialog').close()">キャンセル</button>
-<button id="pn492-task-save" type="submit" class="primary">保存する</button>
+<button class="btn" onclick="document.getElementById('pn492-task-dialog').close()" type="button">キャンセル</button>
+<button class="primary" id="pn492-task-save" type="submit">保存する</button>
 </div>
 </form></dialog>
-
-
-
-
-
-
-
 <script id="pn502-accessibility-runtime">
 (()=>{'use strict';
 /* UI-only enhancement. No writes to localStorage, IndexedDB or remote services. */
@@ -5036,4 +5074,152 @@ function init(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
 })();
 </script>
-</body></html>
+<script>
+(()=>{
+ const tasks=document.getElementById('tasks');
+ const list=document.getElementById('taskList');
+ const panel=list.closest('.panel');
+ const switcher=document.getElementById('pn-todo-switch');
+ tasks.prepend(switcher);
+ switcher.after(panel);
+ function disclosure(title,nodes,insertBefore){
+  const available=nodes.filter(Boolean);
+  if(!available.length)return;
+  const box=document.createElement('details');box.className='task-fold';
+  const label=document.createElement('summary');label.textContent=title;
+  insertBefore.before(box);
+  box.append(label,...available);
+ }
+ const byId=id=>document.getElementById(id);
+ disclosure('検索・タグ',['pn53-tools','pn61-tag-tools','pn53-search-count'].map(byId),list);
+ const aux=document.createElement('div');panel.append(aux);
+ disclosure('締切・通知',[byId('pn56-deadline-fold'),byId('pn-rc44-next')?.closest('details'),byId('pn45-reminders')?.closest('details'),byId('pn-remind-status')],aux);
+ const taskOverview=byId('pn51-overview');
+ if(taskOverview)disclosure('集計・勉強の追加',[taskOverview],aux);
+})();
+</script>
+<script id="pn514-navigation-runtime">
+(()=>{'use strict';
+/* Presentation only: never read/write app data or touch Google sync. */
+function init(){
+ const nav=document.getElementById('nav'),panel=document.getElementById('pn-more-panel');
+ if(!nav||!panel)return;
+ const more=nav.querySelector('[data-view="more"]');
+ const secondary=['vertical','week','habits','study','settings'];
+ function update(){
+  const current=nav.querySelector('button.active[data-view]')?.dataset.view;
+  more?.classList.toggle('pn514-current',secondary.includes(current));
+  if(more)more.setAttribute('aria-label',secondary.includes(current)?'その他の機能・選択中':'その他の機能');
+ }
+ update();
+ nav.addEventListener('click',()=>queueMicrotask(update));
+ panel.addEventListener('click',()=>queueMicrotask(update));
+ const observer=new MutationObserver(update);
+ nav.querySelectorAll('button[data-view]').forEach(b=>observer.observe(b,{attributes:true,attributeFilter:['class']}));
+ // The existing calendar day/week switch and More menu retain their original handlers.
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script><style id="pn515-accessibility-ui">
+/* RC516: accessibility and compact UI only. Existing data, storage, sync untouched. */
+#nav button,#pn-more-panel button,#pn-cal-switch button{touch-action:manipulation}
+#nav button:focus-visible,#pn-more-panel button:focus-visible,#pn-cal-switch button:focus-visible,#pn-fab:focus-visible{outline:3px solid #007f85!important;outline-offset:2px}
+#pn-more-panel{max-height:min(55vh,420px);overflow-y:auto;overscroll-behavior:contain}
+#pn-more-panel button{white-space:normal;overflow-wrap:anywhere;text-align:left}
+#nav button[data-view="more"][aria-expanded="true"]{background:#d9f3f1;color:#075e63}
+#tasks .task-fold>summary,#finance .manage-fold>summary{overflow-wrap:anywhere}
+#tasks .task-fold:focus-within,#finance .manage-fold:focus-within{border-color:#008b8e}
+@media(max-width:420px){#nav{gap:3px!important}#nav button[data-view="calendar"],#nav button[data-view="tasks"],#nav button[data-view="finance"],#nav button[data-view="more"]{font-size:10px!important;padding-inline:2px!important}#pn-more-panel{padding:9px}}
+@media(prefers-reduced-motion:reduce){#nav button,#pn-more-panel button{transition:none!important}}
+</style>
+<script id="pn515-menu-accessibility">
+(()=>{'use strict';
+function init(){
+ const nav=document.getElementById('nav');
+ const more=nav?.querySelector('button[data-view="more"]');
+ const panel=document.getElementById('pn-more-panel');
+ if(!nav||!more||!panel)return;
+ more.setAttribute('aria-controls','pn-more-panel');
+ more.setAttribute('aria-haspopup','true');
+ panel.setAttribute('role','region');
+ panel.setAttribute('aria-label','その他の機能');
+ function isOpen(){return panel.style.display!=='none' && getComputedStyle(panel).display!=='none'}
+ function close(restoreFocus=false){
+  if(!isOpen())return;
+  panel.style.display='none';more.setAttribute('aria-expanded','false');
+  if(restoreFocus)more.focus();
+ }
+ document.addEventListener('pointerdown',e=>{
+  if(isOpen()&&!panel.contains(e.target)&&!more.contains(e.target))close();
+ },true);
+ document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'&&isOpen()){e.preventDefault();close(true)}
+ });
+ panel.addEventListener('click',e=>{
+  if(e.target.closest('button'))close();
+ });
+ // Keep menu closed when a calendar mode is selected, without changing view handlers.
+ document.getElementById('pn-cal-switch')?.addEventListener('click',e=>{
+  if(e.target.closest('button'))close();
+ });
+ // Do not force focus to hidden navigation items or change persisted settings.
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();
+</script>
+<style id="pn517-usability">
+/* RC517: visual/touch refinements; no application state or storage changes. */
+#pn-more-panel{box-sizing:border-box;max-width:100%;border-radius:14px;scrollbar-gutter:stable;}
+#pn-more-panel>div{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px!important;}
+#pn-more-panel>div>button{box-sizing:border-box;min-width:0;min-height:44px;line-height:1.4;display:flex;align-items:center;justify-content:flex-start;}
+#pn-more-panel h2{font-size:15px;line-height:1.35;margin:0 0 8px;}
+#pn-cal-switch{max-width:100%;box-sizing:border-box;}
+#pn-cal-switch button{min-height:40px;line-height:1.35;overflow-wrap:anywhere;}
+#pn-fab-menu{box-sizing:border-box;max-width:min(340px,calc(100vw - 24px));}
+#pn-fab-menu button{min-height:44px;line-height:1.4;white-space:normal;overflow-wrap:anywhere;}
+@media(max-width:360px){#pn-more-panel>div{grid-template-columns:minmax(0,1fr);}#pn-more-panel{max-height:50dvh}#pn-cal-switch button{font-size:12px!important}}
+@media(min-width:600px){#pn-more-panel>div{grid-template-columns:repeat(3,minmax(0,1fr))}}
+</style>
+
+<style id="pn518-responsive-controls">/* RC518: controls adapt without changing any app state or data keys. */
+#nav{padding-bottom:max(4px,env(safe-area-inset-bottom,0px));}
+#nav button{overflow-wrap:normal;word-break:keep-all;hyphens:none;min-height:48px;}
+#pn-more-panel{overscroll-behavior:contain;max-height:min(60dvh,440px);overflow-y:auto;}
+#pn-more-panel>div>button{text-align:left;overflow-wrap:anywhere;white-space:normal;}
+#pn-cal-switch,#pn-todo-switch{min-width:0;max-width:100%;}
+#pn-cal-switch button,#pn-todo-switch button{min-width:0;white-space:normal;overflow-wrap:anywhere;}
+#pn-fab-menu{max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;}
+@media(max-width:420px){
+ #nav{gap:3px;padding-inline:2px}
+ #nav button{font-size:12px!important;padding-inline:3px!important;letter-spacing:-.015em}
+ #pn-more-panel>div{gap:6px!important}
+ #pn-more-panel>div>button{padding:9px!important;font-size:13px!important}
+ #pn-cal-switch button,#pn-todo-switch button{font-size:12px!important;padding-inline:5px!important}
+}
+@media(prefers-reduced-motion:reduce){#nav button,#pn-more-panel button,#pn-fab-menu button{transition:none!important;animation:none!important}}
+</style><script id="pn518-menu-keyboard">(()=>{'use strict';
+function init(){
+ const panel=document.getElementById('pn-more-panel');
+ const more=document.querySelector('#nav button[data-view="more"]');
+ if(!panel||!more)return;
+ const isOpen=()=>getComputedStyle(panel).display!=='none';
+ function sync(){const open=isOpen();more.setAttribute('aria-expanded',String(open));panel.setAttribute('aria-hidden',String(!open));if('inert' in panel)panel.inert=!open;}
+ sync();
+ new MutationObserver(sync).observe(panel,{attributes:true,attributeFilter:['style','class']});
+ // Pointer users should not have their focus unexpectedly moved into the menu.
+ let keyboardActivation=false;
+ more.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '||e.key==='ArrowDown')keyboardActivation=true;});
+ more.addEventListener('pointerdown',()=>{keyboardActivation=false;});
+ more.addEventListener('click',()=>queueMicrotask(()=>{sync();if(isOpen()&&keyboardActivation)panel.querySelector('button:not([disabled])')?.focus({preventScroll:true});keyboardActivation=false;}));
+ panel.addEventListener('keydown',e=>{
+  if(e.key!=='ArrowDown'&&e.key!=='ArrowUp')return;
+  const buttons=Array.from(panel.querySelectorAll('button:not([disabled])'));
+  const idx=buttons.indexOf(document.activeElement);
+  if(idx<0||!buttons.length)return;
+  e.preventDefault();buttons[(idx+(e.key==='ArrowDown'?1:-1)+buttons.length)%buttons.length].focus();
+ });
+ // The existing RC515 Escape handler closes the menu; restore accessibility state afterward.
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&isOpen())queueMicrotask(sync);});
+}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init,{once:true});else init();
+})();</script></body></html>
