@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#087f84" name="theme-color"/><meta content="RC509" name="plannote-build"/><title>PlanNote v1.0.0 RC509 | 予定管理</title><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/>
+<html lang="ja"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#087f84" name="theme-color"/><meta content="RC511" name="plannote-build"/><title>PlanNote v1.0.0 RC511 | 予定管理</title><meta content="yes" name="apple-mobile-web-app-capable"/><meta content="default" name="apple-mobile-web-app-status-bar-style"/>
 
 
 <style id="pn500-turquoise-design">:root{font-family:system-ui,-apple-system,"Noto Sans JP",sans-serif;color:#203747;background:#f5faf9;--ink:#203747;--muted:#526c7c;--blue:#087f84;--deep:#075e63;--pale:#e4f4f2;--line:#cbdde7;--paper:#fff;color-scheme:light}
@@ -204,7 +204,56 @@ header,.panel,dialog{background:#fff}
 .school-controls,.finance-summary>div{background:#eaf6fa}
 input,select,textarea{color:var(--ink);background:#fff;border-color:#bdcbd2}
 @media(max-width:760px){.nav,#nav{background:#fff}}
-</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#547c7e">v1.0.0 RC509</small></h1><div class="muted">予定・勉強・習慣をひとつに</div></div><button class="primary" onclick="openEvent()">＋ 予定を追加</button></header><div class="shell"><nav class="nav" id="nav" aria-label="主要メニュー"><button class="active" data-view="calendar"><span class="pn-illustration pn-icon-calendar" aria-hidden="true"></span> カレンダー</button><button data-view="vertical"><span class="pn-illustration pn-icon-clock" aria-hidden="true"></span> バーチカル</button><button data-view="week"><span class="pn-illustration pn-icon-calendar" aria-hidden="true"></span> 週間</button><button data-view="tasks"><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> タスク</button><button data-view="habits"><span class="pn-illustration pn-icon-leaf" aria-hidden="true"></span> 習慣</button><button data-view="finance"><span class="pn-illustration pn-icon-wallet" aria-hidden="true"></span> 家計簿</button><button data-view="study"><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 学習</button><button data-view="settings"><span class="pn-illustration pn-icon-settings" aria-hidden="true"></span> 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>バーチカル手帳</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong><span class="pn-illustration pn-icon-school" aria-hidden="true"></span> 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目・7限を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">5:00〜翌1:00・30分刻み。予定をタップすると操作できます。重なる予定は横並びです。Google連携予定を変更した後は同期してください。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間バーチカル</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">7日間を画面幅に表示します。上下にスクロールできます。曜日をタップすると時間割を編集できます。予定の「×」で削除確認がすぐ開きます。</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2><span class="pn-illustration pn-icon-wallet" aria-hidden="true"></span> 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2><span class="pn-illustration pn-icon-star" aria-hidden="true"></span> 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong><span class="pn-illustration pn-icon-bell" aria-hidden="true"></span> Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700"><span class="pn-illustration pn-icon-bell" aria-hidden="true"></span> 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2><span class="pn-illustration pn-icon-sync" aria-hidden="true"></span> Google予定の自動取得</h2>
+</style><style id="pn510-compact">
+/* Calendar modes remain available through the monthly/weekly/vertical switch. */
+@media(max-width:760px){
+ #nav [data-view="vertical"],#nav [data-view="week"],#nav [data-view="habits"],#nav [data-view="study"],#nav [data-view="settings"]{display:none}
+ #nav{justify-content:space-around;padding:5px 8px calc(5px + env(safe-area-inset-bottom))}
+ #nav button{flex:1 1 0;min-width:0;max-width:none;min-height:50px;font-size:12px}
+ #nav .pn-illustration{width:18px;height:18px;margin-bottom:1px}
+ body{padding-bottom:calc(70px + env(safe-area-inset-bottom))}
+ #pn-fab{bottom:calc(72px + env(safe-area-inset-bottom))}
+ #pn-fab-menu,#pn-more-panel{bottom:calc(132px + env(safe-area-inset-bottom))}
+ .day{min-height:72px;padding:4px 3px}
+ .day .pn-illustration{display:none!important}
+ .chip{font-size:10px;line-height:1.25;max-width:100%}
+ .week-grid{min-width:770px;grid-template-columns:44px repeat(7,minmax(0,1fr))}
+ .week-scroll{overflow-x:auto;touch-action:pan-x pan-y}
+ .week-event{font-size:10px;line-height:1.2}
+ .week-event b{padding-top:21px}
+}
+.school-slot{white-space:nowrap;text-overflow:ellipsis;padding:2px 3px;line-height:1.2}
+.school-slot span{font-size:10px}
+.school-slot[style*="height:9"],.school-slot[style*="height:8"],.school-slot[style*="height:7"]{font-size:9px}
+.vertical-card{z-index:3;line-height:1.25}
+.vertical-card-title{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vertical-card-time{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vertical-resize{height:24px;line-height:1;touch-action:none}
+.vertical-move{touch-action:none}
+</style>
+<style id="pn511-reading">
+.pn-mark,.pn-nav-icon svg{width:20px;height:20px;display:inline-block;flex:none;vertical-align:middle;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.pn-nav-icon{display:block;line-height:1}
+#pn-cal-switch button,#pn-todo-switch button,#pn156-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px;line-height:1.3}
+#pn-cal-switch button[aria-pressed=true],#pn-todo-switch button[aria-selected=true]{color:#082527!important}
+#pn54-current,#pn57-shortcuts,#pn52-shortcuts,.pn-todo-hidden{display:none!important}
+.panel p.hint,details p{line-height:1.65;line-break:strict;overflow-wrap:anywhere;max-inline-size:54em}
+.toolbar h2,.panel h3,summary{line-break:strict;text-wrap:pretty}
+#pn51-metrics .pn51-metric{display:grid;gap:2px}
+#pn51-actions,.dialog-actions{display:flex;flex-wrap:wrap;gap:8px;margin-block:10px}
+#durationControls{margin:12px 0;padding:8px;border:1px solid var(--line);border-radius:10px}
+#durationControls legend{padding:0 4px}
+.duration-row{display:flex;align-items:center;justify-content:space-between;gap:6px}
+.duration-row button{min-height:44px}.duration-row output{font-variant-numeric:tabular-nums;text-align:center}
+#calendarGrid button.day{display:flex;align-items:flex-start;flex-direction:column;justify-content:flex-start;padding:5px 3px}
+#calendarGrid .chip{display:block;white-space:nowrap;width:100%;overflow:hidden;text-overflow:ellipsis;text-align:start;line-height:1.35}
+@media(max-width:760px){
+ #nav button{font-size:12px;line-height:1.2}
+ #nav .pn-nav-icon{margin-bottom:3px}#nav button.active::after{height:2px}
+ .shell{padding-inline:8px}.panel{padding-inline:11px}
+ header h1{font-size:18px}header h1 small{font-weight:500}
+}
+</style></head><body><header><div><h1><span aria-hidden="true" class="pn-logo-mark">P</span> PlanNote <small style="font-size:12px;color:#547c7e">v1.0.0 RC511</small></h1></div><button class="primary" onclick="openEvent()">＋ 予定</button></header><div class="shell"><nav class="nav" id="nav" aria-label="主要メニュー"><button class="active" data-view="calendar"><span class="pn-illustration pn-icon-calendar" aria-hidden="true"></span> カレンダー</button><button data-view="vertical"><span class="pn-illustration pn-icon-clock" aria-hidden="true"></span> バーチカル</button><button data-view="week"><span class="pn-illustration pn-icon-calendar" aria-hidden="true"></span> 週間</button><button data-view="tasks"><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> タスク</button><button data-view="habits"><span class="pn-illustration pn-icon-leaf" aria-hidden="true"></span> 習慣</button><button data-view="finance"><span class="pn-illustration pn-icon-wallet" aria-hidden="true"></span> 家計簿</button><button data-view="study"><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 学習</button><button data-view="settings"><span class="pn-illustration pn-icon-settings" aria-hidden="true"></span> 設定</button></nav><div class="layout"><main><section class="view active" id="calendar"><div class="panel"><div class="toolbar"><div><button onclick="changeMonth(-1)">‹</button> <strong id="monthTitle"></strong> <button onclick="changeMonth(1)">›</button></div><button class="btn" onclick="goToday()">今日</button></div><div class="calendar" id="calendarGrid"></div></div><div class="panel"><div class="toolbar"><h2 id="selectedTitle">選択日の予定</h2><button class="btn" onclick="openEvent(null,selectedDate)">＋</button></div><div id="selectedAgenda"></div></div></section><section class="view" id="vertical"><div class="panel"><div class="toolbar"><h2>1日の予定</h2><input id="verticalDate" onchange="renderVertical()" style="max-width:180px" type="date"/></div><div class="school-controls"><strong><span class="pn-illustration pn-icon-school" aria-hidden="true"></span> 学校の時間割</strong><div class="school-controls-row"><label>学校 <select id="schoolEnabled" onchange="updateSchoolOption()"><option value="yes">あり</option><option value="no">なし</option></select></label><label>授業 <select id="schoolMode" onchange="updateSchoolOption()"><option value="normal">平常授業</option><option value="changed">授業変更あり</option></select></label><label>時制 <select id="schoolPeriod" onchange="updateSchoolOption()"><option value="50">50分</option><option value="45">45分</option></select></label><button class="btn" id="schoolEdit" onclick="editSchoolDay()" type="button">科目を編集</button></div><p class="muted" id="schoolSummary"></p></div><p class="hint">予定をドラッグして移動。タップして長さを調整。</p><div class="timeline" id="timeline"></div></div></section><section class="view" id="week"><div class="panel"><div class="toolbar"><h2>週間予定</h2><div><button class="btn" onclick="changeWeek(-1)">‹ 前週</button> <button class="btn" onclick="changeWeek(0)">今週</button> <button class="btn" onclick="changeWeek(1)">次週 ›</button></div></div><p class="muted" id="weekTitle"></p><p class="hint">曜日をタップして時間割を編集</p><div class="week-scroll" id="weekTimeline"></div></div></section><section class="view" id="tasks"><div class="panel"><div class="toolbar"><h2>タスク管理</h2><button class="primary" onclick="addTask()">＋ タスク</button></div><div id="taskList"></div></div></section><section class="view" id="habits"><div class="panel"><div class="toolbar"><h2>習慣チェック</h2><button class="primary" onclick="addHabit()">＋ 習慣</button></div><p class="muted" id="habitDay"></p><div id="habitList"></div></div></section><section class="view" id="finance"><div class="panel"><div class="toolbar"><h2><span class="pn-illustration pn-icon-wallet" aria-hidden="true"></span> 家計簿</h2><input id="financeMonth" onchange="renderFinance()" style="max-width:190px" type="month"/></div><div class="finance-summary"><div><small>収入</small><strong id="financeIncome">¥0</strong></div><div><small>支出（予定含む）</small><strong id="financeExpense">¥0</strong></div><div><small>収支（予定含む）</small><strong id="financeBalance">¥0</strong></div></div><p aria-live="polite" class="muted" id="financeActualStatus"></p><h3>収入・支出を記録</h3><div class="field"><label>支払・入金口座</label><select id="financeAccount"></select></div><form id="financeForm" onsubmit="saveFinance(event)"><div class="formgrid"><div class="field"><label for="financeDate">日付</label><input id="financeDate" required="" type="date"/></div><div class="field"><label for="financeType">種類</label><select id="financeType" onchange="refreshFinanceCategories()"><option value="expense">支出</option><option value="income">収入</option></select></div><div class="field"><label for="financeAmount">金額（円）</label><input id="financeAmount" max="999999999" min="1" required="" step="1" type="number"/></div><div class="field"><label for="financeCategory">費目</label><select id="financeCategory"></select></div></div><div class="field"><label for="financeMemo">メモ（任意）</label><input id="financeMemo" maxlength="120" placeholder="例：昼食、アルバイト代"/></div><button class="primary" type="submit">記録する</button></form><h3>月間予算</h3><div class="formgrid"><div class="field"><label for="financeBudget">今月の支出予算（円）</label><input id="financeBudget" min="0" placeholder="未設定" step="1" type="number"/></div><div class="field" style="justify-content:end"><button class="btn" onclick="saveFinanceBudget()" type="button">予算を保存</button></div></div><div class="muted" id="financeBudgetStatus"></div><div class="finance-meter"><div id="financeBudgetBar"></div></div><h3>固定費</h3><p class="muted">毎月同じ日に発生する支出を登録できます。月ごとの集計に自動反映されます。</p><form onsubmit="addFinanceFixed(event)"><div class="formgrid"><div class="field"><label for="fixedName">名称</label><input id="fixedName" maxlength="60" placeholder="例：通信費" required=""/></div><div class="field"><label for="fixedAmount">月額（円）</label><input id="fixedAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label for="fixedDay">毎月の日付</label><input id="fixedDay" max="31" min="1" required="" type="number" value="1"/></div><div class="field"><label for="fixedCategory">費目</label><select id="fixedCategory"></select></div></div><button class="btn" type="submit">固定費を登録</button></form><details><summary>固定費の計算方法</summary><p class="hint">固定費は未支払でも月間支出・予算に予定額として含まれます。支払済みにすると選択口座の残高から差し引き、同月の固定費予定額との二重計上を防ぎます。支払済み記録は「今月の記録」から削除すると未支払に戻ります。</p></details><div id="financeFixedList"></div><h3>直近6か月の収支</h3><div aria-label="直近6か月の収入と支出の棒グラフ" class="finance-chart" id="financeChart" role="img"></div><h3>費目別の支出</h3><div id="financeCategories"></div><h3>今月の記録</h3><div id="financeRecords"></div><h3>口座・残高管理</h3><details><summary>残高の計算方法</summary><p class="hint">残高＝初期残高＋収入－支出＋振替。未支払の固定費予定は口座残高から差し引きません。支払済みとして記録した固定費のみ、選択口座の残高に反映されます。</p></details><div id="accountList"></div><div class="formgrid"><div class="field"><label>新しい口座名</label><input id="accountName" maxlength="40" placeholder="銀行・現金・電子マネー"/></div><div class="field"><label>初期残高（円）</label><input id="accountOpening" step="1" type="number" value="0"/></div></div><button class="btn" onclick="addAccount()" type="button">口座を追加</button><h3>口座間振替</h3><form onsubmit="saveTransfer(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="transferDate" required="" type="date"/></div><div class="field"><label>金額（円）</label><input id="transferAmount" min="1" required="" step="1" type="number"/></div><div class="field"><label>振替元</label><select id="transferFrom"></select></div><div class="field"><label>振替先</label><select id="transferTo"></select></div></div><button class="btn" type="submit">振替を記録</button></form><div id="transferList"></div><h3>費目別予算</h3><div class="formgrid"><div class="field"><label>費目</label><select id="categoryBudgetCategory"></select></div><div class="field"><label>予算（円・空欄で解除）</label><input id="categoryBudgetAmount" min="0" step="1" type="number"/></div></div><button class="btn" onclick="saveCategoryBudget()">費目予算を保存</button><div id="categoryBudgetList"></div><p class="hint">家計簿はこの端末内に保存され、JSONバックアップに含まれます。Googleカレンダーには送信しません。</p></div></section><section class="view" id="study"><div class="panel"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 学習記録・資格目標</h2><form onsubmit="saveStudy(event)"><div class="formgrid"><div class="field"><label>日付</label><input id="studyDate" required="" type="date"/></div><div class="field"><label>科目</label><input id="studySubject" maxlength="60" placeholder="数学・英語・簿記など" required=""/></div><div class="field"><label>学習時間（分）</label><input id="studyMinutes" max="1440" min="1" required="" type="number"/></div><div class="field"><label>メモ</label><input id="studyMemo" maxlength="120"/></div></div><button class="primary" type="submit">学習を記録</button></form><h3>学習の集計</h3><div id="studyStats"></div><h3>資格・試験の目標</h3><form onsubmit="saveGoal(event)"><div class="formgrid"><div class="field"><label>目標名</label><input id="goalName" maxlength="80" required=""/></div><div class="field"><label>期限</label><input id="goalDate" type="date"/></div><div class="field"><label>進捗（0〜100%）</label><input id="goalProgress" max="100" min="0" required="" type="number" value="0"/></div></div><button class="btn" type="submit">目標を追加</button></form><div id="goalList"></div><h3>学習履歴</h3><div id="studyList"></div></div></section><section class="view" id="dashboard"><div class="panel"><h2><span class="pn-illustration pn-icon-tasks" aria-hidden="true"></span> 生活ダッシュボード</h2><div id="dashboardContent"></div><p class="hint">この端末の記録を集計しています。クラウドに個人データを送信しません。</p></div></section><section class="view" id="ai"><div class="panel"><h2><span class="pn-illustration pn-icon-star" aria-hidden="true"></span> 自然文から予定を作成</h2><p class="muted">初期版は端末内のルール解析です。生成AIへの通信はまだ行いません。</p><div class="field"><label for="aiText">予定を入力</label><textarea id="aiText" placeholder="例：明日 18:30 英語の勉強 60分"></textarea></div><button class="primary" onclick="parseAI()">予定案を作る</button><p class="hint">「今日」「明日」「YYYY/MM/DD」「18:30」「60分」などに対応。登録前に日時を確認できます。</p></div></section><section class="view" id="settings"><div class="panel"><h2>Googleカレンダー同期（試験運用）</h2><p class="muted">Google Cloudで作成したOAuthクライアントIDを設定すると、Googleカレンダーの「メイン」カレンダーと同期できます。初回同期前にJSONバックアップを保存してください。</p><div class="field"><label for="googleClient">Google OAuth クライアントID（ウェブアプリ用）</label><input id="googleClient" placeholder="xxxxx.apps.googleusercontent.com"/></div><button class="btn" onclick="saveClient()">IDを保存</button> <button class="primary" id="googleConnect" onclick="googleConnect()">Googleに接続</button> <button class="btn" onclick="googleDisconnect()">接続解除</button><section aria-label="同期の安全停止" aria-live="assertive" hidden="" id="pn285-storage-warning" role="alert"><strong><span class="pn-illustration pn-icon-bell" aria-hidden="true"></span> Google同期を安全停止しています</strong><p id="pn285-storage-reason"></p><p>同期を再試行しないでください。保存済みのJSONバックアップを確保し、Googleカレンダーの予定と端末内の予定を確認してください。保存領域に異常がある場合は、新しいバックアップの作成も失敗する可能性があります。</p><button class="btn" id="pn287-backup-jump" type="button">JSONバックアップへ移動</button><p aria-live="polite" class="hint" id="pn287-backup-status" role="status"></p><p hidden="" id="pn298-persistence-warning" role="alert" style="font-weight:700"><span class="pn-illustration pn-icon-bell" aria-hidden="true"></span> 安全停止の記録を端末に保存できませんでした。この画面を閉じたり再読み込みしたりしないでください。可能ならJSONバックアップを確保し、Googleカレンダーと端末内の予定を確認してください。再読み込み後に同期停止が維持される保証はありません。</p><p class="hint" id="pn285-storage-help">この警告は安全停止を自動解除しません。</p></section><p aria-live="polite" class="hint pn253-google-status" data-state="disconnected" id="googleStatus" role="status">未接続</p><p class="hint" hidden="" id="pn254-google-advice" role="alert"></p><button class="primary" id="googleSync" onclick="googleSync()">同期内容を確認する</button><p class="hint">Googleへの書き込みは手動承認制です。書き込み前に作成・更新件数を表示します。Google側での変更も取得します。Google連携の終日予定もバーチカルから変更できます（Googleへの反映は手動承認）。削除は候補の確認のみで、Google・PlanNoteの予定を自動削除しません。繰り返し予定はGoogle側のRRULEとして同期します。同期対象はメインカレンダーの予定です。Google以外の端末間でタスク・習慣は同期しません。</p><div class="panel" style="margin-top:14px"><h2><span class="pn-illustration pn-icon-sync" aria-hidden="true"></span> Google予定の自動取得</h2>
 <p class="hint">Googleに接続している間、起動・画面復帰時と約5分ごとにGoogleの新規予定を取得します。既存予定の上書き・Googleへの書き込み・削除は自動では行いません。ブラウザーを閉じている間は動作しません。</p>
 <label><input id="autoPullToggle" onchange="setAutoPull(this.checked)" type="checkbox"/> 自動取得を有効にする</label>
 <p aria-live="polite" class="hint" id="autoPullStatus">自動取得は停止中</p>
@@ -714,6 +763,31 @@ function openEventActions(id){
  $('actionConvert').disabled=e.repeat!=='none'||!!e.conflictCopy;
  $('actionEdit').disabled=!!e.allDay;
  $('eventActionDialog').showModal();
+ refreshDurationControls(e);
+}
+function refreshDurationControls(event){
+ const controls=$('durationControls');
+ controls.hidden=event.allDay || event.conflictCopy || event.repeat!=='none';
+ if(controls.hidden)return;
+ const minutes=(new Date(event.end)-new Date(event.start))/60000;
+ $('durationEnd').textContent=event.start.slice(0,10)===event.end.slice(0,10)
+   ? event.end.slice(11,16) : event.end.slice(5,16).replace('T',' ');
+ $('durationShorter').disabled=minutes<=15;
+}
+async function adjustDuration(minutes){
+ const id=$('actionEventId').value;
+ const event=data.events.find(item=>item.id===id);
+ if(!event || ![-15,15].includes(minutes))return;
+ const {start,end}=event;
+ const next=new Date(+new Date(end)+minutes*60000);
+ if(!Number.isFinite(+next) || next<=new Date(start))return;
+ const saved=await pn324ExclusiveMutation('adjust-duration',()=>{
+  const item=data.events.find(entry=>entry.id===id);
+  if(!item || item.conflictCopy || item.allDay || item.repeat!=='none' ||
+     item.start!==start || item.end!==end)throw Error('予定が変更されています');
+  item.end=localTime(next);
+ });
+ if(saved && $('actionEventId').value===id)refreshDurationControls(data.events.find(item=>item.id===id));
 }
 function dayAgendaAction(id){$('dayAgendaDialog').close();openEventActions(id)}
 function eventActionCategory(){const id=$('actionEventId').value;$('eventActionDialog').close();chooseEventCategory(id)}
@@ -1120,7 +1194,7 @@ function renderVertical(){
   const isEditable=!e.allDay&&!e.conflictCopy&&e.repeat==='none';
   html+=`<div class="vertical-card ${e.allDay?'all-day':''}" style="--c:${color};top:${top}px;height:${height}px;left:calc(${left}% + 2px);width:calc(${width}% - 4px)" title="${esc(e.name)} ${label}" onclick="verticalCardTap(event,'${e.id}')">${isEditable?`<button class="vertical-move" aria-label="${esc(e.name)}の開始時刻を移動" onpointerdown="beginVerticalMove(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')"><span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span> </button>`:`<span class="vertical-card-title">${esc(e.name)}</span><span class="vertical-card-time">${label}</span>`}`;
   if(e.allDay){html+=height>=85?`<span class="vertical-all-day-action" style="pointer-events:none">終日予定 · タップで操作</span>`:''}
-  else if(isEditable&&height>=32){html+=`<button class="vertical-resize" aria-label="${esc(e.name)}の終了時刻を変更" onpointerdown="beginVerticalResize(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')"> 終了時刻</button>`}
+  else if(isEditable&&height>=32){html+=`<button class="vertical-resize" aria-label="${esc(e.name)}の終了時刻を変更" onpointerdown="beginVerticalResize(event,'${e.id}')" onclick="verticalHandleTap(event,'${e.id}')">↕ 終了</button>`}
   html+=`</div>`;
  }
  html+='</div></div>';
@@ -2777,25 +2851,33 @@ if('serviceWorker' in navigator && location.protocol!=='file:')window.addEventLi
 <button class="btn" onclick="pn412ShowCategoryRecovery()" type="button">未完了の分類を確認</button>
 <button class="primary" type="submit">分類を保存</button></div></form></dialog>
 <dialog aria-label="予定の操作" id="eventActionDialog"><h2 id="actionEventName"></h2>
-<p class="muted" id="actionEventCategory"></p><input id="actionEventId" type="hidden"/>
-<div class="dialog-actions"><button class="btn" id="actionEdit" onclick="eventActionEdit()">予定を編集</button>
+<p class="muted" id="actionEventCategory"></p>
+<fieldset id="durationControls" hidden>
+ <legend>終了時刻</legend>
+ <div class="duration-row">
+  <button type="button" id="durationShorter" aria-label="終了を15分早める" onclick="adjustDuration(-15)">↑ 15分</button>
+  <output id="durationEnd" aria-live="polite"></output>
+  <button type="button" aria-label="終了を15分遅らせる" onclick="adjustDuration(15)">↓ 15分</button>
+ </div>
+</fieldset><input id="actionEventId" type="hidden"/>
+<div class="dialog-actions"><button class="btn" id="actionEdit" onclick="eventActionEdit()">編集</button>
 <button class="btn" onclick="eventActionCategory()">分類変更</button>
-<button class="btn" id="actionConvert" onclick="eventActionConvert()">終日化する</button><button class="btn danger" id="actionDelete" onclick="eventActionDelete()">予定を削除</button>
+<button class="btn" id="actionConvert" onclick="eventActionConvert()">終日化する</button><button class="btn danger" id="actionDelete" onclick="eventActionDelete()">削除</button>
 <button class="btn" onclick="$('eventActionDialog').close()">閉じる</button></div></dialog>
 <dialog aria-label="選択日の予定" id="dayAgendaDialog"><h2 id="dayAgendaTitle"></h2>
-<p class="muted" id="daySchoolSummary"></p><button class="btn" onclick="openDayVertical()">この日の時間割を表示・変更</button><div id="dayAgendaList"></div><div class="dialog-actions">
-<button class="btn" onclick="$('dayAgendaDialog').close();openEvent(null,selectedDate)">＋ この日に予定を追加</button>
+<p class="muted" id="daySchoolSummary"></p><button class="btn" onclick="openDayVertical()">時間割を開く</button><div id="dayAgendaList"></div><div class="dialog-actions">
+<button class="btn" onclick="$('dayAgendaDialog').close();openEvent(null,selectedDate)">＋ 予定を追加</button>
 <button class="btn" onclick="$('dayAgendaDialog').close()">閉じる</button></div></dialog>
 <dialog aria-label="学校の時間割を編集" id="schoolDialog"><form onsubmit="saveSchoolDay(event)"><h2 id="schoolEditTitle">時間割</h2><p class="muted">時制や科目をこの日だけ変更できます。</p><div class="row"><label><input id="schoolDialogEnabled" type="checkbox"/> この日は学校あり</label><label>授業時間 <select id="schoolDialogPeriod"><option value="50">50分</option><option value="45">45分</option></select></label></div><div aria-label="時制を選択" class="pn479-presets" role="group"><button data-preset="normal" onclick="pn479ApplyPreset('normal')" type="button">通常授業</button><button data-preset="morning" onclick="pn479ApplyPreset('morning')" type="button">午前授業</button><button data-preset="short" onclick="pn479ApplyPreset('short')" type="button">45分短縮</button><button data-preset="event" onclick="pn479ApplyPreset('event')" type="button">学校行事</button></div><details id="pn479Advanced"><summary>開始時刻・休み時間などを調整</summary><div class="formgrid" style="margin:12px 0"><div class="field"><label for="schoolScheduleType">この日の時制</label><select id="schoolScheduleType" onchange="pn479TypeChanged()"><option value="normal">通常授業</option><option value="morning">午前授業（昼休みなし）</option><option value="short">短縮授業（昼休みなし）</option><option value="custom">変則時制（時間を指定）</option><option value="event">学校行事</option></select></div><div class="field"><label for="schoolStartTime">1限・行事の開始時刻</label><input id="schoolStartTime" type="time" value="09:05"/></div><div class="field"><label for="schoolBreakMinutes">授業間の休み（分）</label><input id="schoolBreakMinutes" max="60" min="0" type="number" value="10"/></div><div class="field"><label for="schoolLunchMinutes">昼休み（分）</label><input id="schoolLunchMinutes" max="120" min="0" type="number" value="45"/></div><div class="field"><label for="schoolLunchAfter">昼休みを入れる時限の後</label><select id="schoolLunchAfter"><option value="3">3限後</option><option value="4">4限後</option><option value="5">5限後</option><option value="6">6限後</option></select></div></div></details><div hidden="" id="pn478EventFields"><label for="schoolEventName">行事名</label><input id="schoolEventName" maxlength="80" placeholder="例：体育祭・学年集会"/><label for="schoolEventEndTime">行事の終了時刻</label><input id="schoolEventEndTime" type="time" value="12:00"/></div><div class="school-subject-grid" id="schoolSubjects"></div><label for="schoolEndPeriod">この日の最終授業</label><select id="schoolEndPeriod"><option value="1">1限まで</option><option value="2">2限まで</option><option value="3">3限まで（午前終了）</option><option value="4">4限まで（短縮日）</option><option value="5">5限まで</option><option value="6">6限まで</option><option value="7">7限まで</option></select><p class="muted">最終授業以降は表示しません。午前・短縮授業では昼休みを省略します。</p><div class="dialog-actions"><button class="btn" onclick="$('schoolDialog').close()" type="button">キャンセル</button><button class="btn" onclick="restoreSchoolDay()" type="button">通常科目に戻す</button><button class="primary" type="submit">保存</button></div></form></dialog><script id="pn-rc36-script">
 (function(){
 'use strict';
 const $pn=id=>document.getElementById(id);
 const cal=$pn('calendar');
-if(cal){const switcher=document.createElement('div');switcher.id='pn-cal-switch';switcher.setAttribute('role','group');switcher.setAttribute('aria-label','カレンダー表示');switcher.innerHTML='<button data-mode="calendar" aria-pressed="true">月間</button><button data-mode="week" aria-pressed="false">週間</button><button data-mode="vertical" aria-pressed="false">バーチカル</button>';cal.querySelector('.panel').prepend(switcher);}
+if(cal){const switcher=document.createElement('div');switcher.id='pn-cal-switch';switcher.setAttribute('role','group');switcher.setAttribute('aria-label','カレンダー表示');switcher.innerHTML='<button data-mode="calendar" aria-pressed="true"><svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4m10-4v4M3 10h18m-14 4h2m3 0h2m3 0h1m-11 4h2m3 0h2"/></svg>月間</button><button data-mode="week" aria-pressed="false"><svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M9 4v16m6-16v16M5 9h1m6 4h1m5-5h1"/></svg>週間</button><button data-mode="vertical" aria-pressed="false"><svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M5 3v18m-2-16h4m-4 7h4m-4 7h4"/><rect x="10" y="4" width="11" height="6" rx="2"/><rect x="10" y="14" width="8" height="5" rx="2"/></svg>日別</button>';cal.querySelector('.panel').prepend(switcher);}
 const fab=document.createElement('button');fab.id='pn-fab';fab.type='button';fab.setAttribute('aria-label','追加');fab.setAttribute('aria-expanded','false');fab.textContent='+';
 const menu=document.createElement('div');menu.id='pn-fab-menu';menu.innerHTML='<button type="button" data-action="event">予定を追加</button><button type="button" data-action="task">タスクを追加</button><button type="button" data-action="finance">家計簿を開く</button>';
 document.body.append(menu,fab);
-function setMenu(open){menu.classList.toggle('open',open);fab.setAttribute('aria-expanded',String(open));}fab.onclick=()=>setMenu(!menu.classList.contains('open'));
+function setMenu(open){menu.style.removeProperty('display');menu.classList.toggle('open',open);fab.setAttribute('aria-expanded',String(open));}fab.onclick=()=>setMenu(!menu.classList.contains('open'));
 menu.addEventListener('click',e=>{const action=e.target.closest('[data-action]')?.dataset.action;if(!action)return;setMenu(false);if(action==='event')openEvent();if(action==='task')window.addTask();if(action==='finance')document.querySelector('#nav [data-view="finance"]')?.click()});
 const more=document.createElement('button');more.type='button';more.textContent='その他';more.setAttribute('aria-expanded','false');more.dataset.view='more';const nav=$pn('nav');nav.append(more);
 const morePanel=document.createElement('div');morePanel.id='pn-more-panel';morePanel.style.cssText='display:none';morePanel.innerHTML='<h2>その他の機能</h2><div style="display:flex;gap:7px;flex-wrap:wrap"></div>';nav.after(morePanel);
@@ -2846,9 +2928,6 @@ window.addEventListener('focus',checkReminders);
 document.addEventListener?.('visibilitychange',()=>{if(!document.hidden)checkReminders()});
 if('Notification'in window&&Notification.permission==='default'){const notify=document.createElement('button');notify.className='btn';notify.textContent='通知を許可';notify.onclick=()=>Notification.requestPermission().then(()=>{notify.textContent=Notification.permission==='granted'?'通知許可済み':'通知は未許可'});status.after(notify)}
 setInterval(checkReminders,60000);setTimeout(()=>{renderTasks();checkReminders()},200);
-// Touch navigation: prevent drag activation on initial touch. Mouse/pen drag remains available.
-if(typeof window.beginVerticalMove==='function'){const old=window.beginVerticalMove;window.beginVerticalMove=function(ev,id){if(ev.pointerType==='touch')return;return old(ev,id)}}
-if(typeof window.beginVerticalResize==='function'){const old=window.beginVerticalResize;window.beginVerticalResize=function(ev,id){if(ev.pointerType==='touch')return;return old(ev,id)}}
 })();
 </script>
 <script id="pn-rc38-script">(function(){'use strict';
@@ -2868,7 +2947,7 @@ syncNav();
 const nav=document.getElementById('nav'),tasks=document.getElementById('tasks'),study=document.getElementById('study');if(!nav||!tasks||!study)return;
 const taskPanel=tasks.querySelector(':scope > .panel');if(!taskPanel)return;
 const tabs=document.createElement('div');tabs.id='pn-todo-switch';tabs.setAttribute('role','tablist');tabs.setAttribute('aria-label','To Doの内容');
-tabs.innerHTML='<button type="button" role="tab" data-todo="tasks" aria-selected="true">タスク</button><button type="button" role="tab" data-todo="study" aria-selected="false">勉強</button>';
+tabs.innerHTML='<button type="button" role="tab" data-todo="tasks" aria-selected="true"><span aria-hidden="true" class="pn-illustration pn-icon-tasks"></span>タスク</button><button type="button" role="tab" data-todo="study" aria-selected="false"><svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M12 6Q8 3 2 5v14q6-2 10 1 4-3 10-1V5q-6-2-10 1Zm0 0v14"/></svg>勉強</button>';
 tasks.insertBefore(tabs,taskPanel);
 study.classList.remove('view','active');study.classList.add('pn-todo-study','pn-todo-hidden');tasks.appendChild(study);
 const taskButton=nav.querySelector('[data-view="tasks"]');if(taskButton){taskButton.setAttribute('aria-label','To Do');const label=taskButton.querySelector('span:last-child');if(label)label.textContent='To Do';else taskButton.textContent='To Do';}
@@ -2997,35 +3076,14 @@ window.addEventListener('focus',refresh45);document.addEventListener?.('visibili
 
 <script id="pn-rc48-script">
 function verticalHandleTap(ev,id){
-  if(ev.detail===0)return; // keyboard actions handled by native focus/activation
-  if(ev.pointerType==='mouse')return;
-  if(Date.now()<verticalSuppressTapUntil)return;
-  ev.preventDefault();ev.stopPropagation();openEventActions(id);
+ if(ev.detail!==0 || Date.now()<verticalSuppressTapUntil)return;
+ ev.stopPropagation();
+ openEventActions(id);
 }
-// PointerType is not consistently present on click events. Mark touch-originated clicks.
-document.addEventListener('pointerdown',function(ev){
-  const handle=ev.target.closest?.('.vertical-move,.vertical-resize');
-  if(handle&&ev.pointerType==='touch')handle.dataset.pnTouch='1';
-},true);
-const pn48OldHandleTap=verticalHandleTap;
-verticalHandleTap=function(ev,id){
-  const h=ev.currentTarget;
-  if(h?.dataset.pnTouch==='1'){
-    delete h.dataset.pnTouch;
-    ev.preventDefault();ev.stopPropagation();openEventActions(id);
-  }
-};
 </script>
 
 <script id="pn-rc49-script">
 (function(){
-  // On touch screens, touching an event must never initiate pointer-capture dragging.
-  // Capture phase runs before inline onpointerdown handlers in the existing calendar.
-  document.addEventListener('pointerdown',function(e){
-    if(e.pointerType!=='touch'&&e.pointerType!=='pen')return;
-    if(!e.target.closest?.('.vertical-move,.vertical-resize'))return;
-    e.stopImmediatePropagation();
-  },true);
   // Close overlays without forcing a page navigation.
   document.addEventListener('keydown',function(e){
     if(e.key!=='Escape')return;
@@ -3064,7 +3122,7 @@ toast(`${targets.length}件を完了しました`)});
 const switcher=document.getElementById('pn-todo-switch');
 if(!switcher||typeof data==='undefined')return;
 const summary=document.createElement('section');summary.id='pn51-overview';summary.setAttribute('aria-label','To Doの概要');
-summary.innerHTML='<h3>今日のTo Do</h3><div id="pn51-metrics"><div class="pn51-metric"><strong id="pn51-open">—</strong><span>未完了</span></div><div class="pn51-metric"><strong id="pn51-today">—</strong><span>今日まで</span></div><div class="pn51-metric"><strong id="pn51-study">—</strong><span>勉強の予定</span></div></div><div id="pn51-actions"><button type="button" id="pn51-new-task">＋ タスク</button><button type="button" id="pn51-new-study">＋ 勉強</button></div><p class="pn51-note">タスクと勉強を同じ画面で管理できます。下の切替で詳細を表示します。</p>';
+summary.innerHTML='<h3>今日のTo Do</h3><div id="pn51-metrics"><div class="pn51-metric"><strong id="pn51-open">—</strong><span>未完了</span></div><div class="pn51-metric"><strong id="pn51-today">—</strong><span>今日まで</span></div><div class="pn51-metric"><strong id="pn51-study">—</strong><span>勉強の予定</span></div></div><div id="pn51-actions"><button type="button" id="pn51-new-task">＋ タスク</button><button type="button" id="pn51-new-study">＋ 勉強</button></div>';
 switcher.before(summary);
 const dateLocal=()=>{const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')};
 function refresh(){const tasks=Array.isArray(data.tasks)?data.tasks:[];const pending=tasks.filter(t=>!t.done);const today=dateLocal();
@@ -4073,10 +4131,15 @@ observer.observe(section,{attributes:true,attributeFilter:['class']});
 'use strict';
 const $=id=>document.getElementById(id),finance=$('finance'),monthInput=$('financeMonth');if(!finance||!monthInput)return;
 const hub=document.createElement('section');hub.id='pn156-hub';hub.setAttribute('aria-label','家計簿の操作ダッシュボード');
-hub.innerHTML='<h3> 家計簿クイック操作</h3><p class="muted">今月の記録を確認して、必要な操作へ直接移動できます。</p><div class="pn156-grid" id="pn156-summary" aria-live="polite"></div><div class="pn156-actions" id="pn156-actions"></div>';
+hub.innerHTML='<h3>今月の収支</h3><div class="pn156-grid" id="pn156-summary" aria-live="polite"></div><div class="pn156-actions" id="pn156-actions"></div>';
 const summary=finance.querySelector('.finance-summary');if(!summary)return;summary.before(hub);
-const actions=[['収支を記録','financeForm'],['支出を分析','pn148-breakdown'],['記録を確認','financeRecords']];
-for(const [name,id] of actions){const button=document.createElement('button');button.type='button';button.textContent=name;button.onclick=()=>{const el=$(id);if(!el)return;el.scrollIntoView({block:'start',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});if(id==='pn146-search')el.focus({preventScroll:true})};$('pn156-actions').append(button)}
+const actions=[['記録','financeForm'],['分析','pn148-breakdown'],['明細','financeRecords']];
+for(const [name,id] of actions){const button=document.createElement('button');button.type='button';
+ const glyph={'financeForm':'<span class="pn-illustration pn-icon-edit" aria-hidden="true"></span>',
+              'pn148-breakdown':'<svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><path d="M3 3v18h18M7 17v-4m5 4V8m5 9V5"/></svg>','financeRecords':'<svg class="pn-mark" aria-hidden="true" focusable="false" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="3"/><path d="M8 8h8m-8 4h8m-8 4h5"/></svg>'};
+ button.innerHTML=glyph[id];
+ button.append(document.createTextNode(name));
+ button.onclick=()=>{const el=$(id);if(!el)return;el.scrollIntoView({block:'start',behavior:window.matchMedia?.('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});if(id==='pn146-search')el.focus({preventScroll:true})};$('pn156-actions').append(button)}
 const yen=n=>'¥'+Math.round(n).toLocaleString('ja-JP');
 function draw(){const month=monthInput.value;if(!/^\d{4}-\d{2}$/.test(month))return;
  const records=Array.isArray(data.finance)?data.finance:[];
@@ -4805,68 +4868,7 @@ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',
 })();</script>
 
 
-<script id="pn487-illustration-runtime">
-(()=>{'use strict';
-/* Progressive enhancement only: no storage, network, calendar or sync changes. */
-const known = new Set(['calendar','tasks','clock','bell','edit','trash','settings','search',
-'wallet','school','sync','download','upload','home','star','leaf']);
-const rules = [
- [/削除|消去|取り消す予定/, 'trash'],
- [/同期|再取得|更新|再読込|再読み込み|再試行|復旧/, 'sync'],
- [/バックアップを書き出|JSON保存|ダウンロード|書き出し|エクスポート/, 'download'],
- [/読み込|インポート|復元/, 'upload'],
- [/通知|リマインド/, 'bell'],
- [/家計簿|予算|固定費|口座|振替|費目|支出|収入|記録する/, 'wallet'],
- [/学校|授業|科目|時間割|学習/, 'school'],
- [/習慣|目標/, 'star'],
- [/設定|分類|IDを保存/, 'settings'],
- [/検索|探す|絞り込/, 'search'],
- [/編集|変更|修正/, 'edit'],
- [/タスク|ToDo|チェック/, 'tasks'],
- [/週|日付|今日|カレンダー|予定/, 'calendar'],
- [/保存|登録|追加|作成|接続|許可/, 'edit'],
- [/閉じる|キャンセル|戻る/, 'home']
-];
-function choose(el){
-  const explicit=(el.getAttribute('data-pn-icon')||'').trim();
-  if(known.has(explicit))return explicit;
-  const label=(el.getAttribute('aria-label')||el.textContent||'').replace(/\s+/g,' ').trim();
-  if(!label)return null;
-  if(/^[‹›←→+＋×✕\-−]$/.test(label))return null;
-  for(const [pattern,name] of rules)if(pattern.test(label))return name;
-  return null;
-}
-function decorate(el){
- if(!(el instanceof HTMLElement)||el.hasAttribute('data-pn487-processed'))return;
- el.setAttribute('data-pn487-processed','1');
- if(el.querySelector('.pn-illustration'))return;
- const icon=choose(el);if(!icon)return;
- const span=document.createElement('span');
- span.className='pn-illustration pn487-icon pn-icon-'+icon;
- span.setAttribute('aria-hidden','true');
- el.insertBefore(span,el.firstChild);
-}
-function scan(root){
- if(root instanceof HTMLElement && root.matches('button,.nav a,[role="button"]'))decorate(root);
- if(root.querySelectorAll)root.querySelectorAll('button,.nav a,[role="button"]').forEach(decorate);
-}
-function start(){
- scan(document);
- const observer=new MutationObserver(records=>{
-   const pending=new Set();
-   for(const record of records){
-     for(const node of record.addedNodes){
-       if(node.nodeType===1 && !(node.classList && node.classList.contains('pn487-icon')))pending.add(node);
-     }
-   }
-   pending.forEach(scan);
- });
- observer.observe(document.body,{childList:true,subtree:true});
-}
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});
-else start();
-})();
-</script>
+
 
 
 <script id="pn489-accessibility-navigation">(()=>{'use strict';
